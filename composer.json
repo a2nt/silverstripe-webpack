@@ -1,0 +1,32 @@
+{
+    "name": "silverstripe/installer",
+    "description": "The SilverStripe webpack boilerplate",
+    "require": {
+        "php": ">=5.5.0",
+        "silverstripe/cms": "*",
+        "silverstripe/framework": "3.7.x-dev",
+        "silverstripe/redirectedurls": "*",
+        "axllent/silverstripe-scaled-uploads": "*",
+        "jonom/silverstripe-betternavigator": "*",
+        "axllent/silverstripe-version-truncator": "*"
+    },
+    "require-dev": {
+        "phpunit/PHPUnit": "~3.7",
+        "gdmedia/ss-auto-git-ignore": "^1.0",
+        "axyr/silverstripe-ideannotator": "dev-master",
+        "lekoala/silverstripe-debugbar": "^1.0"
+    },
+    "scripts": {
+        "post-update-cmd": "GDM\\SSAutoGitIgnore\\UpdateScript::Go"
+    },
+    "config": {
+        "process-timeout": 600,
+        "discard-changes": true
+    },
+    "extra": {
+        "branch-alias": {
+            "3.x-dev": "3.6.x-dev"
+        }
+    },
+    "minimum-stability": "dev"
+}

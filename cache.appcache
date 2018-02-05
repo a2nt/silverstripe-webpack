@@ -1,0 +1,10 @@
+CACHE MANIFEST
+
+FALLBACK:
+/
+/site/dist/css/app.css
+/site/dist/img/logo.png
+/site/dist/img/fonts/fontawesome-webfont.woff2?v=4.7.0
+/site/dist/img/fonts/fontawesome-webfont.woff?v=4.7.0
+/site/dist/img/fonts/fontawesome-webfont.ttf?v=4.7.0
+/site/dist/js/app.js
