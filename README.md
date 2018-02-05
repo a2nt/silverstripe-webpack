@@ -28,7 +28,7 @@ Checkout files at /site/ folder for details
 + /site/src/js/main.js (Your custom site-wide functionality)
 + /site/src/js/_events.js (Your custom site-wide events)
 + /site/src/js/_pageType_and_component_template.js (A template which can be used to create new modules)
-+ /site/src/types/*.js (Extra page-specific modules to be autocompiled. My suggestion is to use *ClassName*.js and then Require it as at SilverStripe automatically)
++ /site/src/types/*.js (Extra page-specific modules to be autocompiled. My suggestion is to use *ClassName*.js and then require it at SilverStripe custom controller area)
 
 
 
@@ -48,8 +48,11 @@ Checkout files at /site/ folder for details
 
 ### Instalation:
 
++ git clone https://github.com/a2nt/silverstripe-webpack.git
++ cd silverstripe-webpack 
 + composer install
 + yarn install
++ edit robots.txt, humans.txt, cache.appcache, manifest.json and package.json to setup your own project
 
 ### Commands:
 
