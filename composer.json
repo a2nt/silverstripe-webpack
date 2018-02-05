@@ -1,5 +1,5 @@
 {
-    "name": "silverstripe/installer",
+    "name": "a2nt/silverstripe-webpack",
     "description": "The SilverStripe webpack boilerplate",
     "require": {
         "php": ">=5.5.0",

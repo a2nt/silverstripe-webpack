@@ -1,20 +1,20 @@
 # silverstripe-webpack
 
-# Simple WebPack boiler plate for SilverStripe
+## Simple WebPack boiler plate for SilverStripe
 
 Checkout files at /site/ folder for details
 
-# Requirements:
+## Requirements:
 
 + composer
 + yarn
 
-# Instalation:
+## Instalation:
 
 + composer install
 + yarn install
 
-# Commands:
+## Commands:
 
 + yarn - to update packages
 + yarn start - to start webpack webserver
