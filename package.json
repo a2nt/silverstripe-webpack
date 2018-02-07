@@ -9,7 +9,7 @@
         "yarn": ">= 1.0.0"
     },
     "scripts": {
-        "start": "cross-env NODE_ENV=development webpack-dev-server -d --config webpack.config.dev.js",
+        "start": "cross-env NODE_ENV=development webpack-dev-server --https -d --config webpack.config.dev.js",
         "dash": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server --config webpack.config.dev.js",
         "prebuild": "rimraf build",
         "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.prod.js --progress"

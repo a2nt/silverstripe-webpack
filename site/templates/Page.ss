@@ -3,6 +3,7 @@
 <%--  manifest="/cache.appcache" --%>
 <head>
     $MetaTags
+
     <meta name="theme-color" content="#000000" />
     <meta name="msapplication-navbutton-color" content="#000000" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
@@ -18,21 +19,21 @@
     <link rel="preconnect" href="https://csi.gstatic.com" />
     <link rel="preconnect" href="https://maps.googleapis.com" />
 
-	<link rel="preconnect" href="https://www.youtube.com">
-	<link rel="preconnect" href="https://i.ytimg.com">
-	<link rel="preconnect" href="https://i9.ytimg.com">
-	<link rel="preconnect" href="https://s.ytimg.com">
+	<link rel="preconnect" href="https://www.youtube.com" />
+	<link rel="preconnect" href="https://i.ytimg.com" />
+	<link rel="preconnect" href="https://i9.ytimg.com" />
+	<link rel="preconnect" href="https://s.ytimg.com" />
 
     <% base_tag %>
 
-    <link rel="shortcut icon" type="image/x-icon" href="{$AbsoluteBaseURL}{$Project}/site/dist/icons/favicon.ico" />
-    <link rel="icon" sizes="144x144" type="image/png" href="{$AbsoluteBaseURL}{$Project}/site/dist/icons/android-chrome-144x144.png" />
-    <link rel="apple-touch-icon" href="{$AbsoluteBaseURL}{$Project}/site/dist/icons/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="{$AbsoluteBaseURL}{$Project}/site/dist/icons/apple-touch-icon-precomposed.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="{$AbsoluteBaseURL}{$Project}/dist/icons/favicon.ico" />
+    <link rel="icon" sizes="144x144" type="image/png" href="{$AbsoluteBaseURL}{$Project}/dist/icons/android-chrome-144x144.png" />
+    <link rel="apple-touch-icon" href="{$AbsoluteBaseURL}{$Project}/dist/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="{$AbsoluteBaseURL}{$Project}/dist/icons/apple-touch-icon-precomposed.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
     <meta name="application-name" content="{$SiteConfig.Title}" />
-    <meta name="msapplication-TileImage" content="{$AbsoluteBaseURL}{$Project}/site/dist/icons/mstile-144x144.png" />
+    <meta name="msapplication-TileImage" content="{$AbsoluteBaseURL}{$Project}/dist/icons/mstile-144x144.png" />
     <meta name="msapplication-TileColor" content="#2F98F1" />
 
     <meta content="yes" name="apple-mobile-web-app-capable" />

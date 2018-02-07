@@ -75,7 +75,8 @@ class WebpackTemplateProvider extends Object implements TemplateGlobalProvider
     {
         $class = __CLASS__;
         return sprintf(
-            'http://%s:%s/%s',
+            '%s%s:%s/%s',
+            Director::protocol(),
             $class::config()->get('hostname'),
             $class::config()->get('port'),
             $path
