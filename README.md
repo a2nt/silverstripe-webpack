@@ -59,3 +59,8 @@ Checkout files at /site/ folder for details
 + yarn - to update packages
 + yarn start - to start webpack webserver
 + yarn build - to build assets# silverstripe-webpack
+
+### TODO:
+
++ Planktos torrent auto-generation for static files (https://github.com/xuset/planktos#----------planktos)
++ ServiceWorker auto-generation

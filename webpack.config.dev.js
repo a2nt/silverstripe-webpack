@@ -14,11 +14,7 @@ const config = merge.strategy({
     entry: {
         app: [
             'react-hot-loader/patch',
-            'webpack-dev-server/client?http://' + conf.HOSTNAME + ':' + conf.PORT + '/',
-            'webpack/hot/only-dev-server',
-        ],
-        main: [
-            'webpack-dev-server/client?http://' + conf.HOSTNAME + ':' + conf.PORT + '/',
+            'webpack-dev-server/client?https://' + conf.HOSTNAME + ':' + conf.PORT + '/',
             'webpack/hot/only-dev-server',
         ],
     },
