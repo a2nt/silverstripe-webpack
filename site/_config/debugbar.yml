@@ -1,0 +1,7 @@
+---
+Name: sitedebugbar
+After:
+  - 'debugbar'
+---
+DebugBar:
+  include_jquery: false

@@ -37,8 +37,7 @@ module.exports = {
     entry: jsScripts,
     devtool: "source-map",
     externals: {
-        "custom-select": "CustomSelect",
-        "ui-progress-button": "UIProgressButton"
+        "jquery": "jQuery",
     },
     module: {
         rules: [{
