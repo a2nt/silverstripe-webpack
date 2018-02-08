@@ -67,6 +67,11 @@ const config = merge.strategy({
                     sourceMap: true
                 }
             }, ]
+        }, {
+            test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+            use: [{
+                loader: 'url-loader'
+            }]
         }, ]
     },
     plugins: [

@@ -55,12 +55,17 @@ const TypePage = (($) => {
     });
 
     // JQuery extension functions
-    /*$.fn[NAME]             = TypePage._jQueryInterface;
+    /*
+    $.fn[NAME]             = TypePage._jQueryInterface;
     $.fn[NAME].Constructor = TypePage;
     $.fn[NAME].noConflict  = function () {
         $.fn[NAME] = JQUERY_NO_CONFLICT;
         return TypePage._jQueryInterface;
-    };*/
+    };
+    // auto-apply
+    $(".ui." + NAME).ready(function(){
+        $(".ui." + NAME).TypePage();
+    });*/
 
     return TypePage;
 })($);

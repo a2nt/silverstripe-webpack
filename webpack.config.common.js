@@ -65,34 +65,6 @@ module.exports = {
                 name: "img/[name].[ext]",
             }
         }, {
-            test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-            use: {
-                loader: "file-loader",
-                options: {
-                    name: "fonts/[name].[ext]"
-                }
-            }
-        }, {
-            test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            use: {
-                loader: "url-loader",
-                options: {
-                    name: "fonts/[name].[ext]",
-                    limit: 10000,
-                    mimetype: "application/font-woff"
-                }
-            }
-        }, {
-            test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
-            use: {
-                loader: "url-loader",
-                options: {
-                    name: "fonts/[name].[ext]",
-                    limit: 10000,
-                    mimetype: "application/octet-stream"
-                }
-            }
-        }, {
             test: /\.worker\.js$/,
             use: {
                 loader: "worker-loader"
