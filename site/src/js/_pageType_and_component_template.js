@@ -1,21 +1,20 @@
-import $ from "jquery";
+import $ from 'jquery';
 
 const TypePage = (($) => {
-
     // Constants
-    const NAME = "TypePage";
-    //const DATA_KEY  = "pageUI." + NAME;
+    const NAME = 'TypePage';
+    // const DATA_KEY  = "pageUI." + NAME;
 
-    const Events = require("./_events");
+    const Events = require('./_events');
 
     class TypePage {
         // Static methods
         static init() {
-            console.log("Initializing: " + NAME);
+            console.log(`Initializing: ${NAME}`);
         }
 
         static destroy() {
-            console.log("Destroying: " + NAME);
+            console.log(`Destroying: ${NAME}`);
         }
 
         /**
@@ -50,7 +49,7 @@ const TypePage = (($) => {
          */
     }
 
-    $(window).on(Events.AJAX + " " + Events.LOADED, function() {
+    $(window).on(`${Events.AJAX} ${Events.LOADED}`, () => {
         TypePage.init();
     });
 
@@ -65,7 +64,7 @@ const TypePage = (($) => {
     // auto-apply
     $(".ui." + NAME).ready(function(){
         $(".ui." + NAME).TypePage();
-    });*/
+    }); */
 
     return TypePage;
 })($);
@@ -90,4 +89,4 @@ import $ from 'jquery';
     $(document).ready(function () {
         G.initPulsePage();
     });
-}(this));*/
+}(this)); */

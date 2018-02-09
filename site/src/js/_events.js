@@ -3,6 +3,6 @@
  */
 
 module.exports = {
-    AJAX: "ajax-load",
-    LOADED: "load"
+    AJAX: 'ajax-load',
+    LOADED: 'load'
 };
