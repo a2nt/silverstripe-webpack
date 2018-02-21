@@ -1,10 +1,6 @@
-// Your custom variables
-@import "variables";
-
 // Bootstrap basics
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
+@import "_bootstrap_variables";
+
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
@@ -38,9 +34,12 @@
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/print";
 
-// Font Awesome
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
+// Your custom variables
+@import "_variables";
+
 // Your custom UI
-@import "layout";
+@import "types/typography";
+@import "_layout";

@@ -5,7 +5,7 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 const conf = require("./webpack.configuration");
 const isProduction = process.env.NODE_ENV === "production";
 
-const jsScripts = {
+const includes = {
     app: path.join(conf.SRC, "js/app.js"),
 };
 
@@ -30,11 +30,17 @@ const _getAllFilesFromFolder = function(dir) {
 // add page specific scripts
 const pageScripts = _getAllFilesFromFolder(conf.PAGES);
 pageScripts.forEach((file) => {
-    jsScripts[path.basename(file, ".js")] = file;
+    includes[path.basename(file, ".js")] = file;
+});
+
+// add page specific scss
+const scssIncludes = _getAllFilesFromFolder(conf.PAGESSCSS);
+scssIncludes.forEach((file) => {
+    includes[path.basename(file, ".scss")] = file;
 });
 
 module.exports = {
-    entry: jsScripts,
+    entry: includes,
     devtool: "source-map",
     externals: {
         "jquery": "jQuery",
@@ -59,6 +65,13 @@ module.exports = {
                 },
             }
         }, {
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/
+        }, {
+            test: /\.coffee?$/,
+            use: 'coffee-loader'
+        }, {
             test: /\.(png|jpg|gif|svg)$/,
             loader: "file-loader",
             options: {
@@ -70,6 +83,12 @@ module.exports = {
                 loader: "worker-loader"
             }
         }]
+    },
+    resolve: {
+        alias: {
+            'jquery': require.resolve('jquery'),
+            'jQuery': require.resolve('jquery'),
+        }
     },
     plugins: [
         new webpack.ProvidePlugin({
