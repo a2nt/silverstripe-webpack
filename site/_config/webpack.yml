@@ -7,4 +7,5 @@ WebpackTemplateProvider:
   hostname: localhost
   port: "3000"
   pages: site/src/js/types
+  pagesscss: site/src/scss/types
   src: site/src
