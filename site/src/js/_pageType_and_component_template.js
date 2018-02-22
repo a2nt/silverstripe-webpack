@@ -1,23 +1,23 @@
 import $ from 'jquery';
 
 const TypePage = (($) => {
-    // Constants
-    const NAME = 'TypePage';
-    // const DATA_KEY  = "pageUI." + NAME;
+  // Constants
+  const NAME = 'TypePage';
+  // const DATA_KEY  = "pageUI." + NAME;
 
-    const Events = require('./_events');
+  const Events = require('./_events');
 
-    class TypePage {
-        // Static methods
-        static init() {
-            console.log(`Initializing: ${NAME}`);
-        }
+  class TypePage {
+    // Static methods
+    static init() {
+      console.log(`Initializing: ${NAME}`);
+    }
 
-        static destroy() {
-            console.log(`Destroying: ${NAME}`);
-        }
+    static destroy() {
+      console.log(`Destroying: ${NAME}`);
+    }
 
-        /**
+    /**
          * jQuery extension functions
          // Constructor
          constructor(element) {
@@ -47,14 +47,14 @@ const TypePage = (($) => {
             })
         }
          */
-    }
+  }
 
-    $(window).on(`${Events.AJAX} ${Events.LOADED}`, () => {
-        TypePage.init();
-    });
+  $(window).on(`${Events.AJAX} ${Events.LOADED}`, () => {
+    TypePage.init();
+  });
 
-    // JQuery extension functions
-    /*
+  // JQuery extension functions
+  /*
     $.fn[NAME]             = TypePage._jQueryInterface;
     $.fn[NAME].Constructor = TypePage;
     $.fn[NAME].noConflict  = function () {
@@ -66,7 +66,7 @@ const TypePage = (($) => {
         $(".ui." + NAME).TypePage();
     }); */
 
-    return TypePage;
+  return TypePage;
 })($);
 
 export default TypePage;

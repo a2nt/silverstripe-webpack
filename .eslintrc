@@ -209,7 +209,7 @@
     "max-params": 0,      // limits the number of parameters that can be used in the function declaration. (off by default)
     "max-statements": 0,  // specify the maximum number of statement allowed in a function (off by default)
     "no-bitwise": 0,      // disallow use of bitwise operators (off by default)
-    "no-plusplus": 0      // disallow use of unary operators, ++ and -- (off by default)
+    "no-plusplus": 0,      // disallow use of unary operators, ++ and -- (off by default)
 
     //////// Extra //////////
     "array-bracket-spacing": ["error", "never"],
@@ -251,6 +251,6 @@
     "react/self-closing-comp": "error",
     "react/sort-comp": "error",
     "import/no-mutable-exports": "error",
-    "import/imports-first": "error"
+    "import/imports-first": "warn"
   }
 }

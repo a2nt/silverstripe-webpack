@@ -1,16 +1,7 @@
-// import images
-function importAll(r) {
-    return r.keys().map(r);
-}
-
-const images = importAll(require.context('../img/', false, /\.(png|jpe?g|svg)$/));
-
 import '../scss/app.scss';
 
 // import Bootstrap
 import Popper from 'popper.js';
-
-window.Popper = Popper;
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/alert';
 import 'bootstrap/js/dist/button';
@@ -26,6 +17,16 @@ import 'bootstrap/js/dist/tab';
 
 // import your custom UI components
 import './main';
+
+// bootstrap fix
+window.Popper = Popper;
+
+// import images
+function importAll(r) {
+  return r.keys().map(r);
+}
+
+const images = importAll(require.context('../img/', false, /\.(png|jpe?g|svg)$/));
 
 // TODO: hot module update
 /* const Events = require("./_events");

@@ -5,33 +5,33 @@ import Events from './_events';
 import Spinner from './_components/_spinner';
 
 const MainUI = (($) => {
-    // Constants
-    const NAME = 'MainUI';
+  // Constants
+  const NAME = 'MainUI';
 
-    class MainUI {
-        // Static methods
-        static init() {
-            this.destroy();
-            console.log(`Initializing: ${NAME}`);
+  class MainUI {
+    // Static methods
+    static init() {
+      this.destroy();
+      console.log(`Initializing: ${NAME}`);
 
-            Spinner.hide(() => {
-                $('body').addClass('loaded');
-            });
-        }
-
-        static destroy() {
-            console.log(`Destroying: ${NAME}`);
-            Spinner.show(() => {
-                $('body').removeClass('loaded');
-            });
-        }
+      Spinner.hide(() => {
+        $('body').addClass('loaded');
+      });
     }
 
-    $(window).on(`${Events.AJAX} ${Events.LOADED}`, () => {
-        MainUI.init();
-    });
+    static destroy() {
+      console.log(`Destroying: ${NAME}`);
+      Spinner.show(() => {
+        $('body').removeClass('loaded');
+      });
+    }
+  }
 
-    return MainUI;
+  $(window).on(`${Events.AJAX} ${Events.LOADED}`, () => {
+    MainUI.init();
+  });
+
+  return MainUI;
 })($);
 
 export default MainUI;
