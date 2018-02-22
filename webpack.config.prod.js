@@ -1,22 +1,25 @@
-const path = require('path');
-const autoprefixer = require('autoprefixer');
+/*
+ * Production assets generation
+ */
+
 const webpack = require('webpack');
+const conf = require('./webpack.configuration');
 const merge = require('webpack-merge');
 const common = require('./webpack.config.common.js');
-const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
-const conf = require('./webpack.configuration');
+
+const path = require('path');
+const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
-const fs = require("fs");
-const yaml = require("js-yaml");
-const confYML = yaml.safeLoad(fs.readFileSync(path.join(__dirname, "site/_config/webpack.yml"), "utf8"));
 
 module.exports = merge(common, {
 
     output: {
-        path: conf.BUILD,
-        filename: '[name].js',
-        publicPath: confYML.WebpackTemplateProvider.dist + '/',
+        path:  path.join(__dirname, conf.DIST),
+        filename: 'js/[name].js',
+        publicPath: conf.DIST + '/',
     },
 
     module: {
@@ -46,9 +49,7 @@ module.exports = merge(common, {
                                     'Chrome >= 44', // Retail
                                     'Samsung >= 4'
                                 ]
-                            }),
-                            // http://lostgrid.org/docs.html
-                            require('lost')
+                            })
                         ]
                     }
                 }, {
@@ -66,35 +67,33 @@ module.exports = merge(common, {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
-                    outputPath: 'fonts/',    // where the fonts will go
-                    publicPath: './'       // override the default path
+                    outputPath: 'fonts/',
+                    publicPath: '../fonts/'
                 }
             }]
         } ]
     },
 
     plugins: [
-
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
-
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
             comments: false
         }),
         new ExtractTextPlugin({
-            filename: '[name].css',
+            filename: 'css/[name].css',
             allChunks: true
         }),
         new OptimizeCSSAssets(),
         new FaviconsWebpackPlugin({
-            logo: conf.SRC + '/favicon.png',
+            logo:  path.join(__dirname, conf.SRC) + '/favicon.png',
             prefix: '/icons/',
-            statsFilename: confYML.WebpackTemplateProvider.dist + '/icons/iconstats.json',
+            statsFilename: conf.DIST + '/icons/iconstats.json',
             icons: {
                 android: true,
                 appleIcon: true,

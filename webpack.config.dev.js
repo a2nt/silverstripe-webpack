@@ -1,3 +1,8 @@
+/*
+ * Development assets generation
+ */
+
+const path = require("path");
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
@@ -16,14 +21,14 @@ const config = merge.strategy({
             'react-hot-loader/patch',
             'webpack-dev-server/client?https://' + conf.HOSTNAME + ':' + conf.PORT + '/',
             'webpack/hot/only-dev-server',
-        ],
+        ]
     },
 
     output: {
-        path: conf.BUILD,
+        path:  path.join(__dirname, conf.DIST),
         filename: '[name].js',
         // necessary for HMR to know where to load the hot update chunks
-        publicPath: 'http://' + conf.HOSTNAME + ':' + conf.PORT + '/'
+        publicPath: 'https://' + conf.HOSTNAME + ':' + conf.PORT + '/'
     },
 
     module: {
@@ -56,9 +61,7 @@ const config = merge.strategy({
                                 'Chrome >= 44', // Retail
                                 'Samsung >= 4'
                             ]
-                        }),
-                        // http://lostgrid.org/docs.html
-                        require('lost')
+                        })
                     ]
                 }
             }, {
@@ -72,7 +75,7 @@ const config = merge.strategy({
             use: [{
                 loader: 'url-loader'
             }]
-        }, ]
+        }]
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
@@ -84,7 +87,9 @@ const config = merge.strategy({
         host: IP,
         port: PORT,
         historyApiFallback: true,
-        hot: true,
+        hot: false,
+        clientLogLevel: "info",
+        //watchContentBase: true,
         overlay: {
             warnings: true,
             errors: true

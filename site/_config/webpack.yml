@@ -2,10 +2,10 @@
 # with all configuration variables presented
 # Cuz WebPack compiling script use it to set configuration
 
-WebpackTemplateProvider: 
-  dist: site/dist
-  hostname: localhost
-  port: "3000"
-  pages: site/src/js/types
-  pagesscss: site/src/scss/types
-  src: site/src
+WebpackTemplateProvider:
+  SRC: site/src
+  DIST: site/dist
+  HOSTNAME: localhost
+  PORT: "3000"
+  TYPESJS: site/src/js/types
+  TYPESSCSS: site/src/scss/types

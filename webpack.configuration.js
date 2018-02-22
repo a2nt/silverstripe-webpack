@@ -1,13 +1,10 @@
+/*
+ * Load webpack configuration from site/_config/webpack.yml
+ */
+
 const path = require("path");
 const fs = require("fs");
 const yaml = require("js-yaml");
 const conf = yaml.safeLoad(fs.readFileSync(path.join(__dirname, "site/_config/webpack.yml"), "utf8"));
 
-module.exports = {
-    SRC: path.join(__dirname, conf.WebpackTemplateProvider.src),
-    BUILD: path.join(__dirname, conf.WebpackTemplateProvider.dist),
-    PAGES: path.join(__dirname, conf.WebpackTemplateProvider.pages),
-    PAGESSCSS: path.join(__dirname, conf.WebpackTemplateProvider.pagesscss),
-    HOSTNAME: conf.WebpackTemplateProvider.hostname,
-    PORT: conf.WebpackTemplateProvider.port
-};
+module.exports = conf.WebpackTemplateProvider;

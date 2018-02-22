@@ -1,15 +1,19 @@
-const path = require("path");
+/*
+ * Common Environment
+ */
+
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const ManifestPlugin = require("webpack-manifest-plugin");
 const conf = require("./webpack.configuration");
-const isProduction = process.env.NODE_ENV === "production";
+
+const path = require("path");
 
 const includes = {
-    app: path.join(conf.SRC, "js/app.js"),
+    app: path.join(__dirname, conf.SRC, "js/app.js"),
 };
 
 const _getAllFilesFromFolder = function(dir) {
+    dir = path.join(__dirname, dir);
+
     let filesystem = require("fs");
     let results = [];
 
@@ -28,13 +32,13 @@ const _getAllFilesFromFolder = function(dir) {
 };
 
 // add page specific scripts
-const pageScripts = _getAllFilesFromFolder(conf.PAGES);
+const pageScripts = _getAllFilesFromFolder(conf.TYPESJS);
 pageScripts.forEach((file) => {
     includes[path.basename(file, ".js")] = file;
 });
 
 // add page specific scss
-const scssIncludes = _getAllFilesFromFolder(conf.PAGESSCSS);
+const scssIncludes = _getAllFilesFromFolder(conf.TYPESSCSS);
 scssIncludes.forEach((file) => {
     includes[path.basename(file, ".scss")] = file;
 });
@@ -75,7 +79,9 @@ module.exports = {
             test: /\.(png|jpg|gif|svg)$/,
             loader: "file-loader",
             options: {
-                name: "img/[name].[ext]",
+                name: "[name].[ext]",
+                outputPath: 'img/',
+                publicPath: '/site/dist/img/'
             }
         }, {
             test: /\.worker\.js$/,

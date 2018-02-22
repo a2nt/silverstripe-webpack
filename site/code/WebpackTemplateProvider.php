@@ -7,18 +7,6 @@
 class WebpackTemplateProvider extends Object implements TemplateGlobalProvider
 {
     /**
-     * @return array
-     */
-    public static function get_template_global_variables()
-    {
-        return [
-            'WebpackDevServer' => 'isActive',
-            'WebpackCSS' => 'loadCSS',
-            'WebpackJS' => 'loadJS',
-        ];
-    }
-
-    /**
      * @var int port number
      */
     private static $port = 3000;
@@ -31,7 +19,19 @@ class WebpackTemplateProvider extends Object implements TemplateGlobalProvider
     /**
      * @var string assets static files directory
      */
-    private static $distDir = 'site/dist';
+    private static $dist = 'site/dist';
+
+    /**
+     * @return array
+     */
+    public static function get_template_global_variables()
+    {
+        return [
+            'WebpackDevServer' => 'isActive',
+            'WebpackCSS' => 'loadCSS',
+            'WebpackJS' => 'loadJS',
+        ];
+    }
 
     /**
      * Load CSS file
@@ -39,9 +39,7 @@ class WebpackTemplateProvider extends Object implements TemplateGlobalProvider
      */
     public static function loadCSS($path)
     {
-        if (!self::isActive()) {
-            Requirements::css(self::_toPublicPath($path));
-        }
+        Requirements::css(self::_getPath($path));
     }
 
     /**
@@ -50,11 +48,7 @@ class WebpackTemplateProvider extends Object implements TemplateGlobalProvider
      */
     public static function loadJS($path)
     {
-        $path = self::isActive() ?
-            self::_toDevServerPath($path) :
-            self::_toPublicPath($path);
-
-        Requirements::javascript($path);
+        Requirements::javascript(self::_getPath($path));
     }
 
 
@@ -66,9 +60,16 @@ class WebpackTemplateProvider extends Object implements TemplateGlobalProvider
     {
         $class = __CLASS__;
         return Director::isDev() && !!@fsockopen(
-                $class::config()->get('hostname'),
-                $class::config()->get('port')
-            );
+            $class::config()->get('HOSTNAME'),
+            $class::config()->get('PORT')
+        );
+    }
+
+    protected static function _getPath($path)
+    {
+        return self::isActive() && strpos($path,'//') === false ?
+            self::_toDevServerPath($path) :
+            self::_toPublicPath($path);
     }
 
     protected static function _toDevServerPath($path)
@@ -77,15 +78,21 @@ class WebpackTemplateProvider extends Object implements TemplateGlobalProvider
         return sprintf(
             '%s%s:%s/%s',
             Director::protocol(),
-            $class::config()->get('hostname'),
-            $class::config()->get('port'),
-            $path
+            $class::config()->get('HOSTNAME'),
+            $class::config()->get('PORT'),
+            basename($path)
         );
     }
 
     protected static function _toPublicPath($path)
     {
         $class = __CLASS__;
-        return $class::config()->get('distDir') . '/' . $path;
+        return strpos($path,'//') === false ?
+            Controller::join_links(
+                $class::config()->get('DIST'),
+                (strpos($path,'.css') ? 'css' : 'js' ),
+                $path
+            )
+            : $path;
     }
 }

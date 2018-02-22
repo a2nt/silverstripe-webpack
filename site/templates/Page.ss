@@ -40,8 +40,19 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1" />
+
+    <% include Prestyling %>
 </head>
 <body oncontextmenu="return false;">
+	<%-- Upgrade your Browser notice --%>
+	<!--[if lt IE 10]><div class="main-bn"><a href="https://www.google.com/chrome/browser/desktop/" title="<%t Page.UPGRADEBROWSER 'Upgrade your browser' %>"><%t Page.OUTDATEDBROWSER 'You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.' %></a></div><![endif]-->
+
+	<%-- No JS enabled notice --%>
+	<noscript><div class="main-bn"><%t Page.JAVASCRIPTREQUIRED 'Please, enable javascript.' %></div></noscript>
+
+	<%-- Loading Spinner --%>
+	<div id="PageLoading"><div class="loading-spinner"><div class="bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div><br/><%t Page.LOADINGTEXT 'LOADING ..' %></div></div>
+
     <header>
         
     </header>
@@ -60,8 +71,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
     
-    $WebpackJS('app.js')
-    $WebpackCSS('app.css')
-
+    <%-- Require CSS+JS from /site/dist/[js,css]/[ClassName].[js,css] --%>
+    $AutoRequirements($ClassName).RAW
 </body>
 </html>

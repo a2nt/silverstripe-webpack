@@ -18,9 +18,6 @@ import 'bootstrap/js/dist/tab';
 // import your custom UI components
 import './main';
 
-// bootstrap fix
-window.Popper = Popper;
-
 // import images
 function importAll(r) {
   return r.keys().map(r);
