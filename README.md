@@ -1,4 +1,4 @@
-# silverstripe-webpack
+# silverstripe-webpack SS4.1.*
 
 ## Simple WebPack boiler plate for SilverStripe
 
