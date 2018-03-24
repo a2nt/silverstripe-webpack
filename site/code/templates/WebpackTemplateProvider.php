@@ -4,7 +4,13 @@
  * Directs assets requests to Webpack server or to static files
 */
 
-class WebpackTemplateProvider extends Object implements TemplateGlobalProvider
+use SilverStripe\View\TemplateGlobalProvider;
+use SilverStripe\View\Requirements;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\Controller;
+use SilverStripe\Core\Config\Config;
+
+class WebpackTemplateProvider implements TemplateGlobalProvider
 {
     /**
      * @var int port number
@@ -58,10 +64,9 @@ class WebpackTemplateProvider extends Object implements TemplateGlobalProvider
      */
     public static function isActive()
     {
-        $class = __CLASS__;
         return Director::isDev() && !!@fsockopen(
-            $class::config()->get('HOSTNAME'),
-            $class::config()->get('PORT')
+            Config::inst()->get(__CLASS__,'HOSTNAME'),
+            Config::inst()->get(__CLASS__,'PORT')
         );
     }
 
@@ -74,22 +79,22 @@ class WebpackTemplateProvider extends Object implements TemplateGlobalProvider
 
     protected static function _toDevServerPath($path)
     {
-        $class = __CLASS__;
+        $path = stripos($path,'css') ? 'site/client/css/'.$path : 'site/client/js/'.$path;
+
         return sprintf(
             '%s%s:%s/%s',
             Director::protocol(),
-            $class::config()->get('HOSTNAME'),
-            $class::config()->get('PORT'),
+            Config::inst()->get(__CLASS__,'HOSTNAME'),
+            Config::inst()->get(__CLASS__,'PORT'),
             basename($path)
         );
     }
 
     protected static function _toPublicPath($path)
     {
-        $class = __CLASS__;
         return strpos($path,'//') === false ?
             Controller::join_links(
-                $class::config()->get('DIST'),
+                Config::inst()->get(__CLASS__,'DIST'),
                 (strpos($path,'.css') ? 'css' : 'js' ),
                 $path
             )

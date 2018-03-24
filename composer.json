@@ -1,32 +1,49 @@
 {
-    "name": "a2nt/silverstripe-webpack",
-    "description": "The SilverStripe webpack boilerplate",
+    "name": "silverstripe/installer",
+    "type": "silverstripe-recipe",
+    "description": "The SilverStripe Framework Installer",
     "require": {
-        "php": ">=5.5.0",
-        "silverstripe/cms": "*",
-        "silverstripe/framework": "3.7.x-dev",
-        "silverstripe/redirectedurls": "*",
-        "axllent/silverstripe-scaled-uploads": "*",
+        "php": ">=7.1.0",
+        "silverstripe/recipe-cms": "1.1",
+        "wilr/silverstripe-googlesitemaps": "dev-master",
+        "silverstripe/userforms": "dev-master",
+        "undefinedoffset/sortablegridfield": "dev-master",
+        "silvershop/silverstripe-hasonefield": "dev-master",
+        "silverstripe/spamprotection": "dev-master",
+        "silverstripe/recaptcha": "dev-master",
         "jonom/silverstripe-betternavigator": "*",
-        "axllent/silverstripe-version-truncator": "*"
+        "dnadesign/silverstripe-elemental": "^2.0",
+        "sheadawson/silverstripe-linkable": "dev-master",
+        "silverstripe/externallinks": "^2.0"
     },
     "require-dev": {
-        "phpunit/PHPUnit": "~3.7",
-        "gdmedia/ss-auto-git-ignore": "^1.0",
-        "axyr/silverstripe-ideannotator": "dev-master",
-        "lekoala/silverstripe-debugbar": "^1.0"
-    },
-    "scripts": {
-        "post-update-cmd": "GDM\\SSAutoGitIgnore\\UpdateScript::Go"
-    },
-    "config": {
-        "process-timeout": 600,
-        "discard-changes": true
+        "phpunit/phpunit": "^5.7"
     },
     "extra": {
-        "branch-alias": {
-            "3.x-dev": "3.6.x-dev"
-        }
+        "expose": [
+            "betternavigator/css",
+            "betternavigator/javascript",
+            "betternavigator/images",
+            "site/client"
+        ],
+        "project-files-installed": [
+            "mysite/.htaccess",
+            "mysite/_config.php",
+            "mysite/_config/mysite.yml",
+            "mysite/code/Page.php",
+            "mysite/code/PageController.php"
+        ],
+        "public-files-installed": [
+            ".htaccess",
+            "index.php",
+            "install-frameworkmissing.html",
+            "install.php",
+            "web.config"
+        ]
     },
+    "config": {
+        "process-timeout": 600
+    },
+    "prefer-stable": true,
     "minimum-stability": "dev"
 }

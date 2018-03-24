@@ -1,6 +1,13 @@
 <?php
 
-class DeferedRequirements extends Object implements TemplateGlobalProvider {
+use SilverStripe\View\TemplateGlobalProvider;
+use SilverStripe\View\Requirements;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Path;
+use SilverStripe\Core\Manifest\ManifestFileFinder;
+
+class DeferedRequirements implements TemplateGlobalProvider {
 
     private static $css = [];
     private static $js = [];
@@ -33,13 +40,19 @@ class DeferedRequirements extends Object implements TemplateGlobalProvider {
         DeferedRequirements::loadJS('//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
 
         // App libs
-        DeferedRequirements::loadJS(project().'/dist/js/app.js');
-        DeferedRequirements::loadCSS(project().'/dist/css/app.css');
+        DeferedRequirements::loadCSS('app.css');
+        DeferedRequirements::loadJS('app.js');
 
         // Class libs
         if($class) {
-            DeferedRequirements::loadJS(project() . '/dist/js/' . $class . '.js');
-            DeferedRequirements::loadCSS(project() . '/dist/css/' . $class . '.css');
+            $dir = Path::join(Director::publicFolder(), ManifestFileFinder::RESOURCES_DIR);
+
+            if(file_exists(Path::join($dir,$class . '.js'))) {
+                DeferedRequirements::loadJS($class . '.js');
+            }
+            if(file_exists(Path::join($dir,$class . '.css'))) {
+                DeferedRequirements::loadCSS($class . '.css');
+            }
         }
 
         return self::forTemplate();

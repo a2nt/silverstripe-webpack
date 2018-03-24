@@ -11,7 +11,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
+//const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = merge(common, {
@@ -89,7 +89,7 @@ module.exports = merge(common, {
             filename: 'css/[name].css',
             allChunks: true
         }),
-        new OptimizeCSSAssets(),
+        //new OptimizeCSSAssets(),
         new FaviconsWebpackPlugin({
             logo:  path.join(__dirname, conf.SRC) + '/favicon.png',
             prefix: '/icons/',

@@ -8,8 +8,8 @@ Checkout files at /site/ folder for details
 + You can use /site/_config/webpack.yml to setup webpack server parameters which will be used by webpack server and by SilverStripe to serve static content
 + You can use WebpackJS('file-name') and WebpackCSS('file-name') functions at templates to require JS and CSS. It will be served using static files or by using Webpack if the website in development mode and Webpack server is running
 + WebpackTemplateProvider::WebpackJS('file-name') and WebpackTemplateProvider::WebpackCSS('file-name') can be used at php area 
-+ All images will be optimised at /site/src/img and will be written to /site/dist/img (by default)
-+ Favicons will be generated at /site/dist/icons using /site/src/favicon.png
++ All images will be optimised at /site/src/img and will be written to /site/client/img (by default)
++ Favicons will be generated at /site/client/icons using /site/src/favicon.png
 + Folder /site/src/js/types is used to create page specific JS (just create JS file there and it will be compiled)
 + Folder /site/src/scss/types is used to create page specific CSS (just create SCSS file there and it will be compiled)
 + Automatic linting (JS+SCSS)
@@ -25,7 +25,7 @@ Checkout files at /site/ folder for details
 + /site/code/DeferedRequirements.php (Deferred Requirements + Requirements auto-loader)
 + /site/templates/Page.ss (An example Page.ss)
 + /site/src (Your sources)
-+ /site/dist (Your production assets)
++ /site/client (Your production assets)
 
 
 

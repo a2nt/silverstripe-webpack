@@ -4,7 +4,7 @@
 
 WebpackTemplateProvider:
   SRC: site/src
-  DIST: site/dist
+  DIST: site/client
   HOSTNAME: localhost
   PORT: "3000"
   TYPESJS: site/src/js/types
