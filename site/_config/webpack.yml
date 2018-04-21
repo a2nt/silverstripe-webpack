@@ -2,7 +2,7 @@
 # with all configuration variables presented
 # Cuz WebPack compiling script use it to set configuration
 
-WebpackTemplateProvider:
+Site\Templates\WebpackTemplateProvider:
   SRC: site/client/src
   DIST: site/client/dist
   HOSTNAME: localhost

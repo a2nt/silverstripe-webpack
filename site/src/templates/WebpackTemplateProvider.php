@@ -4,6 +4,8 @@
  * Directs assets requests to Webpack server or to static files
 */
 
+namespace Site\Templates;
+
 use SilverStripe\View\TemplateGlobalProvider;
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\Director;

@@ -1,5 +1,7 @@
 <?php
 
+namespace Site\Templates;
+
 use SilverStripe\View\TemplateGlobalProvider;
 use SilverStripe\View\Requirements;
 use SilverStripe\Core\Config\Config;

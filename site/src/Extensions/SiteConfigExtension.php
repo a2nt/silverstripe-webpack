@@ -1,5 +1,7 @@
 <?php
 
+namespace Site\Extensions;
+
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\FieldList;
