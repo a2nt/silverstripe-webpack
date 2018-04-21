@@ -21,14 +21,14 @@ $MetaTags
 <link rel="preconnect" href="https://i9.ytimg.com" />
 <link rel="preconnect" href="https://s.ytimg.com" />
 
-<link rel="shortcut icon" type="image/x-icon" href="{$AbsoluteBaseURL}{$Project}/dist/icons/favicon.ico" />
-<link rel="icon" sizes="144x144" type="image/png" href="{$AbsoluteBaseURL}{$Project}/dist/icons/android-chrome-144x144.png" />
-<link rel="apple-touch-icon" href="{$AbsoluteBaseURL}{$Project}/dist/icons/apple-touch-icon.png" />
-<link rel="apple-touch-icon-precomposed" href="{$AbsoluteBaseURL}{$Project}/dist/icons/apple-touch-icon-precomposed.png" />
+<link rel="shortcut icon" type="image/x-icon" href="{$AbsoluteBaseURL}resources/site/client/dist/icons/favicon.ico" />
+<link rel="icon" sizes="144x144" type="image/png" href="{$AbsoluteBaseURL}resources/site/client/dist/icons/android-chrome-144x144.png" />
+<link rel="apple-touch-icon" href="{$AbsoluteBaseURL}resources/site/client/dist/icons/apple-touch-icon.png" />
+<link rel="apple-touch-icon-precomposed" href="{$AbsoluteBaseURL}resources/site/client/dist/icons/apple-touch-icon-precomposed.png" />
 <link rel="manifest" href="/manifest.webmanifest" />
 
 <meta name="application-name" content="{$SiteConfig.Title}" />
-<meta name="msapplication-TileImage" content="{$AbsoluteBaseURL}{$Project}/dist/icons/mstile-144x144.png" />
+<meta name="msapplication-TileImage" content="{$AbsoluteBaseURL}resources/site/client/dist/icons/mstile-144x144.png" />
 <meta name="msapplication-TileColor" content="#2F98F1" />
 
 <meta content="yes" name="apple-mobile-web-app-capable" />
