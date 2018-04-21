@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f6401de-a140-484e-9b13-d08de67bdfe7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change beforePath="$PROJECT_DIR$/.eslintignore" afterPath="$PROJECT_DIR$/.eslintignore" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="$PROJECT_DIR$/browserconfig.xml" afterPath="$PROJECT_DIR$/browserconfig.xml" />
-      <change beforePath="$PROJECT_DIR$/cache.appcache" afterPath="$PROJECT_DIR$/cache.appcache" />
-      <change beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" afterPath="$PROJECT_DIR$/manifest.json" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/phpcs.xml.dist" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/site/_config/debugbar.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/site/_config/webpack.yml" afterPath="$PROJECT_DIR$/site/_config/webpack.yml" />
-      <change beforePath="$PROJECT_DIR$/site/code/DeferedRequirements.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/site/code/WebpackTemplateProvider.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/site/src/scss/_layout.scss" afterPath="$PROJECT_DIR$/site/src/scss/_layout.scss" />
-      <change beforePath="$PROJECT_DIR$/site/templates/Page.ss" afterPath="$PROJECT_DIR$/site/templates/Page.ss" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.dev.js" afterPath="$PROJECT_DIR$/webpack.config.dev.js" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.prod.js" afterPath="$PROJECT_DIR$/webpack.config.prod.js" />
-    </list>
+    <list default="true" id="3f6401de-a140-484e-9b13-d08de67bdfe7" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

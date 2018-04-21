@@ -25,7 +25,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     /**
      * @var string assets static files directory
      */
-    private static $dist = 'site/dist';
+    private static $dist = 'site/client/dist';
 
     /**
      * @return array
@@ -65,37 +65,37 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     public static function isActive()
     {
         return Director::isDev() && !!@fsockopen(
-            Config::inst()->get(__CLASS__,'HOSTNAME'),
-            Config::inst()->get(__CLASS__,'PORT')
+            Config::inst()->get(__CLASS__, 'HOSTNAME'),
+            Config::inst()->get(__CLASS__, 'PORT')
         );
     }
 
     protected static function _getPath($path)
     {
-        return self::isActive() && strpos($path,'//') === false ?
+        return self::isActive() && strpos($path, '//') === false ?
             self::_toDevServerPath($path) :
             self::_toPublicPath($path);
     }
 
     protected static function _toDevServerPath($path)
     {
-        $path = stripos($path,'css') ? 'site/client/css/'.$path : 'site/client/js/'.$path;
+        //$path = 'resources/site/client/'.(stripos($path, 'css') ? 'css/' : 'js/').$path;
 
         return sprintf(
             '%s%s:%s/%s',
             Director::protocol(),
-            Config::inst()->get(__CLASS__,'HOSTNAME'),
-            Config::inst()->get(__CLASS__,'PORT'),
+            Config::inst()->get(__CLASS__, 'HOSTNAME'),
+            Config::inst()->get(__CLASS__, 'PORT'),
             basename($path)
         );
     }
 
     protected static function _toPublicPath($path)
     {
-        return strpos($path,'//') === false ?
+        return strpos($path, '//') === false ?
             Controller::join_links(
-                Config::inst()->get(__CLASS__,'DIST'),
-                (strpos($path,'.css') ? 'css' : 'js' ),
+                Config::inst()->get(__CLASS__, 'DIST'),
+                (strpos($path, '.css') ? 'css' : 'js'),
                 $path
             )
             : $path;

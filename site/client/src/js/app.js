@@ -1,6 +1,6 @@
 import '../scss/app.scss';
 
-// import Bootstrap
+// Bootstrap
 import Popper from 'popper.js';
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/alert';
@@ -15,15 +15,19 @@ import 'bootstrap/js/dist/scrollspy';
 import 'bootstrap/js/dist/tab';
 //
 
+// Extra modules
+import 'jquery-zoom/jquery.zoom';
+import 'meta-lightbox/meta-lightbox';
+
 // import your custom UI components
 import './main';
 
 // import images
 function importAll(r) {
-  return r.keys().map(r);
+    return r.keys().map(r);
 }
 
-const images = importAll(require.context('../img/', false, /\.(png|jpe?g|svg)$/));
+const images = importAll(require.context('../img/', false, /\.(png|jpe?g|svg|gif)$/));
 
 // TODO: hot module update
 /* const Events = require("./_events");

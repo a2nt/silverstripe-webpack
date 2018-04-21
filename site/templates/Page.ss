@@ -31,7 +31,9 @@
         $BetterNavigator
     </div>
 
-    <%-- Require CSS+JS from /site/dist/[js,css]/[ClassName].[js,css] --%>
-    $AutoRequirements($ClassName).RAW
+    <%-- Require CSS+JS from /public/resourses/[js,css]/[ClassName].[js,css] --%>
+	$AutoRequirements($ClassName).RAW
+
+	<%-- place extra requirements after this line --%>
 </body>
 </html>

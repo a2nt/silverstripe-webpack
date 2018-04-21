@@ -3,9 +3,9 @@
 # Cuz WebPack compiling script use it to set configuration
 
 WebpackTemplateProvider:
-  SRC: site/src
-  DIST: site/client
+  SRC: site/client/src
+  DIST: site/client/dist
   HOSTNAME: localhost
   PORT: "3000"
-  TYPESJS: site/src/js/types
-  TYPESSCSS: site/src/scss/types
+  TYPESJS: site/client/src/js/types
+  TYPESSCSS: site/client/src/scss/types

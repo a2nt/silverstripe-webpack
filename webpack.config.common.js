@@ -2,30 +2,34 @@
  * Common Environment
  */
 
-const webpack = require("webpack");
-const conf = require("./webpack.configuration");
+const webpack = require('webpack');
+const conf = require('./webpack.configuration');
 
-const path = require("path");
+const path = require('path');
 
 const includes = {
-    app: path.join(__dirname, conf.SRC, "js/app.js"),
+    app: path.join(__dirname, conf.SRC, 'js/app.js'),
 };
 
 const _getAllFilesFromFolder = function(dir) {
     dir = path.join(__dirname, dir);
 
-    let filesystem = require("fs");
+    const filesystem = require('fs');
     let results = [];
 
-    filesystem.readdirSync(dir).forEach(function(file) {
+    filesystem.readdirSync(dir).forEach((file) => {
+        if (file === '_notes') {
+            return;
+        }
 
-        file = dir + "/" + file;
-        let stat = filesystem.statSync(file);
+        file = `${dir}/${file}`;
+        const stat = filesystem.statSync(file);
 
         if (stat && stat.isDirectory()) {
-            results = results.concat(_getAllFilesFromFolder(file))
-        } else results.push(file);
-
+            results = results.concat(_getAllFilesFromFolder(file));
+        } else {
+            results.push(file);
+        }
     });
 
     return results;
@@ -34,85 +38,89 @@ const _getAllFilesFromFolder = function(dir) {
 // add page specific scripts
 const pageScripts = _getAllFilesFromFolder(conf.TYPESJS);
 pageScripts.forEach((file) => {
-    includes[path.basename(file, ".js")] = file;
+    includes[path.basename(file, '.js')] = file;
 });
 
 // add page specific scss
 const scssIncludes = _getAllFilesFromFolder(conf.TYPESSCSS);
 scssIncludes.forEach((file) => {
-    includes[path.basename(file, ".scss")] = file;
+    includes[path.basename(file, '.scss')] = file;
 });
 
 module.exports = {
     entry: includes,
-    devtool: "source-map",
+    devtool: 'source-map',
     externals: {
-        "jquery": "jQuery",
+        'jquery': 'jQuery',
     },
     module: {
         rules: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
             use: {
-                loader: "babel-loader",
+                loader: 'babel-loader',
                 options: {
                     presets: [
-                        ["es2015", {
-                            modules: false
+                        ['es2015', {
+                            modules: false,
                         }],
-                        ["stage-2"]
+                        ['stage-2'],
                     ],
                     plugins: [
-                        ["transform-react-jsx"],
-                        ["react-hot-loader/babel"],
-                    ]
+                        ['transform-react-jsx'],
+                        ['react-hot-loader/babel'],
+                    ],
                 },
-            }
+            },
         }, {
             test: /\.tsx?$/,
             use: 'ts-loader',
-            exclude: /node_modules/
+            exclude: /node_modules/,
         }, {
             test: /\.coffee?$/,
-            use: 'coffee-loader'
+            use: 'coffee-loader',
         }, {
-            test: /\.(png|jpg|gif|svg)$/,
-            loader: "file-loader",
+            test: /\.(png|jpg|jpeg|gif|svg)$/,
+            loader: 'file-loader',
             options: {
-                name: "[name].[ext]",
+                name: '[name].[ext]',
                 outputPath: 'img/',
-                publicPath: '/site/dist/img/'
-            }
+                publicPath: '../img/',
+            },
         }, {
             test: /\.worker\.js$/,
             use: {
-                loader: "worker-loader"
-            }
-        }]
+                loader: 'worker-loader',
+            },
+        }],
     },
     resolve: {
+        modules: [
+            path.resolve(__dirname, 'public'),
+            'node_modules'
+        ],
         alias: {
             'jquery': require.resolve('jquery'),
             'jQuery': require.resolve('jquery'),
-        }
+        },
     },
     plugins: [
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery",
-            Popper: ["popper.js", "default"],
-            Util: "exports-loader?Util!bootstrap/js/dist/util",
-            Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
-            Button: "exports-loader?Button!bootstrap/js/dist/button",
-            Carousel: "exports-loader?Carousel!bootstrap/js/dist/carousel",
-            Collapse: "exports-loader?Collapse!bootstrap/js/dist/collapse",
-            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
-            Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
-            Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
-            Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
-            Scrollspy: "exports-loader?Scrollspy!bootstrap/js/dist/scrollspy",
-            Tab: "exports-loader?Tab!bootstrap/js/dist/tab",
-        })
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            Popper: ['popper.js', 'default'],
+            Util: 'exports-loader?Util!bootstrap/js/dist/util',
+            Alert: 'exports-loader?Alert!bootstrap/js/dist/alert',
+            Button: 'exports-loader?Button!bootstrap/js/dist/button',
+            Carousel: 'exports-loader?Carousel!bootstrap/js/dist/carousel',
+            Collapse: 'exports-loader?Collapse!bootstrap/js/dist/collapse',
+            Dropdown: 'exports-loader?Dropdown!bootstrap/js/dist/dropdown',
+            Modal: 'exports-loader?Modal!bootstrap/js/dist/modal',
+            Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
+            Popover: 'exports-loader?Popover!bootstrap/js/dist/popover',
+            Scrollspy: 'exports-loader?Scrollspy!bootstrap/js/dist/scrollspy',
+            Tab: 'exports-loader?Tab!bootstrap/js/dist/tab',
+        }),
     ],
 };

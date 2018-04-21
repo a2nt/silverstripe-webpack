@@ -1,4 +1,4 @@
-// Bootstrap basics
+// Bootstrap
 @import "_bootstrap_variables";
 
 @import "~bootstrap/scss/root";
@@ -34,8 +34,17 @@
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/print";
 
+// Fontawesome
 $fa-font-path: "~font-awesome/fonts";
+
 @import "~font-awesome/scss/font-awesome";
+
+// Extra modules
+$lightbox-breakpoint: map-get($grid-breakpoints, "sm");
+$lightbox-link-hover-color: $link-hover-color;
+
+@import "~meta-lightbox/scss/meta-lightbox";
+@import "~meta-lightbox/scss/meta-lightbox-theme";
 
 // Your custom variables
 @import "_variables";

@@ -19,13 +19,13 @@ const config = merge.strategy({
     entry: {
         app: [
             'react-hot-loader/patch',
-            'webpack-dev-server/client?https://' + conf.HOSTNAME + ':' + conf.PORT + '/public/resourses/site',
+            'webpack-dev-server/client?https://' + conf.HOSTNAME + ':' + conf.PORT,
             'webpack/hot/only-dev-server',
         ]
     },
 
     output: {
-        path:  path.join(__dirname, conf.DIST),
+        path: path.join(__dirname, conf.DIST),
         filename: '[name].js',
         // necessary for HMR to know where to load the hot update chunks
         publicPath: 'https://' + conf.HOSTNAME + ':' + conf.PORT + '/'
@@ -65,6 +65,8 @@ const config = merge.strategy({
                     ]
                 }
             }, {
+                loader: 'resolve-url-loader'
+            }, {
                 loader: 'sass-loader',
                 options: {
                     sourceMap: true
@@ -72,6 +74,11 @@ const config = merge.strategy({
             }, ]
         }, {
             test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+            use: [{
+                loader: 'url-loader'
+            }]
+        }, {
+            test: /\.(gif|png|jpg|jpeg|ttf|otf|eot|svg|woff(2)?)$/,
             use: [{
                 loader: 'url-loader'
             }]
@@ -88,7 +95,11 @@ const config = merge.strategy({
         port: PORT,
         historyApiFallback: true,
         hot: false,
-        clientLogLevel: "info",
+        clientLogLevel: 'info',
+        contentBase: [
+            path.resolve(__dirname, 'public'),
+            'node_modules'
+        ],
         //watchContentBase: true,
         overlay: {
             warnings: true,

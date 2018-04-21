@@ -7,8 +7,8 @@ use SilverStripe\Control\Director;
 use SilverStripe\Core\Path;
 use SilverStripe\Core\Manifest\ManifestFileFinder;
 
-class DeferedRequirements implements TemplateGlobalProvider {
-
+class DeferedRequirements implements TemplateGlobalProvider
+{
     private static $css = [];
     private static $js = [];
     private static $defered = false;
@@ -44,14 +44,16 @@ class DeferedRequirements implements TemplateGlobalProvider {
         DeferedRequirements::loadJS('app.js');
 
         // Class libs
-        if($class) {
-            $dir = Path::join(Director::publicFolder(), ManifestFileFinder::RESOURCES_DIR);
+        if ($class) {
+            $dir = Path::join(Director::publicFolder(), ManifestFileFinder::RESOURCES_DIR, 'site','client');
 
-            if(file_exists(Path::join($dir,$class . '.js'))) {
-                DeferedRequirements::loadJS($class . '.js');
-            }
-            if(file_exists(Path::join($dir,$class . '.css'))) {
+
+            if (file_exists(Path::join($dir, 'css', $class . '.css'))) {
                 DeferedRequirements::loadCSS($class . '.css');
+            }
+            
+            if (file_exists(Path::join($dir, 'js', $class . '.js'))) {
+                DeferedRequirements::loadJS($class . '.js');
             }
         }
 

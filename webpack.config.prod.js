@@ -17,7 +17,7 @@ const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 module.exports = merge(common, {
 
     output: {
-        path:  path.join(__dirname, conf.DIST),
+        path: path.join(__dirname, conf.DIST),
         filename: 'js/[name].js',
         publicPath: conf.DIST + '/',
     },
@@ -71,7 +71,17 @@ module.exports = merge(common, {
                     publicPath: '../fonts/'
                 }
             }]
-        } ]
+        }, {
+            test: /\.(ttf|otf|eot|svg|woff(2)?)$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'fonts/',
+                    publicPath: '../fonts/'
+                }
+            }]
+        }]
     },
 
     plugins: [
@@ -91,7 +101,7 @@ module.exports = merge(common, {
         }),
         //new OptimizeCSSAssets(),
         new FaviconsWebpackPlugin({
-            logo:  path.join(__dirname, conf.SRC) + '/favicon.png',
+            logo: path.join(__dirname, conf.SRC) + '/favicon.png',
             prefix: '/icons/',
             statsFilename: conf.DIST + '/icons/iconstats.json',
             icons: {
