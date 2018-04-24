@@ -9,10 +9,9 @@ const common = require('./webpack.config.common.js');
 
 const path = require('path');
 const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-//const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = merge(common, {
 
@@ -24,13 +23,14 @@ module.exports = merge(common, {
 
     module: {
         rules: [{
-            test: /\.scss$/,
+            test: /\.s?css$/,
             use: ExtractTextPlugin.extract({
                 fallback: "style-loader",
                 use: [{
                     loader: 'css-loader',
                     options: {
-                        sourceMap: true
+                        sourceMap: true,
+                        minimize: true
                     }
                 }, {
                     loader: 'postcss-loader',
@@ -90,6 +90,10 @@ module.exports = merge(common, {
                 'NODE_ENV': JSON.stringify('production')
             }
         }),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true,
+            debug: false
+        }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
@@ -99,7 +103,7 @@ module.exports = merge(common, {
             filename: 'css/[name].css',
             allChunks: true
         }),
-        //new OptimizeCSSAssets(),
+
         new FaviconsWebpackPlugin({
             logo: path.join(__dirname, conf.SRC) + '/favicon.png',
             prefix: '/icons/',
