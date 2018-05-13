@@ -18,9 +18,15 @@
         "dnadesign/silverstripe-elemental-list": "*",
         "dnadesign/silverstripe-elemental-virtual": "*",
         "dnadesign/silverstripe-elemental-userforms": "*",
+        "dynamic/silverstripe-elemental-blocks": "*",
         "vulcandigital/silverstripe-seo": "^1.0",
         "hestec/silverstripe-cookiebar": "^1.0",
-        "drmartingonzo/ss-tinymce-charcount": "^1.0"
+        "drmartingonzo/ss-tinymce-charcount": "^1.0",
+        "axllent/silverstripe-version-truncator": "*",
+        "firesphere/googlemapsfield": "^1.0@dev",
+        "dorsetdigital/silverstripe-canonical": "^1.0",
+        "gorriecoe/silverstripe-dataobjecthistory": "^1.2",
+        "mak001/silverstripe-categorization": "^1.0@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7"
