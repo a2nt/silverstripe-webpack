@@ -27,7 +27,8 @@
         "dorsetdigital/silverstripe-canonical": "^1.0",
         "gorriecoe/silverstripe-dataobjecthistory": "^1.2",
         "mak001/silverstripe-categorization": "^1.0@dev",
-        "axllent/silverstripe-bootstrap-forms": "^2.0"
+        "axllent/silverstripe-bootstrap-forms": "^2.0",
+        "silverstripe/redirectedurls": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7"
