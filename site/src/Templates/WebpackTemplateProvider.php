@@ -81,8 +81,6 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
 
     protected static function _toDevServerPath($path)
     {
-        //$path = 'resources/site/client/'.(stripos($path, 'css') ? 'css/' : 'js/').$path;
-
         return sprintf(
             '%s%s:%s/%s',
             Director::protocol(),
