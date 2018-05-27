@@ -23,17 +23,16 @@
         "lint:sass": "sass-lint ./site/src --config .sasslintrc -v -q"
     },
     "dependencies": {
-        "bootbox.js": "makeusabrew/bootbox#*",
+        "bootbox.js": "^4.4.0",
         "bootstrap": "^4.1.1",
         "bootstrap-offcanvas": "^1.0.0",
         "core-util-is": "^1.0.2",
         "font-awesome": "^4.7.0",
-        "foundation-emails": "github:zurb/foundation-emails#*",
+        "foundation-emails": "^2.2.1",
         "jquery": "^3.3.1",
         "jquery-hammerjs": "^2.0.0",
         "jquery-zoom": "^1.7.21",
         "meta-lightbox": "^1.0.0",
-        "npm": "^5.10.0",
         "offcanvas-bootstrap": "^2.5.2",
         "popper.js": "^1.14.3",
         "yarn": "^1.6.0"
