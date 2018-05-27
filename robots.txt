@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Crawl-delay: 10
-Disallow: /admin
-Disallow: /Security
-Sitemap: https://www.bla-bla.org/sitemap.xml
-Host: https://www.bla-bla.org
