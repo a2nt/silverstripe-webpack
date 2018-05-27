@@ -17,4 +17,4 @@ SilverStripe\Admin\LeftAndMain:
 
 SilverStripe\Forms\HTMLEditor\TinyMCEConfig:
   editor_css:
-    - 'site/client/css/editor.css'
+    - 'site/client/dist/css/editor.css'
