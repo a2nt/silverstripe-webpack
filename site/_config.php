@@ -2,6 +2,7 @@
 
 use SilverStripe\Forms\HTMLEditor\HtmlEditorConfig;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
+use SilverStripe\ORM\Search\FulltextSearchable;
 
 HtmlEditorConfig::get('cms')->enablePlugins([
     'template',
@@ -13,3 +14,7 @@ HtmlEditorConfig::get('cms')->enablePlugins([
     'lists',
     'charcount' => ModuleResourceLoader::resourceURL('drmartingonzo/ss-tinymce-charcount:client/dist/js/bundle.js'),
 ]);
+
+FulltextSearchable::enable();
+
+

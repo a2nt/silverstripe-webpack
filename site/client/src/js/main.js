@@ -3,6 +3,7 @@ import $ from 'jquery';
 import Events from './_events';
 // import an example component
 import Spinner from './_components/_spinner';
+import Slider from './_components/_slider';
 
 const MainUI = (($) => {
   // Constants
@@ -17,6 +18,8 @@ const MainUI = (($) => {
       Spinner.hide(() => {
         $('body').addClass('loaded');
       });
+
+      Slider.init();
     }
 
     static destroy() {

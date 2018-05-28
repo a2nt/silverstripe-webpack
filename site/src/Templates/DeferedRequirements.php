@@ -42,6 +42,7 @@ class DeferedRequirements implements TemplateGlobalProvider
         DeferedRequirements::loadJS('//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
 
         // App libs
+        DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.0.13/css/all.css');
         DeferedRequirements::loadCSS('app.css');
         DeferedRequirements::loadJS('app.js');
 

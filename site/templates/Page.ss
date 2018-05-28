@@ -13,10 +13,30 @@
 	<noscript><div class="main-bn"><%t Page.JAVASCRIPTREQUIRED 'Please, enable javascript.' %></div></noscript>
 
 	<%-- Loading Spinner --%>
-	<div id="PageLoading"><div class="loading-spinner"><div class="bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div><br/><%t Page.LOADINGTEXT 'LOADING ..' %></div></div>
+	<div id="PageLoading"><div class="loading-spinner"><div class="bubblingG"><i id="bubblingG_1"></i><i id="bubblingG_2"></i><i id="bubblingG_3"></i></div><br/><%t Page.LOADINGTEXT 'LOADING ..' %></div></div>
 
-    <header>
-        
+    <header class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <a href="/"><img src="/resources/site/client/dist/img/logo.png" alt="{$SiteConfig.Title}" /></a>
+            </div>
+            <div class="col-sm-6 text-right">
+                <% with $SiteConfig %>
+                    <% if $PhoneNumber %>
+                        <div class="phone-number">
+                            <b>Call us today:</b>
+                            $PhoneNumber
+                        </div>
+                    <% end_if %>
+                <% end_with %>
+                <% if $SearchForm %>
+                    <div id="SearchFormContainer">$SearchForm</div>
+                <% end_if %>
+            </div>
+        </div>
+
+        <% include Navigation Navigation=$SiteConfig.Navigation %>
+    
     </header>
     
     <main data-ajax-region="LayoutAjax">
