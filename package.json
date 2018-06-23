@@ -33,7 +33,11 @@
         "jquery-hammerjs": "^2.0.0",
         "jquery-zoom": "^1.7.21",
         "meta-lightbox": "^1.0.0",
+        "offcanvas-bootstrap": "^2.5.2",
         "popper.js": "^1.14.3",
+        "pouchdb": "^6.4.3",
+        "routie": "0.0.1",
+        "smooth-scroll": "^14.2.0",
         "yarn": "^1.7.0"
     },
     "devDependencies": {

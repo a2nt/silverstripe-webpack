@@ -1,0 +1,11 @@
+Page:
+  extensions:
+    - DNADesign\Elemental\Extensions\ElementalPageExtension
+
+DNADesign\Elemental\Models\BaseElement:
+  default_global_elements: true
+  extensions:
+      - Site\Extensions\ElementRows
+
+DNADesign\ElementalList\Model\ElementList:
+  default_global_elements: false

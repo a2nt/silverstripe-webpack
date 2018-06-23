@@ -1,3 +1,0 @@
-SilverStripe\SiteConfig\SiteConfig:
-  extensions:
-    - Site\Extensions\SiteConfigExtension
