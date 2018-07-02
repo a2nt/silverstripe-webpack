@@ -12,7 +12,10 @@ HtmlEditorConfig::get('cms')->enablePlugins([
     'charmap',
     'visualblocks',
     'lists',
-    'charcount' => ModuleResourceLoader::resourceURL('drmartingonzo/ss-tinymce-charcount:client/dist/js/bundle.js'),
+    'charcount' => ModuleResourceLoader::resourceURL(
+        'drmartingonzo/ss-tinymce-charcount:client/dist/js/bundle.js'
+    ),
 ]);
 
 FulltextSearchable::enable();
+

@@ -14,6 +14,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = merge(common, {
+    devtool: '',
 
     output: {
         path: path.join(__dirname, conf.DIST),
@@ -29,13 +30,13 @@ module.exports = merge(common, {
                 use: [{
                     loader: 'css-loader',
                     options: {
-                        sourceMap: true,
+                        sourceMap: false,
                         minimize: true
                     }
                 }, {
                     loader: 'postcss-loader',
                     options: {
-                        sourceMap: true,
+                        sourceMap: false,
                         plugins: [
                             autoprefixer({
                                 // If we want to use the same browser list for more tools
@@ -57,7 +58,7 @@ module.exports = merge(common, {
                 }, {
                     loader: 'sass-loader',
                     options: {
-                        sourceMap: true
+                        sourceMap: false
                     }
                 }, ]
             })
@@ -96,7 +97,7 @@ module.exports = merge(common, {
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
+            sourceMap: false,
             comments: false
         }),
         new ExtractTextPlugin({

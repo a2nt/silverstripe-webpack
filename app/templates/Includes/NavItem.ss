@@ -1,5 +1,5 @@
 <% if $Children %>
-    <li class="nav-item dropdown $ExtraClass <% if $isCurrent || $isSection %> active<% end_if %>">
+    <li class="nav-item dropdown<% if $isCurrent || $isSection %> active <% end_if %>{$ExtraClass}">
         <a
                 class="nav-link dropdown-toggle"
                 id="NavItem{$ID}"

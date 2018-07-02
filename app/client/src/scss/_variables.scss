@@ -1,5 +1,35 @@
-@import "_bootstrap_variables";
-
 /*
  * Your custom variables
  */
+
+$font-family-base: "Lato", sans-serif;
+
+$grid-gutter-height: 8rem;
+
+$gray-900: #212529;
+$white: #fff;
+$blue: #016cb1;
+$yellow: #ecac02;
+
+$dark-blue: #113362;
+
+$body-color: $gray-900;
+$navbar-light-active-color: $blue;
+
+$dropdown-border-color: $white;
+
+/*
+ * bootstrap includes
+ * keep it at the end
+ */
+
+// bootstrap minify bugfix:
+$navbar-dark-toggler-icon-bg: none;
+$navbar-light-toggler-icon-bg: none;
+
+// IE > 9
+$enable-flex: true;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";

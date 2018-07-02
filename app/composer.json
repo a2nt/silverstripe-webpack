@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Site\\": "app/src/"
+        },
+        "classmap": [
+            "app/src/Pages/Page.php",
+            "app/src/Pages/PageController.php"
+        ]
+    }
+}

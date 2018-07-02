@@ -9,6 +9,12 @@
             $Form
         </div>
         <% end_if %>
+
+        <% if $ExtraCode %>
+        <div class="extra-code extra-code-page">
+            $ExtraCode
+        </div>
+        <% end_if %>
 	</div>
-	
+
 </div>

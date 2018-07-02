@@ -1,3 +1,10 @@
+---
+Name: webapp-elemental
+After:
+  - elemental
+  - elemental-list
+---
+
 Page:
   extensions:
     - DNADesign\Elemental\Extensions\ElementalPageExtension
@@ -5,7 +12,42 @@ Page:
 DNADesign\Elemental\Models\BaseElement:
   default_global_elements: true
   extensions:
-      - Site\Extensions\ElementRows
+    - Site\Extensions\ElementRows
+
+SilverStripe\CMS\Model\SiteTree:
+  allowed_elements:
+      - DNADesign\ElementalList\Model\ElementList
+      - DNADesign\Elemental\Models\ElementContent
+      - DNADesign\ElementalUserForms\Model\ElementForm
+      - Dynamic\Elements\Image\Elements\ElementImage
+      - Dynamic\Elements\Blog\Elements\ElementBlogPosts
+      - Dynamic\Elements\FlexSlider\Elements\ElementSlideshow
+      - Dynamic\Elements\Oembed\Elements\ElementOembed
+      - Dynamic\Elements\Elements\ElementTestimonials
+      - Site\Elements\TeamMembersElement
 
 DNADesign\ElementalList\Model\ElementList:
   default_global_elements: false
+  allowed_elements:
+      - DNADesign\ElementalList\Model\ElementList
+      - DNADesign\Elemental\Models\ElementContent
+      - DNADesign\ElementalUserForms\Model\ElementForm
+      - Dynamic\Elements\Image\Elements\ElementImage
+      - Dynamic\Elements\Blog\Elements\ElementBlogPosts
+      - Dynamic\Elements\FlexSlider\Elements\ElementSlideshow
+      - Dynamic\Elements\Oembed\Elements\ElementOembed
+      - Dynamic\Elements\Elements\ElementTestimonials
+      - Site\Elements\TeamMembersElement
+  styles:
+    whiteframe: 'White Frame'
+    greybg: 'Grey Background'
+    noframe: 'No Frame'
+
+DNADesign\Elemental\Models\ElementContent:
+  extensions:
+    - Site\Extensions\ElementContentWidget
+
+Dynamic\Elements\Image\Elements\ElementImage:
+  extensions:
+    - Site\Extensions\ElementImageWidget
+

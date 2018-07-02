@@ -1,4 +1,16 @@
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - Site\Extensions\SiteConfigExtension
+    - Site\Extensions\SocialExtension
 
+SilverStripe\SiteTree\SiteTree:
+  extensions:
+    - SiteTreeExtension
+
+SilverStripe\Blog\Model\BlogPost:
+  extensions:
+    - Site\Extensions\BlogPostExtension
+
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\UserForms\Model\UserDefinedForm:
+    class: Site\Extensions\CMSMain_HiddenClass

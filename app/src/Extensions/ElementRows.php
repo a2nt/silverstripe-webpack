@@ -8,64 +8,82 @@
 
 namespace Site\Extensions;
 
-
 use DNADesign\ElementalList\Model\ElementList;
+use Dynamic\Elements\Image\Elements\ElementImage;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\FieldType\DBEnum;
 
 class ElementRows extends DataExtension
 {
+    private static $container_max_width = 1140;
     private static $column_class = 'col-md-';
+
     private static $container_styles = [
-      'container' => 'Fixed container',
-      'container-fluid' => 'Fluid Container',
+        'container' => 'Fixed container',
+        'container-fluid' => 'Fluid Container',
     ];
 
     private static $db = [
-      'Size' => 'Enum("1,2,3,4,5,6,7,8,9,10,11,12","6")',
+        'ContainerType' => 'Varchar(254)',
+        'Size' => 'Enum("1,2,3,4,5,6,7,8,9,10,11,12","6")',
     ];
 
     public function updateCMSFields(FieldList $fields)
     {
+        parent::updateCMSFields($fields);
+
         $tab = $fields->findOrMakeTab('Root.Main');
 
-        if($this->isRoot() && $this->isList()) {
-            $styleDropdown = $fields->dataFieldByName('Style');
-            if ($styleDropdown) {
-                $styleDropdown->setSource(self::$container_styles);
-            } else {
-                $styleDropdown = DropdownField::create(
-                    'Style',
-                    _t(__CLASS__.'.STYLE', 'Style variation'),
-                    self::$container_styles
-                );
-                $fields->insertBefore($styleDropdown, 'ExtraClass');
-            }
+        // container type
+        if ($this->isRoot()) {
+            $tab->push(DropdownField::create(
+                'ContainerType',
+                _t(__CLASS__.'.CONTAINERTYPE', 'Container Type'),
+                self::$container_styles
+            ));
+        } else {
+            $fields->removeByName('ContainerType');
         }
 
-        if($this->isColumn()) {
+        // column size
+        if ($this->isColumn()) {
             $sizes = $this->owner->dbObject('Size');
             $defaultSize = $sizes->getDefaultValue();
 
             $sizeDropdown = DropdownField::create(
                 'Size',
-                'Column Size (12 cols grid, ex. for 3 equal cols: 12/3 = 4 is the size that you need)',
-                $sizes->enumValues()
+                _t(
+                    __CLASS__.'.SIZE',
+                    'Column Size'
+                ),
+                array_combine(
+                    array_values($sizes->enumValues()),
+                    [
+                        '8.3%',
+                        '16.6%',
+                        '25%',
+                        '33%',
+                        '41.6%',
+                        '50%',
+                        '58.3%',
+                        '66.4%',
+                        '74.7%',
+                        '83%',
+                        '91.3%',
+                        '100%',
+                    ]
+                )
             );
             $tab->push($sizeDropdown);
 
             // set default size
-            if(!$this->owner->getField('Size')){
-                $sibling = $this->owner->Parent()
-                    ->Elements()
-                    ->exclude('ID', $this->owner->ID)
-                    ->last();
+            if (!$this->owner->getField('Size')) {
+                $sibling = $this->getSibling();
 
                 $sizeDropdown->setValue($sibling ? $sibling->getField('Size') : $defaultSize);
             }
-        }else{
+        } else {
             $fields->removeByName('Size');
         }
     }
@@ -77,7 +95,7 @@ class ElementRows extends DataExtension
 
     public function isRow()
     {
-        if(!$this->isList()){
+        if (!$this->isList()) {
             return false;
         }
 
@@ -86,7 +104,7 @@ class ElementRows extends DataExtension
 
     public function isColumn()
     {
-        if(!$this->isRoot() && !$this->isRow()){
+        if (!$this->isRoot()) {
             return true;
         }
 
@@ -96,35 +114,66 @@ class ElementRows extends DataExtension
     public function isRoot()
     {
         $parent = $this->owner->Parent()->getOwnerPage();
-        if(is_a($parent, 'Page')){
+        if (is_a($parent, 'Page')) {
             return true;
         }
 
         return false;
     }
 
+    public function getSibling($any = true, $filter = [], $exclude = [])
+    {
+        $class = $any ? $this->owner->baseClass() : $this->owner->ClassName;
+
+        return $class::get()->filter(array_merge(
+            ['ParentID' => $this->owner->Parent()->ID],
+            $filter
+        ))->exclude(array_merge(
+            ['ID' => $this->owner->ID],
+            $exclude
+        ))->last();
+    }
+
+    public function getColumnSizeRecursive($object = null)
+    {
+        $object = $object ? $object : $this->owner;
+
+        if ($object->isColumn() && $object->getField('Size')) {
+            return (int) $object->getField('Size');
+        } else {
+            $parent = $object->Parent()->getOwnerPage();
+
+            if (is_a($parent, 'Page')) {
+                return ($this->owner->getField('ContainerType') === 'container-fluid') ? false : 12;
+            }
+
+            return $object->getColumnSizeRecursive($parent);
+        }
+    }
+
     public function ExtraClass()
     {
-        return $this->isColumn()
-            ? self::$column_class.$this->owner->getField('Size')
-            : '';
+        return $this->owner->getField('ExtraClass')
+            .(
+                $this->isColumn()
+                ? ' col '.self::$column_class.$this->owner->getField('Size')
+                : ''
+            );
     }
 
     /*
      * if it's root element and it doesn't contain any container styles
      * add the first one
      */
-    public function updateStyleVariant(&$style)
+    public function ContainerClass()
     {
-        $style = $this->owner->getField('Style');
+        $type = $this->owner->getField('ContainerType');
         $container_styles = array_keys(self::$container_styles);
 
-        if(
-            $this->isRoot()
-            && $this->isList()
-            && !in_array($style, $container_styles)
-        ){
-            $style = $container_styles[0];
+        if (!$type && $this->isRoot()) {
+            $type = $container_styles[0];
         }
+
+        return $type;
     }
 }

@@ -2,26 +2,23 @@
 
 namespace Site\Extensions;
 
+use SilverStripe\Forms\TextareaField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TreeMultiselectField;
-use Sheadawson\Linkable\Models\Link;
-use SilverStripe\Forms\TextField;
-use Sheadawson\Linkable\Forms\LinkField;
 
 class SiteConfigExtension extends DataExtension
 {
     private static $db = [
-        'Address' => 'Varchar(255)',
-    ];
-
-    private static $has_one = [
-        'PhoneNumber' => Link::class
+        'ShortDescription' => 'Text',
+        'ExtraCode' => 'Text',
     ];
 
     private static $many_many = [
-        'Navigation' => SiteTree::class
+        'Navigation' => SiteTree::class,
+        'Services' => SiteTree::class,
+        'QuickLinks' => SiteTree::class,
     ];
 
     public function updateCMSFields(FieldList $fields)
@@ -33,10 +30,20 @@ class SiteConfigExtension extends DataExtension
             'Navigation',
             SiteTree::class
         ));
-        $tab->push(
-            LinkField::create('PhoneNumberID', 'Phone Number')
-                ->setAllowedTypes(['Phone'])
-        );
-        $tab->push(TextField::create('Address'));
+
+        $tab->push(TreeMultiselectField::create(
+            'Services',
+            'Services',
+            SiteTree::class
+        ));
+        $tab->push(TreeMultiselectField::create(
+            'QuickLinks',
+            'QuickLinks',
+            SiteTree::class
+        ));
+
+        $tab->push(TextareaField::create('ShortDescription'));
+
+        $tab->push(TextareaField::create('ExtraCode', 'Extra site-wide HTML code'));
     }
 }

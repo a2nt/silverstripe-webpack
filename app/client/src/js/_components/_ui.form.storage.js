@@ -2,102 +2,115 @@ import $ from 'jquery';
 import Events from "../_events";
 
 const FormStorage = (($) => {
-  // Constants
-  const NAME = 'jsFormStorage';
-  const DATA_KEY = NAME;
-  const STORAGE = window.localStorage;
+    // Constants
+    const NAME = 'jsFormStorage';
+    const DATA_KEY = NAME;
+    const STORAGE = window.localStorage;
 
-  class FormStorage {
-    // Constructor
-    constructor(element) {
-      this._element = element;
-      const $element = $(this._element);
-      const $elements = $element.find('input,textarea');
+    class FormStorage {
+        // Constructor
+        constructor(element) {
+            this._element = element;
+            const $element = $(this._element);
+            const $elements = $element.find('input,textarea');
+            const setRangeValues = function(el) {
+                let $el = $(el);
+                $el.siblings('.value').text($el.val());
+            };
 
-      $element.addClass(`${NAME}-active`);
+            $element.addClass(`${NAME}-active`);
 
-      // restore form data from localStorage
-      $elements.each(function () {
-        const id = $(this).attr('id');
-        const type = $(this).attr('type');
-        const val = STORAGE.getItem(NAME + id);
+            // restore form data from localStorage
+            $elements.each(function() {
+                const id = $(this).attr('id');
+                const type = $(this).attr('type');
+                const val = STORAGE.getItem(NAME + id);
 
-        if (id && val && type) {
-          if (type && (type === 'checkbox' || type === 'radio')) {
-            $(this).prop('checked', val);
-          } else {
-            $(this).val(val);
-          }
+                if (id && val && type) {
+                    if (type && (type === 'checkbox' || type === 'radio')) {
+                        $(this).prop('checked', val);
+                    } else {
+                        $(this).val(val);
+                    }
+                }
+            });
+
+            // range fields
+
+            $('input[type="range"]').each(function() {
+                setRangeValues(this);
+            });
+            $('input[type="range"]').change(function() {
+                setRangeValues(this);
+            });
+
+            // store form data into localStorage
+            $elements.change(function() {
+                const id = $(this).attr('id');
+                const type = $(this).attr('type');
+                let val = $(this).val();
+
+                if (type && (type === 'checkbox' || type === 'radio')) {
+                    val = !!$(this).is(':checked');
+                }
+
+                if (id && type && type !== 'password') {
+                    STORAGE.setItem(NAME + id, val);
+                }
+            });
+
+            $element.submit(() => {
+                $element.data(DATA_KEY).clear();
+            });
+
+            $element.find('button,[type="submit"],[type="clear"]').click(() => {
+                $element.data(DATA_KEY).clear();
+            });
         }
-      });
 
-      // store form data into localStorage
-      $elements.change(function () {
-        const id = $(this).attr('id');
-        const type = $(this).attr('type');
-        let val = $(this).val();
+        // Public methods
+        dispose() {
+            const $element = $(this._element);
 
-        if (type && (type === 'checkbox' || type === 'radio')) {
-          val = !!$(this).is(':checked');
+            $element.removeClass(`${NAME}-active`);
+            $.removeData(this._element, DATA_KEY);
+            this._element = null;
         }
 
-        if (id && type && type !== 'password') {
-          STORAGE.setItem(NAME + id, val);
+        clear() {
+            STORAGE.clear();
         }
-      });
 
-      $element.submit(() => {
-        $element.data(DATA_KEY).clear();
-      });
+        static _jQueryInterface() {
+            if (typeof window.localStorage !== 'undefined') {
+                return this.each(function() {
+                    // attach functionality to element
+                    const $element = $(this);
+                    let data = $element.data(DATA_KEY);
 
-      $element.find('button,[type="submit"],[type="clear"]').click(() => {
-        $element.data(DATA_KEY).clear();
-      });
+                    if (!data) {
+                        data = new FormStorage(this);
+                        $element.data(DATA_KEY, data);
+                    }
+                });
+            }
+        }
     }
 
-    // Public methods
-    dispose() {
-      const $element = $(this._element);
+    // jQuery interface
+    $.fn[NAME] = FormStorage._jQueryInterface;
+    $.fn[NAME].Constructor = FormStorage;
+    $.fn[NAME].noConflict = function() {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return FormStorage._jQueryInterface;
+    };
 
-      $element.removeClass(`${NAME}-active`);
-      $.removeData(this._element, DATA_KEY);
-      this._element = null;
-    }
+    // auto-apply
+    $(window).on(`${Events.AJAX} ${Events.LOADED}`, () => {
+        $('form').jsFormStorage();
+    });
 
-    clear() {
-      STORAGE.clear();
-    }
-
-    static _jQueryInterface() {
-      if (typeof window.localStorage !== 'undefined') {
-        return this.each(function () {
-          // attach functionality to element
-          const $element = $(this);
-          let data = $element.data(DATA_KEY);
-
-          if (!data) {
-            data = new FormStorage(this);
-            $element.data(DATA_KEY, data);
-          }
-        });
-      }
-    }
-  }
-
-  // jQuery interface
-  $.fn[NAME] = FormStorage._jQueryInterface;
-  $.fn[NAME].Constructor = FormStorage;
-  $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT;
-    return FormStorage._jQueryInterface;
-  };
-
-  // auto-apply
-  $(window).on(`${Events.AJAX} ${Events.LOADED}`, () => {
-    $('form').jsFormStorage();
-  });
-
-  return FormStorage;
+    return FormStorage;
 })($);
 
 export default FormStorage;

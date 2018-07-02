@@ -1,14 +1,3 @@
 /**
  * Your custom style
  */
-
-@import "_components/ui.carousel";
-
-// hide default page title cuz elemental object will be used to display titles
-h1 {
-  display: none;
-}
-
-img {
-	max-width: 100%;
-}
