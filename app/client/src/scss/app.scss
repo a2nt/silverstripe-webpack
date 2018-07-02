@@ -66,11 +66,20 @@ img {
 a:hover,
 a:focus {
     opacity: .8;
+
+    .fas,
+    .fab,
+    &.fas,
+    &.fab {
+        transform: rotate(-180deg);
+    }
 }
 
 // transactions
 .transition,
 a, a img,
+a .fas, a .fab,
+a.fas, a.fab,
 button, input, optgroup, select, textarea,
 .btn,
 .alert,

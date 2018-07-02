@@ -13,7 +13,7 @@
     <% end_if %>
     <% if $GooglePlus %>
         <a href="$GooglePlus.URL" title="Google+" target="_blank">
-            <i class="fab fa-google-plus-official"></i>
+            <i class="fab fa-google-plus-g"></i>
             <i class="d-none">Google+</i>
         </a>
     <% end_if %>

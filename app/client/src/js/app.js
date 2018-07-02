@@ -23,8 +23,8 @@ Vue.use(Carousel);*/
 
 import 'offcanvas-bootstrap/dist/js/bootstrap.offcanvas';
 
-// import your custom UI components
-import './main';
+import './_main';
+import './_layout';
 
 function importAll(r) {
     return r.keys().map(r);
