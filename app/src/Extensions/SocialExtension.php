@@ -14,7 +14,6 @@ use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataExtension;
-use SilverStripe\UserForms\Model\UserDefinedForm;
 
 class SocialExtension extends DataExtension
 {
@@ -49,7 +48,7 @@ class SocialExtension extends DataExtension
         }
 
         $fields->findOrMakeTab('Root.Social');
-UserDefinedForm::
+
         $fields->addFieldsToTab('Root.Social', [
             LinkField::create('PublicEmailID', 'Public Email')
                 ->setAllowedTypes(['Email']),
