@@ -17,6 +17,8 @@ Checkout files at /app/ folder for details
 + Font-Awesome included by default
 + Deferred requirements loading
 + Requirements auto-loading
++ Includes basic silverstripe modules
++ Some necessary extensions for example editing silverstripe elements as bootstrap grid columns
 
 ### Folder structure:
 
