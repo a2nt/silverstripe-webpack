@@ -9,7 +9,7 @@
 namespace Site\Extensions;
 
 use DNADesign\ElementalList\Model\ElementList;
-use Dynamic\Elements\Image\Elements\ElementImage;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
@@ -156,7 +156,7 @@ class ElementRows extends DataExtension
         return $this->owner->getField('ExtraClass')
             .(
                 $this->isColumn()
-                ? ' col '.self::$column_class.$this->owner->getField('Size')
+                ? ' '.Config::inst()->get(self::class, 'column_class').$this->owner->getField('Size')
                 : ''
             );
     }
