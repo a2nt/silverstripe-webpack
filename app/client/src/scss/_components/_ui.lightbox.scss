@@ -1,0 +1,5 @@
+$lightbox-breakpoint: map-get($grid-breakpoints, "sm");
+$lightbox-link-hover-color: $link-hover-color;
+
+@import "~meta-lightbox/scss/meta-lightbox";
+@import "~meta-lightbox/scss/meta-lightbox-theme";

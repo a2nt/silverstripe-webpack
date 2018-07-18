@@ -1,5 +1,5 @@
 <% if $SlideShow %>
-    <div id="Carousel{$ID}" class="carousel slide js-carousel" data-indicators="true" data-arrows="true">
+    <div id="Carousel{$ID}" class="carousel slide js-carousel d-none d-sm-block" data-indicators="true" data-arrows="true">
         <div class="carousel-inner">
             <% loop $SlideShow %>
             <div class="carousel-item<% if $First %> active<% end_if %>">

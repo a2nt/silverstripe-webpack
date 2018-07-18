@@ -17,10 +17,10 @@
         "dash": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server --config webpack.config.dev.js",
         "prebuild": "rimraf build",
         "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.prod.js --progress",
-        "lint:check": "eslint ./site/src --config .eslintrc && sass-lint ./site/src --config .sasslintrc -v -q",
-        "lint:fix": "eslint ./site/src --config .eslintrc --fix && sass-lint ./site/src --config .sasslintrc -v -q --fix",
-        "lint:js": "eslint ./site/src --config .eslintrc",
-        "lint:sass": "sass-lint ./site/src --config .sasslintrc -v -q"
+        "lint:check": "eslint ./app/client/src --config .eslintrc && sass-lint ./app/client/src --config .sasslintrc -v -q",
+        "lint:fix": "eslint ./app/client/src --config .eslintrc --fix && sass-lint ./app/client/src --config .sasslintrc -v -q --fix",
+        "lint:js": "eslint ./app/client/src --config .eslintrc",
+        "lint:sass": "sass-lint ./app/client/src --config .sasslintrc -v -q"
     },
     "dependencies": {
         "bootbox": "^4.4.0",
@@ -97,8 +97,7 @@
             "block-no-empty": null,
             "color-no-invalid-hex": true,
             "comment-empty-line-before": [
-                "always",
-                {
+                "always", {
                     "ignore": [
                         "stylelint-commands",
                         "after-comment"
@@ -107,8 +106,7 @@
             ],
             "declaration-colon-space-after": "always",
             "indentation": [
-                4,
-                {
+                4, {
                     "except": [
                         "value"
                     ]
@@ -116,8 +114,7 @@
             ],
             "max-empty-lines": 2,
             "rule-empty-line-before": [
-                "always",
-                {
+                "always", {
                     "except": [
                         "first-nested"
                     ],

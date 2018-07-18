@@ -1,0 +1,63 @@
+/*
+ * some basic styles
+ */
+
+// don't let images be wider than the parent layer
+iframe,
+img {
+    max-width: 100%;
+}
+
+a:hover,
+a:focus {
+    opacity: .8;
+
+    .fas,
+    .fab,
+    &.fas,
+    &.fab {
+        transform: rotate(-180deg);
+    }
+}
+
+// transactions
+.transition,
+a, a img,
+a .fas, a .fab,
+a.fas, a.fab,
+button, input, optgroup, select, textarea,
+.btn,
+.alert,
+.dropdown,
+[data-target],
+.container,
+.container-fluid,
+.row,
+[class="col-*"] {
+    transition: all 0.4s ease;
+}
+
+// stick navbar to top using mobile layout
+#Header {
+    position: relative;
+    padding-top: $grid-gutter-height / 2;
+    padding-bottom: 1rem;
+
+    @media (min-width: map-get($grid-breakpoints, "lg")) {
+        padding-top: 1rem;
+        padding-bottom: 0;
+    }
+}
+
+#Navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+
+    @media (min-width: map-get($grid-breakpoints, "lg")) {
+        position: relative;
+        margin-top: 1rem;
+    }
+}

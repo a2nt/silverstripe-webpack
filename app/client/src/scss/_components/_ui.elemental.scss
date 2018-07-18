@@ -1,0 +1,28 @@
+/*
+ * Basic styles for silverstripe-elemental
+ */
+
+// hide default page title cuz elemental object will be used to display titles
+h1 {
+    display: none;
+}
+
+// add top/bottom paddings for basic elements
+.page-content > .element {
+    position: relative;
+    padding: ($grid-gutter-height / 2) 0;
+
+    // remove paddings of the slideshow
+    &.dynamic__elements__image__elements__elementimage,
+    &.dynamic__elements__flexslider__elements__elementslideshow {
+        padding: 0;
+    }
+}
+
+// remove container paddings for the slideshow
+.dynamic__elements__image__elements__elementimage,
+.dynamic__elements__flexslider__elements__elementslideshow {
+    .container-fluid {
+        padding: 0;
+    }
+}

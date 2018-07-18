@@ -1,19 +1,24 @@
+/*
+ * Bootstrap carousel improvement
+ */
+
 .carousel-control-prev,
 .carousel-control-next {
-  z-index: 2;
-  font-size: 3rem;
-  text-shadow: 1px 1px #000;
-  &:hover,
-  &:focus {
-    background: rgba(0, 0, 0, 0.6);
-  }
+    z-index: 2;
+    font-size: 3rem;
+    text-shadow: 1px 1px #000;
+
+    &:hover,
+    &:focus {
+        background: rgba(0, 0, 0, 0.6);
+    }
 }
 
 .carousel-indicators li {
-  box-shadow: 1px 1px #000;
+    box-shadow: 1px 1px #000;
 }
 
 .carousel-title,
 .carousel-content {
-  text-shadow: 1px 1px #000;
+    text-shadow: 1px 1px #000;
 }
