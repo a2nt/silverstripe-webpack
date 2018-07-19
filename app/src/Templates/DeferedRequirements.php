@@ -2,6 +2,7 @@
 
 namespace Site\Templates;
 
+use SilverStripe\Control\Controller;
 use SilverStripe\View\TemplateGlobalProvider;
 use SilverStripe\View\Requirements;
 use SilverStripe\Core\Config\Config;
@@ -33,31 +34,35 @@ class DeferedRequirements implements TemplateGlobalProvider
     {
         // Initialization
         Requirements::block(THIRDPARTY_DIR.'/jquery/jquery.js');
-        if (defined('FONT_AWESOME_DIR')) {
+        /*if (defined('FONT_AWESOME_DIR')) {
             Requirements::block(FONT_AWESOME_DIR.'/css/lib/font-awesome.min.css');
-        }
+        }*/
         Requirements::set_force_js_to_bottom(true);
 
         // Main libs
         DeferedRequirements::loadJS('//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
 
         // App libs
-        DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.0.13/css/all.css');
+        //DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.0.13/css/all.css');
         DeferedRequirements::loadCSS('app.css');
         DeferedRequirements::loadJS('app.js');
 
         // Class libs
-        if ($class) {
-            $dir = Path::join(Director::publicFolder(), ManifestFileFinder::RESOURCES_DIR, 'app', 'client');
+        $class = str_replace('\\', '.', get_class(Controller::curr()));
+        $dir = Path::join(
+            Director::publicFolder(),
+            ManifestFileFinder::RESOURCES_DIR,
+            'app',
+            'client',
+            'dist'
+        );
 
+        if (file_exists(Path::join($dir, 'css', '_' . $class . '.css'))) {
+            DeferedRequirements::loadCSS('_' . $class . '.css');
+        }
 
-            if (file_exists(Path::join($dir, 'css', $class . '.css'))) {
-                DeferedRequirements::loadCSS($class . '.css');
-            }
-
-            if (file_exists(Path::join($dir, 'js', $class . '.js'))) {
-                DeferedRequirements::loadJS($class . '.js');
-            }
+        if (file_exists(Path::join($dir, 'js', $class . '.js'))) {
+            DeferedRequirements::loadJS($class . '.js');
         }
 
         return self::forTemplate();
