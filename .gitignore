@@ -9,3 +9,4 @@
 /site/client/dist
 /silverstripe-cache
 yarn-error\.log
+package-lock.json
