@@ -21,10 +21,10 @@ SilverStripe\CMS\Model\SiteTree:
       - DNADesign\ElementalUserForms\Model\ElementForm
       - Dynamic\Elements\Image\Elements\ElementImage
       - Dynamic\Elements\Blog\Elements\ElementBlogPosts
-      - Dynamic\Elements\FlexSlider\Elements\ElementSlideshow
       - Dynamic\Elements\Oembed\Elements\ElementOembed
       - Dynamic\Elements\Elements\ElementTestimonials
       - Site\Elements\TeamMembersElement
+      - Site\Elements\SliderElement
 
 DNADesign\ElementalList\Model\ElementList:
   default_global_elements: false
@@ -34,10 +34,10 @@ DNADesign\ElementalList\Model\ElementList:
       - DNADesign\ElementalUserForms\Model\ElementForm
       - Dynamic\Elements\Image\Elements\ElementImage
       - Dynamic\Elements\Blog\Elements\ElementBlogPosts
-      - Dynamic\Elements\FlexSlider\Elements\ElementSlideshow
       - Dynamic\Elements\Oembed\Elements\ElementOembed
       - Dynamic\Elements\Elements\ElementTestimonials
       - Site\Elements\TeamMembersElement
+      - Site\Elements\SliderElement
   styles:
     whiteframe: 'White Frame'
     greybg: 'Grey Background'

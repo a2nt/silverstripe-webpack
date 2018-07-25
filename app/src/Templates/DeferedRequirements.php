@@ -17,6 +17,8 @@ class DeferedRequirements implements TemplateGlobalProvider
     private static $defered = false;
     private static $static_domain;
     private static $version;
+    private static $nojquery = false;
+    private static $nofontawesome = false;
 
     /**
      * @return array
@@ -32,6 +34,8 @@ class DeferedRequirements implements TemplateGlobalProvider
 
     public static function Auto($class = false)
     {
+        $config = Config::inst()->get(self::class);
+
         // Initialization
         Requirements::block(THIRDPARTY_DIR.'/jquery/jquery.js');
         /*if (defined('FONT_AWESOME_DIR')) {
@@ -40,10 +44,13 @@ class DeferedRequirements implements TemplateGlobalProvider
         Requirements::set_force_js_to_bottom(true);
 
         // Main libs
-        DeferedRequirements::loadJS('//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
-
+        if (!$config['nojquery']) {
+            DeferedRequirements::loadJS('//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+        }
         // App libs
-        //DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.0.13/css/all.css');
+        if (!$config['nofontawesome']) {
+            DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.0.13/css/all.css');
+        }
         DeferedRequirements::loadCSS('app.css');
         DeferedRequirements::loadJS('app.js');
 
@@ -125,19 +132,21 @@ class DeferedRequirements implements TemplateGlobalProvider
 
     private static function get_url($url)
     {
+        $config = Config::inst()->get(self::class);
+
         // external URL
         if (strpos($url, '//') !== false) {
             return $url;
         }
 
-        $version = Config::inst()->get('DeferedRequirements', 'version');
+        $version = $config['version'];
         $version = $version
             ? strpos($url, '?') // inner URL
                 ? '&'.$version // add param
                 : '?'.$version // new param
             : ''; // no version defined
 
-        $static_domain = Config::inst()->get('DeferedRequirements', 'static_domain');
+        $static_domain = $config['static_domain'];
         $static_domain = $static_domain ? $static_domain : '';
 
         return $url.$version;

@@ -1,0 +1,6 @@
+Site\Templates\DeferedRequirements:
+  nojquery: false
+  nofontawesome: false
+  version: false
+  static_domain: false
+
