@@ -27,7 +27,6 @@
         "mak001/silverstripe-categorization": "^1.0@dev",
         "axllent/silverstripe-bootstrap-forms": "^2.0",
         "silverstripe/redirectedurls": "dev-master",
-        "vulcandigital/silverstripe-seo": "*",
         "undefinedoffset/silverstripe-nocaptcha": "*",
         "a2nt/silverstripe-font-awesome-field": "dev-master"
     },
