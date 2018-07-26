@@ -12,7 +12,7 @@ const includes = {
 };
 
 const _getAllFilesFromFolder = function(dir) {
-    dir = path.join(__dirname, dir);
+    dir = path.resolve(__dirname, dir);
 
     const filesystem = require('fs');
     let results = [];
