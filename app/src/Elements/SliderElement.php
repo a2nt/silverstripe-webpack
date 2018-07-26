@@ -19,6 +19,8 @@ class SliderElement extends ElementSlideshow
 
     private static $description = 'Displays slideshow';
 
+    private static $table_name = 'SliderElement';
+
     private static $extensions = [
         FlexSlider::class,
     ];
