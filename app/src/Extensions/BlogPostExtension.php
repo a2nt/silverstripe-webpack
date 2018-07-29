@@ -8,7 +8,6 @@
 
 namespace Site\Extensions;
 
-use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\Elemental\Models\ElementContent;
 use SilverStripe\ORM\DataExtension;
 
@@ -21,17 +20,16 @@ class BlogPostExtension extends DataExtension
     public function Summary($wordsToDisplay = 30)
     {
         $summary = $this->owner->getField('Summary');
-        if($summary){
+        if ($summary) {
             return $summary;
         }
 
-        BaseElement::
         $element = ElementContent::get()->filter([
             'ParentID' => $this->owner->ElementalArea()->ID,
             'HTML:not' => [null],
         ])->first();
 
-        if($element){
+        if ($element) {
             return $element->dbObject('HTML')->Summary($wordsToDisplay);
         }
 

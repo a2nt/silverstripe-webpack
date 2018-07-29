@@ -1,3 +1,29 @@
 /**
  * Your custom style
  */
+
+// shrink elements on scroll
+body.shrink {}
+
+// sticky footer
+html, body {
+    height: 100%;
+    min-height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    padding-top: 7.4rem;
+    padding-bottom: 2rem;
+}
+
+.site-footer {
+    height: 2rem;
+    margin-top: -2rem;
+    line-height: 2rem;
+}
+
+// element col paddings
+.col-block {
+    padding: $grid-gutter-height / 4;
+}

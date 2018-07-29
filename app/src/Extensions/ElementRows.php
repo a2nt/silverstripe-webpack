@@ -17,7 +17,7 @@ use SilverStripe\Forms\FieldList;
 class ElementRows extends DataExtension
 {
     private static $container_max_width = 1140;
-    private static $column_class = 'col-md-';
+    private static $column_class = 'col-block col-md-';
 
     private static $container_styles = [
         'container' => 'Fixed container',

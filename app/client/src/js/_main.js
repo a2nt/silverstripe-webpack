@@ -12,6 +12,7 @@ import './_components/routes/index';
 import Events from './_events';
 import Spinner from './_components/_ui.spinner';
 
+import './_components/_ui.shrink';
 import './_components/_ui.carousel';
 import './_components/_ui.menu';
 import './_components/_ui.form.storage';

@@ -1,5 +1,9 @@
+<% if $ShowTitle %>
+    <h2 class="slider-element__title text-center">$Title</h2>
+<% end_if %>
+
 <% if $SlideShow %>
-    <div id="Carousel{$ID}" class="carousel slide js-carousel d-none d-sm-block" data-indicators="true" data-arrows="true">
+    <div id="Carousel{$ID}" class="carousel slide js-carousel d-none d-sm-block"<% if $SlideShow.count > 1 %> data-indicators="true" data-arrows="true"<% end_if %>>
         <div class="carousel-inner">
             <% loop $SlideShow %>
             <div class="carousel-item<% if $First %> active<% end_if %>">
@@ -16,6 +20,7 @@
                         <% if $PageLinkID %>
                             <p>
                                 <a href="$PageLink.Link" title="$PageLink.MenuTitle.XML" class="btn btn-default">
+                                    <i class="fas fa-bars"></i>
                                     <%t Dynamic\FlexSlider\ORM\FlexSlider.LEARN_MORE "Learn more" %>
                                 </a>
                             </p>
