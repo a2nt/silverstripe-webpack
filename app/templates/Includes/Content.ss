@@ -5,7 +5,7 @@
         $ElementalArea
 
         <% if $Form %>
-        <div class="container">
+        <div class="form-container container">
             $Form
         </div>
         <% end_if %>

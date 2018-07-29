@@ -14,7 +14,7 @@ h1 {
 
     // remove paddings of the slideshow
     &.dynamic__elements__image__elements__elementimage,
-    &.dynamic__elements__flexslider__elements__elementslideshow {
+    &.site__elements__sliderelement {
         padding: 0;
     }
 }
@@ -25,4 +25,10 @@ h1 {
     .container-fluid {
         padding: 0;
     }
+}
+
+// add top/bottom paddings for basic Include/Content.ss forms
+.page-content > .form-container {
+    position: relative;
+    padding: ($grid-gutter-height / 2) 0;
 }
