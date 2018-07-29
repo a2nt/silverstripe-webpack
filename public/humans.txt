@@ -1,8 +1,8 @@
 /* AUTHOR */
-Name:
+Name: Tony Air
 
 /* TEAM */
-Site: https://bla-bla.com/
+Site: https://tony.twma.pro/
 
 /* SITE */
 Doctype: HTML5
