@@ -25,7 +25,7 @@ $MetaTags
 <link rel="icon" sizes="144x144" type="image/png" href="{$AbsoluteBaseURL}resources/app/client/dist/icons/android-chrome-144x144.png" />
 <link rel="apple-touch-icon" href="{$AbsoluteBaseURL}resources/app/client/dist/icons/apple-touch-icon.png" />
 <link rel="apple-touch-icon-precomposed" href="{$AbsoluteBaseURL}resources/app/client/dist/icons/apple-touch-icon-precomposed.png" />
-<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="manifest" href="/manifest.json" />
 
 <meta name="application-name" content="{$SiteConfig.Title}" />
 <meta name="msapplication-TileImage" content="{$AbsoluteBaseURL}resources/app/client/dist/icons/mstile-144x144.png" />

@@ -2,6 +2,6 @@ CACHE MANIFEST
 
 FALLBACK:
 /
-/resources/site/client/dist/css/app.css
-/resources/site/client/dist/img/logo.png
-/resources/site/client/dist/js/app.js
+/resources/app/client/dist/css/app.css
+/resources/app/client/dist/img/logo.png
+/resources/app/client/dist/js/app.js
