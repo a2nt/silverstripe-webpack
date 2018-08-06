@@ -20,3 +20,10 @@ SilverStripe\View\SSViewer:
 SilverStripe\Forms\HTMLEditor\TinyMCEConfig:
   editor_css:
     - 'app/client/dist/css/editor.css'
+
+SilverStripe\Assets\File:
+  allowed_extensions:
+    - svg
+  app_categories:
+    image:
+      - svg

@@ -19,7 +19,7 @@
                         <% if $Description %><p class="carousel-content">$Description</p><% end_if %>
                         <% if $PageLinkID %>
                             <p>
-                                <a href="$PageLink.Link" title="$PageLink.MenuTitle.XML" class="btn btn-default">
+                                <a href="$PageLink.Link" title="$PageLink.MenuTitle.XML" class="btn btn-default btn-lg">
                                     <i class="fas fa-bars"></i>
                                     <%t Dynamic\FlexSlider\ORM\FlexSlider.LEARN_MORE "Learn more" %>
                                 </a>

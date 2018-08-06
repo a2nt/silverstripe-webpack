@@ -16,6 +16,10 @@
 
 .carousel-indicators li {
     box-shadow: 1px 1px #000;
+
+    &.active {
+        background: $blue;
+    }
 }
 
 .carousel-title,

@@ -11,14 +11,15 @@ use SilverStripe\Forms\TreeMultiselectField;
 class SiteConfigExtension extends DataExtension
 {
     private static $db = [
-        'ShortDescription' => 'Text',
         'ExtraCode' => 'Text',
+    ];
+
+    private static $has_one = [
+        'PrivacyPolicy' => SiteTree::class,
     ];
 
     private static $many_many = [
         'Navigation' => SiteTree::class,
-        'Services' => SiteTree::class,
-        'QuickLinks' => SiteTree::class,
     ];
 
     public function updateCMSFields(FieldList $fields)
@@ -31,18 +32,7 @@ class SiteConfigExtension extends DataExtension
             SiteTree::class
         ));
 
-        $tab->push(TreeMultiselectField::create(
-            'Services',
-            'Services',
-            SiteTree::class
-        ));
-        $tab->push(TreeMultiselectField::create(
-            'QuickLinks',
-            'QuickLinks',
-            SiteTree::class
-        ));
-
-        $tab->push(TextareaField::create('ShortDescription'));
+        $tab->push(TreeDropdownField::create('PrivacyPolicyID', 'Select privacy policy page', SiteTree::class));
 
         $tab->push(TextareaField::create('ExtraCode', 'Extra site-wide HTML code'));
     }

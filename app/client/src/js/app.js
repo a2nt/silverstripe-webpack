@@ -22,6 +22,8 @@ import 'bootstrap/js/dist/tab';
 Vue.use(Carousel);*/
 
 import 'offcanvas-bootstrap/dist/js/bootstrap.offcanvas';
+import 'jquery-zoom/jquery.zoom';
+import 'meta-lightbox/meta-lightbox';
 
 import './_main';
 import './_layout';

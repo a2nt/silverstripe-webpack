@@ -33,7 +33,7 @@
 				<% end_if %>
 
 				<% with $PaginatedList %>
-					<% include SilverStripe\\Blog\\Pagination %>
+					<% include Objects\Pagination %>
 				<% end_with %>
 
 				$CommentsForm
