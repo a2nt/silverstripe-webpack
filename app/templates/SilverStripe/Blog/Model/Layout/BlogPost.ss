@@ -1,23 +1,22 @@
 <div id="PageContainer" class="page{$ClassName} action{$Action}">
     <article class="blog-entry">
 
+    	<% if $FeaturedImage %>
+	    <div id="CarouselTop" class="carousel slide js-carousel d-none d-sm-block">
+	        <div class="carousel-inner">
+	            <div class="carousel-item">
+	                <img class="d-block w-100" src="$FeaturedImage.Fill(1200,400).URL" alt="$Title">
+	            </div>
+	        </div>
+	    </div>
+	    <% end_if %>
+
 		<% include Content %>
 
         <div class="page-content">
 			<div class="element">
 				<div class="container">
-					<% if $FeaturedImage %>
-					<div class="row">
-						<div class="col-sm-2">
-							$FeaturedImage.Fill(100,100)
-						</div>
-						<div class="col-sm-10">
-							<% include SilverStripe\\Blog\\EntryMeta %>
-						</div>
-					</div>
-					<% else %>
-						<% include SilverStripe\\Blog\\EntryMeta %>
-					<% end_if %>
+					<% include SilverStripe\\Blog\\EntryMeta %>
 				</div>
 			</div>
 		</div>
