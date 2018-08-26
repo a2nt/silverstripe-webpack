@@ -1,8 +1,9 @@
-<% require css("silvershop/core: client/dist/css/order.css") %>
+<% require css("app/client/dist/css/order.css") %>
 
 <%-- As Order.ss is also used in emails, avoid div, paragraph and heading elements --%>
 <% include SilverShop\Model\Order_Address %>
 <% include SilverShop\Model\Order_Content %>
+
 <% if $Total %>
     <% if $Payments %>
         <% include SilverShop\Model\Order_Payments %>

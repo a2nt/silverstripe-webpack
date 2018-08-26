@@ -1,0 +1,15 @@
+@import "../variables";
+@import "~mapbox-gl/dist/mapbox-gl.css";
+
+.mapAPI-map {
+    height: 30rem;
+    margin-bottom: 1rem;
+}
+
+.mapboxgl-marker {
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
+}

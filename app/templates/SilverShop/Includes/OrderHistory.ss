@@ -17,7 +17,7 @@
             <td>$Items.Quantity</td>
             <td>$Total.Nice</td>
             <td>$StatusI18N</td>
-            <td>
+            <td class="text-right">
                 <a class="btn btn-mini btn-primary" href="$Link">
                     <i class="icon icon-white icon-eye-open fa fa-eye"></i> <%t SilverShop\Generic.View 'view' %>
                 </a>

@@ -1,0 +1,6 @@
+---
+Name: payment
+---
+SilverStripe\Omnipay\Model\Payment:
+  allowed_gateways:
+    - 'Manual'

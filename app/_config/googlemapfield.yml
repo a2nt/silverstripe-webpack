@@ -1,0 +1,3 @@
+BetterBrief\GoogleMapField:
+  default_options:
+    api_key: 'YOUR_API_KEY'

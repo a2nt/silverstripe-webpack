@@ -19,6 +19,7 @@ class DeferedRequirements implements TemplateGlobalProvider
     private static $version;
     private static $nojquery = false;
     private static $nofontawesome = false;
+    private static $custom_requirements = [];
 
     /**
      * @return array
@@ -55,7 +56,19 @@ class DeferedRequirements implements TemplateGlobalProvider
         DeferedRequirements::loadJS('app.js');
 
         // Class libs
-        $class = str_replace('\\', '.', get_class(Controller::curr()));
+        $class = get_class(Controller::curr());
+        if(isset($config['custom_requirements'][$class])){
+            foreach ($config['custom_requirements'][$class] as $file) {
+                if(strpos($file,'.css')){
+                    DeferedRequirements::loadCSS($file);
+                }
+                if(strpos($file,'.js')){
+                    DeferedRequirements::loadJS($file);
+                }
+            }
+        }
+
+        $class = str_replace('\\', '.', $class);
         $dir = Path::join(
             Director::publicFolder(),
             ManifestFileFinder::RESOURCES_DIR,
@@ -64,8 +77,8 @@ class DeferedRequirements implements TemplateGlobalProvider
             'dist'
         );
 
-        if (file_exists(Path::join($dir, 'css', '_' . $class . '.css'))) {
-            DeferedRequirements::loadCSS('_' . $class . '.css');
+        if (file_exists(Path::join($dir, 'css', $class . '.css'))) {
+            DeferedRequirements::loadCSS( $class . '.css');
         }
 
         if (file_exists(Path::join($dir, 'js', $class . '.js'))) {

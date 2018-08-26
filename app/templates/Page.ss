@@ -5,7 +5,7 @@
     <% include MetaHead %>
 </head>
 
-<body oncontextmenu="return false;">
+<body oncontextmenu="return false;"<% with $SiteConfig %> data-default-lng="$Longitude" data-default-lat="$Latitude"<% end_with %>>
 	<%-- Upgrade your Browser notice --%>
 	<!--[if lt IE 10]><div class="main-bn"><a href="https://www.google.com/chrome/browser/desktop/" title="<%t Page.UPGRADEBROWSER 'Upgrade your browser' %>"><%t Page.OUTDATEDBROWSER 'You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.' %></a></div><![endif]-->
 
@@ -35,6 +35,10 @@
 
     <%-- Require CSS+JS from /public/resourses/[js,css]/[ClassName].[js,css] --%>
 	$AutoRequirements($ClassName).RAW
+
+    <%-- Mapbox --%>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js"></script>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css" rel="stylesheet" />
 
 	<%-- place extra requirements after this line --%>
     <div class="extra-code extra-code-site">

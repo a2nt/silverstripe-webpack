@@ -3,8 +3,12 @@
  */
 
 // hide default page title cuz elemental object will be used to display titles
-h1 {
+h1.page-header {
     display: none;
+
+    &.no-elements {
+        display: block;
+    }
 }
 
 // add top/bottom paddings for basic elements

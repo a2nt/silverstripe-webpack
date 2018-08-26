@@ -1,11 +1,11 @@
 <div class="page-content">
-	<h1 class="page-header">$Title</h1>
+    <h1 class="page-header container<% if $ElementalArea.Elements.Count < 1 %> no-elements<% end_if %>">$Title</h1>
 
-	<div class="page-content">
+    <div class="page-content">
         $ElementalArea
 
         <% if $Form %>
-        <div class="form-container container">
+        <div class="container">
             $Form
         </div>
         <% end_if %>
@@ -15,6 +15,6 @@
             $ExtraCode
         </div>
         <% end_if %>
-	</div>
+    </div>
 
 </div>

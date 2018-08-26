@@ -37,6 +37,14 @@ button, input, optgroup, select, textarea,
     transition: all 0.4s ease;
 }
 
+.btn-toolbar {
+    margin-top: $grid-gutter-height / 2;
+}
+
+.field {
+    margin: ($grid-gutter-height / 4) 0;
+}
+
 // stick navbar to top using mobile layout
 #Header {
     position: relative;

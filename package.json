@@ -33,6 +33,7 @@
         "jquery": "^3.3.1",
         "jquery-hammerjs": "^2.0.0",
         "jquery-zoom": "^1.7.21",
+        "mapbox-gl": "^0.48.0",
         "meta-lightbox": "^1.0.0",
         "offcanvas-bootstrap": "^2.5.2",
         "popper.js": "^1.14.3",

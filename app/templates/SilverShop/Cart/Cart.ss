@@ -1,5 +1,5 @@
 <% if $Items %>
-    <table class="cart" summary="<%t SilverShop\Cart\ShoppingCart.TableSummary "Current contents of your cart." %>">
+    <table class="cart table table-striped table-bordered  table-hover" summary="<%t SilverShop\Cart\ShoppingCart.TableSummary "Current contents of your cart." %>">
         <colgroup>
             <col class="image"/>
             <col class="product title"/>
@@ -27,7 +27,7 @@
                         <% if $Image %>
                             <div class="image">
                                 <a href="$Link" title="<%t SilverShop\Generic.ReadMoreTitle "Click here to read more on &quot;{Title}&quot;" Title=$TableTitle %>">
-                                    $Image.setWidth(45)
+                                    $Image.Fill(100,100)
                                 </a>
                             </div>
                         <% end_if %>
@@ -54,7 +54,7 @@
                                 $RemoveField
                             <% else %>
                                 <a href="$removeallLink" title="<%t SilverShop\Cart\ShoppingCart.RemoveAllTitle "Remove all of &quot;{Title}&quot; from your cart" Title=$TableTitle %>">
-                                    <img src="$resourceURL('silvershop/core:client/dist/images/remove.gif')" alt="x"/>
+                                    <i class="fas fa-times"></i>
                                 </a>
                             <% end_if %>
 
@@ -111,7 +111,7 @@
         </tfoot>
     </table>
 <% else %>
-    <p class="message warning">
+    <div class="alert alert-warning message warning">
         <%t SilverShop\Cart\ShoppingCart.NoItems "There are no items in your cart." %>
-    </p>
+    </div>
 <% end_if %>

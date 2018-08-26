@@ -14,6 +14,10 @@
                 <% with $Order %>
                     <% include SilverShop\Model\Order %>
                 <% end_with %>
+
+                <% with $SiteConfig %>
+                    <% include Objects\Map %>
+                <% end_with %>
                 $ActionsForm
             <% end_if %>
         </div>
