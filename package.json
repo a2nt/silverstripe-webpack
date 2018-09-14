@@ -25,7 +25,9 @@
     "dependencies": {
         "bootbox": "^4.4.0",
         "bootstrap": "^4.1.1",
+        "bootstrap-datepicker": "^1.8.0",
         "bootstrap-offcanvas": "^1.0.0",
+        "bootstrap-timepicker": "^0.5.2",
         "core-util-is": "^1.0.2",
         "font-awesome": "^4.7.0",
         "foundation-emails": "^2.2.1",

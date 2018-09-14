@@ -6,20 +6,26 @@
 
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\ORM\FieldType\DBDatetime;
-use SilverStripe\Blog\Model\BlogPost;
 
 class PageController extends ContentController
 {
-    private static $static_path = '/resources/app/client/dist/';
-
-    public function RecentBlogPosts()
+    public function setSiteWideMessage($message, $type)
     {
-        return BlogPost::get()->sort('PublishDate DESC');
+        $this->getRequest()->getSession()->set(
+            'SiteWideMessage',
+            [
+                'Message' => $message,
+                'Type' => $type,
+            ]
+        );
     }
 
-    public function StaticPath($path = '')
+    public function getSiteWideMessage()
     {
-        return self::join_links($this->config()->get('static_path'), $path);
+        $session = $this->getRequest()->getSession();
+        $session->clear('SiteWideMessage');
+
+        return $session->get('SiteWideMessage');
     }
 
     public function CurrentTime()

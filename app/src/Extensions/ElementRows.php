@@ -88,6 +88,11 @@ class ElementRows extends DataExtension
         }
     }
 
+    public function getWidthPercetage()
+    {
+        return $this->isColumn() ? $this->owner->getField('Size') / 12 * 100 : false;
+    }
+
     public function isList()
     {
         return is_a($this->owner, ElementList::class);

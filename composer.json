@@ -30,7 +30,8 @@
         "undefinedoffset/silverstripe-nocaptcha": "*",
         "a2nt/silverstripe-font-awesome-field": "dev-master",
         "stevie-mayhew/silverstripe-svg": "^2.1",
-        "betterbrief/silverstripe-googlemapfield": "*"
+        "betterbrief/silverstripe-googlemapfield": "^2.1",
+        "innoweb/silverstripe-sitemap": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",

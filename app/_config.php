@@ -12,10 +12,11 @@ HtmlEditorConfig::get('cms')->enablePlugins([
     'charmap',
     'visualblocks',
     'lists',
+    'anchor',
     'charcount' => ModuleResourceLoader::resourceURL(
         'drmartingonzo/ss-tinymce-charcount:client/dist/js/bundle.js'
     ),
 ]);
 
+HtmlEditorConfig::get('cms')->insertButtonsAfter('sslink', 'anchor');
 FulltextSearchable::enable();
-

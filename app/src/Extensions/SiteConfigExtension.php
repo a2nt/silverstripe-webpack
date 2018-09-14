@@ -2,6 +2,7 @@
 
 namespace Site\Extensions;
 
+use Innoweb\Sitemap\Pages\SitemapPage;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\TextareaField;
@@ -22,6 +23,11 @@ class SiteConfigExtension extends DataExtension
         'MapAPIKey' => 'Varchar(255)'
     ];
 
+    private static $has_one = [
+        'PrivacyPolicy' => SiteTree::class,
+        'Sitemap' => SiteTree::class,
+    ];
+
     private static $many_many = [
         'Navigation' => SiteTree::class,
     ];
@@ -37,6 +43,18 @@ class SiteConfigExtension extends DataExtension
         ));
 
         $tab->push(TextareaField::create('ExtraCode', 'Extra site-wide HTML code'));
+
+        $tab->push(DropdownField::create(
+            'PrivacyPolicyID',
+            'Privacy Policy Page',
+            SiteTree::get()->map()->toArray()
+        ));
+
+        $tab->push(DropdownField::create(
+            'SitemapID',
+            'Sitemap Page',
+            SitemapPage::get()->map()->toArray()
+        ));
 
         $mapTab = $fields->findOrMakeTab('Root.GoogleMaps');
         $mapTab->push(TextField::create('MapAPIKey'));

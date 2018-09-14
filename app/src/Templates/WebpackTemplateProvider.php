@@ -38,6 +38,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
             'WebpackDevServer' => 'isActive',
             'WebpackCSS' => 'loadCSS',
             'WebpackJS' => 'loadJS',
+            'ResoursesURL' => 'resoursesURL',
         ];
     }
 
@@ -57,6 +58,11 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     public static function loadJS($path)
     {
         Requirements::javascript(self::_getPath($path));
+    }
+
+    public static function resoursesURL($link = null)
+    {
+        return Controller::join_links(Director::baseURL(), '/resources/app/client/dist/img/', $link);
     }
 
 

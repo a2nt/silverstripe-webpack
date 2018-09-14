@@ -14,9 +14,3 @@ SilverStripe\Blog\Model\BlogPost:
 SilverStripe\Core\Injector\Injector:
   SilverStripe\UserForms\Model\UserDefinedForm:
     class: Site\Extensions\CMSMain_HiddenClass
-  SilverShop\Checkout\SinglePageCheckoutComponentConfig:
-    class: Site\Models\CheckoutNoDeliveryConfig
-
-#SilverShop\Model\Address:
-#  extensions:
-#  - Site\Extensions\AddressExtension

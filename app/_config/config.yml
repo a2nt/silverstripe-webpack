@@ -20,6 +20,3 @@ SilverStripe\View\SSViewer:
 SilverStripe\Forms\HTMLEditor\TinyMCEConfig:
   editor_css:
     - 'app/client/dist/css/editor.css'
-
-SilverShop\Extension\ShopConfigExtension:
-  base_currency: USD

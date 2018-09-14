@@ -24,9 +24,6 @@ SilverStripe\CMS\Model\SiteTree:
       - Dynamic\Elements\Oembed\Elements\ElementOembed
       - Dynamic\Elements\Elements\ElementTestimonials
       - Site\Elements\TeamMembersElement
-      - Site\Elements\SliderElement
-      - Site\Elements\PromotionElement
-      - Site\Elements\StoreElement
 
 DNADesign\ElementalList\Model\ElementList:
   default_global_elements: false

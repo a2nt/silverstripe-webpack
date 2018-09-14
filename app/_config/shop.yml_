@@ -1,0 +1,19 @@
+---
+Name: shop
+---
+SilverStripe\Core\Injector\Injector:
+  SilverShop\Checkout\SinglePageCheckoutComponentConfig:
+    class: Site\Models\CheckoutNoDeliveryConfig
+
+SilverShop\Extension\ShopConfigExtension:
+  base_currency: USD
+
+SilverShop\Model\Address:
+  extensions:
+  - Site\Extensions\AddressExtension
+
+Site\Templates\DeferedRequirements:
+  custom_requirements:
+    SilverShop\Page\AccountPageController:
+      - SilverShop.Page.CheckoutPageController.js
+      - SilverShop.Page.CheckoutPageController.css

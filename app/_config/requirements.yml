@@ -3,8 +3,4 @@ Site\Templates\DeferedRequirements:
   nofontawesome: false
   version: false
   static_domain: false
-  custom_requirements:
-    SilverShop\Page\AccountPageController:
-      - SilverShop.Page.CheckoutPageController.js
-      - SilverShop.Page.CheckoutPageController.css
 

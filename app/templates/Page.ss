@@ -15,6 +15,9 @@
 	<%-- Loading Spinner --%>
 	<div id="PageLoading"><div class="loading-spinner"><div class="bubblingG"><i id="bubblingG_1"></i><i id="bubblingG_2"></i><i id="bubblingG_3"></i></div><br/><%t Page.LOADINGTEXT 'LOADING ..' %></div></div>
 
+    <%-- Site Wide Alert Message --%>
+    <% include SiteWideMessage %>
+
     <div class="wrapper">
         <header id="Header" class="container">
             <% include Header %>

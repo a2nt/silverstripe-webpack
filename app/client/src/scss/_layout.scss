@@ -1,7 +1,9 @@
+@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
+@import "~bootstrap-timepicker/css/bootstrap-timepicker.css";
+
 /**
  * Your custom style
  */
-
 // shrink elements on scroll
 body.shrink {}
 
@@ -34,5 +36,59 @@ body.shrink {}
     &:hover,
     &:focus {
         opacity: 1;
+    }
+}
+
+// SS-messages
+.message {
+    @extend .alert;
+
+    @extend .alert-info;
+}
+
+.message.required,
+.message.error {
+    @extend .alert;
+
+    @extend .alert-danger;
+}
+
+// date-time fields
+input.date,
+input.time {
+    &[readonly] {
+        background-color: $white;
+    }
+}
+
+.bootstrap-timepicker-widget,
+.datepicker-dropdown {
+    border: 1px solid #ced4da;
+    box-shadow: 0 0 3px #999;
+}
+
+.bootstrap-timepicker-widget {
+    .glyphicon {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        font-family: Font Awesome\ 5 Free;
+        font-weight: 900;
+    }
+
+    .glyphicon-chevron-up:before {
+        content: "\f077";
+    }
+
+    .glyphicon-chevron-down:before {
+        content: "\f078";
+    }
+
+    input {
+        border: 1px solid #ced4da;
     }
 }
