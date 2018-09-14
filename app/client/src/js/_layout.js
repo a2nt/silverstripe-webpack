@@ -25,7 +25,8 @@ const LayoutUI = (($) => {
 
     class LayoutUI {
         static init() {
-            this.dispose();
+            const ui = this;
+            ui.dispose();
 
             console.log(`Initializing: ${NAME}`);
             // your custom UI
