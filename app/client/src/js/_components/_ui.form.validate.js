@@ -1,0 +1,152 @@
+import $ from 'jquery';
+import Events from "../_events";
+
+const FormValidate = (($) => {
+    // Constants
+    const NAME = 'jsFormValidate';
+    const DATA_KEY = NAME;
+    const $Html = $('html, body');
+
+    class FormValidate {
+
+        constructor(element) {
+            const ui = this;
+            const $element = $(element);
+            const $fields = $element.find('input,textarea,select');
+
+            ui._element = element;
+            $element.data(DATA_KEY, this);
+
+            ui._fields = $fields;
+            ui._stepped_form = $element.data('jsSteppedForm');
+            $element.on(Events.FORM_INIT_STEPPED, () => {
+                ui._stepped_form = $element.data('jsSteppedForm');
+            });
+
+            // prevent browsers checks (will do it using JS)
+            $element.attr('novalidate', 'novalidate');
+            $fields.each((i, el) => {
+                el.required = false;
+            });
+
+            $fields.on('change', (e) => {
+                ui.validateField($(e.target), false);
+            });
+
+            // check form
+            $element.on('submit', (e) => {
+                ui.validateForm($element, true, () => {
+                    e.preventDefault();
+
+                    // switch to step
+                    if (ui._stepped_form) {
+                        const $el = $element.find('.error').first();
+
+                        if ($el.length) {
+                            ui._stepped_form.step($el.parents('.step'));
+                        }
+                    }
+
+                    $element.trigger(Events.FORM_VALIDATION_FAILED);
+                });
+            });
+
+            $element.addClass(`${NAME}-active`);
+            $element.trigger(Events.FORM_INIT_VALIDATE);
+        }
+
+        // Public methods
+        dispose() {
+            const $element = $(this._element);
+
+            $element.removeClass(`${NAME}-active`);
+            $.removeData(this._element, DATA_KEY);
+            this._element = null;
+        }
+
+        validateForm($form, scrollTo = true, badCallback = false) {
+            console.log('Checking the form ...');
+            const ui = this;
+
+            ui._fields.each(function(i, el) {
+                const $el = $(el);
+
+                if (!ui.validateField($el)) {
+                    if (badCallback) {
+                        badCallback();
+                    }
+                    return false;
+                }
+            });
+        }
+
+        validateField($el, scrollTo = true) {
+            const $field = $el.closest('.field');
+
+            if (!$el[0].checkValidity() ||
+                ($el.hasClass('required') && !$el.val().trim().length)
+            ) {
+                this.setError($field, scrollTo);
+                return false;
+            } else {
+                this.removeError($field);
+            }
+
+            return true;
+        }
+
+        setError($field, scrollTo = true) {
+            const pos = $field.offset().top;
+
+            $field.addClass('error');
+
+            if (scrollTo) {
+                $field.focus();
+                $Html.scrollTop(pos - 100);
+            }
+        }
+
+        removeError($field) {
+            $field.removeClass('error');
+        }
+
+        static _jQueryInterface() {
+            return this.each(function() {
+                // attach functionality to element
+                const $element = $(this);
+                let data = $element.data(DATA_KEY);
+
+                if (!data) {
+                    data = new FormValidate(this);
+                    $element.data(DATA_KEY, data);
+                }
+            });
+        }
+    }
+
+    // jQuery interface
+    $.fn[NAME] = FormValidate._jQueryInterface;
+    $.fn[NAME].Constructor = FormValidate;
+    $.fn[NAME].noConflict = function() {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return FormValidate._jQueryInterface;
+    };
+
+    // auto-apply
+    $(window).on(`${Events.AJAX} ${Events.LOADED}`, () => {
+        $('form').each((i, el) => {
+            const $el = $(el);
+
+            // skip some forms
+            if ($el.hasClass('no-validation')) {
+                return true;
+            }
+
+            $el.jsFormValidate();
+        });
+    });
+
+    return FormValidate;
+})($);
+
+export default FormValidate;
