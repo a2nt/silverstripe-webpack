@@ -8,50 +8,66 @@ const FormStorage = (($) => {
     const STORAGE = window.localStorage;
 
     class FormStorage {
-        // Constructor
+
         constructor(element) {
-            this._element = element;
-            const $element = $(this._element);
-            const $elements = $element.find('input,textarea');
+            const ui = this;
+            const $element = $(element);
+            const $elements = $element.find('input, textarea, select');
+
             const setRangeValues = function(el) {
                 let $el = $(el);
                 $el.siblings('.value').text($el.val());
             };
 
+            ui._element = element;
+            $element.data(DATA_KEY, this);
+
             $element.addClass(`${NAME}-active`);
 
             // restore form data from localStorage
-            $elements.each(function() {
-                const id = $(this).attr('id');
-                const type = $(this).attr('type');
+            $elements.each((i, el) => {
+                const $el = $(el);
+                const id = $el.attr('id');
+                const type = $el.attr('type');
                 const val = STORAGE.getItem(NAME + id);
 
                 if (id && val && type) {
                     if (type && (type === 'checkbox' || type === 'radio')) {
-                        $(this).prop('checked', val);
+                        $el.prop('checked', val);
                     } else {
-                        $(this).val(val);
+                        $el.val(val);
                     }
                 }
+
+                $el.trigger(Events.RESTORE_FIELD);
             });
 
             // range fields
-
-            $('input[type="range"]').each(function() {
-                setRangeValues(this);
+            $('input[type="range"]').each((i, el) => {
+                setRangeValues(el);
             });
-            $('input[type="range"]').change(function() {
-                setRangeValues(this);
+
+            $element.trigger(Events.RESTORE_FIELD);
+
+            $('input[type="range"]').on('change', (e) => {
+                setRangeValues(e.currentTarget);
             });
 
             // store form data into localStorage
-            $elements.change(function() {
-                const id = $(this).attr('id');
-                const type = $(this).attr('type');
-                let val = $(this).val();
+            $elements.on('change', (e) => {
+                const $el = $(e.currentTarget);
+                const id = $el.attr('id');
+                const type = $el.attr('type');
+
+                // skip some elements
+                if ($el.hasClass('no-storage')) {
+                    return true;
+                }
+
+                let val = $el.val();
 
                 if (type && (type === 'checkbox' || type === 'radio')) {
-                    val = !!$(this).is(':checked');
+                    val = !!$el.is(':checked');
                 }
 
                 if (id && type && type !== 'password') {
@@ -59,13 +75,16 @@ const FormStorage = (($) => {
                 }
             });
 
-            $element.submit(() => {
+            $element.on('submit', () => {
                 $element.data(DATA_KEY).clear();
             });
 
-            $element.find('button,[type="submit"],[type="clear"]').click(() => {
+            $element.find('button,[type="submit"],[type="clear"]').on('click', () => {
                 $element.data(DATA_KEY).clear();
             });
+
+            $element.addClass(`${NAME}-active`);
+            $element.trigger(Events.FORM_INIT_STORAGE);
         }
 
         // Public methods
@@ -107,7 +126,16 @@ const FormStorage = (($) => {
 
     // auto-apply
     $(window).on(`${Events.AJAX} ${Events.LOADED}`, () => {
-        $('form').jsFormStorage();
+        $('form').each((i, el) => {
+            const $el = $(el);
+
+            // skip some forms
+            if ($el.hasClass('no-storage')) {
+                return true;
+            }
+
+            $el.jsFormStorage();
+        });
     });
 
     return FormStorage;

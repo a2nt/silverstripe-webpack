@@ -2,10 +2,9 @@ import $ from 'jquery';
 
 import Events from './_events';
 import Spinner from './_components/_ui.spinner';
+import FormDatetime from './_components/_ui.form.datetime';
+import FormStepped from './_components/_ui.form.stepped';
 
-// your custom components
-import 'bootstrap-datepicker/dist/js/bootstrap-datepicker.js';
-import 'bootstrap-timepicker/js/bootstrap-timepicker.js';
 
 const LayoutUI = (($) => {
     // Constants
@@ -31,28 +30,6 @@ const LayoutUI = (($) => {
             console.log(`Initializing: ${NAME}`);
             // your custom UI
 
-            const $dateFields = $Body.find('input.date');
-            const $timeFields = $Body.find('input.time');
-
-            // datepicker
-            $dateFields.each((i, e) => {
-                const $e = $(e);
-                const defaultDate = ($e.attr('name').toLowerCase().indexOf('end') !== -1) ?
-                    '+4d' :
-                    '+3d';
-
-                $e.attr('readonly', 'true');
-                $e.datepicker($.extend(datepickerOptions, {
-                    defaultViewDate: defaultDate
-                }));
-            });
-
-            // timepicker
-            $timeFields.each((i, e) => {
-                const $e = $(e);
-                $e.attr('readonly', 'true');
-                $e.timepicker();
-            });
         }
 
         static dispose() {

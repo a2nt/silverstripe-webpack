@@ -50,19 +50,19 @@ class DeferedRequirements implements TemplateGlobalProvider
         }
         // App libs
         if (!$config['nofontawesome']) {
-            DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.0.13/css/all.css');
+            DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.3.1/css/all.css');
         }
         DeferedRequirements::loadCSS('app.css');
         DeferedRequirements::loadJS('app.js');
 
         // Class libs
         $class = get_class(Controller::curr());
-        if(isset($config['custom_requirements'][$class])){
+        if (isset($config['custom_requirements'][$class])) {
             foreach ($config['custom_requirements'][$class] as $file) {
-                if(strpos($file,'.css')){
+                if (strpos($file, '.css')) {
                     DeferedRequirements::loadCSS($file);
                 }
-                if(strpos($file,'.js')){
+                if (strpos($file, '.js')) {
                     DeferedRequirements::loadJS($file);
                 }
             }
@@ -78,7 +78,7 @@ class DeferedRequirements implements TemplateGlobalProvider
         );
 
         if (file_exists(Path::join($dir, 'css', $class . '.css'))) {
-            DeferedRequirements::loadCSS( $class . '.css');
+            DeferedRequirements::loadCSS($class . '.css');
         }
 
         if (file_exists(Path::join($dir, 'js', $class . '.js'))) {

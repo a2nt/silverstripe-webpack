@@ -144,6 +144,27 @@ const MainUI = (($) => {
             // mark external links
             $('a.external,a[rel="external"]').attr('target', '_blank');
 
+            // data-set links
+            $('[data-set-target]').on('click', (e) => {
+                const $el = $(e.currentTarget);
+                const $target = $($el.data('set-target'));
+
+                if (!$target.length) {
+                    return;
+                }
+
+                $target.each((i, targetEl) => {
+                    const $targetEl = $(targetEl);
+                    const tag = $targetEl.prop('tagName').toLowerCase();
+
+                    if (tag === 'input' || tag === 'select') {
+                        $targetEl.val($el.data('set-val'));
+                    } else if (!$targetEl.hasClass('field')) {
+                        $targetEl.text($el.data('set-val'));
+                    }
+                });
+            });
+
             // show encoded emails
             /*$(D).find('.obm').each(function () {
               if ($(this).attr('data-val') !== undefined) {

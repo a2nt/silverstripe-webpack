@@ -9,22 +9,28 @@ img {
 }
 
 a:hover,
-a:focus {
+a:focus,
+button:hover,
+button:focus {
     opacity: .8;
 
     .fas,
     .fab,
+    .far,
     &.fas,
-    &.fab {
-        transform: rotate(-180deg);
+    &.fab,
+    &.far {
+        transform: scale(-1, 1);
     }
 }
 
 // transactions
 .transition,
 a, a img,
-a .fas, a .fab,
-a.fas, a.fab,
+a .fas, a .fab, a .far,
+a.fas, a.fab, a.far,
+button .fas, button .fab, button .far,
+button.fas, button.fab, button.far,
 button, input, optgroup, select, textarea,
 .btn,
 .alert,
@@ -43,6 +49,10 @@ button, input, optgroup, select, textarea,
 
 .field {
     margin: ($grid-gutter-height / 4) 0;
+
+    &:first-child {
+        margin-top: 0;
+    }
 }
 
 // stick navbar to top using mobile layout
