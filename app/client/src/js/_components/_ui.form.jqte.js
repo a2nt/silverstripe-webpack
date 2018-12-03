@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 import Events from '../_events';
 import Spinner from '../_components/_ui.spinner';
-import FormValidate from './_ui.form.validate';
+import FormValidateField from "./_ui.form.validate.field";
 
 import '../../thirdparty/jquery-te/jquery-te.js';
 
@@ -29,24 +29,18 @@ const JqteUI = (($) => {
         constructor(element) {
             const ui = this;
             const $element = $(element);
-            const $jqteFields = $element.find('textarea.jqte-field');
-            const validationUI = $element.parents('form').data('jsFormValidate');
+            const validationUI = $element.data('jsFormValidateField');
 
-            $element.data(DATA_KEY, this);
             ui._element = element;
+            $element.data(DATA_KEY, this);
             $element.jqte(jqteOptions);
 
             // dynamic error control
-            $element.parents('.jqte').find('.jqte_editor').on('change', (e) => {
-                const $field = $(e.target);
-                const $container = $field.closest('.field');
-
-                if (!$field.text().length && $container.hasClass('required')) {
-                    validationUI.setError($container);
-                } else {
-                    validationUI.removeError($container);
-                }
-            });
+            if (validationUI) {
+                $element.parents('.jqte').find('.jqte_editor').on('change', (e) => {
+                    validationUI.validate();
+                });
+            }
         }
 
         static dispose() {

@@ -12,10 +12,16 @@ import './_components/routes/index';
 import Events from './_events';
 import Spinner from './_components/_ui.spinner';
 
-import './_components/_ui.shrink';
 import './_components/_ui.carousel';
 import './_components/_ui.menu';
-import './_components/_ui.form.storage';
+
+import FormBasics from './_components/_ui.form.basics';
+import FormDatetime from './_components/_ui.form.datetime';
+import FormStepped from './_components/_ui.form.stepped';
+import FormValidate from './_components/_ui.form.validate';
+import FormStorage from './_components/_ui.form.storage';
+import FormCroppie from './_components/_ui.form.croppie';
+
 import AjaxUI from './_components/_ui.ajax';
 
 import SmoothScroll from 'smooth-scroll';
@@ -144,27 +150,6 @@ const MainUI = (($) => {
             // mark external links
             $('a.external,a[rel="external"]').attr('target', '_blank');
 
-            // data-set links
-            $('[data-set-target]').on('click', (e) => {
-                const $el = $(e.currentTarget);
-                const $target = $($el.data('set-target'));
-
-                if (!$target.length) {
-                    return;
-                }
-
-                $target.each((i, targetEl) => {
-                    const $targetEl = $(targetEl);
-                    const tag = $targetEl.prop('tagName').toLowerCase();
-
-                    if (tag === 'input' || tag === 'select') {
-                        $targetEl.val($el.data('set-val'));
-                    } else if (!$targetEl.hasClass('field')) {
-                        $targetEl.text($el.data('set-val'));
-                    }
-                });
-            });
-
             // show encoded emails
             /*$(D).find('.obm').each(function () {
               if ($(this).attr('data-val') !== undefined) {
@@ -189,18 +174,23 @@ const MainUI = (($) => {
             //
 
             // scroll links
-            $(D).on('click', '.js-scrollTo', function(e) {
+            $(D).on('click', '.js-scrollTo', (e) => {
                 e.preventDefault();
-                ScrollTo(this, $(this).attr('data-target'));
+                const el = e.currentTarget;
+                const $el = $(e.currentTarget);
+
+                ScrollTo(el, $el.attr('data-target'));
             });
 
             // load external fonts
             if ($('[data-extfont]').length) {
                 $.getScript('//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', () => {
                     const fonts = [];
-                    $('[data-extfont]').each(function(i) {
-                        fonts[i] = $(this).attr('data-extfont');
+
+                    $('[data-extfont]').each(function(i, el) {
+                        fonts[i] = $(el).attr('data-extfont');
                     });
+
                     W.WebFont.load({
                         google: {
                             families: fonts,
@@ -208,6 +198,30 @@ const MainUI = (($) => {
                     });
                 });
             }
+
+            // data-set links
+            $('[data-set-target]').on('click', (e) => {
+                const $el = $(e.currentTarget);
+                const $target = $($el.data('set-target'));
+
+                if (!$target.length) {
+                    return;
+                }
+
+                $target.each((i, targetEl) => {
+                    const $targetEl = $(targetEl);
+                    const tag = $targetEl.prop('tagName').toLowerCase();
+
+                    if (tag === 'input' || tag === 'select') {
+                        $targetEl.val($el.data('set-val'));
+                    } else if (!$targetEl.hasClass('field')) {
+                        $targetEl.text($el.data('set-val'));
+                    }
+                });
+
+                $el.trigger(Events.SET_TARGET_UPDATE);
+                $target.closest('form').trigger(Events.SET_TARGET_UPDATE);
+            });
 
             // hide spinner
             Spinner.hide(() => {
@@ -276,14 +290,26 @@ const MainUI = (($) => {
             const $imgLazyUrls = [];
 
             // collect image details
-            $imgs.each(function() {
-                const src = $(this).attr('src');
-                const lazySrc = $(this).data('lazy-src');
-                if (src.length) {
+            $imgs.each((i, el) => {
+                const $el = $(el);
+                const src = $el.attr('src');
+                const lazySrc = $el.data('lazy-src');
+
+                if (src && src.length) {
                     $imgUrls.push(src);
                 }
-                if (lazySrc) {
+                if (lazySrc && lazySrc.length) {
                     $imgLazyUrls.push(lazySrc);
+                    $el.addClass('loading');
+
+                    AjaxUI.preload([lazySrc]).then(() => {
+                        $el.attr('src', lazySrc);
+
+                        $el.addClass('loaded');
+                        $el.removeClass('loading');
+
+                        $el.trigger('image-lazy-loaded');
+                    });
                 }
             });
 
@@ -293,14 +319,6 @@ const MainUI = (($) => {
 
                 // load lazy images
                 AjaxUI.preload($imgLazyUrls).then(() => {
-                    // update lazy img src
-                    $('img[data-lazy-src]').each(function() {
-                        if (!$(this).attr('src')) {
-                            return;
-                        }
-                        $(this).attr('src', $(this).data('lazy-src'));
-                    });
-
                     console.log('All images are loaded!');
 
                     $(W).trigger('images-lazy-loaded');

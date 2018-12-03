@@ -31,6 +31,10 @@ const FormStorage = (($) => {
                 const type = $el.attr('type');
                 const val = STORAGE.getItem(NAME + id);
 
+                if (type === 'file') {
+                    return true;
+                }
+
                 if (id && val && type) {
                     if (type && (type === 'checkbox' || type === 'radio')) {
                         $el.prop('checked', val);

@@ -8,12 +8,12 @@
 
 namespace Site\Extensions;
 
-
 use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\Security\Member;
 
 class SocialExtension extends DataExtension
 {
@@ -58,5 +58,19 @@ class SocialExtension extends DataExtension
         ]);
 
         $fields->addFieldsToTab('Root.Social', $linkFields);
+    }
+
+    public static function byPhone($phone)
+    {
+        $links = Link::get()->filter('Phone', $phone);
+
+        if ($links->exists()) {
+            return Member::get()->filter(
+                'PhoneNumberID',
+                array_keys($links->map('ID', 'Title')->toArray())
+            )->first();
+        }
+
+        return null;
     }
 }

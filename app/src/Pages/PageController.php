@@ -23,9 +23,10 @@ class PageController extends ContentController
     public function getSiteWideMessage()
     {
         $session = $this->getRequest()->getSession();
+        $message = $session->get('SiteWideMessage');
         $session->clear('SiteWideMessage');
 
-        return $session->get('SiteWideMessage');
+        return $message;
     }
 
     public function CurrentTime()

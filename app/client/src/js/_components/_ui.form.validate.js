@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import Events from "../_events";
+import FormValidateField from "./_ui.form.validate.field";
 
 const FormValidate = (($) => {
     // Constants
@@ -19,23 +20,22 @@ const FormValidate = (($) => {
 
             ui._fields = $fields;
             ui._stepped_form = $element.data('jsSteppedForm');
+
+            // prevent browsers checks (will do it using JS)
+            $element.attr('novalidate', 'novalidate');
+
             $element.on(Events.FORM_INIT_STEPPED, () => {
                 ui._stepped_form = $element.data('jsSteppedForm');
             });
 
-            // prevent browsers checks (will do it using JS)
-            $element.attr('novalidate', 'novalidate');
+            // init fields validation
             $fields.each((i, el) => {
-                el.required = false;
-            });
-
-            $fields.on('change', (e) => {
-                ui.validateField($(e.target), false);
+                new FormValidateField(el);
             });
 
             // check form
             $element.on('submit', (e) => {
-                ui.validateForm($element, true, () => {
+                ui.validate(true, () => {
                     e.preventDefault();
 
                     // switch to step
@@ -64,50 +64,22 @@ const FormValidate = (($) => {
             this._element = null;
         }
 
-        validateForm($form, scrollTo = true, badCallback = false) {
+        validate(scrollTo = true, badCallback = false) {
             console.log('Checking the form ...');
             const ui = this;
 
             ui._fields.each(function(i, el) {
                 const $el = $(el);
+                const fieldUI = $el.data('jsFormValidateField');
 
-                if (!ui.validateField($el)) {
+                if (fieldUI && !fieldUI.validate()) {
                     if (badCallback) {
                         badCallback();
                     }
+
                     return false;
                 }
             });
-        }
-
-        validateField($el, scrollTo = true) {
-            const $field = $el.closest('.field');
-
-            if (!$el[0].checkValidity() ||
-                ($el.hasClass('required') && !$el.val().trim().length)
-            ) {
-                this.setError($field, scrollTo);
-                return false;
-            } else {
-                this.removeError($field);
-            }
-
-            return true;
-        }
-
-        setError($field, scrollTo = true) {
-            const pos = $field.offset().top;
-
-            $field.addClass('error');
-
-            if (scrollTo) {
-                $field.focus();
-                $Html.scrollTop(pos - 100);
-            }
-        }
-
-        removeError($field) {
-            $field.removeClass('error');
         }
 
         static _jQueryInterface() {

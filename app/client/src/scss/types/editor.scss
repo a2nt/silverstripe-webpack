@@ -1,1 +1,48 @@
 @import "../_variables";
+
+@import "~bootstrap/scss/tables";
+
+.image {
+    &.left {
+        float: left;
+        clear: left;
+    }
+
+    &.center {
+        display: block;
+        margin: 0 auto;
+    }
+
+    &.right {
+        float: right;
+        clear: right;
+    }
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+
+    @extend .table;
+
+    @extend .table-bordered;
+
+    @extend .table-striped;
+}

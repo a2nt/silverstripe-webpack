@@ -19,7 +19,6 @@
         "dnadesign/silverstripe-elemental-virtual": "*",
         "dnadesign/silverstripe-elemental-userforms": "*",
         "dynamic/silverstripe-elemental-blocks": "*",
-        "hestec/silverstripe-cookiebar": "^1.0",
         "drmartingonzo/ss-tinymce-charcount": "^1.0",
         "axllent/silverstripe-version-truncator": "*",
         "firesphere/googlemapsfield": "^1.0@dev",

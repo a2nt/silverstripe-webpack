@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Events from '../_events';
 import LANG from '../lang/_en';
-import FormValidate from './_ui.form.validate';
+import FormValidateField from "./_ui.form.validate.field";
 
 const SteppedForm = (($) => {
     // Constants
@@ -13,6 +13,7 @@ const SteppedForm = (($) => {
         constructor(element) {
             const ui = this;
             const $element = $(element);
+
             $element.data(DATA_KEY, this);
 
             if (!$element.find('.steps-counter').length) {
@@ -28,15 +29,32 @@ const SteppedForm = (($) => {
 
             ui._steps = $element.find('.step');
             ui._stepNext = $element.find('.step-next');
+
             ui._stepPrev = $element.find('.step-prev');
             ui._actions = $element.children('.btn-toolbar,.form-actions');
 
             ui._element = element;
             ui._currentStep = 1;
-            ui._totalSteps = ui._steps.length;
+            ui._totalSteps = ui._steps.last().data('step') || ui._steps.length;
             ui._stepsOrder = [];
 
             ui._totalStepsCounter.text(ui._totalSteps);
+
+            // check if one of the steps already has an error
+            const $hasError = ui._steps
+                .find('.field.error,.field.holder-error,.field.holder-validation,.field.holder-info,.field.holder-warning,.field.holder-good')
+                .first();
+            if ($hasError.length) {
+                const $modal = $element.parents('.modal');
+
+                // show modal
+                if ($modal.length && typeof $modal.modal !== 'undefined') {
+                    $modal.modal('show');
+                }
+
+                ui._currentStep = $hasError.parents('.step').data('step') || ui._currentStep;
+            }
+            //
 
             ui.step('.step[data-step="' + ui._currentStep + '"]');
 
@@ -78,8 +96,7 @@ const SteppedForm = (($) => {
                 return;
             }
 
-            ui._currentStep++;
-            ui.step('.step[data-step="' + ui._currentStep + '"]');
+            ui.step('.step[data-step="' + (ui._currentStep + 1) + '"]');
         }
 
         prev() {
@@ -89,17 +106,37 @@ const SteppedForm = (($) => {
                 return;
             }
 
-            ui._currentStep--;
-            ui.step(ui._stepsOrder[ui._currentStep]);
+            ui.step(ui._stepsOrder[ui._currentStep - 1]);
         }
 
         step(target) {
             const ui = this;
             const $element = $(ui._element);
             const $target = $element.find(target);
+            const targetStep = parseInt($target.data('step'));
+
+            // validate current step
+            let valid = true;
+
+            if (targetStep > ui._currentStep) {
+                ui.currentStep().find('input,textarea,select').each((i, el) => {
+                    const $el = $(el);
+                    const fieldUI = $el.data('jsFormValidateField');
+
+                    if (fieldUI && !fieldUI.validate()) {
+                        valid = false;
+                    }
+                });
+            }
+
+            if (!valid) {
+                return false;
+            }
+            //
 
             if (parseInt($target.data('step')) <= '1') {
                 ui._stepPrev.hide();
+                $element.trigger(Events.FORM_STEPPED_FIRST_STEP);
             } else {
                 ui._stepPrev.show();
             }
@@ -107,18 +144,30 @@ const SteppedForm = (($) => {
             if (parseInt($target.data('step')) >= ui._totalSteps) {
                 ui._stepNext.hide();
                 ui._actions.show();
+
+                $element.trigger(Events.FORM_STEPPED_LAST_STEP);
             } else {
                 ui._stepNext.show();
                 ui._actions.hide();
             }
 
-            ui._currentStep = parseInt($target.data('step'));
+            ui._currentStep = targetStep;
             ui._stepsOrder[ui._currentStep] = $target;
 
             ui._steps.removeClass('active');
             $target.addClass('active');
 
             ui._currentStepCounter.text(ui._currentStep);
+
+            $target.trigger(Events.FORM_STEPPED_NEW_STEP);
+            $element.trigger(Events.FORM_STEPPED_NEW_STEP);
+        }
+
+        currentStep() {
+            const ui = this;
+            const $element = $(ui._element);
+
+            return $element.find('.step.active');
         }
 
         static _jQueryInterface() {
