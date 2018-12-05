@@ -12,6 +12,10 @@ SilverShop\Model\Address:
   extensions:
   - Site\Extensions\AddressExtension
 
+SilverShop\Cart\ShoppingCartController:
+  extensions:
+    - Site\Extensions\ShoppingCartControllerExtension
+
 Site\Templates\DeferedRequirements:
   custom_requirements:
     SilverShop\Page\AccountPageController:

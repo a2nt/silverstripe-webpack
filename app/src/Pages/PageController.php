@@ -9,24 +9,27 @@ use SilverStripe\ORM\FieldType\DBDatetime;
 
 class PageController extends ContentController
 {
-    public function setSiteWideMessage($message, $type)
+    public static function setSiteWideMessage($message, $type, $request = null)
     {
-        $this->getRequest()->getSession()->set(
+        $request = $request ? $request : Controller::curr()->getRequest();
+        $request->getSession()->set(
             'SiteWideMessage',
-            [
+            ArrayData::create([
                 'Message' => $message,
                 'Type' => $type,
-            ]
+            ])
         );
     }
 
     public function getSiteWideMessage()
     {
-        $session = $this->getRequest()->getSession();
-        $message = $session->get('SiteWideMessage');
-        $session->clear('SiteWideMessage');
+        if (!$this->site_message) {
+            $session = $this->getRequest()->getSession();
+            $this->site_message = $session->get('SiteWideMessage');
+            $session->clear('SiteWideMessage');
+        }
 
-        return $message;
+        return $this->site_message;
     }
 
     public function CurrentTime()

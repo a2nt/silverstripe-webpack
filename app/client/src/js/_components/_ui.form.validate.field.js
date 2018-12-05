@@ -43,12 +43,19 @@ const FormValidateField = (($) => {
             const $field = $el.closest('.field');
             const extraChecks = $el.data(`${NAME}-extra`);
             let valid = true;
+            let msg = null;
 
             // browser checks + required
             if (!ui._element.checkValidity() ||
                 ($el.hasClass('required') && !$el.val().trim().length)
             ) {
                 valid = false;
+            }
+
+            // validate URL
+            if ($el.hasClass('url') && $el.val().trim().length && !this.valideURL($el.val())) {
+                valid = false;
+                msg = 'URL must start with http:// or https://. For example: https://your-domain.com/';
             }
 
             // extra checks
@@ -63,21 +70,32 @@ const FormValidateField = (($) => {
                 return true;
             }
 
-            this.setError(scrollTo);
+            this.setError(scrollTo, msg);
             return false;
         }
 
-        setError(scrollTo = true) {
+        valideURL(str) {
+            const regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+            if (!regex.test(str)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        setError(scrollTo = true, msg = null) {
             const ui = this;
             const $field = $(ui._element).closest('.field');
             const pos = $field.offset().top;
 
             $field.addClass('error');
+            if (msg) {
+                $field.append('<div class="message alert alert-error alert-danger">' + msg + '</div>');
+            }
 
             if (scrollTo) {
                 $field.focus();
                 $Html.scrollTop(pos - 100);
-
             }
         }
 
