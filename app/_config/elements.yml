@@ -3,6 +3,7 @@ Name: webapp-elemental
 After:
   - elemental
   - elemental-list
+  - elementalvirtual
 ---
 
 Page:

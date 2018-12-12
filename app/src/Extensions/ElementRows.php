@@ -10,6 +10,7 @@ namespace Site\Extensions;
 
 use DNADesign\ElementalList\Model\ElementList;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
@@ -33,7 +34,11 @@ class ElementRows extends DataExtension
     {
         parent::updateCMSFields($fields);
 
+        // move available globaly to main tab
+        $fields->removeByName('AvailableGlobally');
+        
         $tab = $fields->findOrMakeTab('Root.Main');
+        $tab->push(CheckboxField::create('AvailableGlobally'));
 
         // container type
         if ($this->isRoot()) {
@@ -45,6 +50,9 @@ class ElementRows extends DataExtension
         } else {
             $fields->removeByName('ContainerType');
         }
+
+        // site-specific
+        $fields->removeByName('ContainerType');
 
         // column size
         if ($this->isColumn()) {

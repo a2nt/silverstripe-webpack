@@ -25,6 +25,7 @@ const MapAPI = (($) => {
             this._element = element;
             const $element = $(this._element);
             const geojson = $element.data('geojson');
+
             const center = [
                 ($element.data('lng') ? $element.data('lng') : $BODY.data('default-lng')),
                 ($element.data('lat') ? $element.data('lat') : $BODY.data('default-lat')),
@@ -33,6 +34,7 @@ const MapAPI = (($) => {
                 closeOnClick: false,
                 className: 'popup'
             });
+
             currentStyle = this.getStyle();
             mapBoxGL.accessToken = $element.data('key');
 

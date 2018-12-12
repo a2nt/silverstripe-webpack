@@ -2,6 +2,7 @@ import 'bootstrap-select/js/bootstrap-select';
 
 import $ from 'jquery';
 import Events from "../_events";
+import SpinnerUI from './_ui.spinner';
 
 const FormBasics = (($) => {
     // Constants
@@ -54,6 +55,10 @@ const FormBasics = (($) => {
                 if ($el.is(':checked')) {
                     $parent.addClass('checked');
                 }
+            });
+
+            $element.on('submit', (e) => {
+                SpinnerUI.show();
             });
 
             $element.addClass(`${NAME}-active`);
