@@ -11,6 +11,10 @@ SilverStripe\Blog\Model\BlogPost:
   extensions:
     - Site\Extensions\BlogPostExtension
 
+Dynamic\FlexSlider\Model\SlideImage:
+  extensions:
+  - Site\Extensions\SlideImageExtension
+
 SilverStripe\Core\Injector\Injector:
   SilverStripe\UserForms\Model\UserDefinedForm:
     class: Site\Extensions\CMSMain_HiddenClass
