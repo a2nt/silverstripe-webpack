@@ -16,6 +16,8 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Control\HTTPRequest;
+use SilverStripe\ORM\ArrayList;
+use DNADesign\Elemental\Models\ElementContent;
 
 class PageController extends ContentController
 {
@@ -68,10 +70,32 @@ class PageController extends ContentController
             return false;
         }
 
-        $results = SiteTree::get()->filterAny([
+        $results = ArrayList::create();
+
+        // get pages by title and content
+        $pages = SiteTree::get()->filterAny([
             'Title:PartialMatch' => $term,
             'Content:PartialMatch' => $term,
         ])->sort('Created DESC');
+
+        $results->merge($pages);
+
+        // get pages by elements
+        $elements = ElementContent::get()->filterAny([
+            'Title:PartialMatch' => $term,
+            'HTML:PartialMatch' => $term,
+        ])->sort('Created DESC');
+
+        foreach ($elements as $element) {
+            $page = Page::get()->filter('ElementalAreaID', $element->getField('ParentID'))->first();
+            if(!$page) {
+                continue;
+            }
+
+            $results->push($page);
+        }
+
+        $results->removeDuplicates();
 
         return ArrayData::create([
             'Title' => 'Search query "'.$term.'"',

@@ -8,44 +8,45 @@ img {
     max-width: 100%;
 }
 
-a,
-button,
-.jqte_tool_icon {
-    &:hover,
-    &:focus {
-        opacity: .8;
+.a {
+    cursor: pointer;
+}
 
-        .fas,
-        .fab,
-        .far,
-        &.fas,
-        &.fab,
-        &.far {
-            transform: scale(-1, 1);
-        }
+.a:hover,
+.a:focus,
+a:hover,
+a:focus,
+[data-toggle]:hover,
+[data-toggle]:focus {
+    opacity: .8;
+
+    .fas,
+    .fab,
+    &.fas,
+    &.fab {
+        transform: rotate(-180deg);
     }
 }
 
-.jqte_tool_icon {
-    &:hover,
-    &:focus {
-        transform: scale(-1, 1);
+[data-toggle="collapse"] {
+    &[aria-expanded="true"] {
+        .accordion-icon {
+            &:before {
+                content: "\f068";
+            }
+        }
     }
 }
 
 // transactions
 .transition,
-a, a img,
-.jqte_tool_icon,
-a .fas, a .fab, a .far,
-a.fas, a.fab, a.far,
-button .fas, button .fab, button .far,
-button.fas, button.fab, button.far,
+a, a *,
+.a, .a *,
 button, input, optgroup, select, textarea,
 .btn,
 .alert,
 .dropdown,
-[data-target],
+[data-toggle], [data-toggle] *,
 .container,
 .container-fluid,
 .row,
@@ -53,73 +54,12 @@ button, input, optgroup, select, textarea,
     transition: all 0.4s ease;
 }
 
-.alert-fixed-top {
-    position: fixed;
-    top: 0;
-    z-index: 999;
-    left: 4rem;
-    right: 4rem;
-}
-
 .btn-toolbar {
     margin-top: $grid-gutter-height / 2;
 }
 
 .field {
-    position: relative;
-    margin: 2rem 0;
     margin: ($grid-gutter-height / 4) 0;
-
-    &:first-child {
-        margin-top: 0;
-    }
-
-    &.required {
-        &:after {
-            display: block;
-            position: absolute;
-            top: 2rem;
-            right: .5rem;
-            content: "*";
-            color: $red;
-            z-index: 2;
-        }
-    }
-
-    &.holder-error,
-    &.error {
-        input, select, textarea {
-            border-color: $red;
-        }
-
-        label {
-            color: $red;
-        }
-    }
-
-    label {
-        font-weight: bold;
-    }
-
-    .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-        width: 100%;
-    }
-}
-
-.message {
-    @extend .alert;
-
-    @extend .alert-info;
-
-    display: block;
-    margin: .5rem 0;
-}
-
-.message.required,
-.message.error {
-    @extend .alert;
-
-    @extend .alert-danger;
 }
 
 // stick navbar to top using mobile layout
