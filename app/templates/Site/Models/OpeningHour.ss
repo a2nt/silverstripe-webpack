@@ -1,0 +1,1 @@
+<b>$Day:</b> $From.Nice - $Till.Nice

@@ -17,6 +17,10 @@ SilverStripe\View\SSViewer:
 #  extra_requirements_css:
 #    - 'colymba/gridfield-bulk-editing-tools:client/dist/styles/main.css'
 
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_css:
+  - 'app/client/dist/css/cms.css'
+
 SilverStripe\Forms\HTMLEditor\TinyMCEConfig:
   editor_css:
     - 'app/client/dist/css/editor.css'

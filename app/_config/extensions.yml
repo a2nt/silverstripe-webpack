@@ -1,5 +1,6 @@
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
+    - Broarm\OpeningHours\OpeningHours
     - Site\Extensions\SiteConfigExtension
     - Site\Extensions\SocialExtension
 

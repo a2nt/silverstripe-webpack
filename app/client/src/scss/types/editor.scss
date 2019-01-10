@@ -6,16 +6,18 @@
     &.left {
         float: left;
         clear: left;
+        margin: 0 1rem 1rem 0;
     }
 
     &.center {
         display: block;
-        margin: 0 auto;
+        margin: 1rem auto;
     }
 
     &.right {
         float: right;
         clear: right;
+        margin: 1rem 0 0 1rem;
     }
 }
 

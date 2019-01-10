@@ -43,7 +43,8 @@ const CarouselUI = (($) => {
 
                 // create arrows
                 if ($e.data('arrows')) {
-                    $e.prepend('<i class="carousel-control-prev" data-target="#' + id + '" role="button" data-slide="prev"><i class="fas fa-chevron-left" aria-hidden="true"></i><i class="sr-only">Previous</i></i>');
+                    let $prev = $('<i class="carousel-control-prev" data-target="#' + id + '" role="button" data-slide="prev"><i class="fas fa-chevron-left" aria-hidden="true"></i><i class="sr-only">Previous</i></i>');
+                    $e.prepend($prev);
                     $e.prepend('<i class="carousel-control-next" data-target="#' + id + '" role="button" data-slide="next"><i class="fas fa-chevron-right" aria-hidden="true"></i><i class="sr-only">Next</i></i>');
                 }
 
@@ -67,8 +68,8 @@ const CarouselUI = (($) => {
                     $(event.target).carousel('prev');
                 });
 
-                $e.hammer().bind('tap', (event) => {
-                    $(event.target).carousel('next');
+                $e.find('img').hammer().bind('tap', (event) => {
+                    $e.carousel('next');
                 });
             });
         }
