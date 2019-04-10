@@ -36,7 +36,8 @@ class DeferedRequirements implements TemplateGlobalProvider
     public static function Auto($class = false)
     {
         $config = Config::inst()->get(self::class);
-        $themeName = WebpackTemplateProvider::themeName();
+        $projectName = WebpackTemplateProvider::projectName();
+        $mainTheme = WebpackTemplateProvider::mainTheme();
 
         // Initialization
         Requirements::block(THIRDPARTY_DIR.'/jquery/jquery.js');
@@ -53,10 +54,10 @@ class DeferedRequirements implements TemplateGlobalProvider
         if (!$config['nofontawesome']) {
             DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.4.0/css/all.css');
         }
-        DeferedRequirements::loadCSS($themeName.'.css');
-        DeferedRequirements::loadJS($themeName.'.js');
+        DeferedRequirements::loadCSS($mainTheme.'.css');
+        DeferedRequirements::loadJS($mainTheme.'.js');
 
-        // Class libs
+        // Custom controller requirements
         $class = get_class(Controller::curr());
         if (isset($config['custom_requirements'][$class])) {
             foreach ($config['custom_requirements'][$class] as $file) {
@@ -73,17 +74,26 @@ class DeferedRequirements implements TemplateGlobalProvider
         $dir = Path::join(
             Director::publicFolder(),
             ManifestFileFinder::RESOURCES_DIR,
-            $themeName,
+            $projectName,
             'client',
             'dist'
         );
 
-        if (file_exists(Path::join($dir, 'css', $themeName.'_'.$class . '.css'))) {
-            DeferedRequirements::loadCSS($themeName.'_'.$class . '.css');
+        // Controller requirements
+        $themePath = Path::join($dir, 'css', $mainTheme.'_'.$class . '.css');
+        $projectPath = Path::join($dir, 'css', $projectName.'_'.$class . '.css');
+        if ($mainTheme && file_exists($themePath)){
+            DeferedRequirements::loadCSS($mainTheme.'_'.$class . '.css');
+        } else if (file_exists($projectPath)) {
+            DeferedRequirements::loadCSS($projectName.'_'.$class . '.css');
         }
 
-        if (file_exists(Path::join($dir, 'js', $themeName.'_'.$class . '.js'))) {
-            DeferedRequirements::loadJS($themeName.'_'.$class . '.js');
+        $themePath = Path::join($dir, 'js', $mainTheme.'_'.$class . '.js');
+        $projectPath = Path::join($dir, 'js', $projectName.'_'.$class . '.js');
+        if ($mainTheme && file_exists($themePath)){
+            DeferedRequirements::loadJS($mainTheme.'_'.$class . '.js');
+        } else if (file_exists($projectPath)) {
+            DeferedRequirements::loadJS($projectName.'_'.$class . '.js');
         }
 
         return self::forTemplate();

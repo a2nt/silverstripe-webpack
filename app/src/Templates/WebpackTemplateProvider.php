@@ -7,6 +7,7 @@
 namespace Site\Templates;
 
 use SilverStripe\Core\Manifest\ModuleManifest;
+use SilverStripe\View\SSViewer;
 use SilverStripe\View\TemplateGlobalProvider;
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\Director;
@@ -66,14 +67,20 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
         Requirements::javascript(self::_getPath($path));
     }
 
-    public static function themeName()
+    public static function projectName()
     {
         return Config::inst()->get(ModuleManifest::class, 'project');
     }
 
+    public static function mainTheme()
+    {
+        $themes = Config::inst()->get(SSViewer::class, 'themes');
+        return is_array($themes) && $themes[0] !== '$public' && $themes[0] !== '$default' ? $themes[0] : false;
+    }
+
     public static function resourcesURL($link = null)
     {
-        return Controller::join_links(Director::baseURL(), '/resources/'.self::themeName().'/client/dist/img/', $link);
+        return Controller::join_links(Director::baseURL(), '/resources/'.self::projectName().'/client/dist/img/', $link);
     }
 
 
@@ -111,7 +118,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     {
         return strpos($path, '//') === false ?
             Controller::join_links(
-                self::themeName(),
+                self::projectName(),
                 Config::inst()->get(__CLASS__, 'DIST'),
                 (strpos($path, '.css') ? 'css' : 'js'),
                 $path
