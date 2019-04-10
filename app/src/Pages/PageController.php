@@ -18,6 +18,8 @@ use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\ArrayList;
 use DNADesign\Elemental\Models\ElementContent;
+use DNADesign\Elemental\Models\ElementalArea;
+use DNADesign\ElementalUserForms\Control\ElementFormController;
 
 class PageController extends ContentController
 {
@@ -36,6 +38,26 @@ class PageController extends ContentController
         }
 
         return $this->render();
+    }
+
+    public function ElementalArea()
+    {
+        if($this->CurrentElement()) {
+            return false;
+        }
+
+        return ElementalArea::get()->byID($this->getField('ElementalAreaID'));
+    }
+
+    public function CurrentElement()
+    {
+        $contoller_curr = Controller::curr();
+
+        if(is_a($contoller_curr, ElementFormController::class)) {
+            return $contoller_curr;
+        }
+
+        return false;
     }
 
     public function SearchForm()
@@ -98,7 +120,7 @@ class PageController extends ContentController
         $results->removeDuplicates();
 
         return ArrayData::create([
-            'Title' => 'Search query "'.$term.'"',
+            'Title' => 'You searched for: "'.$term.'"',
             'Results' => PaginatedList::create($results),
         ]);
     }
@@ -124,8 +146,10 @@ class PageController extends ContentController
 
     public function getSiteWideMessage()
     {
-        if (!$this->site_message) {
-            $session = $this->getRequest()->getSession();
+        $request = $this->getRequest();
+
+        if ($request->isGET() && !$this->site_message) {
+            $session = $request->getSession();
             $this->site_message = $session->get('SiteWideMessage');
             $session->clear('SiteWideMessage');
         }

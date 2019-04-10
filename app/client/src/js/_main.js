@@ -20,7 +20,7 @@ import FormDatetime from './_components/_ui.form.datetime';
 import FormStepped from './_components/_ui.form.stepped';
 import FormValidate from './_components/_ui.form.validate';
 import FormStorage from './_components/_ui.form.storage';
-import FormCroppie from './_components/_ui.form.croppie';
+//import FormCroppie from './_components/_ui.form.croppie';
 
 import AjaxUI from './_components/_ui.ajax';
 

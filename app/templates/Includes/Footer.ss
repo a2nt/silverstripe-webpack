@@ -27,7 +27,10 @@
             </div>
             <div class="col-sm-6">
                 <% if $PrivacyPolicy %>
-                    <a href="$PrivacyPolicy.Link" target="_blank">$PrivacyPolicy.Title</a>
+                    <a href="$PrivacyPolicy.Link">$PrivacyPolicy.Title</a>
+                <% end_if %>
+                <% if $Sitemap %>
+                    <a href="$Sitemap.Link">$Sitemap.Title</a>
                 <% end_if %>
             </div>
         </div>

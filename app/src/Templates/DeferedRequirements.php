@@ -36,6 +36,7 @@ class DeferedRequirements implements TemplateGlobalProvider
     public static function Auto($class = false)
     {
         $config = Config::inst()->get(self::class);
+        $themeName = WebpackTemplateProvider::themeName();
 
         // Initialization
         Requirements::block(THIRDPARTY_DIR.'/jquery/jquery.js');
@@ -50,10 +51,10 @@ class DeferedRequirements implements TemplateGlobalProvider
         }
         // App libs
         if (!$config['nofontawesome']) {
-            DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.3.1/css/all.css');
+            DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.4.0/css/all.css');
         }
-        DeferedRequirements::loadCSS('app.css');
-        DeferedRequirements::loadJS('app.js');
+        DeferedRequirements::loadCSS($themeName.'.css');
+        DeferedRequirements::loadJS($themeName.'.js');
 
         // Class libs
         $class = get_class(Controller::curr());
@@ -72,17 +73,17 @@ class DeferedRequirements implements TemplateGlobalProvider
         $dir = Path::join(
             Director::publicFolder(),
             ManifestFileFinder::RESOURCES_DIR,
-            'app',
+            $themeName,
             'client',
             'dist'
         );
 
-        if (file_exists(Path::join($dir, 'css', $class . '.css'))) {
-            DeferedRequirements::loadCSS($class . '.css');
+        if (file_exists(Path::join($dir, 'css', $themeName.'_'.$class . '.css'))) {
+            DeferedRequirements::loadCSS($themeName.'_'.$class . '.css');
         }
 
-        if (file_exists(Path::join($dir, 'js', $class . '.js'))) {
-            DeferedRequirements::loadJS($class . '.js');
+        if (file_exists(Path::join($dir, 'js', $themeName.'_'.$class . '.js'))) {
+            DeferedRequirements::loadJS($themeName.'_'.$class . '.js');
         }
 
         return self::forTemplate();
@@ -90,7 +91,8 @@ class DeferedRequirements implements TemplateGlobalProvider
 
     public static function loadCSS($css)
     {
-        if (self::$defered && !self::_webpackActive()) {
+        $external = (mb_substr($css, 0, 2) === '//' || mb_substr($css, 0, 4) === 'http');
+        if ($external || (self::$defered && !self::_webpackActive())) {
             self::$css[] = $css;
         } else {
             WebpackTemplateProvider::loadCSS($css);
@@ -99,6 +101,9 @@ class DeferedRequirements implements TemplateGlobalProvider
 
     public static function loadJS($js)
     {
+        /*$external = (mb_substr($js, 0, 2) === '//' || mb_substr($js, 0, 4) === 'http');
+        if ($external || (self::$defered && !self::_webpackActive())) {*/
+        // webpack supposed to load external JS
         if (self::$defered && !self::_webpackActive()) {
             self::$js[] = $js;
         } else {
@@ -118,10 +123,6 @@ class DeferedRequirements implements TemplateGlobalProvider
 
     public static function forTemplate()
     {
-        if (!self::$defered || self::_webpackActive()) {
-            return false;
-        }
-
         $result = '';
         foreach (self::$css as $css) {
             $result .= '<i class="defer-cs" data-load="' . self::get_url($css) . '"></i>';
@@ -137,7 +138,7 @@ class DeferedRequirements implements TemplateGlobalProvider
             .'function lscd(a){a<s.length-1&&(a++,lsc(s.item(a).getAttribute("data-load"),function(){lscd(a)}))}'
             .'for(var s=document.getElementsByClassName("defer-cs"),i=0;i<s.length;i++){var b=document.createElement("link");b.rel="stylesheet",'
             .'b.type="text/css",b.href=s.item(i).getAttribute("data-load"),b.media="all";var c=document.getElementsByTagName("body")[0];'
-            .'c.appendChild(b)}var s=document.getElementsByClassName("defer-sc"),i=0;lsc(s.item(i).getAttribute("data-load"),function(){lscd(i)});'
+            .'c.appendChild(b)}var s=document.getElementsByClassName("defer-sc"),i=0;if(s.item(i)!==null)lsc(s.item(i).getAttribute("data-load"),function(){lscd(i)});'
             .'</script>';
 
         return $result;

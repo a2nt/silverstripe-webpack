@@ -60,6 +60,55 @@ button, input, optgroup, select, textarea,
 
 .field {
     margin: ($grid-gutter-height / 4) 0;
+
+    &.composite {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    &.required {
+        &:after {
+            display: block;
+            position: absolute;
+            top: 2rem;
+            right: .5rem;
+            content: "*";
+            color: $red;
+            z-index: 2;
+        }
+    }
+
+    &.holder-error,
+    &.error {
+        input, select, textarea {
+            border-color: $red;
+        }
+
+        label {
+            color: $red;
+        }
+    }
+
+    .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+        width: 100%;
+    }
+}
+
+.message {
+    @extend .alert;
+
+    @extend .alert-info;
+
+    display: block;
+    margin: .5rem 0;
+}
+
+.message.validation,
+.message.required,
+.message.error {
+    @extend .alert;
+
+    @extend .alert-danger;
 }
 
 // stick navbar to top using mobile layout

@@ -29,6 +29,8 @@
         "bootstrap-offcanvas": "^1.0.0",
         "bootstrap-select": "^1.13.2",
         "bootstrap-timepicker": "^0.5.2",
+	"bootstrap-confirmation2": "^4.0.4",
+        "bootstrap-table": "^1.14.2",
         "core-util-is": "^1.0.2",
         "font-awesome": "^4.7.0",
         "foundation-emails": "^2.2.1",

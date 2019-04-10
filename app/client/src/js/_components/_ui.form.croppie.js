@@ -104,6 +104,10 @@ const CroppieUI = (($) => {
                         data.append(name, blob, name + '-image.png');
                         data.append('ajax', '1');
 
+                        if (!$(form).data('jsFormValidate').validate()) {
+                            return false;
+                        }
+
                         $.ajax({
                             url: $(form).attr('action'),
                             data: data,
@@ -112,27 +116,29 @@ const CroppieUI = (($) => {
                             type: $(form).attr('method'),
                             success: function(data) {
                                 let IS_JSON = false;
+                                let json = {};
                                 try {
                                     IS_JSON = true;
-                                    const json = $.parseJSON(data);
+                                    json = $.parseJSON(data);
                                 } catch (e) {
                                     IS_JSON = false;
                                 }
 
-                                if (IS_JSON && typeof json === 'object') {
-                                    for (let k in json) {
+                                if (IS_JSON) {
+                                    /*for (let k in json) {
                                         $form.find('select[name="' + k + '"],input[name="' + k + '"],textarea[name="' + k + '"]').setError(true, json[k]);
-                                    }
+                                    }*/
 
                                     if (typeof json['status'] !== 'undefined' && json['status'] === 'success') {
                                         if (typeof json['link'] !== 'undefined') {
                                             G.location = json['link'];
                                         } else {
-                                            G.location.reload(false);
+                                            //G.location.reload(false);
                                         }
                                     }
                                 } else {
-                                    G.location.reload(false);
+                                    $(form).replaceWith(data);
+                                    //G.location.reload(false);
                                 }
 
                                 SpinnerUI.hide();

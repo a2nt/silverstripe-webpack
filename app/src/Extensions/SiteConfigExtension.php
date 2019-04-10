@@ -11,6 +11,7 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TreeMultiselectField;
+use SilverStripe\Forms\DropdownField;
 use BetterBrief\GoogleMapField;
 
 class SiteConfigExtension extends DataExtension

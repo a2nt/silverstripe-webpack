@@ -17,9 +17,9 @@ module.exports = merge(common, {
     devtool: '',
 
     output: {
-        path: path.join(__dirname, conf.DIST),
-        filename: 'js/[name].js',
-        publicPath: conf.DIST + '/',
+        path: path.join(__dirname, conf.APPDIR, conf.DIST),
+        filename: path.join('js', '[name].js'),
+        publicPath: path.join(conf.APPDIR, conf.DIST),
     },
 
     module: {
@@ -82,7 +82,20 @@ module.exports = merge(common, {
                     publicPath: '../fonts/'
                 }
             }]
-        }]
+        }, {
+            test: /\.(png|jpg|jpeg|gif|svg)$/,
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]',
+                outputPath: 'img/',
+                publicPath: '../img/'
+                    /*,
+                                    name(file) {
+                                        //return 'public/[path][name].[ext]';
+                                        return '[hash].[ext]';
+                                    },*/
+            },
+        }, ]
     },
 
     plugins: [
@@ -106,9 +119,9 @@ module.exports = merge(common, {
         }),
 
         new FaviconsWebpackPlugin({
-            logo: path.join(__dirname, conf.SRC) + '/favicon.png',
+            logo: path.join(__dirname, conf.APPDIR, conf.SRC, 'favicon.png'),
             prefix: '/icons/',
-            statsFilename: conf.DIST + '/icons/iconstats.json',
+            statsFilename: path.join(conf.APPDIR, conf.DIST, 'icons', 'iconstats.json'),
             icons: {
                 android: true,
                 appleIcon: true,

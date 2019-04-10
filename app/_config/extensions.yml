@@ -1,6 +1,5 @@
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
-    - Broarm\OpeningHours\OpeningHours
     - Site\Extensions\SiteConfigExtension
     - Site\Extensions\SocialExtension
 
@@ -19,3 +18,18 @@ Dynamic\FlexSlider\Model\SlideImage:
 SilverStripe\Core\Injector\Injector:
   SilverStripe\UserForms\Model\UserDefinedForm:
     class: Site\Extensions\CMSMain_HiddenClass
+  SilverStripe\Security\MemberAuthenticator\LostPasswordHandler:
+    class: Site\Extensions\LostPasswordHandlerExtension
+
+# User Forms
+SilverStripe\UserForms\Form\UserForm:
+  extensions:
+    - Site\Extensions\PlaceholderFormExtension
+
+SilverStripe\UserForms\Model\UserDefinedForm:
+  extensions:
+    - Site\Extensions\UserDefinedFormExtension
+
+DNADesign\ElementalUserForms\Model\ElementForm:
+  extensions:
+    - Site\Extensions\UserDefinedFormExtension

@@ -6,46 +6,79 @@ const webpack = require('webpack');
 const conf = require('./webpack.configuration');
 
 const path = require('path');
+const filesystem = require('fs');
 
-const includes = {
-    app: path.join(__dirname, conf.SRC, 'js/app.js'),
+const includes = {};
+
+const _addAppFiles = (theme) => {
+
+    const dirPath = path.resolve(__dirname, theme);
+    const themeName = path.basename(theme);
+
+    if (filesystem.existsSync(path.join(dirPath, conf.SRC, 'js', 'app.js'))) {
+        includes[`${themeName}`] = path.join(dirPath, conf.SRC, 'js', 'app.js');
+    } else if (filesystem.existsSync(path.join(dirPath, conf.SRC, 'scss', 'app.scss'))) {
+        includes[`${themeName}`] = path.join(dirPath, conf.SRC, 'scss', 'app.scss');
+    }
+
+    const _getAllFilesFromFolder = function(dir, includeSubFolders = true) {
+        const dirPath = path.resolve(__dirname, dir);
+        let results = [];
+
+        filesystem.readdirSync(dirPath).forEach((file) => {
+            if (file.charAt(0) === '_') {
+                return;
+            }
+
+            const filePath = `${dirPath}/${file}`;
+            const stat = filesystem.statSync(filePath);
+
+            if (stat && stat.isDirectory() && includeSubFolders) {
+                results = results.concat(_getAllFilesFromFolder(filePath, includeSubFolders));
+            } else {
+                results.push(filePath);
+            }
+        });
+
+        return results;
+    };
+
+    // add page specific scripts
+    const typesJSPath = path.join(theme, conf.TYPESJS);
+    if (filesystem.existsSync(typesJSPath)) {
+        const pageScripts = _getAllFilesFromFolder(typesJSPath, true);
+        pageScripts.forEach((file) => {
+            includes[`${themeName}_${path.basename(file, '.js')}`] = file;
+        });
+    }
+
+    // add page specific scss
+    const typesSCSSPath = path.join(theme, conf.TYPESSCSS);
+    if (filesystem.existsSync(typesSCSSPath)) {
+        const scssIncludes = _getAllFilesFromFolder(typesSCSSPath, true);
+        scssIncludes.forEach((file) => {
+            includes[`${themeName}_${path.basename(file, '.scss')}`] = file;
+        });
+    }
 };
 
-const _getAllFilesFromFolder = function(dir) {
-    dir = path.resolve(__dirname, dir);
+_addAppFiles(conf.APPDIR);
 
-    const filesystem = require('fs');
-    let results = [];
+// add themes
+if (conf.THEMESDIR) {
+    const dir = path.resolve(__dirname, conf.THEMESDIR);
 
-    filesystem.readdirSync(dir).forEach((file) => {
-        if (file === '_notes') {
-            return;
-        }
+    if (filesystem.existsSync(dir)) {
+        filesystem.readdirSync(dir).forEach((file) => {
+            filePath = `${dir}/${file}`;
+            const stat = filesystem.statSync(filePath);
 
-        file = `${dir}/${file}`;
-        const stat = filesystem.statSync(file);
-
-        if (stat && stat.isDirectory()) {
-            results = results.concat(_getAllFilesFromFolder(file));
-        } else {
-            results.push(file);
-        }
-    });
-
-    return results;
-};
-
-// add page specific scripts
-const pageScripts = _getAllFilesFromFolder(conf.TYPESJS);
-pageScripts.forEach((file) => {
-    includes[path.basename(file, '.js')] = file;
-});
-
-// add page specific scss
-const scssIncludes = _getAllFilesFromFolder(conf.TYPESSCSS);
-scssIncludes.forEach((file) => {
-    includes[path.basename(file, '.scss')] = file;
-});
+            if (stat && stat.isDirectory()) {
+                _addAppFiles(path.join(conf.THEMESDIR, file));
+            }
+        });
+    }
+}
 
 module.exports = {
     entry: includes,
@@ -80,14 +113,6 @@ module.exports = {
             test: /\.coffee?$/,
             use: 'coffee-loader',
         }, {
-            test: /\.(png|jpg|jpeg|gif|svg)$/,
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]',
-                outputPath: 'img/',
-                publicPath: '../img/',
-            },
-        }, {
             test: /\.worker\.js$/,
             use: {
                 loader: 'worker-loader',
@@ -97,7 +122,12 @@ module.exports = {
     resolve: {
         modules: [
             path.resolve(__dirname, 'public'),
-            'node_modules'
+            path.resolve(__dirname, conf.APPDIR, 'client', 'src'),
+            path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'js'),
+            path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'scss'),
+            path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'img'),
+            path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'thirdparty'),
+            path.resolve(__dirname, 'node_modules')
         ],
         alias: {
             'jquery': require.resolve('jquery'),

@@ -2,7 +2,11 @@
     <h1 class="page-header container<% if $ElementalArea.Elements.Count < 1 %> no-elements<% end_if %>">$Title</h1>
 
     <div class="page-content">
-        $ElementalArea
+        <% if $CurrentElement %>
+            $CurrentElement
+        <% else %>
+            $ElementalArea
+        <% end_if %>
 
         <% if $Form %>
         <div class="container">

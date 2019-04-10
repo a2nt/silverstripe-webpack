@@ -61,17 +61,19 @@ class SliderElement extends ElementSlideshow
         ]);
 
         $grid = $fields->dataFieldByName('Slides');
-        $config = $grid->getConfig();
+        if ($grid) {
+                $config = $grid->getConfig();
 
-        $columns = new GridFieldEditableColumns();
-        $columns->setDisplayFields([
-            'Hide'  => [
-                'title' => 'Hide it?',
-                'field' => CheckboxField::class,
-            ],
-        ]);
+                $columns = new GridFieldEditableColumns();
+                $columns->setDisplayFields([
+                    'Hide'  => [
+                        'title' => 'Hide it?',
+                        'field' => CheckboxField::class,
+                    ],
+                ]);
 
-        $config->addComponent($columns);
+                $config->addComponent($columns);
+        }
 
         return $fields;
     }

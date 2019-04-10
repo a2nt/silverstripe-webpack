@@ -2,10 +2,11 @@
 
 /**
  * Directs assets requests to Webpack server or to static files
-*/
+ */
 
 namespace Site\Templates;
 
+use SilverStripe\Core\Manifest\ModuleManifest;
 use SilverStripe\View\TemplateGlobalProvider;
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\Director;
@@ -27,7 +28,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     /**
      * @var string assets static files directory
      */
-    private static $dist = 'app/client/dist';
+    private static $dist = 'client/dist';
 
     /**
      * @return array
@@ -38,7 +39,8 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
             'WebpackDevServer' => 'isActive',
             'WebpackCSS' => 'loadCSS',
             'WebpackJS' => 'loadJS',
-            'ResoursesURL' => 'resoursesURL',
+            'ResourcesURL' => 'resourcesURL',
+            'ProjectName' => 'themeName',
         ];
     }
 
@@ -48,6 +50,10 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
      */
     public static function loadCSS($path)
     {
+        if (self::isActive()) {
+            return;
+        }
+
         Requirements::css(self::_getPath($path));
     }
 
@@ -60,9 +66,14 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
         Requirements::javascript(self::_getPath($path));
     }
 
-    public static function resoursesURL($link = null)
+    public static function themeName()
     {
-        return Controller::join_links(Director::baseURL(), '/resources/app/client/dist/img/', $link);
+        return Config::inst()->get(ModuleManifest::class, 'project');
+    }
+
+    public static function resourcesURL($link = null)
+    {
+        return Controller::join_links(Director::baseURL(), '/resources/'.self::themeName().'/client/dist/img/', $link);
     }
 
 
@@ -100,6 +111,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     {
         return strpos($path, '//') === false ?
             Controller::join_links(
+                self::themeName(),
                 Config::inst()->get(__CLASS__, 'DIST'),
                 (strpos($path, '.css') ? 'css' : 'js'),
                 $path

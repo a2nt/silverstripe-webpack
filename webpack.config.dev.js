@@ -25,7 +25,7 @@ const config = merge.strategy({
     },
 
     output: {
-        path: path.join(__dirname, conf.DIST),
+        path: path.join(__dirname),
         filename: '[name].js',
         // necessary for HMR to know where to load the hot update chunks
         publicPath: 'https://' + conf.HOSTNAME + ':' + conf.PORT + '/'
@@ -80,7 +80,12 @@ const config = merge.strategy({
         }, {
             test: /\.(gif|png|jpg|jpeg|ttf|otf|eot|svg|woff(2)?)$/,
             use: [{
-                loader: 'url-loader'
+                loader: 'file-loader',
+                options: {
+                    name(file) {
+                        return 'public/[path][name].[ext]';
+                    },
+                },
             }]
         }]
     },
@@ -98,7 +103,9 @@ const config = merge.strategy({
         clientLogLevel: 'info',
         contentBase: [
             path.resolve(__dirname, 'public'),
-            'node_modules'
+            path.resolve(__dirname, 'public', 'resources'),
+            path.resolve(__dirname, 'public', 'resources', conf.APPDIR, conf.DIST),
+            'node_modules',
         ],
         //watchContentBase: true,
         overlay: {
@@ -106,7 +113,7 @@ const config = merge.strategy({
             errors: true
         },
         headers: {
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': '*',
         }
     },
 });

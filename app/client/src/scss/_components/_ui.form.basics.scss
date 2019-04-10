@@ -1,0 +1,39 @@
+// date-time fields
+input.date,
+input.time {
+    &[readonly] {
+        background-color: $white;
+    }
+}
+
+.bootstrap-timepicker-widget,
+.datepicker-dropdown {
+    border: 1px solid #ced4da;
+    box-shadow: 0 0 3px #999;
+}
+
+.bootstrap-timepicker-widget {
+    .glyphicon {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        font-family: Font Awesome\ 5 Free;
+        font-weight: 900;
+    }
+
+    .glyphicon-chevron-up:before {
+        content: "\f077";
+    }
+
+    .glyphicon-chevron-down:before {
+        content: "\f078";
+    }
+
+    input {
+        border: 1px solid #ced4da;
+    }
+}

@@ -27,9 +27,25 @@ const FormBasics = (($) => {
                 const $el = $(el);
 
                 $el.selectpicker({
-                    liveSearch: $el.data('live-search')
+                    iconBase: 'fas',
+                    tickIcon: 'fa-check',
+                    liveSearch: $el.data('live-search'),
+                    noneSelectedText: $el.data('none-selected-text') || 'Nothing selected',
+                    maxOptions: $el.data('max-options') || false,
                 });
+
+                // FIX: hidden picker
+                $el.parents('.field.dropdown').find('.dropdown-toggle').click();
+                $el.parents('.field.dropdown').find('.dropdown-toggle').click();
+                $el.parents('.field.dropdown').find('.dropdown-toggle').blur();
             });
+
+            // FIX: hidden picker click
+            if ($selectFields.length) {
+                setTimeout(() => {
+                    $(window).scrollTop(0, 0);
+                }, 600);
+            }
 
             $fields.each((e, el) => {
                 const $el = $(el);

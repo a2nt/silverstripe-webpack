@@ -2,6 +2,10 @@ en:
   SilverStripe\Security\Member:
     SURNAME: 'Last Name'
     db_Surname: 'Last Name'
+    SUBJECTPASSWORDRESET: 'Your password reset link'
+    ENTEREMAIL: 'Please enter an email address to get a password reset link.'
+    PASSWORDRESETSENTHEADER: 'Password reset link sent'
+    PASSWORDRESETSENTTEXT: 'Thank you. A reset link has been sent, provided an account exists for this email address.'
   Page:
     LOADINGTEXT: "LOADING .."
     JAVASCRIPTREQUIRED: "Please, enable javascript!"
@@ -13,3 +17,7 @@ en:
     db_Surname: 'Last Name'
   SilverShop\Page\CheckoutPage:
     ProceedToPayment: 'Send Order to Store'
+  UndefinedOffset\NoCaptcha\Forms\NocaptchaField:
+    EMPTY: "Please prove you are human - check the Captcha box."
+    NOSCRIPT: "You must enable JavaScript to submit this form"
+    VALIDATE_ERROR: "Captcha could not be validated"

@@ -15,7 +15,13 @@
 }
 
 .carousel-indicators li {
-    box-shadow: 1px 1px #000;
+    box-shadow: none;
+
+    // 1px 1px #000;
+}
+
+.carousel-title {
+    color: #fff;
 }
 
 .carousel-title,

@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Events from "../_events";
 import FormValidateField from "./_ui.form.validate.field";
+import SpinnerUI from './_ui.spinner';
 
 const FormValidate = (($) => {
     // Constants
@@ -67,6 +68,7 @@ const FormValidate = (($) => {
         validate(scrollTo = true, badCallback = false) {
             console.log('Checking the form ...');
             const ui = this;
+            let valid = true;
 
             ui._fields.each(function(i, el) {
                 const $el = $(el);
@@ -77,9 +79,14 @@ const FormValidate = (($) => {
                         badCallback();
                     }
 
+                    console.log('Invalid form data');
+                    SpinnerUI.hide();
+                    valid = false;
                     return false;
                 }
             });
+
+            return valid;
         }
 
         static _jQueryInterface() {
