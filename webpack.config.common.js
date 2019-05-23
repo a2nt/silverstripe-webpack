@@ -3,12 +3,22 @@
  */
 
 const webpack = require('webpack');
-const conf = require('./webpack.configuration');
+const commonVariables = require('./webpack.configuration');
+const conf = commonVariables.configuration;
 
 const path = require('path');
 const filesystem = require('fs');
 
 const includes = {};
+const modules = [
+    path.resolve(__dirname, 'public'),
+    path.resolve(__dirname, conf.APPDIR, 'client', 'src'),
+    path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'js'),
+    path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'scss'),
+    path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'img'),
+    path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'thirdparty'),
+    path.resolve(__dirname, 'node_modules')
+];
 
 const _addAppFiles = (theme) => {
 
@@ -21,6 +31,11 @@ const _addAppFiles = (theme) => {
         includes[`${themeName}`] = path.join(dirPath, conf.SRC, 'scss', 'app.scss');
     }
 
+    modules.push(path.join(dirPath, 'client', 'src', 'js'));
+    modules.push(path.join(dirPath, 'client', 'src', 'scss'));
+    modules.push(path.join(dirPath, 'client', 'src', 'img'));
+    modules.push(path.join(dirPath, 'client', 'src', 'thirdparty'));
+
     const _getAllFilesFromFolder = function(dir, includeSubFolders = true) {
         const dirPath = path.resolve(__dirname, dir);
         let results = [];
@@ -30,7 +45,7 @@ const _addAppFiles = (theme) => {
                 return;
             }
 
-            const filePath = `${dirPath}/${file}`;
+            const filePath = path.join(dirPath, file);
             const stat = filesystem.statSync(filePath);
 
             if (stat && stat.isDirectory() && includeSubFolders) {
@@ -65,20 +80,9 @@ const _addAppFiles = (theme) => {
 _addAppFiles(conf.APPDIR);
 
 // add themes
-if (conf.THEMESDIR) {
-    const dir = path.resolve(__dirname, conf.THEMESDIR);
-
-    if (filesystem.existsSync(dir)) {
-        filesystem.readdirSync(dir).forEach((file) => {
-            filePath = `${dir}/${file}`;
-            const stat = filesystem.statSync(filePath);
-
-            if (stat && stat.isDirectory()) {
-                _addAppFiles(path.join(conf.THEMESDIR, file));
-            }
-        });
-    }
-}
+commonVariables.themes.forEach((theme) => {
+    _addAppFiles(theme);
+});
 
 module.exports = {
     entry: includes,
@@ -120,15 +124,7 @@ module.exports = {
         }],
     },
     resolve: {
-        modules: [
-            path.resolve(__dirname, 'public'),
-            path.resolve(__dirname, conf.APPDIR, 'client', 'src'),
-            path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'js'),
-            path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'scss'),
-            path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'img'),
-            path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'thirdparty'),
-            path.resolve(__dirname, 'node_modules')
-        ],
+        modules: modules,
         alias: {
             'jquery': require.resolve('jquery'),
             'jQuery': require.resolve('jquery'),

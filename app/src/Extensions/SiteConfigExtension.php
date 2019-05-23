@@ -5,6 +5,7 @@ namespace Site\Extensions;
 use Innoweb\Sitemap\Pages\SitemapPage;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
+use SilverStripe\Blog\Model\BlogPost;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataExtension;
@@ -21,7 +22,8 @@ class SiteConfigExtension extends DataExtension
         'Longitude' => 'Varchar(255)',
         'Latitude' => 'Varchar(255)',
         'MapZoom' => 'Int',
-        'MapAPIKey' => 'Varchar(255)'
+        'MapAPIKey' => 'Varchar(255)',
+        'Description' => 'Varchar(255)',
     ];
 
     private static $has_one = [
@@ -57,12 +59,17 @@ class SiteConfigExtension extends DataExtension
             SitemapPage::get()->map()->toArray()
         ));
 
+        $tab->push(TextareaField::create('Description', 'Website Description'));
+
         $mapTab = $fields->findOrMakeTab('Root.GoogleMaps');
         $mapTab->push(TextField::create('MapAPIKey'));
         $mapTab->push(TextField::create('MapZoom'));
         $mapTab->push(GoogleMapField::create(
             $this->owner,
-            'Location'
+            'Location',
+            [
+                'show_search_box' => true,
+            ]
         ));
     }
 
@@ -79,5 +86,10 @@ class SiteConfigExtension extends DataExtension
             .$this->owner->getField('Latitude').','
             .$this->owner->getField('Longitude').'" class="btn btn-primary btn-directions" target="_blank">'
             .'<i class="fas fa-road"></i> Get Directions</a>';
+    }
+
+    public function getLatestBlogPosts()
+    {
+        return BlogPost::get()->sort('PublishDate DESC');
     }
 }

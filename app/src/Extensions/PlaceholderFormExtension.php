@@ -7,7 +7,7 @@ use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 
-class UserFormExtension extends Extension
+class PlaceholderFormExtension extends Extension
 {
     public function updateFormFields(FieldList $fields)
     {
@@ -18,7 +18,7 @@ class UserFormExtension extends Extension
 
     private function setPlaceholder($field)
     {
-        if(is_a($field, TextField::class)) {
+        if (is_a($field, TextField::class)) {
             $field->setAttribute(
                 'placeholder',
                 $field->Title()
@@ -27,7 +27,7 @@ class UserFormExtension extends Extension
             $field->setTitle('');
         }
 
-        if(is_a($field, CompositeField::class)) {
+        if (is_a($field, CompositeField::class)) {
             $children = $field->getChildren();
             foreach ($children as $child) {
                 $this->setPlaceholder($child);

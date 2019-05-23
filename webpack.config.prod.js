@@ -3,15 +3,80 @@
  */
 
 const webpack = require('webpack');
-const conf = require('./webpack.configuration');
+const commonVariables = require('./webpack.configuration');
+const conf = commonVariables.configuration;
 const merge = require('webpack-merge');
 const common = require('./webpack.config.common.js');
 
+const filesystem = require('fs');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+
+let plugins = [
+    new webpack.DefinePlugin({
+        'process.env': {
+            'NODE_ENV': JSON.stringify('production')
+        }
+    }),
+    new webpack.LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+        sourceMap: false,
+        comments: false
+    }),
+    new ExtractTextPlugin({
+        filename: 'css/[name].css',
+        allChunks: true
+    }),
+
+    new FaviconsWebpackPlugin({
+        logo: path.join(__dirname, conf.APPDIR, conf.SRC, 'favicon.png'),
+        prefix: '/icons/',
+        statsFilename: path.join(conf.APPDIR, conf.DIST, 'icons', 'iconstats.json'),
+        icons: {
+            android: true,
+            appleIcon: true,
+            appleStartup: true,
+            coast: true,
+            favicons: true,
+            firefox: true,
+            opengraph: true,
+            twitter: true,
+            yandex: true,
+            windows: true
+        }
+    }),
+];
+
+// add themes favicons
+commonVariables.themes.forEach((theme) => {
+    const faviconPath = path.join(__dirname, theme, conf.SRC, 'favicon.png');
+    if (filesystem.existsSync(faviconPath)) {
+        plugins.push(new FaviconsWebpackPlugin({
+            logo: faviconPath,
+            prefix: '/' + theme + '-icons/',
+            statsFilename: path.join(conf.APPDIR, conf.DIST, theme + '-icons', 'iconstats.json'),
+            icons: {
+                android: true,
+                appleIcon: true,
+                appleStartup: true,
+                coast: true,
+                favicons: true,
+                firefox: true,
+                opengraph: true,
+                twitter: true,
+                yandex: true,
+                windows: true
+            }
+        }));
+    }
+});
 
 module.exports = merge(common, {
     devtool: '',
@@ -98,42 +163,5 @@ module.exports = merge(common, {
         }, ]
     },
 
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true,
-            debug: false
-        }),
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: false,
-            comments: false
-        }),
-        new ExtractTextPlugin({
-            filename: 'css/[name].css',
-            allChunks: true
-        }),
-
-        new FaviconsWebpackPlugin({
-            logo: path.join(__dirname, conf.APPDIR, conf.SRC, 'favicon.png'),
-            prefix: '/icons/',
-            statsFilename: path.join(conf.APPDIR, conf.DIST, 'icons', 'iconstats.json'),
-            icons: {
-                android: true,
-                appleIcon: true,
-                appleStartup: true,
-                coast: true,
-                favicons: true,
-                firefox: true,
-                opengraph: true,
-                twitter: true,
-                yandex: true,
-                windows: true
-            }
-        }),
-    ],
+    plugins: plugins,
 });

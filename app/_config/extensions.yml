@@ -5,7 +5,7 @@ SilverStripe\SiteConfig\SiteConfig:
 
 SilverStripe\SiteTree\SiteTree:
   extensions:
-    - SiteTreeExtension
+    - Site\Extensions\SiteTreeExtension
 
 SilverStripe\Blog\Model\BlogPost:
   extensions:

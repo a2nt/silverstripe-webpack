@@ -3,8 +3,31 @@
  */
 
 const path = require('path');
+const filesystem = require('fs');
 const fs = require('fs');
 const yaml = require('js-yaml');
+
 const conf = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'app/_config/webpack.yml'), 'utf8'));
 
-module.exports = conf['Site\\Templates\\WebpackTemplateProvider'];
+let themes = [];
+// add themes
+if (conf['Site\\Templates\\WebpackTemplateProvider'].THEMESDIR) {
+    const themeDir = conf['Site\\Templates\\WebpackTemplateProvider'].THEMESDIR;
+    const dir = path.resolve(__dirname, themeDir);
+
+    if (filesystem.existsSync(dir)) {
+        filesystem.readdirSync(dir).forEach((file) => {
+            filePath = path.join(themeDir, file);
+            const stat = filesystem.statSync(filePath);
+
+            if (stat && stat.isDirectory()) {
+                themes.push(filePath);
+            }
+        });
+    }
+}
+
+module.exports = {
+    configuration: conf['Site\\Templates\\WebpackTemplateProvider'],
+    themes: themes,
+};

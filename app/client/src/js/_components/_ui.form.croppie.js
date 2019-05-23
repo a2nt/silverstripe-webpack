@@ -2,6 +2,7 @@
 
 import $ from 'jquery';
 
+import MainUI from "../_main";
 import Events from '../_events';
 import SpinnerUI from './_ui.spinner';
 
@@ -33,7 +34,7 @@ const CroppieUI = (($) => {
             const ui = this;
             const $el = $(element);
 
-            ui._element = element;
+            ui.$el = $el;
             $el.data(DATA_KEY, this);
 
             ui.input = $el.find('input[type="file"]');
@@ -42,10 +43,14 @@ const CroppieUI = (($) => {
             ui.width = ui.input.data('width');
             ui.height = ui.input.data('height');
 
-            $el.append('<div class="cropper-wrap"><div class="cropper-container"></div></div>');
+            $el.append(
+                '<div class="cropper-wrap"><div class="cropper-container"></div>' +
+                '<a href="#" class="btn-remove"><i class="fas fa-times"></i> Remove</a></div>'
+            );
             //$el.append(ui.inputData);
 
-            ui.uploadCrop = $el.find('.cropper-container');
+            ui.uploadCropWrap = $el.find('.cropper-wrap');
+            ui.uploadCrop = ui.uploadCropWrap.find('.cropper-container');
 
             const ratio = ui.width / (ui.uploadCrop.width() - 32);
             ui.uploadCrop.croppie({
@@ -62,11 +67,23 @@ const CroppieUI = (($) => {
             ui.input.on('change', (e) => {
                 this.readFile(e.currentTarget);
             });
+
+            $el.find('.btn-remove').on('click', (e) => {
+                e.preventDefault();
+
+                ui.uploadCrop.removeClass('ready');
+                $el.find('.croppie-image').remove();
+
+                ui.$el.find('input[type="file"]').val('');
+                ui.$el.find('input[type="file"]').change();
+
+                ui.uploadCropWrap.hide();
+            });
         }
 
         readFile(input) {
             const ui = this;
-            const $el = $(ui._element);
+            const $el = ui.$el;
             const $form = $el.closest('form');
 
             if (input.files && input.files[0]) {
@@ -79,6 +96,7 @@ const CroppieUI = (($) => {
                     });
 
                     ui.uploadCrop.show();
+                    ui.uploadCropWrap.show();
                 }
 
                 reader.readAsDataURL(input.files[0]);
@@ -86,6 +104,10 @@ const CroppieUI = (($) => {
                 $form.on('submit', (e) => {
                     //$(input).val('');
                     SpinnerUI.show();
+
+                    if (!ui.uploadCrop.hasClass('ready')) {
+                        return true;
+                    }
 
                     ui.uploadCrop.croppie('result', {
                         type: 'blob',
@@ -129,12 +151,24 @@ const CroppieUI = (($) => {
                                         $form.find('select[name="' + k + '"],input[name="' + k + '"],textarea[name="' + k + '"]').setError(true, json[k]);
                                     }*/
 
-                                    if (typeof json['status'] !== 'undefined' && json['status'] === 'success') {
-                                        if (typeof json['link'] !== 'undefined') {
-                                            G.location = json['link'];
-                                        } else {
-                                            //G.location.reload(false);
+                                    if (typeof json['status'] !== 'undefined') {
+                                        if (json['status'] === 'success') {
+                                            MainUI.alert(json['message'], json['status']);
+
+                                            if (typeof json['link'] !== 'undefined') {
+                                                setTimeout(() => {
+                                                    G.location = json['link'];
+                                                }, 2000);
+                                            } else {
+                                                //G.location.reload(false);
+                                            }
+                                        } else if (json['status'] === 'error') {
+                                            MainUI.alert(json['message'], json['status']);
                                         }
+                                    }
+
+                                    if (typeof json['form'] !== 'undefined') {
+                                        $(form).replaceWith(json['form']);
                                     }
                                 } else {
                                     $(form).replaceWith(data);

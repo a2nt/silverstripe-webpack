@@ -98,7 +98,7 @@ class ElementRows extends DataExtension
 
     public function getWidthPercetage()
     {
-        return $this->isColumn() ? $this->owner->getField('Size') / 12 * 100 : false;
+        return $this->isColumn() ? $this->owner->getField('Size') / self::colsNumber() * 100 : false;
     }
 
     public function isList()
@@ -153,15 +153,47 @@ class ElementRows extends DataExtension
 
         if ($object->isColumn() && $object->getField('Size')) {
             return (int) $object->getField('Size');
-        } else {
+        }
+
+        $parent = $object->Parent()->getOwnerPage();
+
+        if (is_a($parent, 'Page')) {
+            return ($this->owner->getField('ContainerType') === 'container-fluid') ? false : self::colsNumber();
+        }
+
+        return $object->getColumnSizeRecursive($parent);
+    }
+
+    public function getColumnWidthRecursive($object = null, $max = null)
+    {
+        $max = $max ? $max : self::maxWidth();
+
+        $object = $object ? $object : $this->owner;
+
+        if(!$object->isRoot()){
+            $size = $object->getField('Size');
+            $max = $size ? $max / (self::colsNumber() / $size) : $max;
             $parent = $object->Parent()->getOwnerPage();
 
-            if (is_a($parent, 'Page')) {
-                return ($this->owner->getField('ContainerType') === 'container-fluid') ? false : 12;
-            }
-
-            return $object->getColumnSizeRecursive($parent);
+            return $this->getColumnWidthRecursive($parent, $max);
         }
+
+        return $max;
+    }
+
+    public static function colsNumber()
+    {
+        $db = Config::inst()->get(self::class, 'db');
+        $sizes = $db['Size'];
+        $sizes = preg_replace('!Enum\("([0-9,]+)","([0-9]+)"\)!i','$1', $sizes);
+        $sizes = explode(',',$sizes);
+
+        return max($sizes);
+    }
+
+    public static function maxWidth()
+    {
+        return Config::inst()->get(self::class, 'container_max_width');
     }
 
     public function ExtraClass()

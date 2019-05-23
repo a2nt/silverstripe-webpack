@@ -80,15 +80,7 @@ class ElementImageWidget extends DataExtension
 
     public function getWidth()
     {
-        $columnSize = $this->owner->getColumnSizeRecursive();
-        if (!$columnSize) {
-            return false;
-        }
-
-        $max = Config::inst()->get(ElementRows::class, 'container_max_width');
-        $size = 12 / $columnSize;
-
-        return $max / $size;
+        return $this->owner->getColumnWidthRecursive();
     }
 
     public function getHeight()

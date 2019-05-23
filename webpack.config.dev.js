@@ -7,7 +7,8 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.config.common.js');
-const conf = require('./webpack.configuration');
+const commonVariables = require('./webpack.configuration');
+const conf = commonVariables.configuration;
 
 const IP = process.env.IP || conf.HOSTNAME;
 const PORT = process.env.PORT || conf.PORT;
@@ -101,6 +102,7 @@ const config = merge.strategy({
         historyApiFallback: true,
         hot: false,
         clientLogLevel: 'info',
+        disableHostCheck: true,
         contentBase: [
             path.resolve(__dirname, 'public'),
             path.resolve(__dirname, 'public', 'resources'),

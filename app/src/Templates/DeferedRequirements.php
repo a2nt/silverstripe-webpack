@@ -9,6 +9,7 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Path;
 use SilverStripe\Core\Manifest\ManifestFileFinder;
+use SilverStripe\CMS\Controllers\CMSMain;
 
 class DeferedRequirements implements TemplateGlobalProvider
 {
@@ -35,9 +36,14 @@ class DeferedRequirements implements TemplateGlobalProvider
 
     public static function Auto($class = false)
     {
+        if (is_a(Controller::curr(), CMSMain::class)) {
+            return;
+        }
+
         $config = Config::inst()->get(self::class);
         $projectName = WebpackTemplateProvider::projectName();
         $mainTheme = WebpackTemplateProvider::mainTheme();
+        $mainTheme = $mainTheme ? $mainTheme : $projectName;
 
         // Initialization
         Requirements::block(THIRDPARTY_DIR.'/jquery/jquery.js');
@@ -54,6 +60,7 @@ class DeferedRequirements implements TemplateGlobalProvider
         if (!$config['nofontawesome']) {
             DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.4.0/css/all.css');
         }
+
         DeferedRequirements::loadCSS($mainTheme.'.css');
         DeferedRequirements::loadJS($mainTheme.'.js');
 
@@ -82,17 +89,17 @@ class DeferedRequirements implements TemplateGlobalProvider
         // Controller requirements
         $themePath = Path::join($dir, 'css', $mainTheme.'_'.$class . '.css');
         $projectPath = Path::join($dir, 'css', $projectName.'_'.$class . '.css');
-        if ($mainTheme && file_exists($themePath)){
+        if ($mainTheme && file_exists($themePath)) {
             DeferedRequirements::loadCSS($mainTheme.'_'.$class . '.css');
-        } else if (file_exists($projectPath)) {
+        } elseif (file_exists($projectPath)) {
             DeferedRequirements::loadCSS($projectName.'_'.$class . '.css');
         }
 
         $themePath = Path::join($dir, 'js', $mainTheme.'_'.$class . '.js');
         $projectPath = Path::join($dir, 'js', $projectName.'_'.$class . '.js');
-        if ($mainTheme && file_exists($themePath)){
+        if ($mainTheme && file_exists($themePath)) {
             DeferedRequirements::loadJS($mainTheme.'_'.$class . '.js');
-        } else if (file_exists($projectPath)) {
+        } elseif (file_exists($projectPath)) {
             DeferedRequirements::loadJS($projectName.'_'.$class . '.js');
         }
 
