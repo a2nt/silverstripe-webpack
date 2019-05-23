@@ -1,4 +1,4 @@
-# silverstripe-webpack SS4.1.*
+# silverstripe-webpack SS4.*
 
 ## Simple WebPack boiler plate for SilverStripe
 
@@ -19,6 +19,7 @@ Checkout files at /app/ folder for details
 + Requirements auto-loading
 + Includes basic silverstripe modules
 + Some necessary extensions for example editing silverstripe elements as bootstrap grid columns
++ Building themes support
 
 ### Folder structure:
 
