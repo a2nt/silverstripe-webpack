@@ -16,6 +16,7 @@ const PORT = process.env.PORT || conf.PORT;
 const config = merge.strategy({
     entry: 'prepend'
 })(common, {
+    mode: 'development',
 
     entry: {
         app: [
@@ -91,9 +92,7 @@ const config = merge.strategy({
         }]
     },
     plugins: [
-        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
     ],
 
     devServer: {

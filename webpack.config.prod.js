@@ -14,6 +14,7 @@ const autoprefixer = require('autoprefixer');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 let plugins = [
     new webpack.DefinePlugin({
@@ -25,19 +26,18 @@ let plugins = [
         minimize: true,
         debug: false
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-        sourceMap: false,
-        comments: false
-    }),
     new ExtractTextPlugin({
         filename: 'css/[name].css',
         allChunks: true
     }),
 
     new FaviconsWebpackPlugin({
+        title: 'Webpack App',
         logo: path.join(__dirname, conf.APPDIR, conf.SRC, 'favicon.png'),
         prefix: '/icons/',
+        emitStats: false,
+        persistentCache: true,
+        inject: false,
         statsFilename: path.join(conf.APPDIR, conf.DIST, 'icons', 'iconstats.json'),
         icons: {
             android: true,
@@ -59,8 +59,12 @@ commonVariables.themes.forEach((theme) => {
     const faviconPath = path.join(__dirname, theme, conf.SRC, 'favicon.png');
     if (filesystem.existsSync(faviconPath)) {
         plugins.push(new FaviconsWebpackPlugin({
+            title: 'Webpack App',
             logo: faviconPath,
             prefix: '/' + theme + '-icons/',
+            emitStats: false,
+            persistentCache: true,
+            inject: false,
             statsFilename: path.join(conf.APPDIR, conf.DIST, theme + '-icons', 'iconstats.json'),
             icons: {
                 android: true,
@@ -79,6 +83,25 @@ commonVariables.themes.forEach((theme) => {
 });
 
 module.exports = merge(common, {
+    mode: 'production',
+    optimization: {
+        namedModules: true, // NamedModulesPlugin()
+        splitChunks: { // CommonsChunkPlugin()
+            name: 'vendor',
+            minChunks: 2
+        },
+        noEmitOnErrors: true, // NoEmitOnErrorsPlugin
+        concatenateModules: true, //ModuleConcatenationPlugin
+        minimizer: [
+            new UglifyJSPlugin({
+                uglifyOptions: {
+                    sourceMap: false,
+                    comments: false
+                }
+            })
+        ]
+    },
+
     devtool: '',
 
     output: {

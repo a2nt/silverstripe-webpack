@@ -90,6 +90,16 @@ module.exports = {
     externals: {
         'jquery': 'jQuery',
     },
+    optimization: {
+        namedModules: true, // NamedModulesPlugin()
+        splitChunks: { // CommonsChunkPlugin()
+            name: 'vendor',
+            minChunks: 2
+        },
+        noEmitOnErrors: true, // NoEmitOnErrorsPlugin
+        concatenateModules: true //ModuleConcatenationPlugin
+    },
+
     module: {
         rules: [{
             test: /\.jsx?$/,
