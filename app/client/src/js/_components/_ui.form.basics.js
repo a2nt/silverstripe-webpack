@@ -1,6 +1,8 @@
-import 'bootstrap-select/js/bootstrap-select';
-
 import $ from 'jquery';
+
+import 'bootstrap-select/js/bootstrap-select';
+import 'jquery.inputmask/dist/jquery.inputmask.bundle';
+
 import Events from "../_events";
 import SpinnerUI from './_ui.spinner';
 
@@ -19,10 +21,12 @@ const FormBasics = (($) => {
       ui._element = element;
       $element.data(DATA_KEY, this);
 
+      $('[data-inputmask]').inputmask();
+
       const $fields = $element.find('input,textarea,select');
       const $selectFields = $element.find('select:not([readonly])');
       const $radioOptions = $element.find('input[type="radio"]');
-      const separator = ', ';
+      const separator = '::;::';
 
       $selectFields.each((i, el) => {
         const $el = $(el);
@@ -40,43 +44,46 @@ const FormBasics = (($) => {
         }));
 
         // wrap options
-        $el.on('rendered.bs.select', () => {
-          if (!$el.val().length) {
-            return true;
-          }
+        if (maxOptions > 1) {
+          $el.on('rendered.bs.select,changed.bs.select,refreshed.bs.select,loaded.bs.select', () => {
+            if (!$el.val().length) {
+              return true;
+            }
 
-          const $container = $el.parent().find('.filter-option-inner-inner');
-          const val = $container.text();
-          const vals = val.split(separator);
-          let html = '';
+            const $container = $el.parent().find('.filter-option-inner-inner');
+            const val = $container.text();
+            const vals = val.split(separator);
+            let html = '';
 
-          vals.forEach((opt) => {
-            const $opt = $el.find('option').filter((i, e) => {
-              return $(e).text() === opt;
+            vals.forEach((opt) => {
+              const $opt = $el.find('option').filter((i, e) => {
+                return $(e).text() === opt;
+              });
+
+              html += `<span class="option" data-val=${  $opt.attr('value')  }>${  opt
+            } <i class="fas fa-times btn-remove"></i></span>`;
+
             });
 
-            html += `<span class="option" data-val=${  $opt.attr('value')  }>${  opt 
-            } <i class="fas fa-times btn-remove"></i></span>`;
+            $container.html(html);
+
+            // remove value
+            $container.find('.option').on('click', (e) => {
+              e.preventDefault();
+
+              const $opt = $(e.currentTarget);
+              const val = $opt.data('val').toString();
+              //$opt.remove();
+
+              const vals = $el.selectpicker('val');
+              const i = vals.indexOf(val);
+              if (i > -1) {
+                vals.splice(i, 1);
+                $el.selectpicker('val', vals);
+              }
+            });
           });
-
-          $container.html(html);
-
-          // remove value
-          $container.find('.option').on('click', (e) => {
-            e.preventDefault();
-
-            const $opt = $(e.currentTarget);
-            const val = $opt.data('val').toString();
-            //$opt.remove();
-
-            const vals = $el.selectpicker('val');
-            const i = vals.indexOf(val);
-            if (i > -1) {
-              vals.splice(i, 1);
-              $el.selectpicker('val', vals);
-            }
-          });
-        });
+        }
 
 
         // FIX: hidden picker
@@ -84,6 +91,7 @@ const FormBasics = (($) => {
         $el.selectpicker('refresh');
         $el.selectpicker('toggle');
         document.activeElement.blur();
+        window.scroll(0, 0);
 
         //$el.selectpicker('show');
         //$el.selectpicker('hide');

@@ -31,7 +31,8 @@
         "innoweb/silverstripe-sitemap": "*",
         "silverstripe/multiuser-editing-alert": "*",
         "gorriecoe/silverstripe-link": "*",
-        "gorriecoe/silverstripe-linkfield": "*"
+        "gorriecoe/silverstripe-linkfield": "*",
+        "silverstripe/environmentcheck": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
