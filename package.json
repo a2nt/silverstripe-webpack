@@ -43,6 +43,7 @@
         "jquery-zoom": "^1.7.21",
         "jquery.appear": "^1.0.1",
         "jquery.inputmask": "^3.3.4",
+        "mapbox-gl": "^1.0.0",
         "meta-lightbox": "^1.0.0",
         "offcanvas-bootstrap": "^2.5.2",
         "popper.js": "^1.15.0",

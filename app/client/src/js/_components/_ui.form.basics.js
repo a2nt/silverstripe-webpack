@@ -5,6 +5,7 @@ import 'jquery.inputmask/dist/jquery.inputmask.bundle';
 
 import Events from "../_events";
 import SpinnerUI from './_ui.spinner';
+import FormFieldUI from './_ui.form.fields';
 
 const FormBasics = (($) => {
   // Constants
@@ -23,7 +24,12 @@ const FormBasics = (($) => {
 
       $('[data-inputmask]').inputmask();
 
-      const $fields = $element.find('input,textarea,select');
+      const $fields = $element.find(Events.FORM_FIELDS);
+      // init fields ui
+      $fields.each((i, el) => {
+        new FormFieldUI(el);
+      });
+
       const $selectFields = $element.find('select:not([readonly])');
       const $radioOptions = $element.find('input[type="radio"]');
       const separator = '::;::';
@@ -61,7 +67,7 @@ const FormBasics = (($) => {
               });
 
               html += `<span class="option" data-val=${  $opt.attr('value')  }>${  opt
-            } <i class="fas fa-times btn-remove"></i></span>`;
+              } <i class="fas fa-times btn-remove"></i></span>`;
 
             });
 

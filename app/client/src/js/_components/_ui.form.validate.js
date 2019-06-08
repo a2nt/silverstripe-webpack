@@ -79,7 +79,9 @@ const FormValidate = (($) => {
             badCallback();
           }
 
-          console.log('Invalid form data');
+          console.log('Invalid form data:');
+          console.log($el);
+
           SpinnerUI.hide();
           valid = false;
           return false;

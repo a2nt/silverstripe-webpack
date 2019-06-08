@@ -12,22 +12,22 @@ const conf = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'app/_config/web
 let themes = [];
 // add themes
 if (conf['Site\\Templates\\WebpackTemplateProvider'].THEMESDIR) {
-    const themeDir = conf['Site\\Templates\\WebpackTemplateProvider'].THEMESDIR;
-    const dir = path.resolve(__dirname, themeDir);
+  const themeDir = conf['Site\\Templates\\WebpackTemplateProvider'].THEMESDIR;
+  const dir = path.resolve(__dirname, themeDir);
 
-    if (filesystem.existsSync(dir)) {
-        filesystem.readdirSync(dir).forEach((file) => {
-            filePath = path.join(themeDir, file);
-            const stat = filesystem.statSync(filePath);
+  if (filesystem.existsSync(dir)) {
+    filesystem.readdirSync(dir).forEach((file) => {
+      filePath = path.join(themeDir, file);
+      const stat = filesystem.statSync(filePath);
 
-            if (stat && stat.isDirectory()) {
-                themes.push(filePath);
-            }
-        });
-    }
+      if (stat && stat.isDirectory()) {
+        themes.push(filePath);
+      }
+    });
+  }
 }
 
 module.exports = {
-    configuration: conf['Site\\Templates\\WebpackTemplateProvider'],
-    themes: themes,
+  configuration: conf['Site\\Templates\\WebpackTemplateProvider'],
+  themes: themes,
 };

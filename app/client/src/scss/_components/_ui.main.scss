@@ -111,27 +111,29 @@ button, input, optgroup, select, textarea,
     @extend .alert-danger;
 }
 
-// stick navbar to top using mobile layout
-#Header {
-    position: relative;
-    padding-top: $grid-gutter-height / 2;
-    padding-bottom: 1rem;
+// element col paddings
+.col-block {
+    padding: $grid-gutter-height / 4;
+}
 
-    @media (min-width: map-get($grid-breakpoints, "lg")) {
-        padding-top: 1rem;
-        padding-bottom: 0;
+// rewrite btn opacity on hover
+.btn {
+    &:hover,
+    &:focus {
+        opacity: 1;
     }
 }
 
-#Navigation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
+// SS-messages
+.message {
+    @extend .alert;
 
-    @media (min-width: map-get($grid-breakpoints, "lg")) {
-        position: relative;
-        margin-top: 1rem;
-    }
+    @extend .alert-info;
+}
+
+.message.required,
+.message.error {
+    @extend .alert;
+
+    @extend .alert-danger;
 }

@@ -3,6 +3,37 @@
 ## Simple WebPack boiler plate for SilverStripe
 
 Checkout files at /app/ folder for details
+Take a look to https://github.com/a2nt/webpack-bootstrap-ui-kit.git for UI Kit details
+
+### Requirements:
+
++ composer
++ node
++ yarn
+
+### Installation:
+
+```
+git clone https://github.com/a2nt/silverstripe-webpack.git
+cd silverstripe-webpack
+composer install
+npm install
+cd app
+git clone https://github.com/a2nt/webpack-bootstrap-ui-kit.git ./client
+cd ..
+```
+
++ edit .env, robots.txt, humans.txt, cache.appcache, manifest.json and package.json to setup your own project
+
+## Installing composer at some cpanel hostings
+```
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+php -d memory_limit=-1 composer.phar update --ignore-platform-reqs
+```
 
 ### Features:
 + You can use /app/_config/webpack.yml to setup webpack server parameters which will be used by webpack server and by SilverStripe to serve static content
@@ -47,35 +78,13 @@ Checkout files at /app/ folder for details
 + /app/clent/src/scss (Your styling to be compiled)
 + /app/clent/src/scss/_components (Your custom SCSS components)
 + /app/clent/src/scss/app.scss (main application file to include site-wide components)
-+ /app/clent/src/scss/_variables.sccs (your custom variables, ex. bootstrap)
++ /app/clent/src/scss/_variables.sccs (your custom and bootstrap variables)
 + /app/clent/src/scss/_layout.sccs (Your site-wide styling)
 
 
-### Requirements:
 
-+ composer
-+ yarn
-
-### Instalation:
-
-Install composer:
-```
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
-
-php -d memory_limit=-1 composer.phar update --ignore-platform-reqs
-```
-
-```
-git clone https://github.com/a2nt/silverstripe-webpack.git
-cd silverstripe-webpack
-composer install
-npm install
-```
-
-+ edit robots.txt, humans.txt, cache.appcache, manifest.json and package.json to setup your own project
++ /app/client/src/index.html UI demo page
++ /app/client/src/html HTML templates to build UI demo
 
 ### Commands:
 
