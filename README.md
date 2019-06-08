@@ -5,6 +5,9 @@
 Checkout files at /app/ folder for details
 Take a look to https://github.com/a2nt/webpack-bootstrap-ui-kit.git for UI Kit details
 
+# UI Demo
+https://rawcdn.githack.com/a2nt/webpack-bootstrap-ui-kit/master/dist/index.html
+
 ### Requirements:
 
 + composer
