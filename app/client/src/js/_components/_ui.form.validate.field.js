@@ -20,7 +20,7 @@ const FormValidateField = (($) => {
       // prevent browsers checks (will do it using JS)
       $element.attr('novalidate', 'novalidate');
 
-      $element.on('change', (e) => {
+      $element.on('change focusout', (e) => {
         ui.validate(false);
       });
 
@@ -45,18 +45,24 @@ const FormValidateField = (($) => {
       let valid = true;
       let msg = null;
 
+      const val = $el.val();
+
       // browser checks + required
       if (!ui._element.checkValidity() ||
-                ($el.hasClass('required') && !$el.val().trim().length)
+        ($el.hasClass('required') && (!val.length || !val.trim().length ||
+          ui.isHtml(val) && !$(val).text().length
+        ))
       ) {
         valid = false;
       }
 
       // validate URL
-      if ($el.hasClass('url') && $el.val().trim().length && !this.valideURL($el.val())) {
+      if ($el.hasClass('url') && val.length && !this.valideURL(val)) {
         valid = false;
         msg = 'URL must start with http:// or https://. For example: https://your-domain.com/';
       }
+
+      this.removeError();
 
       // extra checks
       if (extraChecks) {
@@ -65,25 +71,27 @@ const FormValidateField = (($) => {
         });
       }
 
-      this.removeError();
       if (valid) {
         return true;
       }
 
-      setTimeout(() => {
-        this.setError(scrollTo, msg);
-      }, 500);
+      this.setError(scrollTo, msg);
 
       return false;
     }
 
+    isHtml(str) {
+      const doc = new DOMParser().parseFromString(str, "text/html");
+      return Array.from(doc.body.childNodes).some(node => node.nodeType === 1);
+    }
+
     valideURL(str) {
       const pattern = new RegExp('^(https?:\\/\\/){1}' + // protocol
-                '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
-                '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-                '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-                '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-                '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
       return pattern.test(str);
     }
 

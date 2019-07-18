@@ -46,7 +46,7 @@ const DatetimeUI = (($) => {
       if ($el.hasClass('time') || $el.attr('type') === 'time') {
         $el.attr('readonly', 'true');
         $el.timepicker($.extend({
-          defaultTime: $el.data('default-time'),
+          snapToStep: true,
           icons: {
             up: 'fas fa-chevron-up',
             down: 'fas fa-chevron-down',
@@ -54,7 +54,11 @@ const DatetimeUI = (($) => {
         }, $el.data())).on('show.timepicker', (e) => {
           const $el = $(e.currentTarget);
           const $dropdown = $Body.find('.bootstrap-timepicker-widget');
-          $dropdown.find('tbody').append('<tr><td colspan="5"><a href="#" data-action="clear">Clear</a></td></tr>');
+
+          if (!$dropdown.find('[data-action="clear"]').length) {
+            $dropdown.find('tbody').append('<tr><td colspan="5"><a href="#" data-action="clear">Clear</a></td></tr>');
+          }
+
           const $clearBtn = $dropdown.find('[data-action="clear"]');
           $clearBtn.on('click', (e) => {
             e.preventDefault();

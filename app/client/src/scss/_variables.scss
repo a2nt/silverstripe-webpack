@@ -2,6 +2,9 @@
  * Your custom variables
  */
 
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1390px, xxxl: 1590px);
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1330px, xxxl: 1560px);
+
 $font-family-base: "Lato", sans-serif;
 
 $grid-gutter-height: 8rem;

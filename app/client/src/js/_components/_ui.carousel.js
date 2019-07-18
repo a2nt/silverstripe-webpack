@@ -1,5 +1,8 @@
 import $ from 'jquery';
 
+import 'hammerjs/hammer';
+import 'jquery-hammerjs/jquery.hammer';
+
 import Events from '../_events';
 
 const CarouselUI = (($) => {

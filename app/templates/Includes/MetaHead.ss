@@ -7,6 +7,28 @@ $MetaTags
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="mobile-web-app-capable" content="yes" />
 
+<%-- OpenGraph --%>
+<meta property="og:url" content="{$AbsoluteBaseURL}" />
+<meta property="og:site_name" content="{$SiteConfig.Title}" />
+<meta property="og:locale" content="$ContentLocale.ATT" />
+<% if $MetaTitle %>
+	<meta property="og:title" content="{$SiteConfig.Title} - {$MetaTitle}" />
+	<meta property="og:image:alt" content="{$MetaTitle}" />
+<% end_if %>
+<% if $MetaDescription %>
+    <meta property="og:description" content="{$MetaDescription}" />
+<% end_if %>
+<% if $MetaImage %>
+    <meta property="og:image" content="{$MetaImage.Link}" />
+<% end_if %>
+<% if $FacebookAppID %>
+    <meta property="fb:app_id" content="{$FacebookAppID}" />
+<% end_if %>
+<meta property="og:type" content="<% if $OgType %>$OgType<% else %>article<% end_if %>" />
+<%-- /OpenGraph --%>
+
+<link rel="canonical" href="{$AbsoluteLink}" />
+
 <link rel="author" type="text/plain" href="{$AbsoluteBaseURL}humans.txt" />
 <link rel="sitemap" type="application/xml" title="Sitemap" href="{$AbsoluteBaseURL}sitemap.xml" />
 

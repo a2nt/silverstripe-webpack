@@ -38,10 +38,12 @@
         "phpunit/phpunit": "^5.7",
         "lekoala/silverstripe-debugbar": "dev-master"
     },
-    "repositories": [{
-        "type": "vcs",
-        "url": "https://github.com/a2nt/silverstripe-font-awesome"
-    }],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/a2nt/silverstripe-font-awesome"
+        }
+    ],
     "extra": {
         "expose": [
             "app/client/dist"

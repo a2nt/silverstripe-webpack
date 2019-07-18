@@ -2,6 +2,14 @@
  * Bootstrap carousel improvement
  */
 
+.carousel-item {
+    &.active {
+        display: flex !important;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
+
 .carousel-control-prev,
 .carousel-control-next {
     z-index: 2;

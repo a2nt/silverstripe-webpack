@@ -6,17 +6,7 @@
 </head>
 
 <body oncontextmenu="return false;"<% with $SiteConfig %> data-default-lng="$Longitude" data-default-lat="$Latitude"<% end_with %>>
-	<%-- Upgrade your Browser notice --%>
-	<!--[if lt IE 10]><div class="main-bn"><a href="https://www.google.com/chrome/browser/desktop/" title="<%t Page.UPGRADEBROWSER 'Upgrade your browser' %>"><%t Page.OUTDATEDBROWSER 'You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.' %></a></div><![endif]-->
-
-	<%-- No JS enabled notice --%>
-	<noscript><div class="main-bn"><%t Page.JAVASCRIPTREQUIRED 'Please, enable javascript.' %></div></noscript>
-
-	<%-- Loading Spinner --%>
-	<div id="PageLoading"><div class="loading-spinner"><div class="bubblingG"><i id="bubblingG_1"></i><i id="bubblingG_2"></i><i id="bubblingG_3"></i></div><br/><%t Page.LOADINGTEXT 'LOADING ..' %></div></div>
-
-    <%-- Site Wide Alert Message --%>
-    <% include SiteWideMessage %>
+	<% include First %>
 
     <div class="wrapper">
         <header id="Header" class="container">

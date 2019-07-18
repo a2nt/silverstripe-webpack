@@ -25,16 +25,19 @@ const VideoPreviewUI = (($) => {
 
       ui.$_el.data(DATA_KEY, this);
       const href = ui.$_el.attr('href') || ui.$_el.data('href');
+      const YouTubeGetID = (url) => {
+        url = url.split(/(vi\/|v%3D|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+        return undefined !== url[2] ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0];
+      };
+
+
       let video;
 
       if (video = href.match(/(youtube|youtube-nocookie|youtu|vimeo)\.(com|be)\/(watch\?v=([\w-]+)|([\w-]+))/)) {
         let video_id;
 
-        if (video[1] === 'youtube' || video[1] === 'youtube-nocookie') {
-          video_id = video[4];
-        }
-        if (video[1] === 'youtu') {
-          video_id = video[3];
+        if (video[1] === 'youtube' || video[1] === 'youtube-nocookie' || video[1] === 'youtu') {
+          video_id = YouTubeGetID(href);
         }
 
         if (video[1] == 'vimeo') {

@@ -5,6 +5,9 @@ import $ from 'jquery';
 import 'hammerjs/hammer';
 import 'jquery-hammerjs/jquery.hammer';
 
+//import Confirmation from 'bootstrap-confirmation2/dist/bootstrap-confirmation';
+//import Table from 'bootstrap-table/dist/bootstrap-table';
+
 // Routie
 import 'pouchdb/dist/pouchdb';
 import './_components/routes/index';
@@ -12,17 +15,21 @@ import './_components/routes/index';
 import Events from './_events';
 import Spinner from './_components/_ui.spinner';
 
+import './_components/_ui.video.preview';
 import './_components/_ui.carousel';
 import './_components/_ui.menu';
 
+
 import FormBasics from './_components/_ui.form.basics';
-import FormDatetime from './_components/_ui.form.datetime';
+//import FormToggleUI from './_components/_ui.form.fields.toggle';
+//import FormDatetime from './_components/_ui.form.datetime';
 import FormStepped from './_components/_ui.form.stepped';
 import FormValidate from './_components/_ui.form.validate';
 import FormStorage from './_components/_ui.form.storage';
 //import FormCroppie from './_components/_ui.form.croppie';
 
 import AjaxUI from './_components/_ui.ajax';
+import NoCaptcha from './_components/_ui.nocaptcha';
 
 import SmoothScroll from 'smooth-scroll';
 const smoothScroll = SmoothScroll();
@@ -145,7 +152,9 @@ const MainUI = (($) => {
         $('a.offline').addClass('offline-available');
       }
 
-      this.loadImages();
+      if (typeof AjaxUI !== 'undefined') {
+        this.loadImages();
+      }
 
       // mark external links
       $('a.external,a[rel="external"]').attr('target', '_blank');
@@ -338,6 +347,12 @@ const MainUI = (($) => {
 
   $(W).on(`${Events.AJAX} ${Events.LOADED}`, () => {
     MainUI.init();
+  });
+
+  $(W).on('beforeunload', () => {
+    Spinner.show(() => {
+      $Body.removeClass('loaded');
+    });
   });
 
   W.MainUI = MainUI;

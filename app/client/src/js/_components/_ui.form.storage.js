@@ -83,7 +83,7 @@ const FormStorage = (($) => {
         $element.data(DATA_KEY).clear();
       });
 
-      $element.find('button,[type="submit"],[type="clear"]').on('click', () => {
+      $element.find('.btn-toolbar,.form-actions').children('button,[type="submit"],[type="clear"]').on('click', () => {
         $element.data(DATA_KEY).clear();
       });
 

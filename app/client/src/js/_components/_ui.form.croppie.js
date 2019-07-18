@@ -45,7 +45,7 @@ const CroppieUI = (($) => {
 
       $el.append(
         '<div class="cropper-wrap"><div class="cropper-container"></div>' +
-                '<a href="#" class="btn-remove"><i class="fas fa-times"></i> Remove</a></div>'
+        '<a href="#" class="btn-remove" style="display:none"><i class="fas fa-times"></i> Remove</a></div>'
       );
       //$el.append(ui.inputData);
 
@@ -68,7 +68,8 @@ const CroppieUI = (($) => {
         this.readFile(e.currentTarget);
       });
 
-      $el.find('.btn-remove').on('click', (e) => {
+      ui.$btnRemove = $el.find('.btn-remove');
+      ui.$btnRemove.on('click', (e) => {
         e.preventDefault();
 
         ui.uploadCrop.removeClass('ready');
@@ -79,6 +80,10 @@ const CroppieUI = (($) => {
 
         ui.uploadCropWrap.hide();
       });
+
+      if (ui.$el.find('img.croppie-image').length) {
+        ui.$btnRemove.show();
+      }
     }
 
     readFile(input) {
@@ -97,6 +102,7 @@ const CroppieUI = (($) => {
 
           ui.uploadCrop.show();
           ui.uploadCropWrap.show();
+          ui.$btnRemove.show();
         }
 
         reader.readAsDataURL(input.files[0]);

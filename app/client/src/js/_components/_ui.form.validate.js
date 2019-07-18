@@ -31,6 +31,11 @@ const FormValidate = (($) => {
 
       // init fields validation
       $fields.each((i, el) => {
+        // skip some fields here
+        if ($(el).attr('role') === 'combobox') {
+          return;
+        }
+
         new FormValidateField(el);
       });
 

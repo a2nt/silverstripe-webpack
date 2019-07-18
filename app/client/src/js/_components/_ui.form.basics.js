@@ -1,6 +1,8 @@
 import $ from 'jquery';
 
-import 'bootstrap-select/js/bootstrap-select';
+import 'bootstrap-select/dist/js/bootstrap-select';
+$.fn.selectpicker.Constructor.BootstrapVersion = '4';
+
 import 'jquery.inputmask/dist/jquery.inputmask.bundle';
 
 import Events from "../_events";
@@ -12,6 +14,8 @@ const FormBasics = (($) => {
   const NAME = 'jsFormBasics';
   const DATA_KEY = NAME;
   const $Html = $('html, body');
+  const W = window;
+  const D = document;
 
   class FormBasics {
 
@@ -27,6 +31,7 @@ const FormBasics = (($) => {
       const $fields = $element.find(Events.FORM_FIELDS);
       // init fields ui
       $fields.each((i, el) => {
+        // skip some fields here
         new FormFieldUI(el);
       });
 
@@ -51,12 +56,12 @@ const FormBasics = (($) => {
 
         // wrap options
         if (maxOptions > 1) {
-          $el.on('rendered.bs.select,changed.bs.select,refreshed.bs.select,loaded.bs.select', () => {
+          const wrapOptions = () => {
             if (!$el.val().length) {
               return true;
             }
 
-            const $container = $el.parent().find('.filter-option-inner-inner');
+            const $container = $el.parent().find('.dropdown-toggle .filter-option');
             const val = $container.text();
             const vals = val.split(separator);
             let html = '';
@@ -67,7 +72,7 @@ const FormBasics = (($) => {
               });
 
               html += `<span class="option" data-val=${  $opt.attr('value')  }>${  opt
-              } <i class="fas fa-times btn-remove"></i></span>`;
+            } <i class="fas fa-times btn-remove"></i></span>`;
 
             });
 
@@ -87,26 +92,25 @@ const FormBasics = (($) => {
                 vals.splice(i, 1);
                 $el.selectpicker('val', vals);
               }
+
+              wrapOptions();
             });
-          });
+          };
+
+          $el.on('rendered.bs.select changed.bs.select refreshed.bs.select loaded.bs.select change', wrapOptions);
+          wrapOptions();
         }
-
-
-        // FIX: hidden picker
-        $el.selectpicker('render');
-        $el.selectpicker('refresh');
-        $el.selectpicker('toggle');
-        document.activeElement.blur();
-        window.scroll(0, 0);
-
-        //$el.selectpicker('show');
-        //$el.selectpicker('hide');
-
-        /*$el.parents('.field.dropdown').find('.dropdown-toggle').click();
-                $el.parents('.field.dropdown').find('.dropdown-toggle').click();
-                $el.parents('.field.dropdown').find('.dropdown-toggle').blur();*/
       });
 
+      // FIX: missing conflicting 'bootstrap/js/dist/dropdown' with bootstrap-select/dist/js/bootstrap-select
+      $('[data-toggle="dropdown"]').on('click', (e) => {
+        $(e.currentTarget).siblings('.dropdown-menu').toggleClass('show');
+      });
+
+      $('.dropdown-menu a').on('click', (e) => {
+        $(e.currentTarget).parents('.dropdown-menu').removeClass('show');
+      });
+      // /FIX
 
       $fields.each((e, el) => {
         const $el = $(el);
@@ -128,7 +132,14 @@ const FormBasics = (($) => {
         const $el = $(e.currentTarget);
         const $parent = $el.parents('.radio');
 
-        $parent.siblings('.radio').removeClass('checked');
+        $parent.siblings('.radio').each((i, el) => {
+          const $el = $(el);
+
+          if (!$el.find('input').is(':checked')) {
+            $el.removeClass('checked');
+          }
+        });
+
         if ($el.is(':checked')) {
           $parent.addClass('checked');
         }
@@ -152,7 +163,7 @@ const FormBasics = (($) => {
     }
 
     static _jQueryInterface() {
-      return this.each(function() {
+      return this.each(() => {
         // attach functionality to element
         const $element = $(this);
         let data = $element.data(DATA_KEY);
@@ -173,18 +184,13 @@ const FormBasics = (($) => {
     return FormBasics._jQueryInterface;
   };
 
+  const init = () => {
+    $('form').jsFormBasics();
+  };
+
   // auto-apply
-  $(window).on(`${Events.AJAX} ${Events.LOADED}`, () => {
-    $('form').each((i, el) => {
-      const $el = $(el);
-
-      // skip some forms
-      if ($el.hasClass('no-validation')) {
-        return true;
-      }
-
-      $el.jsFormBasics();
-    });
+  $(W).on(`${Events.AJAX} ${Events.LOADED}`, () => {
+    init();
   });
 
   return FormBasics;
