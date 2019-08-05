@@ -4,3 +4,29 @@ Site\Templates\DeferedRequirements:
   version: false
   static_domain: false
 
+SilverStripe\View\Requirements:
+  disable_flush_combined: true
+SilverStripe\View\Requirements_Backend:
+  combine_in_dev: true
+  combine_hash_querystring: true
+  default_combined_files_folder: 'combined'
+SilverStripe\Core\Injector\Injector:
+  # Create adapter that points to the custom directory root
+  SilverStripe\Assets\Flysystem\PublicAdapter.custom-adapter:
+    class: SilverStripe\Assets\Flysystem\PublicAssetAdapter
+    constructor:
+      Root: ./app/javascript
+  # Set flysystem filesystem that uses this adapter
+  League\Flysystem\Filesystem.custom-filesystem:
+    class: 'League\Flysystem\Filesystem'
+    constructor:
+      Adapter: '%$SilverStripe\Assets\Flysystem\PublicAdapter.custom-adapter'
+  # Create handler to generate assets using this filesystem
+  SilverStripe\Assets\Storage\GeneratedAssetHandler.custom-generated-assets:
+    class: SilverStripe\Assets\Flysystem\GeneratedAssets
+    properties:
+      Filesystem: %$League\Flysystem\Filesystem.custom-filesystem
+  # Assign this generator to the requirements builder
+  SilverStripe\View\Requirements_Backend:
+    properties:
+      AssetHandler: '%$SilverStripe\Assets\Storage\GeneratedAssetHandler.custom-generated-assets'
