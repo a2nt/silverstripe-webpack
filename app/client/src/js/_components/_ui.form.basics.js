@@ -1,9 +1,10 @@
 import $ from 'jquery';
 
-import 'bootstrap-select/dist/js/bootstrap-select';
-$.fn.selectpicker.Constructor.BootstrapVersion = '4';
+//import 'bootstrap-select/dist/js/bootstrap-select';
+//$.fn.selectpicker.Constructor.BootstrapVersion = '4';
+import 'select2/dist/js/select2.js';
 
-import 'jquery.inputmask/dist/jquery.inputmask.bundle';
+import select2 from 'jquery.inputmask/dist/jquery.inputmask.bundle';
 
 import Events from "../_events";
 import SpinnerUI from './_ui.spinner';
@@ -37,8 +38,13 @@ const FormBasics = (($) => {
 
       const $selectFields = $element.find('select:not([readonly])');
       const $radioOptions = $element.find('input[type="radio"]');
-      const separator = '::;::';
 
+      $selectFields.each((i, el) => {
+        const $el = $(el);
+        $el.select2();
+      });
+
+      /*const separator = '::;::';
       $selectFields.each((i, el) => {
         const $el = $(el);
         const maxOptions = $el.data('max-options') || false;
@@ -109,7 +115,7 @@ const FormBasics = (($) => {
 
       $('.dropdown-menu a').on('click', (e) => {
         $(e.currentTarget).parents('.dropdown-menu').removeClass('show');
-      });
+      });*/
       // /FIX
 
       $fields.each((e, el) => {
