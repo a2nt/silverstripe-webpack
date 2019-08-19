@@ -1,4 +1,4 @@
-<nav id="{$NavID}" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="{$NavID}" class="navbar navbar-expand-lg navbar-light bg-light dropdown-hover">
     <button
             class="navbar-toggler"
             type="button"

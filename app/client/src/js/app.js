@@ -9,7 +9,7 @@ import 'bootstrap/js/dist/carousel';
 import 'bootstrap/js/dist/collapse';
 
 // conflicting with bootstrap-select/dist/js/bootstrap-select
-//import 'bootstrap/js/dist/dropdown';
+import 'bootstrap/js/dist/dropdown';
 
 import 'bootstrap/js/dist/modal';
 import 'bootstrap/js/dist/tooltip';

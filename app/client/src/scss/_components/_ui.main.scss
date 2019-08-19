@@ -137,3 +137,70 @@ button, input, optgroup, select, textarea,
 
     @extend .alert-danger;
 }
+
+// dropdown icon
+.dropdown.show .dropdown-toggle::after,
+.dropdown-toggle.active-dropdown::after,
+.dropdown-toggle.active::after {
+    transform: rotate(-90deg);
+}
+
+// dropdown hover
+@media only screen and (min-width: map-get($grid-breakpoints, "md")) {
+    .dropdown-hover .collapse ul li {
+        position: relative;
+    }
+
+    .dropdown-hover .collapse ul li:hover {
+        > .dropdown-toggle::after {
+            transform: rotate(-90deg);
+        }
+
+        > ul {
+            display: block;
+        }
+    }
+
+    .dropdown-hover .collapse ul ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 250px;
+        display: none;
+    }
+
+    /*******/
+    .dropdown-hover .collapse ul ul li {
+        position: relative;
+    }
+
+    .dropdown-hover .collapse ul ul li:hover > ul {
+        display: block;
+    }
+
+    .dropdown-hover .collapse ul ul ul {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        min-width: 250px;
+        display: none;
+    }
+
+    /*******/
+    .dropdown-hover .collapse ul ul ul li {
+        position: relative;
+    }
+
+    .dropdown-hover .collapse ul ul ul li:hover ul {
+        display: block;
+    }
+
+    .dropdown-hover .collapse ul ul ul ul {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        min-width: 250px;
+        display: none;
+        z-index: 1;
+    }
+}
