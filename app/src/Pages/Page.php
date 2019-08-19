@@ -9,6 +9,13 @@ use DNADesign\Elemental\Models\ElementContent;
 
 class Page extends SiteTree
 {
+    private static $default_container_class = 'container';
+
+    public static function DefaultContainer()
+    {
+        return self::config()->get('default_container_class');
+    }
+
     /*
      * Shows custom summary of the post, otherwise
      * Displays summary of the first content element

@@ -36,7 +36,7 @@ class ElementRows extends DataExtension
 
         // move available globaly to main tab
         $fields->removeByName('AvailableGlobally');
-        
+
         $tab = $fields->findOrMakeTab('Root.Main');
         $tab->push(CheckboxField::create('AvailableGlobally'));
 
@@ -170,7 +170,7 @@ class ElementRows extends DataExtension
 
         $object = $object ? $object : $this->owner;
 
-        if(!$object->isRoot()){
+        if (!$object->isRoot()) {
             $size = $object->getField('Size');
             $max = $size ? $max / (self::colsNumber() / $size) : $max;
             $parent = $object->Parent()->getOwnerPage();
@@ -185,8 +185,8 @@ class ElementRows extends DataExtension
     {
         $db = Config::inst()->get(self::class, 'db');
         $sizes = $db['Size'];
-        $sizes = preg_replace('!Enum\("([0-9,]+)","([0-9]+)"\)!i','$1', $sizes);
-        $sizes = explode(',',$sizes);
+        $sizes = preg_replace('!Enum\("([0-9,]+)","([0-9]+)"\)!i', '$1', $sizes);
+        $sizes = explode(',', $sizes);
 
         return max($sizes);
     }
@@ -216,7 +216,7 @@ class ElementRows extends DataExtension
         $container_styles = array_keys(self::$container_styles);
 
         if (!$type && $this->isRoot()) {
-            $type = $container_styles[0];
+            $type = \Page::DefaultContainer();
         }
 
         return $type;

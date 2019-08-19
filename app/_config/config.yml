@@ -10,6 +10,9 @@ SilverStripe\View\SSViewer:
     - '$public'
     - '$default'
 
+Page:
+  default_container_class: 'container'
+
 #SilverStripe\Admin\LeftAndMain:
 #  extra_requirements_javascript:
 #    - 'colymba/gridfield-bulk-editing-tools:client/dist/js/main.js'
