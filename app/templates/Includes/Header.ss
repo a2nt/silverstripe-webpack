@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-6">
-        <a id="Logo" href="/"><img src="{$ResoursesURL('logo.png')}" alt="{$SiteConfig.Title}" /></a>
+        <a id="Logo" href="/"><img src="{$ResourcesURL('logo.png')}" alt="{$SiteConfig.Title}" /></a>
     </div>
     <div class="col-sm-6 text-right">
         <% with $SiteConfig %>
