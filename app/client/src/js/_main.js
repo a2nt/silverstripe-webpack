@@ -246,6 +246,11 @@ const MainUI = (($) => {
       if (W.URLDetails['hash'].indexOf('printpage') > -1) {
         W.print();
       }
+
+      // load youtube API
+      if ($('iframe[src^="https://www.youtube.com/embed/"]').length) {
+        $Body.append('<script src="https://www.youtube.com/iframe_api"></script>');
+      }
     }
 
     static updateLocation(url) {

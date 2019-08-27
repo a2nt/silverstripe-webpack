@@ -204,3 +204,35 @@ button, input, optgroup, select, textarea,
         z-index: 1;
     }
 }
+
+// dark dropdowns
+.dropdown-menu.bg-dark {
+    border-color: $dark;
+
+    .nav-link {
+        color: $navbar-dark-color;
+
+        @include hover-focus {
+            color: $navbar-dark-hover-color;
+        }
+
+
+        &.disabled {
+            color: $navbar-dark-disabled-color;
+        }
+    }
+
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+        color: $navbar-dark-active-color;
+    }
+
+    .dropdown-item {
+        @include hover-focus {
+            color: $navbar-dark-brand-hover-color;
+            background: $dark;
+        }
+    }
+}

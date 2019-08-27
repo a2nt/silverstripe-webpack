@@ -12,11 +12,11 @@ use SilverStripe\UserForms\Model\EditableFormField;
 
 class UserDefinedFormExtension extends DataExtension
 {
-    private static $db = [
+    /*private static $db = [
         'CustomThankYouCode' => 'HTMLText',
         'RedirectOnComplete' => 'Boolean(0)',
         'RedirectOnCompleteURL' => 'Varchar(255)',
-    ];
+    ];*/
 
     private static $many_many = [
         'SubmissionColumns' => EditableFormField::class,
@@ -44,7 +44,7 @@ class UserDefinedFormExtension extends DataExtension
 
         /*$tab->push(CheckboxField::create('RedirectOnComplete'));
         $tab->push(TextField::create('RedirectOnCompleteURL'));*/
-        $tab->push(TextareaField::create('CustomThankYouCode'));
+        //$tab->push(TextareaField::create('CustomThankYouCode'));
 
         $grid = $fields->dataFieldByName('Submissions');
 
@@ -65,7 +65,7 @@ class UserDefinedFormExtension extends DataExtension
                 $name = $col->getField('Name');
                 $columns[$name] = [
                     'title' => $title,
-                    'callback' => function($item) use ($name) {
+                    'callback' => function ($item) use ($name) {
                         return $item->relField($name);
                     }
                 ];

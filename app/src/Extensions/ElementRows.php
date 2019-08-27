@@ -200,7 +200,7 @@ class ElementRows extends DataExtension
     {
         return $this->owner->getField('ExtraClass')
             .(
-                $this->isColumn()
+            $this->isColumn()
                 ? ' '.Config::inst()->get(self::class, 'column_class').$this->owner->getField('Size')
                 : ''
             );

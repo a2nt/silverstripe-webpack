@@ -12,7 +12,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="{$NavID}Content">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto w-100 nav-fill">
             <% loop $Navigation %>
                 <% include NavItem %>
             <% end_loop %>

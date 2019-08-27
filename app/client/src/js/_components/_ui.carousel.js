@@ -53,6 +53,37 @@ const CarouselUI = (($) => {
         // init carousel
         $e.carousel();
 
+        const $youtubeSlides = $e.find('iframe[src^="https://www.youtube.com/embed/"]');
+
+        $e.on('slide.bs.carousel', () => {
+          if ($youtubeSlides.length) {
+            $youtubeSlides.each((i, e) => {
+              const $e = $(e);
+              try {
+                $e.data('player', new YT.Player(e, {
+                  events: {
+                    'onReady': () => {
+                      $e.data('player').pauseVideo();
+                    }
+                  }
+                }));
+
+                $e.data('player').pauseVideo();
+              } catch (e) {}
+            });
+          }
+        });
+
+        $e.find('.carousel-control-prev').on('click', (e) => {
+          e.preventDefault();
+          $e.carousel('prev');
+        });
+
+        $e.find('.carousel-control-next').on('click', (e) => {
+          e.preventDefault();
+          $e.carousel('next');
+        });
+
         // init touch swipes
         $e.hammer().bind('swipeleft', (event) => {
           $(event.target).carousel('next');
@@ -70,7 +101,7 @@ const CarouselUI = (($) => {
           $(event.target).carousel('prev');
         });
 
-        $e.hammer().bind('tap', (event) => {
+        $e.find('.carousel-item').hammer().bind('tap', (event) => {
           $(event.target).carousel('next');
         });
       });

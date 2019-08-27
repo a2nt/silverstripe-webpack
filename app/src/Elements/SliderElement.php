@@ -14,6 +14,7 @@ use Dynamic\FlexSlider\ORM\FlexSlider;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\ReadonlyField;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
 
@@ -26,6 +27,10 @@ class SliderElement extends ElementSlideshow
     private static $description = 'Displays slideshow';
 
     private static $table_name = 'SliderElement';
+
+    private static $db = [
+        'Interval' => 'Int',
+    ];
 
     private static $extensions = [
         FlexSlider::class,
@@ -58,6 +63,10 @@ class SliderElement extends ElementSlideshow
             'CarouselControlNav',
             'CarouselDirectionNav',
             'CarouselThumbnailCt',
+        ]);
+
+        $fields->addFieldsToTab('Root.Settings', [
+            NumericField::create('Interval', 'Auto-play Interval'),
         ]);
 
         $grid = $fields->dataFieldByName('Slides');
@@ -98,5 +107,14 @@ class SliderElement extends ElementSlideshow
         })->sort('SortOrder');
 
         return $this->items;
+    }
+
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+
+        if(!$this->getField('Interval')){
+            $this->setField('Interval', 5000);
+        }
     }
 }

@@ -1,14 +1,9 @@
 ---
 Name: webapp
 ---
+
 SilverStripe\Core\Manifest\ModuleManifest:
   project: app
-
-SilverStripe\View\SSViewer:
-  source_file_comments: true
-  themes:
-    - '$public'
-    - '$default'
 
 Page:
   default_container_class: 'container'

@@ -11,15 +11,21 @@ SilverStripe\Blog\Model\BlogPost:
   extensions:
     - Site\Extensions\BlogPostExtension
 
+Sheadawson\Linkable\Models\EmbeddedObject:
+  extensions:
+    - Site\Extensions\EmbeddedObjectExtension
+
 Dynamic\FlexSlider\Model\SlideImage:
   extensions:
-  - Site\Extensions\SlideImageExtension
+    - Site\Extensions\SlideImageExtension
 
 SilverStripe\Core\Injector\Injector:
   SilverStripe\UserForms\Model\UserDefinedForm:
     class: Site\Extensions\CMSMain_HiddenClass
   SilverStripe\Security\MemberAuthenticator\LostPasswordHandler:
     class: Site\Extensions\LostPasswordHandlerExtension
+  Sheadawson\Linkable\Forms\EmbeddedObjectField:
+    class: Site\Extensions\EmbedObjectField
 
 # User Forms
 SilverStripe\UserForms\Form\UserForm:

@@ -21,3 +21,6 @@ en:
     EMPTY: "Please prove you are human - check the Captcha box."
     NOSCRIPT: "You must enable JavaScript to submit this form"
     VALIDATE_ERROR: "Captcha could not be validated"
+  Dynamic\FlexSlider\Model\SlideImage:
+    SINGULARNAME: 'Slide'
+    PLURALNAME: 'Slides'

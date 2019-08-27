@@ -2,11 +2,31 @@
  * Bootstrap carousel improvement
  */
 
-.carousel-item {
+/*.carousel-item {
     &.active {
         display: flex !important;
         justify-content: center;
         align-items: flex-start;
+    }
+}*/
+
+.carousel-slide {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .video {
+        width: 100%;
+
+        iframe {
+            width: 100% !important;
+            height: auto !important;
+        }
+    }
+
+    .img {
+        display: block;
+        width: 100%;
     }
 }
 

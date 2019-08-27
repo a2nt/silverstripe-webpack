@@ -1,25 +1,27 @@
 <% with $SiteConfig %>
-<div class="container">
-    <h2>Contact Us</h2>
-    <div class="field row">
-        <div class="title col-sm-4">Address:</div>
-        <div class="value col-sm-8">$Address</div>
-    </div>
+<div class="wrapper">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="field row">
+            <div class="title col-sm-4">Address:</div>
+            <div class="value col-sm-8">$Address</div>
+        </div>
 
-    <div class="field row">
-        <div class="title col-sm-4">Phone:</div>
-        <div class="value col-sm-8">$PhoneNumber</div>
-    </div>
+        <div class="field row">
+            <div class="title col-sm-4">Phone:</div>
+            <div class="value col-sm-8">$PhoneNumber</div>
+        </div>
 
-    <div class="field row">
-        <div class="title col-sm-4">Email:</div>
-        <div class="value col-sm-8">$PublicEmail</div>
-    </div>
+        <div class="field row">
+            <div class="title col-sm-4">Email:</div>
+            <div class="value col-sm-8">$PublicEmail</div>
+        </div>
 
-    <% include Objects\SocialLinks %>
+        <% include Objects\SocialLinks %>
+    </div>
 </div>
 
-<div class="copyright">
+<div class="copyright footer">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">

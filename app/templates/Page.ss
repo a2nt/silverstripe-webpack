@@ -18,7 +18,7 @@
         </main>
     </div>
 
-    <footer id="Footer" class="site-footer">
+    <footer id="Footer" class="site-footer footer">
         <% include Footer %>
     </footer>
 
