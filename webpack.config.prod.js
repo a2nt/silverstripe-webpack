@@ -15,6 +15,7 @@ const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 let plugins = [
   new webpack.DefinePlugin({
@@ -51,6 +52,18 @@ let plugins = [
       yandex: true,
       windows: true
     }
+  }),
+  new OptimizeCssAssetsPlugin({
+    //assetNameRegExp: /\.optimize\.css$/g,
+    cssProcessor: require('cssnano'),
+    cssProcessorPluginOptions: {
+      preset: ['default', {
+        discardComments: {
+          removeAll: true
+        }
+      }],
+    },
+    canPrint: true
   }),
 ];
 
