@@ -12,6 +12,7 @@ use Dynamic\Elements\Image\Elements\ElementImage;
 use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
@@ -25,6 +26,7 @@ class ElementImageWidget extends DataExtension
     ];
 
     private static $db = [
+        'Resize' => 'Boolean(1)',
         'ImageHeight' => 'Float',
         'Content' => 'HTMLText',
     ];
@@ -45,6 +47,12 @@ class ElementImageWidget extends DataExtension
         $this->owner->ImageHeight = $this->getHeight();
 
         $heights = Config::inst()->get(__CLASS__, 'available_heights');
+
+        $fields->replaceField('Resize', CheckboxField::create(
+            'Resize',
+            'Would you like to scale image?'
+        ));
+
         if (count($heights)) {
             $fields->replaceField(
                 'ImageHeight',
@@ -53,7 +61,9 @@ class ElementImageWidget extends DataExtension
                     'Image Height',
                     $heights,
                     $this->getHeight()
-                )->setEmptyString('(unspecified)')
+                )
+                    ->setEmptyString('(unspecified)')
+                    ->displayIf('Resize')->isChecked()->end()
             );
         } else {
             $fields->dataFieldByName('ImageHeight')
@@ -64,6 +74,11 @@ class ElementImageWidget extends DataExtension
     public function ImageResized()
     {
         $image = $this->owner->Image();
+
+        if (!$this->owner->Resize) {
+            return $image;
+        }
+
         $width = $this->getWidth();
         $height = $this->getHeight();
 

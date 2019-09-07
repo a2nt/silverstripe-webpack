@@ -13,16 +13,17 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TreeMultiselectField;
 use SilverStripe\Forms\DropdownField;
-use BetterBrief\GoogleMapField;
+//use BetterBrief\GoogleMapField;
+use Bigfork\SilverStripeMapboxField\MapboxField;
 
 class SiteConfigExtension extends DataExtension
 {
     private static $db = [
         'ExtraCode' => 'Text',
-        'Longitude' => 'Varchar(255)',
-        'Latitude' => 'Varchar(255)',
+        'Longitude' => 'Decimal(10, 8)',
+        'Latitude' => 'Decimal(11, 8)',
         'MapZoom' => 'Int',
-        'MapAPIKey' => 'Varchar(255)',
+        //'MapAPIKey' => 'Varchar(255)',
         'Description' => 'Varchar(255)',
     ];
 
@@ -37,40 +38,49 @@ class SiteConfigExtension extends DataExtension
 
     public function updateCMSFields(FieldList $fields)
     {
-        $tab = $fields->findOrMakeTab('Root.Main');
+        $fields->addFieldsToTab('Root.Main', [
+            TreeMultiselectField::create(
+                'Navigation',
+                'Navigation',
+                SiteTree::class
+            ),
+            TextareaField::create('Description', 'Website Description'),
+            TextareaField::create('ExtraCode', 'Extra site-wide HTML code'),
+            DropdownField::create(
+                'PrivacyPolicyID',
+                'Privacy Policy Page',
+                SiteTree::get()->map()->toArray()
+            ),
+            DropdownField::create(
+                'SitemapID',
+                'Sitemap Page',
+                SitemapPage::get()->map()->toArray()
+            ),
+        ]);
 
-        $tab->push(TreeMultiselectField::create(
-            'Navigation',
-            'Navigation',
-            SiteTree::class
-        ));
-
-        $tab->push(TextareaField::create('ExtraCode', 'Extra site-wide HTML code'));
-
-        $tab->push(DropdownField::create(
-            'PrivacyPolicyID',
-            'Privacy Policy Page',
-            SiteTree::get()->map()->toArray()
-        ));
-
-        $tab->push(DropdownField::create(
-            'SitemapID',
-            'Sitemap Page',
-            SitemapPage::get()->map()->toArray()
-        ));
-
-        $tab->push(TextareaField::create('Description', 'Website Description'));
-
-        $mapTab = $fields->findOrMakeTab('Root.GoogleMaps');
-        $mapTab->push(TextField::create('MapAPIKey'));
-        $mapTab->push(TextField::create('MapZoom'));
-        $mapTab->push(GoogleMapField::create(
+        $mapTab = $fields->findOrMakeTab('Root.Maps');
+        $fields->addFieldsToTab('Root.Maps', [
+            //TextField::create('MapAPIKey'),
+            TextField::create('MapZoom'),
+            MapboxField::create('Map', 'Choose a location', 'Latitude', 'Longitude'),
+        ]);
+        /*GoogleMapField::create(
             $this->owner,
             'Location',
             [
                 'show_search_box' => true,
             ]
-        ));
+        )*/
+    }
+
+    public function MapAPIKey()
+    {
+        return MapboxField::config()->get('access_token');
+    }
+
+    public function MapStyle()
+    {
+        return MapboxField::config()->get('map_style');
     }
 
     public function getGeoJSON()

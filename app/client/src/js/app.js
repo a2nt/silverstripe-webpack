@@ -7,10 +7,7 @@ import 'bootstrap/js/dist/alert';
 import 'bootstrap/js/dist/button';
 import 'bootstrap/js/dist/carousel';
 import 'bootstrap/js/dist/collapse';
-
-// conflicting with bootstrap-select/dist/js/bootstrap-select
 import 'bootstrap/js/dist/dropdown';
-
 import 'bootstrap/js/dist/modal';
 import 'bootstrap/js/dist/tooltip';
 import 'bootstrap/js/dist/popover';
@@ -18,14 +15,12 @@ import 'bootstrap/js/dist/scrollspy';
 import 'bootstrap/js/dist/tab';
 //
 
-//import Vue from 'vue/dist/vue.esm.js';
 
-// import Bootstrap-Vue
-/*import { Carousel } from 'bootstrap-vue/es/components';
-Vue.use(Carousel);*/
-
+// Offcanvas menu
 import 'offcanvas-bootstrap/dist/js/bootstrap.offcanvas';
-import 'jquery-zoom/jquery.zoom';
+
+// Uncomment it to enable meta-lightbox zooming on hover
+//import 'jquery-zoom/jquery.zoom';
 import 'meta-lightbox/meta-lightbox';
 
 import './_main';

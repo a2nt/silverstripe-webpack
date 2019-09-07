@@ -38,4 +38,9 @@ class Page extends SiteTree
 
         return false;
     }
+
+    public function CSSClass()
+    {
+        return str_replace(['\\'], '-', $this->getField('ClassName'));
+    }
 }

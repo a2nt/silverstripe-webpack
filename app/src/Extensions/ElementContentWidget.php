@@ -8,7 +8,6 @@
 
 namespace Site\Extensions;
 
-
 use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;
 use SilverStripe\FontAwesome\FontAwesomeField;
@@ -29,13 +28,9 @@ class ElementContentWidget extends DataExtension
     {
         parent::updateCMSFields($fields);
 
-        $tab = $fields->findOrMakeTab('Root.Main');
-        $tab->push(
-            FontAwesomeField::create('BlockIcon')
-        );
-
-        $tab->push(
-            LinkField::create('BlockLinkID', 'Link')
-        );
+        $fields->addFieldsToTab('Root.Main', [
+            FontAwesomeField::create('BlockIcon'),
+            LinkField::create('BlockLinkID', 'Link'),
+        ]);
     }
 }

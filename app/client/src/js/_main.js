@@ -15,20 +15,40 @@ import './_components/routes/index';
 import Events from './_events';
 import Spinner from './_components/_ui.spinner';
 
+// youtube video preview image
 import './_components/_ui.video.preview';
+
 import './_components/_ui.carousel';
 import './_components/_ui.menu';
 
+// Bootstrap hover menu
+import './_components/_ui.hover';
+
 
 import FormBasics from './_components/_ui.form.basics';
+
+// Toggle bootstrap form fields
 //import FormToggleUI from './_components/_ui.form.fields.toggle';
+
+// Bootstrap Date & Time fields
 //import FormDatetime from './_components/_ui.form.datetime';
-import FormStepped from './_components/_ui.form.stepped';
+
+// Stepped forms functionality
+//import FormStepped from './_components/_ui.form.stepped';
+
+// Forms validation functionality
 import FormValidate from './_components/_ui.form.validate';
+
+// Store forms data into localStorage
 import FormStorage from './_components/_ui.form.storage';
+
+// client-side images cropping
 //import FormCroppie from './_components/_ui.form.croppie';
 
+// AJAX functionality
 import AjaxUI from './_components/_ui.ajax';
+
+// Google NoCaptcha fields
 import NoCaptcha from './_components/_ui.nocaptcha';
 
 import SmoothScroll from 'smooth-scroll';

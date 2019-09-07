@@ -1,3 +1,6 @@
+---
+Name: 'webapp-requirements'
+---
 Site\Templates\DeferedRequirements:
   nojquery: false
   nofontawesome: false

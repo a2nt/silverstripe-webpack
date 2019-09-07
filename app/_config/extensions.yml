@@ -1,15 +1,19 @@
+---
+Name: webapp-extensions
+---
+# Basic extensions
+
+SilverStripe\Admin\LeftAndMain:
+  extensions:
+    - Site\Extensions\LeftAndMainExtension
+
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - Site\Extensions\SiteConfigExtension
-    - Site\Extensions\SocialExtension
 
-SilverStripe\SiteTree\SiteTree:
+SilverStripe\CMS\Model\SiteTree:
   extensions:
     - Site\Extensions\SiteTreeExtension
-
-SilverStripe\Blog\Model\BlogPost:
-  extensions:
-    - Site\Extensions\BlogPostExtension
 
 Sheadawson\Linkable\Models\EmbeddedObject:
   extensions:
@@ -27,7 +31,7 @@ SilverStripe\Core\Injector\Injector:
   Sheadawson\Linkable\Forms\EmbeddedObjectField:
     class: Site\Extensions\EmbedObjectField
 
-# User Forms
+# User Forms module
 SilverStripe\UserForms\Form\UserForm:
   extensions:
     - Site\Extensions\PlaceholderFormExtension
@@ -39,3 +43,12 @@ SilverStripe\UserForms\Model\UserDefinedForm:
 DNADesign\ElementalUserForms\Model\ElementForm:
   extensions:
     - Site\Extensions\UserDefinedFormExtension
+
+# Blog + Widgets module extensions
+Page:
+  extensions:
+    - SilverStripe\Widgets\Extensions\WidgetPageExtension
+
+SilverStripe\Blog\Model\BlogPost:
+  extensions:
+    - Site\Extensions\BlogPostExtension

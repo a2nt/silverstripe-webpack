@@ -1,4 +1,4 @@
-<div id="PageContainer" class="page{$ClassName} action{$Action}">
+<div id="PageContainer" class="page{$CSSClass} action{$Action}">
     <article class="blog-entry">
 
     	<% if $FeaturedImage %>
@@ -31,4 +31,4 @@
 	<% end_if %>
 </div>
 
-<% include SilverStripe\\Blog\\BlogSideBar %>
+<%-- include SilverStripe\\Blog\\BlogSideBar --%>

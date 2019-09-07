@@ -1,5 +1,5 @@
 ---
-Name: shop
+Name: 'webapp-shop'
 ---
 SilverStripe\Core\Injector\Injector:
   SilverShop\Checkout\SinglePageCheckoutComponentConfig:

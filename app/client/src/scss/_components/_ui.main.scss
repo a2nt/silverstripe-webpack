@@ -146,22 +146,36 @@ button, input, optgroup, select, textarea,
 }
 
 // dropdown hover
+/*
+.dropdown.show {
+    .dropdown {
+        &:hover,
+        &:focus {
+            .dropdown-menu {
+                display: block;
+            }
+        }
+    }
+}
 @media only screen and (min-width: map-get($grid-breakpoints, "md")) {
-    .dropdown-hover .collapse ul li {
+    .dropdown-hover ul li {
         position: relative;
     }
 
-    .dropdown-hover .collapse ul li:hover {
-        > .dropdown-toggle::after {
-            transform: rotate(-90deg);
-        }
+    .dropdown-hover ul li {
+        &:hover,
+        &:focus {
+            > .dropdown-toggle::after {
+                transform: rotate(-90deg);
+            }
 
-        > ul {
-            display: block;
+            > ul {
+                display: block;
+            }
         }
     }
 
-    .dropdown-hover .collapse ul ul {
+    .dropdown-hover ul ul {
         position: absolute;
         top: 100%;
         left: 0;
@@ -169,16 +183,20 @@ button, input, optgroup, select, textarea,
         display: none;
     }
 
-    /*******/
-    .dropdown-hover .collapse ul ul li {
+    .dropdown-hover ul ul li {
         position: relative;
     }
 
-    .dropdown-hover .collapse ul ul li:hover > ul {
-        display: block;
+    .dropdown-hover ul ul li {
+        &:hover,
+        &:focus {
+            > ul {
+                display: block;
+            }
+        }
     }
 
-    .dropdown-hover .collapse ul ul ul {
+    .dropdown-hover ul ul ul {
         position: absolute;
         top: 0;
         left: 100%;
@@ -186,16 +204,20 @@ button, input, optgroup, select, textarea,
         display: none;
     }
 
-    /*******/
-    .dropdown-hover .collapse ul ul ul li {
+    .dropdown-hover ul ul ul li {
         position: relative;
     }
 
-    .dropdown-hover .collapse ul ul ul li:hover ul {
-        display: block;
+    .dropdown-hover ul ul ul li {
+        &:hover,
+        &:focus {
+            ul {
+                display: block;
+            }
+        }
     }
 
-    .dropdown-hover .collapse ul ul ul ul {
+    .dropdown-hover ul ul ul ul {
         position: absolute;
         top: 0;
         left: -100%;
@@ -203,9 +225,28 @@ button, input, optgroup, select, textarea,
         display: none;
         z-index: 1;
     }
-}
+}*/
 
 // dark dropdowns
+.navbar-dark {
+    .nav-link {
+        @include hover-focus {
+            background: $navbar-dark-hover-background;
+        }
+    }
+
+    .active > .nav-link,
+    .nav-link.active {
+        background: $navbar-dark-active-background;
+    }
+
+    .nav-link.show,
+    .navbar-nav .show > .nav-link {
+        background: $navbar-dark-show-background;
+        color: $navbar-dark-show-color;
+    }
+}
+
 .dropdown-menu.bg-dark {
     border-color: $dark;
 
@@ -231,8 +272,37 @@ button, input, optgroup, select, textarea,
 
     .dropdown-item {
         @include hover-focus {
-            color: $navbar-dark-brand-hover-color;
-            background: $dark;
+            color: $navbar-dark-hover-color;
+            background: $navbar-dark-hover-background;
         }
+
+
+        &.active,
+        &:active {
+            background: $navbar-dark-active-background;
+        }
+
+        .nav-link {
+            background: none;
+        }
+    }
+}
+
+// pulse
+.pulse {
+    animation: pulse 0.8s linear infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }

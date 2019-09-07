@@ -1,11 +1,11 @@
 'use strict';
 
 import $ from 'jquery';
-import Events from "../_events";
-import mapBoxGL from "mapbox-gl";
+import Events from '../_events';
+import mapBoxGL from 'mapbox-gl';
 //import "./mapStorage";
 
-import "../../scss/_components/_ui.map.scss";
+import '../../scss/_components/_ui.map.scss';
 
 const W = window;
 
@@ -21,41 +21,45 @@ const MapAPI = (($) => {
 
   class MapAPI {
     // Constructor
-    constructor(element) {
-      this._element = element;
-      const $element = $(this._element);
-      const geojson = $element.data('geojson');
+    constructor(el) {
+      this._el = el;
+      const $el = $(this._el);
+      const config = $el.data();
 
       const center = [
-        ($element.data('lng') ? $element.data('lng') : $BODY.data('default-lng')),
-        ($element.data('lat') ? $element.data('lat') : $BODY.data('default-lat')),
+        (config['lng'] ? config['lng'] : $BODY.data('default-lng')),
+        (config['lat'] ? config['lat'] : $BODY.data('default-lat')),
       ];
-      const popup = new mapboxgl.Popup({
+      const popup = new mapBoxGL.Popup({
         closeOnClick: false,
         className: 'popup',
       });
 
-      currentStyle = this.getStyle();
-      mapBoxGL.accessToken = $element.data('key');
 
+      currentStyle = this.getStyle();
+      mapBoxGL.accessToken = $el.data('key');
       Map = new mapBoxGL.Map({
-        'container': $element.find('.mapAPI-map')[0],
-        center,
-        //hash: true,
-        'style': currentStyle,
-        //localIdeographFontFamily: $BODY.css('font-family'),
-        'zoom': ($element.data('map-zoom') ? $element.data('map-zoom') : 10),
-        'attributionControl': false,
-        /*transformRequest: (url, resourceType)=> {
-                          if(resourceType === 'Source' && url.startsWith('http://myHost')) {
-                            return {
-                              url: url.replace('http', 'https'),
-                              headers: { 'my-custom-header': true},
-                              credentials: 'include'  // Include cookies for cross-origin requests
-                            }
-                          }
-                        }*/
-      })
+          'container': $el.find('.mapAPI-map')[0],
+          'center': center,
+          //hash: true,
+          'style': currentStyle,
+          'localIdeographFontFamily': $BODY.css('font-family'),
+          'zoom': (config['mapZoom'] ? config['mapZoom'] : 10),
+          'attributionControl': false,
+          'antialias': true,
+          /*'pitch': 45,
+          'bearing': -17.6*/
+
+          /*transformRequest: (url, resourceType)=> {
+                              if(resourceType === 'Source' && url.startsWith('http://myHost')) {
+                                return {
+                                  url: url.replace('http', 'https'),
+                                  headers: { 'my-custom-header': true},
+                                  credentials: 'include'  // Include cookies for cross-origin requests
+                                }
+                              }
+                            }*/
+        })
         .addControl(new mapBoxGL.AttributionControl({
           compact: true,
         }))
@@ -66,34 +70,107 @@ const MapAPI = (($) => {
           },
           trackUserLocation: true,
         }), 'bottom-right')
-        .addControl(new mapboxgl.ScaleControl({
+        .addControl(new mapBoxGL.ScaleControl({
           maxWidth: 80,
           unit: 'metric',
-        }), 'top-left');
+        }), 'top-left')
+        .addControl(new mapboxgl.FullscreenControl());
+
+      $el.data('Map', Map);
+      $el.data('Popup', popup);
 
       // event.target
       Map.on('load', (e) => {
+        // Insert the layer beneath any symbol layer.
+        if (config['3d']) {
+          const layers = Map.getStyle().layers;
+          let labelLayerId;
+          for (let i = 0; i < layers.length; i++) {
+            if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+              labelLayerId = layers[i].id;
+              break;
+            }
+          }
+
+          Map.addLayer({
+            'id': '3d-buildings',
+            'source': 'composite',
+            'source-layer': 'building',
+            'filter': ['==', 'extrude', 'true'],
+            'type': 'fill-extrusion',
+            'minzoom': 15,
+            'paint': {
+              'fill-extrusion-color': '#aaa',
+
+              // use an 'interpolate' expression to add a smooth transition effect to the
+              // buildings as the user zooms in
+              'fill-extrusion-height': [
+                "interpolate", ["linear"],
+                ["zoom"],
+                15, 0,
+                15.05, ["get", "height"]
+              ],
+              'fill-extrusion-base': [
+                "interpolate", ["linear"],
+                ["zoom"],
+                15, 0,
+                15.05, ["get", "min_height"]
+              ],
+              'fill-extrusion-opacity': .6
+            }
+          }, labelLayerId);
+        }
+
+        const firstMarker = config['geojson'].features[0].geometry.coordinates;
+        //Map.setCenter(firstMarker);
+        const bounds = new mapBoxGL.LngLatBounds(firstMarker, firstMarker);
+
         // add markers to map
-        geojson.features.forEach((marker) => {
-          // create a DOM element for the marker
-          const $el = $(`<div class="marker">${  marker.icon  }</div>`);
+        config['geojson'].features.forEach((marker) => {
+          const id = marker.id;
+          const crds = marker.geometry.coordinates;
+          const content = marker.properties.content;
+
+          // create a DOM el for the marker
+          const $el = $(`<div id="Marker${ id }" data-id="${ id }" class="marker">${ marker.icon }</div>`);
 
           $el.on('click', () => {
-            console.log('Marker click');
-            const coordinates = marker.geometry.coordinates;
-            const content = marker.properties.content;
-            console.log(popup);
-            popup.setLngLat(coordinates)
+            popup.setLngLat(crds)
               .setHTML(content)
               .addTo(Map);
+
+            if (config['flyToMarker']) {
+              Map.flyTo({
+                center: crds,
+                zoom: 17,
+              });
+            }
+
+            $el.trigger(Events.MAPMARKERCLICK);
           });
 
           // add marker to map
-          new mapboxgl.Marker($el[0])
-            .setLngLat(marker.geometry.coordinates)
+          new mapBoxGL.Marker($el[0])
+            .setLngLat(crds)
             .addTo(Map);
+          bounds.extend(crds);
         });
 
+        Map.fitBounds(bounds, {
+          padding: 30,
+        });
+
+        popup.on('close', (e) => {
+          if (config['flyToBounds']) {
+            Map.fitBounds(bounds, {
+              padding: 30,
+            });
+          }
+          $el.trigger(Events.MAPPOPUPCLOSE);
+        });
+
+        $el.trigger(Events.MAPLOADED);
+        $(W).trigger(Events.MAPLOADED);
         console.log('Map is loaded');
       });
 
@@ -124,7 +201,7 @@ const MapAPI = (($) => {
       }, 36000);
 
 
-      $element.addClass(`${NAME}-active`);
+      $el.addClass(`${NAME}-active`);
     }
 
     // Public methods
@@ -133,36 +210,37 @@ const MapAPI = (($) => {
     }
 
     getStyle() {
+      const $el = $(this._el);
+      return $el.data('map-style');
       return 'mapbox://styles/mapbox/streets-v9';
       const hour = new Date().getHours();
       if (hour < 6 || hour > 18) {
         // night
         //return 'mapbox://styles/mapbox/streets-v7';
         return 'mapbox://styles/tony-air/cjeacwih92iu42rpd8tcmuyb2';
-      } else {
-        // day
-        return 'mapbox://styles/mapbox/streets-v9';
       }
+      // day
+      return 'mapbox://styles/mapbox/streets-v9';
     }
 
     dispose() {
-      const $element = $(this._element);
+      const $el = $(this._el);
 
-      $element.removeClass(`${NAME}-active`);
-      $.removeData(this._element, DATA_KEY);
-      this._element = null;
+      $el.removeClass(`${NAME}-active`);
+      $.removeData(this._el, DATA_KEY);
+      this._el = null;
     }
 
     static _jQueryInterface() {
       if (typeof W.localStorage !== 'undefined') {
         return this.each(function() {
-          // attach functionality to element
-          const $element = $(this);
-          let data = $element.data(DATA_KEY);
+          // attach functionality to el
+          const $el = $(this);
+          let data = $el.data(DATA_KEY);
 
           if (!data) {
             data = new MapAPI(this);
-            $element.data(DATA_KEY, data);
+            $el.data(DATA_KEY, data);
           }
         });
       }

@@ -1,5 +1,12 @@
-<% if $ShowTitle %>
-    <h2 class="slider-element__title text-center">$Title</h2>
+<% if $ShowTitle || $Content %>
+    <div class="slider-caption">
+        <% if $ShowTitle %>
+            <h2 class="slider-element__title text-center">$Title</h2>
+        <% end_if %>
+        <% if $Content %>
+            <div class="slider-element__content typography text-center">$Content</div>
+        <% end_if %>
+    </div>
 <% end_if %>
 
 <% if $SlideShow %>

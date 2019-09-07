@@ -1,4 +1,4 @@
-<div id="PageContainer" class="page{$ClassName} action{$Action}">
+<div id="PageContainer" class="page{$CSSClass} action{$Action}">
 	<% include Content %>
 
 	<div class="page-content">
@@ -23,7 +23,7 @@
 				<% if $PaginatedList.Exists %>
 					<div class="row">
 						<% loop $PaginatedList %>
-							<div class="col-sm-4">
+							<div class="col-sm-3 col-md-3">
 								<% include BlogPostInfo %>
 							</div>
 						<% end_loop %>
@@ -42,4 +42,4 @@
     </div>
 </div>
 
-<% include SilverStripe\\Blog\\BlogSideBar %>
+<%-- include SilverStripe\\Blog\\BlogSideBar --%>

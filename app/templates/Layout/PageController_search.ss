@@ -1,5 +1,5 @@
 <% with $SearchResults %>
-<div id="PageContainer" class="page action{$Action}">
+<div id="PageContainer" class="page{$CSSClass} pageSearch action{$Action}">
     <div class="page-content">
         <h1 class="page-header container no-elements">$Title</h1>
 

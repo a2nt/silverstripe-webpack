@@ -1,5 +1,5 @@
 ---
-Name: debugbarext
+Name: 'webapp-debugbar'
 After:
   - 'framework'
   - 'debugbar'

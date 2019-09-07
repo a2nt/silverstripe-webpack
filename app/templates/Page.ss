@@ -14,7 +14,30 @@
         </header>
 
         <main id="MainContent" data-ajax-region="LayoutAjax">
-            $Layout
+            <% if $ParentID %>
+                $Breadcrumbs
+            <% end_if %>
+
+            <% if $SideBarView || $Parent.SideBarView %>
+            <div class="$DefaultContainer">
+                <div class="row">
+                    <div class="col-md-8">
+                        $Layout
+                    </div>
+                    <div class="col-md-4">
+                        <div class="page-content">
+                            <% if $SideBarView %>
+                                $SideBarView
+                            <% else %>
+                                $Parent.SideBarView
+                            <% end_if %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% else %>
+                $Layout
+            <% end_if %>
         </main>
     </div>
 

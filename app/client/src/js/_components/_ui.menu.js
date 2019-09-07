@@ -7,37 +7,37 @@ const SlidingMenu = (($) => {
 
   class SlidingMenu {
     // Constructor
-    constructor(element) {
-      this._element = element;
-      const $element = $(this._element);
-      $element.addClass(`${NAME}-active`);
+    constructor(el) {
+      const $el = $(this._el);
+      this.$el = $el;
+      $el.addClass(`${NAME}-active`);
 
       // esc button
-      $(window).on('keyup',((e) => {
+      $(window).on('keyup', ((e) => {
         if (e.which === 27) {
-          $element.find('.is-open[data-toggle="offcanvas"]').click();
+          $el.find('.is-open[data-toggle="offcanvas"]').click();
         }
       }));
     }
 
     // Public methods
     dispose() {
-      console.log(`Disposing: ${NAME} elements`);
+      console.log(`Disposing: ${NAME} els`);
 
-      $(this._element).removeClass(`${NAME}-active`);
-      $.removeData(this._element, DATA_KEY);
-      this._element = null;
+      this.$el.removeClass(`${NAME}-active`);
+      $.removeData(this.$el, DATA_KEY);
+      this.$el = null;
     }
 
     static _jQueryInterface() {
-      return this.each(function () {
-        // attach functionality to element
-        const $element = $(this);
-        let data = $element.data(DATA_KEY);
+      return this.each(function() {
+        // attach functionality to el
+        const $el = $(this);
+        let data = $el.data(DATA_KEY);
 
         if (!data) {
           data = new SlidingMenu(this);
-          $element.data(DATA_KEY, data);
+          $el.data(DATA_KEY, data);
         }
       });
     }
@@ -46,7 +46,7 @@ const SlidingMenu = (($) => {
   // jQuery interface
   $.fn[NAME] = SlidingMenu._jQueryInterface;
   $.fn[NAME].Constructor = SlidingMenu;
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = function() {
     $.fn[NAME] = JQUERY_NO_CONFLICT;
     return SlidingMenu._jQueryInterface;
   };

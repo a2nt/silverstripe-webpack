@@ -1,3 +1,3 @@
-<div id="PageContainer" class="page{$ClassName} action{$Action}">
+<div id="PageContainer" class="page{$CSSClass} action{$Action}">
 	<% include Content %>
 </div>

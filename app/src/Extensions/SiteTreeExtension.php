@@ -18,11 +18,11 @@ class SiteTreeExtension extends DataExtension
 
     public function updateCMSFields(FieldList $fields)
     {
-        $tab = $fields->findOrMakeTab('Root.Settings');
-
-        $tab->push(Textarea::create(
-            'ExtraCode',
-            'Extra page specific HTML code'
-        ));
+        $fields->addFieldsToTab('Root.Settings', [
+            TextareaField::create(
+                'ExtraCode',
+                'Extra page specific HTML code'
+            ),
+        ]);
     }
 }

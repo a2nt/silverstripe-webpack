@@ -29,6 +29,7 @@ SilverStripe\CMS\Model\SiteTree:
       - DNADesign\ElementalVirtual\Model\ElementVirtual
 
 DNADesign\ElementalList\Model\ElementList:
+  inline_editable: false
   default_global_elements: false
   allowed_elements:
       - DNADesign\ElementalList\Model\ElementList
@@ -46,9 +47,12 @@ DNADesign\ElementalList\Model\ElementList:
     noframe: 'No Frame'
 
 DNADesign\Elemental\Models\ElementContent:
+  default_global_elements: false
+  inline_editable: false
   extensions:
     - Site\Extensions\ElementContentWidget
 
 Dynamic\Elements\Image\Elements\ElementImage:
+  inline_editable: false
   extensions:
     - Site\Extensions\ElementImageWidget
