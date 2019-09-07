@@ -17,10 +17,14 @@ import 'bootstrap/js/dist/tab';
 
 
 // Offcanvas menu
-import 'offcanvas-bootstrap/dist/js/bootstrap.offcanvas';
+//import 'offcanvas-bootstrap/dist/js/bootstrap.offcanvas';
 
 // Uncomment it to enable meta-lightbox zooming on hover
 //import 'jquery-zoom/jquery.zoom';
+
+// youtube video preview image
+import './_components/_ui.video.preview';
+
 import 'meta-lightbox/meta-lightbox';
 
 import './_main';
