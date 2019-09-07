@@ -1,7 +1,9 @@
 {
-  "name": "silverstripe/installer",
+  "name": "a2nt/silverstripe-webpack",
   "type": "silverstripe-recipe",
-  "description": "The SilverStripe Framework Installer",
+  "description": "SilverStripe WebPack boilerplate + Basics of JS/CSS UI",
+  "keywords": ["silverstripe", "webpack"],
+  "license": "BSD-3-Clause",
   "require": {
     "php": ">=7.1.0",
     "ext-json": "*",
