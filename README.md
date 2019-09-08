@@ -24,9 +24,16 @@ npm install
 cd app
 git clone https://github.com/a2nt/webpack-bootstrap-ui-kit.git ./client
 cd ..
+cp ./env-dist ./.env
 ```
+Those steps depends on your environment:
+1) Edit .env file to define database access credentials and CMS default admin
+2) sudo chown www-data:www-data -R public/assets && mkdir silverstripe-cache && chown www-data:www-data -R silverstripe-cache (www-data is commonly used UNIX user name, but it may depend on your environment)
+3) Open your-dev-url.pro/dev/build?flush to build database
+
 
 + edit .env, robots.txt, humans.txt, cache.appcache, manifest.json and package.json to setup your own project
++ copy favicon.ico after `yarn build` to ./public folder
 
 ## Installing composer at some cpanel hostings
 ```
@@ -53,7 +60,9 @@ php -d memory_limit=-1 composer.phar update --ignore-platform-reqs
 + Requirements auto-loading
 + Includes basic silverstripe modules
 + Some necessary extensions for example editing silverstripe elements as bootstrap grid columns
-+ Building themes support
++ Built-in themes support
+
+... More features available, but I don't have much time to describe all of them ...
 
 ### Folder structure:
 
