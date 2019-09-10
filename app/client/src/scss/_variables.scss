@@ -14,7 +14,8 @@ $white: #fff;
 $blue: #016cb1;
 $yellow: #ecac02;
 
-//$dark: #047072;
+$dark: #000;
+
 //$primary: $dark;
 $bg-alt: $yellow;
 
@@ -23,6 +24,8 @@ $navbar-light-active-color: $blue;
 
 $navbar-dark-hover-background: $dark;
 $navbar-dark-active-background: $dark;
+$navbar-dark-show-color: $blue;
+$navbar-dark-show-background: $dark;
 
 $dropdown-border-color: $white;
 
