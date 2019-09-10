@@ -59,6 +59,7 @@ button, input, optgroup, select, textarea,
 }
 
 .field {
+    position: relative;
     margin: ($grid-gutter-height / 4) 0;
 
     &.composite {
