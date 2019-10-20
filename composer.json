@@ -36,7 +36,8 @@
     "silverstripe/environmentcheck": "*",
     "silverstripe/widgets": "^2.0",
     "a2nt/silverstripe-font-awesome-field": "dev-master",
-    "a2nt/silverstripe-mapboxfield": "dev-master"
+    "a2nt/silverstripe-mapboxfield": "dev-master",
+    "bummzack/sortablefile": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.7",

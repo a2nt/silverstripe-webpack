@@ -11,6 +11,7 @@ class EmbeddedObjectExtension extends DataExtension
     private static $db = [
         'Autoplay' => 'Boolean(0)',
         'Loop' => 'Boolean(0)',
+        'Controls' => 'Boolean(1)',
     ];
 
     public function Embed()
@@ -34,13 +35,14 @@ class EmbeddedObjectExtension extends DataExtension
                 'modestbranding=1',
                 'rel=0',
                 'showinfo=0',
+                'controls='.($this->owner->getField('Controls') ? '1': '0'),
             ], $params);
 
-            if ($this->owner->Autoplay) {
+            if ($this->owner->getField('Autoplay')) {
                 $params[] = 'autoplay=1';
             }
 
-            if ($this->owner->Loop) {
+            if ($this->owner->getField('Loop')) {
                 $params[] = 'loop=1';
             }
 

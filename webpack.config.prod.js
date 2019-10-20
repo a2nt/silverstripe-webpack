@@ -14,7 +14,8 @@ const autoprefixer = require('autoprefixer');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 let plugins = [
@@ -106,12 +107,18 @@ module.exports = merge(common, {
     noEmitOnErrors: true, // NoEmitOnErrorsPlugin
     concatenateModules: true, //ModuleConcatenationPlugin
     minimizer: [
-      new UglifyJSPlugin({
-        uglifyOptions: {
-          sourceMap: false,
-          comments: false
-        }
-      })
+      new TerserPlugin({
+        parallel: true,
+        sourceMap: false,
+        terserOptions: {
+          parse: {
+            ecma: 8,
+          },
+          output: {
+            ecma: 5,
+          },
+        },
+      }),
     ]
   },
 

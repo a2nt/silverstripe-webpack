@@ -24,12 +24,17 @@ class EmbedObjectField extends EmbeddedObjectField
             CheckboxField::create(
                 $name . '[autoplay]',
                 _t(self::CLASS.'AUTOPLAY', 'Autoplay video?')
-            )->setValue($this->object->Autoplay),
+            )->setValue($this->object->getField('Autoplay')),
 
             CheckboxField::create(
                 $name . '[loop]',
                 _t(self::CLASS.'LOOP', 'Loop video?')
-            )->setValue($this->object->Loop)
+            )->setValue($this->object->getField('Loop')),
+
+            CheckboxField::create(
+                $name.'[controls]',
+                _t(self::CLASS.'CONTROLS', 'Show player controls?')
+            )->setValue($this->object->getField('Controls'))
         ];
 
         return CompositeField::create(array_merge([

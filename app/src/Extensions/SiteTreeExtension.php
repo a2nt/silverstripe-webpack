@@ -12,7 +12,7 @@ class SiteTreeExtension extends DataExtension
         'ExtraCode' => 'Text',
     ];
 
-    public function updateCMSFields(FieldList $fields)
+    public function updateSettingsFields(FieldList $fields)
     {
         $fields->addFieldsToTab('Root.Settings', [
             TextareaField::create(

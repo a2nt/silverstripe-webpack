@@ -18,7 +18,7 @@
                 $Breadcrumbs
             <% end_if %>
 
-            <% if $SideBarView || $Parent.SideBarView %>
+            <% if $SideBarView && $SideBar.Widgets.Count %>
             <div class="$DefaultContainer">
                 <div class="row">
                     <div class="col-md-8">
@@ -26,11 +26,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="page-content">
-                            <% if $SideBarView %>
-                                $SideBarView
-                            <% else %>
-                                $Parent.SideBarView
-                            <% end_if %>
+                            $SideBarView
                         </div>
                     </div>
                 </div>

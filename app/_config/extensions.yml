@@ -44,11 +44,15 @@ DNADesign\ElementalUserForms\Model\ElementForm:
   extensions:
     - Site\Extensions\UserDefinedFormExtension
 
+
 # Blog + Widgets module extensions
 Page:
   extensions:
     - SilverStripe\Widgets\Extensions\WidgetPageExtension
 
+SilverStripe\Blog\Model\Blog:
+  extensions:
+    - Site\Extensions\BlogExtension
 SilverStripe\Blog\Model\BlogPost:
   extensions:
     - Site\Extensions\BlogPostExtension

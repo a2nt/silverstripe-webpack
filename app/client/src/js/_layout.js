@@ -1,10 +1,13 @@
+"use strict";
+
 import $ from 'jquery';
 
-import Events from './_events';
-import Spinner from './_components/_ui.spinner';
-import FormDatetime from './_components/_ui.form.datetime';
-import FormStepped from './_components/_ui.form.stepped';
+import Events from 'ss-bootstrap-ui-webpack-boilerplate/src/js/_events';
+import Spinner from 'ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.spinner';
+import FormDatetime from 'ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.datetime';
+import FormStepped from 'ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.stepped';
 
+//import Multislider from 'ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.multislider';
 
 const LayoutUI = (($) => {
   // Constants

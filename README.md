@@ -6,7 +6,9 @@ Checkout files at /app/ folder for details
 Take a look to https://github.com/a2nt/webpack-bootstrap-ui-kit.git for UI Kit details
 
 # UI Demo
-https://rawcdn.githack.com/a2nt/webpack-bootstrap-ui-kit/master/dist/index.html
+Use UI Repository at https://github.com/a2nt/webpack-bootstrap-ui-kit.git to build static HTML files
+
+Demo: https://rawcdn.githack.com/a2nt/webpack-bootstrap-ui-kit/master/dist/index.html
 
 ### Requirements:
 
@@ -21,9 +23,6 @@ git clone https://github.com/a2nt/silverstripe-webpack.git
 cd silverstripe-webpack
 composer install
 npm install
-cd app
-git clone https://github.com/a2nt/webpack-bootstrap-ui-kit.git ./client
-cd ..
 cp ./env-dist ./.env
 ```
 Those steps depends on your environment:
@@ -77,27 +76,19 @@ php -d memory_limit=-1 composer.phar update --ignore-platform-reqs
 
 
 + /app/client/src/js (Your JS-scripts)
-+ /app/client/src/js/_components (Your JS components to be included)
-+ /app/client/src/js/_components/_spinner.js (An example to display and hide loading spinner)
 + /app/client/src/js/app.js (main application file to include website-wide components)
 + /app/client/src/js/main.js (Your custom site-wide functionality)
-+ /app/client/src/js/_events.js (Your custom site-wide events)
 + /app/client/src/js/_pageType_and_component_template.js (A template which can be used to create new modules)
 + /app/client/src/types/*.js (Extra page-specific modules to be auto-compiled. My suggestion is to use *ClassName*.js and then require it at SilverStripe custom controller area)
 
 
 
 + /app/clent/src/scss (Your styling to be compiled)
-+ /app/clent/src/scss/_components (Your custom SCSS components)
 + /app/clent/src/scss/app.scss (main application file to include site-wide components)
 + /app/clent/src/scss/_variables.sccs (your custom and bootstrap variables)
 + /app/clent/src/scss/_layout.sccs (Your site-wide styling)
 
-
-
-+ /app/client/src/index.html UI demo page
-+ /app/client/src/html HTML templates to build UI demo
-
++ /app/client/dist (Compiled frontend files js, css, images etc)
 ### Commands:
 
 + yarn - to update packages

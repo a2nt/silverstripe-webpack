@@ -1,20 +1,20 @@
 //@import "~bootstrap-select/sass/bootstrap-select.scss";
 
-@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
-@import "~bootstrap-timepicker/css/bootstrap-timepicker.css";
+//@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
+//@import "~bootstrap-timepicker/css/bootstrap-timepicker.css";
 
 // Your custom variables
 @import "_variables";
 
-@import "_components/_ui.bootstrap";
+@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.bootstrap";
 
 // By default we prefer font awesome CDN
-//@import "_components/_ui.fontawesome";
-@import "_components/_ui.lightbox";
+//@import "~ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.fontawesome";
+@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.lightbox";
 
-@import "_components/_ui.main";
-@import "_components/_ui.form.basics";
-@import "_components/_ui.elemental";
+@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.main";
+@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.form.basics";
+@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.elemental";
 
 // Your custom styling
 @import "_typography";

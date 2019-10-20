@@ -1,0 +1,1 @@
+<%-- BUGFIX: empty template file --%>

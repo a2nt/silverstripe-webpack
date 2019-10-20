@@ -2,6 +2,7 @@
 
 namespace Site\Extensions;
 
+use A2nt\SilverStripeMapboxField\MapboxField;
 use Innoweb\Sitemap\Pages\SitemapPage;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
@@ -13,8 +14,8 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TreeMultiselectField;
 use SilverStripe\Forms\DropdownField;
+
 //use BetterBrief\GoogleMapField;
-use Bigfork\SilverStripeMapboxField\MapboxField;
 
 class SiteConfigExtension extends DataExtension
 {

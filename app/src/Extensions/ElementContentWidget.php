@@ -16,7 +16,7 @@ use SilverStripe\ORM\DataExtension;
 
 class ElementContentWidget extends DataExtension
 {
-    private static $db = [
+    /*private static $db = [
         'BlockIcon' => 'Varchar(255)',
     ];
 
@@ -32,5 +32,5 @@ class ElementContentWidget extends DataExtension
             FontAwesomeField::create('BlockIcon'),
             LinkField::create('BlockLinkID', 'Link'),
         ]);
-    }
+    }*/
 }

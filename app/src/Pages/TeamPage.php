@@ -8,13 +8,14 @@
 
 namespace Site\Pages;
 
-
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use Site\Models\TeamMember;
 
 class TeamPage extends \Page
 {
+    private static $icon_class = 'font-icon-p-profile';
+
     private static $has_many = [
         'Members' => TeamMember::class,
     ];

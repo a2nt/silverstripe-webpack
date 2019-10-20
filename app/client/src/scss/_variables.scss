@@ -7,6 +7,8 @@ $container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1330px
 
 $font-family-base: "Lato", sans-serif;
 
+$grid-gutter-width: 30px;
+$grid-gutter-xs-width: $grid-gutter-width / 2;
 $grid-gutter-height: 8rem;
 
 $gray-900: #212529;
@@ -47,3 +49,4 @@ $enable-flex: true;
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
+@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_variables";
