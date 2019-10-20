@@ -34,6 +34,20 @@ Those steps depends on your environment:
 + edit .env, robots.txt, humans.txt, cache.appcache, manifest.json and package.json to setup your own project
 + copy favicon.ico after `yarn build` to ./public folder
 
+### Building your custom UI
+
+Edit following files:
++ app/client/src/js/_layout.js
++ app/client/src/js/types/*Your_Custom_ClassName*.js
+
++ app/client/src/scss/_layout.scss
++ app/client/src/scss/types/*Your_Custom_ClassName*.scss
+
+To compile use: yarn build
+To start dev-server use: yarn start
+
+
+
 ## Installing composer at some cpanel hostings
 ```
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"

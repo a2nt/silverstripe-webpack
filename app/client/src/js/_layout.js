@@ -17,14 +17,6 @@ const LayoutUI = (($) => {
 
   const NAME = 'LayoutUI';
 
-  const datepickerOptions = {
-    autoclose: true,
-    startDate: 0,
-    //todayBtn: true,
-    todayHighlight: true,
-    clearBtn: true,
-  };
-
   class LayoutUI {
     static init() {
       const ui = this;
