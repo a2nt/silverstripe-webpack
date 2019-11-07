@@ -42,7 +42,7 @@ class PageController extends ContentController
 
     public function ElementalArea()
     {
-        if($this->CurrentElement()) {
+        if ($this->CurrentElement() || $this->getAction() !== 'index') {
             return false;
         }
 
@@ -53,7 +53,7 @@ class PageController extends ContentController
     {
         $contoller_curr = Controller::curr();
 
-        if(is_a($contoller_curr, ElementFormController::class)) {
+        if (is_a($contoller_curr, ElementFormController::class)) {
             return $contoller_curr;
         }
 
@@ -88,7 +88,7 @@ class PageController extends ContentController
     public function SearchResults()
     {
         $term = $this->search_term;
-        if(!$term) {
+        if (!$term) {
             return false;
         }
 
@@ -110,7 +110,7 @@ class PageController extends ContentController
 
         foreach ($elements as $element) {
             $page = Page::get()->filter('ElementalAreaID', $element->getField('ParentID'))->first();
-            if(!$page) {
+            if (!$page) {
                 continue;
             }
 

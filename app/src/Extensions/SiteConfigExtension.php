@@ -7,6 +7,7 @@ use Innoweb\Sitemap\Pages\SitemapPage;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Blog\Model\BlogPost;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataExtension;
@@ -26,6 +27,10 @@ class SiteConfigExtension extends DataExtension
         'MapZoom' => 'Int',
         //'MapAPIKey' => 'Varchar(255)',
         'Description' => 'Varchar(255)',
+        'Address' => 'Varchar(255)',
+        'Suburb' => 'Varchar(255)',
+        'State' => 'Varchar(255)',
+        'ZipCode' => 'Varchar(6)',
     ];
 
     private static $has_one = [
@@ -60,11 +65,27 @@ class SiteConfigExtension extends DataExtension
         ]);
 
         $mapTab = $fields->findOrMakeTab('Root.Maps');
+        $mapTab->setTitle('Address / Map');
+
         $fields->addFieldsToTab('Root.Maps', [
-            //TextField::create('MapAPIKey'),
-            TextField::create('MapZoom'),
-            MapboxField::create('Map', 'Choose a location', 'Latitude', 'Longitude'),
+            TextField::create('Address'),
+            TextField::create('Suburb', 'City'),
+            TextField::create('State'),
+            TextField::create('ZipCode'),
         ]);
+
+        if (MapboxField::getAccessToken()) {
+            $fields->addFieldsToTab('Root.Maps', [
+                //TextField::create('MapAPIKey'),
+                TextField::create('MapZoom'),
+                MapboxField::create('Map', 'Choose a location', 'Latitude', 'Longitude'),
+            ]);
+        } else {
+            $fields->addFieldsToTab('Root.Maps', [
+                LiteralField::create('MapNotice', '<p class="alert alert-info">No Map API keys specified.</p>')
+            ]);
+        }
+
         /*GoogleMapField::create(
             $this->owner,
             'Location',

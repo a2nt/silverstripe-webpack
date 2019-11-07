@@ -1,29 +1,50 @@
 <% with $SiteConfig %>
 <div class="wrapper">
     <div class="container">
-        <h2>Contact Us</h2>
-        <div class="field row">
-            <div class="title col-sm-4">Address:</div>
-            <div class="value col-sm-8">$Address</div>
-        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <a href="/" class="logo2">
+                    <img src="$ResourcesURL('logo2.png')" alt="National Children's Alliance" />
+                </a>
 
-        <div class="field row">
-            <div class="title col-sm-4">Phone:</div>
-            <div class="value col-sm-8">$PhoneNumber</div>
-        </div>
+                <div class="field">
+                    <div class="fn">$Title</div>
+                    <address>
+                        $Address<br/>
+                        $Suburb, $State $ZipCode
+                    </address>
+                </div>
 
-        <div class="field row">
-            <div class="title col-sm-4">Email:</div>
-            <div class="value col-sm-8">$PublicEmail</div>
-        </div>
+                <div class="field">
+                    T: $PhoneNumber
+                </div>
 
-        <% include Objects\SocialLinks %>
+                <% if $PublicEmail %>
+                    <div class="field">
+                        E: $PublicEmail
+                    </div>
+                <% end_if %>
+
+                <% include Objects\SocialLinks %>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a href="/" target="_blank" class="external-link">
+                    <img src="$ResourcesURL('logo-alliance.png')" alt="National Children's Alliance" />
+                </a>
+                <a href="/" target="_blank" class="external-link">
+                    <img src="$ResourcesURL('logo-regional.png')" alt="National Children's Alliance" />
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="copyright footer">
     <div class="container">
-        <div class="row">
+        <div class="text-right hotline">
+            Child Abuse Hotline <a href="calto:+18003423720" class="tel">1-800-342-3720</a>
+        </div>
+        <%-- div class="row">
             <div class="col-sm-6">
                 Copyright &copy; {$Top.CurrentTime.Format("Y")} {$Title} All rights reserved.
             </div>
@@ -35,7 +56,7 @@
                     <a href="$Sitemap.Link">$Sitemap.Title</a>
                 <% end_if %>
             </div>
-        </div>
+        </div --%>
     </div>
 </div>
 <% end_with %>

@@ -4,5 +4,5 @@ Name: 'webapp-columns'
 
 Site\Extensions\ElementRows:
   container_max_width: 1140
-  column_class: 'col-block col-md-'
+  column_class: 'col-block col-md'
 

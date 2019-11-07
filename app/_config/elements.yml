@@ -24,8 +24,9 @@ SilverStripe\CMS\Model\SiteTree:
       - Dynamic\Elements\Blog\Elements\ElementBlogPosts
       - Dynamic\Elements\Oembed\Elements\ElementOembed
       - Dynamic\Elements\Elements\ElementTestimonials
-      - Site\Elements\TeamMembersElement
+      #- Site\Elements\TeamMembersElement
       - Site\Elements\SliderElement
+      - Site\Elements\BlockElement
       - DNADesign\ElementalVirtual\Model\ElementVirtual
 
 DNADesign\ElementalList\Model\ElementList:
@@ -39,8 +40,9 @@ DNADesign\ElementalList\Model\ElementList:
       - Dynamic\Elements\Blog\Elements\ElementBlogPosts
       - Dynamic\Elements\Oembed\Elements\ElementOembed
       - Dynamic\Elements\Elements\ElementTestimonials
-      - Site\Elements\TeamMembersElement
+      #- Site\Elements\TeamMembersElement
       - Site\Elements\SliderElement
+      - Site\Elements\BlockElement
   styles:
     whiteframe: 'White Frame'
     greybg: 'Grey Background'

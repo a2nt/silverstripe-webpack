@@ -13,7 +13,7 @@ class BlogExtension extends DataExtension
     {
         $f = $fields->dataFieldByName('ChildPages');
         if ($f) {
-            $f->setConfig(GridFieldConfigBlogPost::create(100));
+            $f->setConfig(GridFieldConfigBlogPost::create(75));
         }
     }
 }

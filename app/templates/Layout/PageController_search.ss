@@ -1,9 +1,9 @@
 <% with $SearchResults %>
 <div id="PageContainer" class="page{$CSSClass} pageSearch action{$Action}">
-    <div class="page-content">
-        <h1 class="page-header container no-elements">$Title</h1>
+    <div class="page-content $Top.DefaultContainer">
+        <div class="element">
+            <h1 class="h2 page-header no-elements">$Title</h1>
 
-        <div class="page-content">
             <% if $Results %>
             <div id="SearchAccordion{$ID}">
                 <% loop $Results %>
@@ -36,7 +36,7 @@
                 <% end_loop %>
             </div>
             <% else %>
-                <h2>Nothing was found.</h2>
+                <h3>Nothing was found.</h3>
             <% end_if %>
         </div>
 

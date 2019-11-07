@@ -10,6 +10,7 @@ SilverStripe\Admin\LeftAndMain:
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - Site\Extensions\SiteConfigExtension
+    - Site\Extensions\SocialExtension
 
 SilverStripe\CMS\Model\SiteTree:
   extensions:

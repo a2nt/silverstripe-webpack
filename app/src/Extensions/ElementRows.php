@@ -18,7 +18,7 @@ use SilverStripe\Forms\FieldList;
 class ElementRows extends DataExtension
 {
     private static $container_max_width = 1140;
-    private static $column_class = 'col-block col-md-';
+    private static $column_class = 'col-block col-md';
 
     private static $container_styles = [
         'container' => 'Fixed container',
@@ -27,7 +27,7 @@ class ElementRows extends DataExtension
 
     private static $db = [
         'ContainerType' => 'Varchar(254)',
-        'Size' => 'Enum("1,2,3,4,5,6,7,8,9,10,11,12","6")',
+        'Size' => 'Enum("1,2,3,4,5,6,7,8,9,10,11,12,auto","auto")',
     ];
 
     public function updateCMSFields(FieldList $fields)
@@ -63,23 +63,24 @@ class ElementRows extends DataExtension
                 'Size',
                 _t(
                     __CLASS__.'.SIZE',
-                    'Column Size'
+                    'Column Width (max 12 cols)'
                 ),
                 array_combine(
                     array_values($sizes->enumValues()),
                     [
-                        '8.3%',
-                        '16.6%',
-                        '25%',
-                        '33%',
-                        '41.6%',
-                        '50%',
-                        '58.3%',
-                        '66.4%',
-                        '74.7%',
-                        '83%',
-                        '91.3%',
-                        '100%',
+                        '8.3% (1 of 12)',
+                        '16.6% (2 of 12)',
+                        '25% (3 of 12)',
+                        '33% (4 of 12)',
+                        '41.6% (5 of 12)',
+                        '50% (6 of 12)',
+                        '58.3% (7 of 12)',
+                        '66.4% (8 of 12)',
+                        '74.7% (9 of 12)',
+                        '83% (10 of 12)',
+                        '91.3% (11 of 12)',
+                        '100% (12 of 12)',
+                        'auto',
                     ]
                 )
             );
@@ -152,7 +153,7 @@ class ElementRows extends DataExtension
         $object = $object ? $object : $this->owner;
 
         if ($object->isColumn() && $object->getField('Size')) {
-            return (int) $object->getField('Size');
+            return $object->getField('Size');
         }
 
         $parent = $object->Parent()->getOwnerPage();
@@ -172,7 +173,13 @@ class ElementRows extends DataExtension
 
         if (!$object->isRoot()) {
             $size = $object->getField('Size');
-            $max = $size ? $max / (self::colsNumber() / $size) : $max;
+            $cols = self::colsNumber();
+
+            if ($size === 'auto') {
+                return $size;
+            }
+
+            $max = $size ? $max / ($cols / $size) : $max;
             $parent = $object->Parent()->getOwnerPage();
 
             return $this->getColumnWidthRecursive($parent, $max);
@@ -185,8 +192,14 @@ class ElementRows extends DataExtension
     {
         $db = Config::inst()->get(self::class, 'db');
         $sizes = $db['Size'];
-        $sizes = preg_replace('!Enum\("([0-9,]+)","([0-9]+)"\)!i', '$1', $sizes);
+        $sizes = preg_replace('!Enum\("([0-9A-z,]+)","([0-9A-z]+)"\)!i', '$1', $sizes);
         $sizes = explode(',', $sizes);
+
+        // remove auto
+        $k = array_search('auto', $sizes);
+        if ($k !== false) {
+            unset($sizes[$k]);
+        }
 
         return max($sizes);
     }
@@ -198,10 +211,13 @@ class ElementRows extends DataExtension
 
     public function ExtraClass()
     {
-        return $this->owner->getField('ExtraClass')
+        $object = $this->owner;
+
+        return $object->getField('ExtraClass')
             .(
-            $this->isColumn()
-                ? ' '.Config::inst()->get(self::class, 'column_class').$this->owner->getField('Size')
+                $this->isColumn()
+                ? ' '.Config::inst()->get(self::class, 'column_class')
+                .($object->getField('Size') === 'auto' ? '' : '-'.$object->getField('Size'))
                 : ''
             );
     }

@@ -7,3 +7,7 @@ SilverStripe\View\SSViewer:
   themes:
     - '$public'
     - '$default'
+
+# 2x container width to automatically resize images for 2K display
+Site\Extensions\ElementRows:
+  container_max_width: 2280

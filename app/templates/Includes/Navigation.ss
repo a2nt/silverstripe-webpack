@@ -1,4 +1,4 @@
-<nav id="{$NavID}" class="navbar navbar-expand-lg navbar-light bg-light dropdown-hover">
+<nav id="{$NavID}" class="navbar navbar-expand-lg dropdown-hover">
     <button
             class="navbar-toggler"
             type="button"
@@ -12,7 +12,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="{$NavID}Content">
-        <ul class="navbar-nav mr-auto w-100 nav-fill">
+        <ul class="navbar-nav mr-auto w-100 justify-content-between">
             <% loop $Navigation %>
                 <% include NavItem %>
             <% end_loop %>

@@ -14,3 +14,10 @@ $grid-gutter-height: 2rem;
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
+
+// Add your site-wide + content editor typography styling
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    color: $dark;
+}

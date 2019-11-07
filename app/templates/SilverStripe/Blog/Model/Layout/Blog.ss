@@ -3,21 +3,27 @@
 
 	<div class="page-content">
 		<div class="element">
-			<div class="container">
+			<div class="container blog-post-list">
 
 				<% if $ArchiveYear %>
-					<%t SilverStripe\\Blog\\Model\\Blog.Archive 'Archive' %>:
+					<span class="action-title"><%t SilverStripe\\Blog\\Model\\Blog.Archive 'Archive' %>:</span>
 					<% if $ArchiveDay %>
-						<h2 class="subcategory">$ArchiveDate.Nice</h2>
+						<h2 class="content-element__title subcategory">$ArchiveDate.Nice</h2>
 					<% else_if $ArchiveMonth %>
-						<h2 class="subcategory">$ArchiveDate.format('F, Y')</h2>
+						<h2 class="content-element__title subcategory">$ArchiveDate.format('F, Y')</h2>
 					<% else %>
-						<h2 class="subcategory">$ArchiveDate.format('Y')</h2>
+						<h2 class="content-element__title subcategory">$ArchiveDate.format('Y')</h2>
 					<% end_if %>
 				<% else_if $CurrentTag %>
-					<h2 class="subcategory"><%t SilverStripe\\Blog\\Model\\Blog.Tag 'Tag' %>: $CurrentTag.Title</h2>
+					<h2 class="content-element__title subcategory">
+						<span class="action-title"><%t SilverStripe\\Blog\\Model\\Blog.Tag 'Tag' %>:</span>
+						$CurrentTag.Title
+					</h2>
 				<% else_if $CurrentCategory %>
-					<h2 class="subcategory"><%t SilverStripe\\Blog\\Model\\Blog.Category 'Category' %>: $CurrentCategory.Title</h2>
+					<h2 class="content-element__title subcategory">
+						<span class="action-title"><%t SilverStripe\\Blog\\Model\\Blog.Category 'Category' %>:</span>
+						$CurrentCategory.Title
+					</h2>
 				<% end_if %>
 
 				<% if $PaginatedList.Exists %>
@@ -29,7 +35,9 @@
 						<% end_loop %>
 					</div>
 				<% else %>
-					<p><%t SilverStripe\\Blog\\Model\\Blog.NoPosts 'There are no posts' %></p>
+					<p class="alert alert-info">
+						<%t SilverStripe\\Blog\\Model\\Blog.NoPosts 'There are no posts' %>
+					</p>
 				<% end_if %>
 
 				<% with $PaginatedList %>

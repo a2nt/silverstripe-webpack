@@ -4,34 +4,42 @@
             $Video.EmbedHTML.RAW
         </div>
     <% else %>
-        <% if $PageLink %><a href="$PageLink.Link" title="$PageLink.MenuTitle.XML" class="btn-primary"><% end_if %>
-
         <% if $Image %>
             <span class="img">
-                <img class="d-block w-100" src="$Image.Fill(1200,600).URL" alt="<% if $Headline %>$Headline<% end_if %>">
+                <img class="d-block w-100" src="$Image.Fill(1400,650).URL" alt="<% if $Headline %>$Headline<% end_if %>">
             </span>
         <% end_if %>
-        <% if $PageLink %></a><% end_if %>
+
+        <% if $SlideLinkID %>
+            <% with $SlideLink %>
+                <a href="$LinkURL" title="$Title.XML" class="stretched-link">
+                    <span class="sr-only">$Title</span>
+                </a>
+            <% end_with %>
+        <% end_if %>
     <% end_if %>
 <% end_if %>
 
-<% if $Content || $Headline || $Description || $PageLinkID %>
-    <div class="carousel-caption">
+<% if $Content || $Headline || $Description || $SlideLinkID %>
+    <div class="carousel-caption container">
+        <div class="carousel-caption-container typography col-md-6">
+            <% if $Headline %><h2 class="carousel-title">$Headline</h2><% end_if %>
 
-    <div class="carousel-caption-container">
-        <% if $Headline %><h2 class="carousel-title">$Headline</h2><% end_if %>
-        <% if $Content %>
-            <div class="carousel-content typography">$Content</div>
-        <% else %>
-            <% if $Description %><p class="carousel-content">$Description</p><% end_if %>
-        <% end_if %>
-        <% if $PageLinkID %>
-            <p>
-                <a href="$PageLink.Link" title="$PageLink.MenuTitle.XML" class="btn btn-default btn-lg">
-                    <i class="fas fa-bars"></i>
-                    <%t Dynamic\FlexSlider\ORM\FlexSlider.LEARN_MORE "Learn more" %>
-                </a>
-            </p>
-        <% end_if %>
+            <% if $Content %>
+                <div class="carousel-content">$Content</div>
+            <% else_if $Description %>
+                <p class="carousel-content">$Description</p>
+            <% end_if %>
+
+            <% if $SlideLinkID %>
+                <% with $SlideLink %>
+                    <div class="text-right">
+                        <a href="$LinkURL" title="$Title.XML" class="slide-link">
+                            $Title &raquo;
+                        </a>
+                    </div>
+                <% end_with %>
+            <% end_if %>
+        </div>
     </div>
 <% end_if %>

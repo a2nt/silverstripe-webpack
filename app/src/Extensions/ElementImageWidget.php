@@ -82,7 +82,7 @@ class ElementImageWidget extends DataExtension
         $width = $this->getWidth();
         $height = $this->getHeight();
 
-        if (!$width) {
+        if (!$width || $width === 'auto') {
             return $height > 0
             ? $image->ScaleHeight($height)
             : $image;
