@@ -6,15 +6,15 @@
 // Your custom variables
 @import "_variables";
 
-@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.bootstrap";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.bootstrap";
 
 // By default we prefer font awesome CDN
-//@import "~ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.fontawesome";
-@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.lightbox";
+//@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.fontawesome";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.lightbox";
 
-@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.main";
-@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.form.basics";
-@import "~ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.elemental";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.main";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.form.basics";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.elemental";
 
 // Your custom styling
 @import "_typography";

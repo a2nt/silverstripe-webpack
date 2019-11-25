@@ -2,12 +2,12 @@
 
 import $ from 'jquery';
 
-import Events from 'ss-bootstrap-ui-webpack-boilerplate/src/js/_events';
-import Spinner from 'ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.spinner';
-import FormDatetime from 'ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.datetime';
-import FormStepped from 'ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.stepped';
+import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_events';
+import Spinner from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.spinner';
+import FormDatetime from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.datetime';
+import FormStepped from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.stepped';
 
-//import Multislider from 'ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.multislider';
+//import Multislider from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.multislider';
 
 const LayoutUI = (($) => {
   // Constants

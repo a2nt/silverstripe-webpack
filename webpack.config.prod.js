@@ -145,19 +145,7 @@ module.exports = merge(common, {
           options: {
             sourceMap: false,
             plugins: [
-              autoprefixer({
-                // If we want to use the same browser list for more tools
-                // this list should be moved to package.json
-                // https://evilmartians.com/chronicles/autoprefixer-7-browserslist-2-released
-                browsers: [
-                  'ie >= 11',
-                  'ie_mob >= 11',
-                  'Safari >= 10',
-                  'Android >= 4.4',
-                  'Chrome >= 44', // Retail
-                  'Samsung >= 4'
-                ]
-              })
+              autoprefixer()
             ]
           }
         }, {
