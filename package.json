@@ -26,6 +26,11 @@
     "defaults"
   ],
   "dependencies": {
+    "@a2nt/ss-bootstrap-ui-webpack-boilerplate": "git+https://github.com/a2nt/webpack-bootstrap-ui-kit.git",
+    "@a2nt/meta-lightbox": "git+https://github.com/a2nt/meta-lightbox.git",
+    "yarn": "^1.17.3"
+  },
+  "devDependencies": {
     "@google/markerclusterer": "^1.0.3",
     "animate.css": "^3.7.0",
     "bootbox": "^4.4.0",
@@ -50,7 +55,6 @@
     "laravel-mix": "^4.1.2",
     "mapbox-gl": "^1.2.1",
     "material-design-color": "^2.3.2",
-    "meta-lightbox": "^1.0.0",
     "offcanvas-bootstrap": "^2.5.2",
     "popper.js": "^1.16.0",
     "pouchdb": "^6.4.3",
@@ -59,9 +63,6 @@
     "routie": "0.0.1",
     "select2": "^4.0.8",
     "smooth-scroll": "^14.2.1",
-    "yarn": "^1.17.3"
-  },
-  "devDependencies": {
     "autoprefixer": "^7.2.5",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
@@ -101,7 +102,6 @@
     "sass-lint-fix": "^1.12.1",
     "sass-loader": "^6.0.6",
     "script-ext-html-webpack-plugin": "^2.1.4",
-    "@a2nt/ss-bootstrap-ui-webpack-boilerplate": "*",
     "style-loader": "^0.19.0",
     "svg-url-loader": "^2.3.3",
     "terser-webpack-plugin": "^2.1.3",
