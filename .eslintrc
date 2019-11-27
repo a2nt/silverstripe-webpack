@@ -2,6 +2,12 @@
   // http://eslint.org/docs/rules/
   "extends": "eslint:recommended",
 
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  
   "env": {
     "browser": true,     // browser global variables.
     "node": true,        // Node.js global variables and Node.js-specific rules.

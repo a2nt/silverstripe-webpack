@@ -31,13 +31,14 @@ import 'bootstrap/js/dist/scrollspy';
 import 'bootstrap/js/dist/tab';
 //
 
+import Spinner from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.spinner';
+//import Multislider from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.multislider';
 
 // Offcanvas menu
 //import 'offcanvas-bootstrap/dist/js/bootstrap.offcanvas';
 
 // Uncomment it to enable meta-lightbox zooming on hover
 //import 'jquery-zoom/jquery.zoom';
-
 
 // Toggle bootstrap form fields
 //import FormToggleUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.fields.toggle';
