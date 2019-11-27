@@ -26,8 +26,8 @@
     "defaults"
   ],
   "dependencies": {
-    "@a2nt/meta-lightbox": "*",
-    "@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^1.0.5",
+    "@a2nt/meta-lightbox": "^1.2.1",
+    "@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^1.0.6",
     "yarn": "^1.17.3"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "bootbox": "^4.4.0",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.4.0",
     "bootstrap-confirmation2": "^4.1.0",
     "bootstrap-datepicker": "^1.9.0",
     "bootstrap-offcanvas": "^1.0.0",
