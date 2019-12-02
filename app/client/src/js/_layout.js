@@ -1,7 +1,6 @@
 "use strict";
 
 import $ from 'jquery';
-
 import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_events';
 
 const LayoutUI = (($) => {

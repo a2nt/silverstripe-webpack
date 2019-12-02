@@ -73,6 +73,9 @@ import '@a2nt/meta-lightbox/src/js/index';
 //import Confirmation from 'bootstrap-confirmation2/dist/bootstrap-confirmation';
 //import Table from 'bootstrap-table/dist/bootstrap-table';
 
+// AJAX UI
+//import AjaxUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.ajax';
+
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_main';
 import './_layout';
 

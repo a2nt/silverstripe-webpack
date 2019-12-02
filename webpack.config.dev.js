@@ -35,7 +35,7 @@ const config = merge.strategy({
 
   module: {
     rules: [{
-      test: /\.scss$/,
+      test: /\.s?css$/,
       use: [{
         loader: 'style-loader',
         options: {
