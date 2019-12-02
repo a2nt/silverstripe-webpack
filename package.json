@@ -26,9 +26,9 @@
     "defaults"
   ],
   "dependencies": {
-    "@a2nt/meta-lightbox": "^1.2.1",
-    "@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^1.0.6",
-    "yarn": "^1.17.3"
+    "@a2nt/meta-lightbox": "^1.2.2",
+    "@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^1.1.0",
+    "yarn": "^1.21.0"
   },
   "devDependencies": {
     "@google/markerclusterer": "^1.0.3",
@@ -42,7 +42,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "bootbox": "^4.4.0",
-    "bootstrap": "^4.4.0",
+    "bootstrap": "^4.4.1",
     "bootstrap-confirmation2": "^4.1.0",
     "bootstrap-datepicker": "^1.9.0",
     "bootstrap-offcanvas": "^1.0.0",
@@ -59,7 +59,7 @@
     "eslint": "^4.18.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jquery": "^1.5.1",
-    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react": "^7.17.0",
     "exif-js": "^2.3.0",
     "exports-loader": "^0.7.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -77,7 +77,7 @@
     "jquery.inputmask": "^3.3.4",
     "laravel-mix": "^4.1.2",
     "lost": "^8.3.1",
-    "mapbox-gl": "^1.2.1",
+    "mapbox-gl": "^1.5.1",
     "material-design-color": "^2.3.2",
     "node-sass": "^4.13.0",
     "object-assign": "^4.1.1",

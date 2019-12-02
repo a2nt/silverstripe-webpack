@@ -34,6 +34,9 @@ import 'bootstrap/js/dist/tab';
 import Spinner from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.spinner';
 //import Multislider from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.multislider';
 
+// Flyout UI
+//import Flyout from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.flyout';
+
 // Offcanvas menu
 //import 'offcanvas-bootstrap/dist/js/bootstrap.offcanvas';
 
