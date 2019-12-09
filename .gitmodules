@@ -1,0 +1,3 @@
+[submodule "app/thirdparty/geocoding-example"]
+	path = app/thirdparty/geocoding-example
+	url = https://github.com/mapbox/geocoding-example.git
