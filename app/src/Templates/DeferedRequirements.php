@@ -14,7 +14,7 @@ class DeferedRequirements implements TemplateGlobalProvider
 {
     private static $css = [];
     private static $js = [];
-    private static $defered = false;
+    private static $deferred = false;
     private static $static_domain;
     private static $version;
     private static $nojquery = false;
@@ -38,11 +38,11 @@ class DeferedRequirements implements TemplateGlobalProvider
         $config = Config::inst()->get(self::class);
         $projectName = WebpackTemplateProvider::projectName();
         $mainTheme = WebpackTemplateProvider::mainTheme();
-        $mainTheme = $mainTheme ? $mainTheme : $projectName;
+        $mainTheme = $mainTheme ?: $projectName;
 
         $dir = Path::join(
             Director::publicFolder(),
-            ManifestFileFinder::RESOURCES_DIR,
+            RESOURCES_DIR,
             $projectName,
             'client',
             'dist'
@@ -59,14 +59,14 @@ class DeferedRequirements implements TemplateGlobalProvider
 
         // Main libs
         if (!$config['nojquery']) {
-            DeferedRequirements::loadJS('//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+            self::loadJS('//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
         }
         // App libs
         if (!$config['nofontawesome']) {
-            DeferedRequirements::loadCSS('//use.fontawesome.com/releases/v5.4.0/css/all.css');
+            self::loadCSS('//use.fontawesome.com/releases/v5.4.0/css/all.css');
         }
-        DeferedRequirements::loadCSS($mainTheme.'.css');
-        DeferedRequirements::loadJS($mainTheme.'.js');
+        self::loadCSS($mainTheme.'.css');
+        self::loadJS($mainTheme.'.js');
 
         // Custom controller requirements
         $class = get_class(Controller::curr());
@@ -87,17 +87,17 @@ class DeferedRequirements implements TemplateGlobalProvider
         $themePath = Path::join($cssPath, $mainTheme.'_'.$class . '.css');
         $projectPath = Path::join($cssPath, $projectName.'_'.$class . '.css');
         if ($mainTheme && file_exists($themePath)) {
-            DeferedRequirements::loadCSS($mainTheme.'_'.$class . '.css');
+            self::loadCSS($mainTheme.'_'.$class . '.css');
         } elseif (file_exists($projectPath)) {
-            DeferedRequirements::loadCSS($projectName.'_'.$class . '.css');
+            self::loadCSS($projectName.'_'.$class . '.css');
         }
 
         $themePath = Path::join($jsPath, $mainTheme.'_'.$class . '.js');
         $projectPath = Path::join($jsPath, $projectName.'_'.$class . '.js');
         if ($mainTheme && file_exists($themePath)) {
-            DeferedRequirements::loadJS($mainTheme.'_'.$class . '.js');
+            self::loadJS($mainTheme.'_'.$class . '.js');
         } elseif (file_exists($projectPath)) {
-            DeferedRequirements::loadJS($projectName.'_'.$class . '.js');
+            self::loadJS($projectName.'_'.$class . '.js');
         }
 
         return self::forTemplate();
@@ -105,8 +105,8 @@ class DeferedRequirements implements TemplateGlobalProvider
 
     public static function loadCSS($css)
     {
-        $external = (mb_substr($css, 0, 2) === '//' || mb_substr($css, 0, 4) === 'http');
-        if ($external || (self::$defered && !self::_webpackActive())) {
+        $external = (mb_strpos($css, '//') === 0 || mb_strpos($css, 'http') === 0);
+        if ($external || (self::$deferred && !self::_webpackActive())) {
             self::$css[] = $css;
         } else {
             WebpackTemplateProvider::loadCSS($css);
@@ -118,7 +118,7 @@ class DeferedRequirements implements TemplateGlobalProvider
         /*$external = (mb_substr($js, 0, 2) === '//' || mb_substr($js, 0, 4) === 'http');
         if ($external || (self::$defered && !self::_webpackActive())) {*/
         // webpack supposed to load external JS
-        if (self::$defered && !self::_webpackActive()) {
+        if (self::$deferred && !self::_webpackActive()) {
             self::$js[] = $js;
         } else {
             WebpackTemplateProvider::loadJS($js);
@@ -130,9 +130,9 @@ class DeferedRequirements implements TemplateGlobalProvider
         return class_exists('WebpackTemplateProvider') && WebpackTemplateProvider::isActive();
     }
 
-    public static function setDefered($bool)
+    public static function setDeferred($bool)
     {
-        self::$defered = $bool;
+        self::$deferred = $bool;
     }
 
     public static function forTemplate()
@@ -175,7 +175,7 @@ class DeferedRequirements implements TemplateGlobalProvider
             : ''; // no version defined
 
         $static_domain = $config['static_domain'];
-        $static_domain = $static_domain ? $static_domain : '';
+        $static_domain = $static_domain ?: '';
 
         return $url.$version;
     }

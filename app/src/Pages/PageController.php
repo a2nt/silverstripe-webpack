@@ -20,6 +20,7 @@ use SilverStripe\ORM\ArrayList;
 use DNADesign\Elemental\Models\ElementContent;
 use DNADesign\Elemental\Models\ElementalArea;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
+use Site\Templates\DeferedRequirements;
 
 class PageController extends ContentController
 {
@@ -29,6 +30,13 @@ class PageController extends ContentController
 
     private $site_message;
     private $search_term;
+
+    public function init()
+    {
+        DeferedRequirements::Auto();
+
+        return parent::init();
+    }
 
     public function index(HTTPRequest $request)
     {
@@ -42,7 +50,7 @@ class PageController extends ContentController
 
     public function ElementalArea()
     {
-        if ($this->CurrentElement() || $this->getAction() !== 'index') {
+        if($this->CurrentElement() || $this->getAction() !== 'index') {
             return false;
         }
 
@@ -51,10 +59,10 @@ class PageController extends ContentController
 
     public function CurrentElement()
     {
-        $contoller_curr = Controller::curr();
+        $controller_curr = Controller::curr();
 
-        if (is_a($contoller_curr, ElementFormController::class)) {
-            return $contoller_curr;
+        if(is_a($controller_curr, ElementFormController::class)) {
+            return $controller_curr;
         }
 
         return false;
@@ -62,17 +70,25 @@ class PageController extends ContentController
 
     public function SearchForm()
     {
+        $config = $this->SiteConfig();
         return Form::create(
             $this,
             __FUNCTION__,
             FieldList::create(
                 TextField::create('q', 'Search ...')
+                ->setAttribute('placeholder', 'Search '.$config->getField('Title').' Website')
             ),
             FieldList::create(
                 FormAction::create(
                     'doSearch',
                     'Find it!'
                 )
+                    ->setUseButtonTag(true)
+                    ->addExtraClass('btn-secondary')
+                    ->setButtonContent(
+                        '<i class="fas fa-search"></i>'
+                        .'<span class="sr-only">Search</span>'
+                    )
             ),
             RequiredFields::create(['q'])
         )->setFormMethod('POST');
@@ -88,7 +104,7 @@ class PageController extends ContentController
     public function SearchResults()
     {
         $term = $this->search_term;
-        if (!$term) {
+        if(!$term) {
             return false;
         }
 
@@ -110,7 +126,7 @@ class PageController extends ContentController
 
         foreach ($elements as $element) {
             $page = Page::get()->filter('ElementalAreaID', $element->getField('ParentID'))->first();
-            if (!$page) {
+            if(!$page) {
                 continue;
             }
 

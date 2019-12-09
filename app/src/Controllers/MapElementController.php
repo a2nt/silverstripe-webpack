@@ -12,8 +12,6 @@ class MapElementController extends ElementController
     {
         parent::init();
 
-        DeferedRequirements::Auto();
-
         DeferedRequirements::loadCSS('https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css');
         DeferedRequirements::loadJS('https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js');
 

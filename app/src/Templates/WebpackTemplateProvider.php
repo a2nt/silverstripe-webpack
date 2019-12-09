@@ -34,7 +34,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     /**
      * @return array
      */
-    public static function get_template_global_variables()
+    public static function get_template_global_variables(): array
     {
         return [
             'WebpackDevServer' => 'isActive',
@@ -49,7 +49,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
      * Load CSS file
      * @param $path
      */
-    public static function loadCSS($path)
+    public static function loadCSS($path): void
     {
         if (self::isActive()) {
             return;
@@ -62,12 +62,12 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
      * Load JS file
      * @param $path
      */
-    public static function loadJS($path)
+    public static function loadJS($path): void
     {
         Requirements::javascript(self::_getPath($path));
     }
 
-    public static function projectName()
+    public static function projectName(): string
     {
         return Config::inst()->get(ModuleManifest::class, 'project');
     }
@@ -78,7 +78,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
         return is_array($themes) && $themes[0] !== '$public' && $themes[0] !== '$default' ? $themes[0] : false;
     }
 
-    public static function resourcesURL($link = null)
+    public static function resourcesURL($link = null): string
     {
         return Controller::join_links(Director::baseURL(), '/resources/'.self::projectName().'/client/dist/img/', $link);
     }
@@ -88,41 +88,49 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
      * Checks if dev mode is enabled and if webpack server is online
      * @return bool
      */
-    public static function isActive()
+    public static function isActive(): bool
     {
-        return Director::isDev() && !!@fsockopen(
-            Config::inst()->get(__CLASS__, 'HOSTNAME'),
-            Config::inst()->get(__CLASS__, 'PORT')
+        $cfg = self::config();
+        return Director::isDev() && @fsockopen(
+            $cfg['HOSTNAME'],
+            $cfg['PORT']
         );
     }
 
-    protected static function _getPath($path)
+    protected static function _getPath($path): string
     {
         return self::isActive() && strpos($path, '//') === false ?
             self::_toDevServerPath($path) :
             self::_toPublicPath($path);
     }
 
-    protected static function _toDevServerPath($path)
+    protected static function _toDevServerPath($path): string
     {
+        $cfg = self::config();
         return sprintf(
             '%s%s:%s/%s',
             Director::protocol(),
-            Config::inst()->get(__CLASS__, 'HOSTNAME'),
-            Config::inst()->get(__CLASS__, 'PORT'),
+            $cfg['HOSTNAME'],
+            $cfg['PORT'],
             basename($path)
         );
     }
 
-    protected static function _toPublicPath($path)
+    protected static function _toPublicPath($path): string
     {
+        $cfg = self::config();
         return strpos($path, '//') === false ?
             Controller::join_links(
                 self::projectName(),
-                Config::inst()->get(__CLASS__, 'DIST'),
+                $cfg['DIST'],
                 (strpos($path, '.css') ? 'css' : 'js'),
                 $path
             )
             : $path;
+    }
+
+    public static function config(): array
+    {
+        return Config::inst()->get(__CLASS__);
     }
 }
