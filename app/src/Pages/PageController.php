@@ -20,7 +20,7 @@ use SilverStripe\ORM\ArrayList;
 use DNADesign\Elemental\Models\ElementContent;
 use DNADesign\Elemental\Models\ElementalArea;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
-use Site\Templates\DeferedRequirements;
+use Site\Templates\DeferredRequirements;
 
 class PageController extends ContentController
 {
@@ -31,9 +31,9 @@ class PageController extends ContentController
     private $site_message;
     private $search_term;
 
-    public function init()
+    protected function init()
     {
-        DeferedRequirements::Auto();
+        DeferredRequirements::Auto();
 
         return parent::init();
     }

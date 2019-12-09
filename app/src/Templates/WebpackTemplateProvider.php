@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUnusedPrivateFieldInspection */
 
 /**
  * Directs assets requests to Webpack server or to static files

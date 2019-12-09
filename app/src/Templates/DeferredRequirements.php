@@ -1,5 +1,7 @@
 <?php
 
+/** @noinspection PhpUnusedPrivateFieldInspection */
+
 namespace Site\Templates;
 
 use SilverStripe\Control\Controller;
@@ -8,9 +10,8 @@ use SilverStripe\View\Requirements;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Path;
-use SilverStripe\Core\Manifest\ManifestFileFinder;
 
-class DeferedRequirements implements TemplateGlobalProvider
+class DeferredRequirements implements TemplateGlobalProvider
 {
     private static $css = [];
     private static $js = [];
@@ -24,7 +25,7 @@ class DeferedRequirements implements TemplateGlobalProvider
     /**
      * @return array
      */
-    public static function get_template_global_variables()
+    public static function get_template_global_variables(): array
     {
         return [
             'AutoRequirements' => 'Auto',
@@ -33,7 +34,7 @@ class DeferedRequirements implements TemplateGlobalProvider
         ];
     }
 
-    public static function Auto($class = false)
+    public static function Auto($class = false): string
     {
         $config = Config::inst()->get(self::class);
         $projectName = WebpackTemplateProvider::projectName();
@@ -69,41 +70,41 @@ class DeferedRequirements implements TemplateGlobalProvider
         self::loadJS($mainTheme.'.js');
 
         // Custom controller requirements
-        $class = get_class(Controller::curr());
-        if (isset($config['custom_requirements'][$class])) {
-            foreach ($config['custom_requirements'][$class] as $file) {
+        $curr_class = $class ?: get_class(Controller::curr());
+        if (isset($config['custom_requirements'][$curr_class])) {
+            foreach ($config['custom_requirements'][$curr_class] as $file) {
                 if (strpos($file, '.css')) {
-                    DeferedRequirements::loadCSS($file);
+                    self::loadCSS($file);
                 }
                 if (strpos($file, '.js')) {
-                    DeferedRequirements::loadJS($file);
+                    self::loadJS($file);
                 }
             }
         }
 
-        $class = str_replace('\\', '.', $class);
+        $curr_class = str_replace('\\', '.', $curr_class);
 
         // Controller requirements
-        $themePath = Path::join($cssPath, $mainTheme.'_'.$class . '.css');
-        $projectPath = Path::join($cssPath, $projectName.'_'.$class . '.css');
+        $themePath = Path::join($cssPath, $mainTheme.'_'.$curr_class . '.css');
+        $projectPath = Path::join($cssPath, $projectName.'_'.$curr_class . '.css');
         if ($mainTheme && file_exists($themePath)) {
-            self::loadCSS($mainTheme.'_'.$class . '.css');
+            self::loadCSS($mainTheme.'_'.$curr_class . '.css');
         } elseif (file_exists($projectPath)) {
-            self::loadCSS($projectName.'_'.$class . '.css');
+            self::loadCSS($projectName.'_'.$curr_class . '.css');
         }
 
-        $themePath = Path::join($jsPath, $mainTheme.'_'.$class . '.js');
-        $projectPath = Path::join($jsPath, $projectName.'_'.$class . '.js');
+        $themePath = Path::join($jsPath, $mainTheme.'_'.$curr_class . '.js');
+        $projectPath = Path::join($jsPath, $projectName.'_'.$curr_class . '.js');
         if ($mainTheme && file_exists($themePath)) {
-            self::loadJS($mainTheme.'_'.$class . '.js');
+            self::loadJS($mainTheme.'_'.$curr_class . '.js');
         } elseif (file_exists($projectPath)) {
-            self::loadJS($projectName.'_'.$class . '.js');
+            self::loadJS($projectName.'_'.$curr_class . '.js');
         }
 
         return self::forTemplate();
     }
 
-    public static function loadCSS($css)
+    public static function loadCSS($css): void
     {
         $external = (mb_strpos($css, '//') === 0 || mb_strpos($css, 'http') === 0);
         if ($external || (self::$deferred && !self::_webpackActive())) {
@@ -113,7 +114,7 @@ class DeferedRequirements implements TemplateGlobalProvider
         }
     }
 
-    public static function loadJS($js)
+    public static function loadJS($js): void
     {
         /*$external = (mb_substr($js, 0, 2) === '//' || mb_substr($js, 0, 4) === 'http');
         if ($external || (self::$defered && !self::_webpackActive())) {*/
@@ -125,17 +126,17 @@ class DeferedRequirements implements TemplateGlobalProvider
         }
     }
 
-    protected static function _webpackActive()
+    protected static function _webpackActive(): bool
     {
         return class_exists('WebpackTemplateProvider') && WebpackTemplateProvider::isActive();
     }
 
-    public static function setDeferred($bool)
+    public static function setDeferred($bool): void
     {
         self::$deferred = $bool;
     }
 
-    public static function forTemplate()
+    public static function forTemplate(): string
     {
         $result = '';
         foreach (self::$css as $css) {
@@ -158,9 +159,9 @@ class DeferedRequirements implements TemplateGlobalProvider
         return $result;
     }
 
-    private static function get_url($url)
+    private static function get_url($url): string
     {
-        $config = Config::inst()->get(self::class);
+        $config = self::config();
 
         // external URL
         if (strpos($url, '//') !== false) {
@@ -174,9 +175,14 @@ class DeferedRequirements implements TemplateGlobalProvider
                 : '?'.$version // new param
             : ''; // no version defined
 
-        $static_domain = $config['static_domain'];
-        $static_domain = $static_domain ?: '';
+        //$static_domain = $config['static_domain'];
+        //$static_domain = $static_domain ?: '';
 
         return $url.$version;
+    }
+
+    public static function config(): array
+    {
+        return Config::inst()->get(__CLASS__);
     }
 }
