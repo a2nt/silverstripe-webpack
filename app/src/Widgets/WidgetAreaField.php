@@ -65,11 +65,14 @@ class WidgetAreaField extends GridField
         $config->getComponentByType(GridFieldDataColumns::class)->setDisplayFields([
             'Icon' => '',
             'Title' => 'Title',
-            'LastEdited' => 'Changed',
+            'Enabled' => 'Enabled',
         ])->setFieldFormatting([
             'Icon' => static function($v, Widget $item) {
                 return '<span style="font-size:2rem">'.$item::config()->get('icon').'</span>';
-            }
+            },
+            'Enabled' => static function($v, Widget $item) {
+                return $item->getField('Enabled') ? 'Yes' : 'No';
+            },
         ]);
 
         $config->addComponent(new GridFieldEditButton());
