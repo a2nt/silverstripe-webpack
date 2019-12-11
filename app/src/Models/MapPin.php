@@ -12,6 +12,7 @@ use A2nt\SilverStripeMapboxField\MapboxField;
 use A2nt\SilverStripeMapboxField\MarkerExtension;
 use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;
+use SilverStripe\Forms\CheckboxField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
 use Site\Elements\MapElement;
@@ -46,6 +47,8 @@ class MapPin extends DataObject
     {
         $fields = parent::getCMSFields();
 
+        $fields->removeByName('MapElements');
+
         $fields->replaceField(
             'PhoneNumberID',
             LinkField::create('PhoneNumberID', 'Phone Number')
@@ -57,8 +60,11 @@ class MapPin extends DataObject
             LinkField::create('FaxID', 'FAX')
                 ->setAllowedTypes(['Phone'])
         );
+        $fields->removeByName(['Map', 'LatLngOverride', 'Lng','Lat']);
 
-        $fields->addFieldsToTab('Root.Map', [
+        $fields->addFieldsToTab('Root.Main', [
+            CheckboxField::create('LatLngOverride', 'Override Latitude and Longitude?')
+                ->setDescription('Check this box and save to be able to edit the latitude and longitude manually.'),
             MapboxField::create('Map', 'Choose a location', 'Lat', 'Lng'),
         ]);
 
@@ -89,12 +95,12 @@ class MapPin extends DataObject
                             'Address',
                             'City',
                             'State',
-                            'Country',
+                            //'Country',
                         ];
 
                         $n = count($fields);
-                        for($i = 0; $i < $n; $i++) {
-                            if(!isset($details[$i])){
+                        for ($i = 0; $i < $n; $i++) {
+                            if (!isset($details[$i])) {
                                 continue;
                             }
 
@@ -103,7 +109,7 @@ class MapPin extends DataObject
 
                             // get postal code
                             if ($name === 'State') {
-                                $this->setField('PostalCode',substr($val ,strrpos($val, ' ')+1));
+                                $this->setField('PostalCode', substr($val, strrpos($val, ' ')+1));
                             }
 
                             $this->setField($name, $val);
@@ -111,7 +117,7 @@ class MapPin extends DataObject
                     }
                 }
             }
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
         }
     }
 }

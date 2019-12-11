@@ -8,7 +8,6 @@
 
 namespace Site\Extensions;
 
-
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
@@ -32,11 +31,12 @@ class MapExtension extends DataExtension
         'Locations',
     ];
 
-    public function updateCMSFields(FieldList $fields)
+    public function updateCMSFields(FieldList $fields): void
     {
         parent::updateCMSFields($fields);
 
-        $fields->addFieldsToTab('Root.Map', [
+        $fields->removeByName('Locations');
+        $fields->addFieldsToTab('Root.MapPins', [
             NumericField::create('MapZoom', 'Initial Map Zoom (enter a number from 0 to 24)'),
             GridField::create(
                 'Locations',
@@ -45,6 +45,8 @@ class MapExtension extends DataExtension
                 GridFieldConfig_RelationEditor::create(100)
             )
         ]);
+
+        $fields->findOrMakeTab('Root.MapPins')->setTitle('Locations');
     }
 
     public function getGeoJSON(): string
