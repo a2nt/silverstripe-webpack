@@ -60,6 +60,8 @@ SilverStripe\Blog\Model\BlogPost:
 
 SilverStripe\Widgets\Model\Widget:
   icon: '<i class="icon font-icon-p-document"></i>'
+  extensions:
+    - Site\Widgets\WidgetExtension
 SilverStripe\Blog\Widgets\BlogArchiveWidget:
   icon: '<i class="icon font-icon-p-archive"></i>'
 SilverStripe\Blog\Widgets\BlogCategoriesWidget:

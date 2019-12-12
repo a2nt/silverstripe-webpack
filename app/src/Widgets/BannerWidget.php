@@ -21,10 +21,6 @@ class BannerWidget extends Widget
     private static $icon = '<i class="icon font-icon-block-banner"></i>';
     private static $table_name = 'BannerWidget';
 
-    private static $db = [
-        'Title' => 'Varchar(255)',
-    ];
-
     private static $has_one = [
         'Image' => Image::class,
         'Link' => Link::class,

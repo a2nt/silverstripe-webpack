@@ -27,7 +27,7 @@
                         $Layout
                     </div>
                     <div class="col-md-4">
-                        <div class="page-content">
+                        <div class="sidebar page-content">
                             $SideBarView
                         </div>
                     </div>
