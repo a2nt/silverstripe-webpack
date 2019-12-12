@@ -20,7 +20,7 @@
                 $Breadcrumbs
             <% end_if %>
 
-            <% if $SideBarView && $SideBar.Widgets.Count %>
+            <% if $SideBarView && $SideBarView.Widgets.Count %>
             <div class="$DefaultContainer">
                 <div class="row">
                     <div class="col-md-8">
