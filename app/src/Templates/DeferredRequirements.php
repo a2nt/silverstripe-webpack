@@ -107,7 +107,7 @@ class DeferredRequirements implements TemplateGlobalProvider
     public static function loadCSS($css): void
     {
         $external = (mb_strpos($css, '//') === 0 || mb_strpos($css, 'http') === 0);
-        if ($external || (self::$deferred && !self::_webpackActive())) {
+        if ($external || (self::getDeferred() && !self::_webpackActive())) {
             self::$css[] = $css;
         } else {
             WebpackTemplateProvider::loadCSS($css);
@@ -117,9 +117,9 @@ class DeferredRequirements implements TemplateGlobalProvider
     public static function loadJS($js): void
     {
         /*$external = (mb_substr($js, 0, 2) === '//' || mb_substr($js, 0, 4) === 'http');
-        if ($external || (self::$defered && !self::_webpackActive())) {*/
+        if ($external || (self::getDeferred() && !self::_webpackActive())) {*/
         // webpack supposed to load external JS
-        if (self::$deferred && !self::_webpackActive()) {
+        if (self::getDeferred() && !self::_webpackActive()) {
             self::$js[] = $js;
         } else {
             WebpackTemplateProvider::loadJS($js);
@@ -128,26 +128,34 @@ class DeferredRequirements implements TemplateGlobalProvider
 
     protected static function _webpackActive(): bool
     {
-        return class_exists('WebpackTemplateProvider') && WebpackTemplateProvider::isActive();
+        return WebpackTemplateProvider::isActive();
     }
 
     public static function setDeferred($bool): void
     {
-        self::$deferred = $bool;
+        Config::inst()->set(__CLASS__, 'deferred', $bool);
+    }
+
+    public static function getDeferred(): bool
+    {
+        return self::config()['deferred'];
     }
 
     public static function forTemplate(): string
     {
         $result = '';
+        self::$css = array_unique(self::$css);
         foreach (self::$css as $css) {
             $result .= '<i class="defer-cs" data-load="' . self::get_url($css) . '"></i>';
         }
+
+        self::$js = array_unique(self::$js);
         foreach (self::$js as $js) {
             $result .= '<i class="defer-sc" data-load="' . self::get_url($js) . '"></i>';
         }
 
         $result .=
-            '<script type="text/javascript">function lsc(a,b){var c=document.createElement("script");c.type="text/javascript",c.readyState'
+            '<script>function lsc(a,b){var c=document.createElement("script");c.readyState'
             .'?c.onreadystatechange=function(){"loaded"!=c.readyState&&"complete"!=c.readyState||(c.onreadystatechange=null,b())}'
             .':c.onload=function(){b()},c.src=a,document.getElementsByTagName("body")[0].appendChild(c)}'
             .'function lscd(a){a<s.length-1&&(a++,lsc(s.item(a).getAttribute("data-load"),function(){lscd(a)}))}'
@@ -178,7 +186,7 @@ class DeferredRequirements implements TemplateGlobalProvider
         //$static_domain = $config['static_domain'];
         //$static_domain = $static_domain ?: '';
 
-        return $url.$version;
+        return WebpackTemplateProvider::toPublicPath($url.$version);
     }
 
     public static function config(): array

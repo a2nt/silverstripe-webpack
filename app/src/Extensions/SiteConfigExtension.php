@@ -56,12 +56,12 @@ class SiteConfigExtension extends DataExtension
                 'PrivacyPolicyID',
                 'Privacy Policy Page',
                 SiteTree::get()->map()->toArray()
-            ),
+            )->setEmptyString('(Select one)'),
             DropdownField::create(
                 'SitemapID',
                 'Sitemap Page',
                 SitemapPage::get()->map()->toArray()
-            ),
+            )->setEmptyString('(Select one)'),
         ]);
 
         $mapTab = $fields->findOrMakeTab('Root.Maps');

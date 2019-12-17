@@ -3,24 +3,21 @@
         $Title
     </h1>
 
-    <div class="page-content">
-        <% if $CurrentElement %>
-            $CurrentElement
-        <% else %>
-            $ElementalArea
-        <% end_if %>
+    <% if $CurrentElement %>
+        $CurrentElement
+    <% else %>
+        $ElementalArea
+    <% end_if %>
 
-        <% if $Form %>
-        <div class="container">
-            $Form
-        </div>
-        <% end_if %>
-
-        <% if $ExtraCode %>
-        <div class="extra-code extra-code-page">
-            $ExtraCode
-        </div>
-        <% end_if %>
+    <% if $Form %>
+    <div class="element $DefaultContainer">
+        $Form
     </div>
+    <% end_if %>
 
+    <% if $ExtraCode %>
+    <div class="element $DefaultContainer extra-code extra-code-page">
+        $ExtraCode
+    </div>
+    <% end_if %>
 </div>

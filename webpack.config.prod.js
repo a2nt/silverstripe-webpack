@@ -58,11 +58,21 @@ let plugins = [
     //assetNameRegExp: /\.optimize\.css$/g,
     cssProcessor: require('cssnano'),
     cssProcessorPluginOptions: {
-      preset: ['default', {
-        discardComments: {
-          removeAll: true
-        }
-      }],
+      preset: ['default'],
+    },
+    cssProcessorOptions: {
+      zindex: true,
+      cssDeclarationSorter: true,
+      reduceIdents: false,
+      mergeIdents: true,
+      mergeRules: true,
+      mergeLonghand: true,
+      discardUnused: true,
+      discardOverridden: true,
+      discardDuplicates: true,
+      discardComments: {
+        removeAll: true
+      },
     },
     canPrint: true
   }),

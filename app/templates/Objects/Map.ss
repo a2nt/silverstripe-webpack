@@ -2,8 +2,23 @@
 	class="mapAPI-map-container"
 	data-map-zoom="$MapZoom"
 	data-key="$MapAPIKey"
-	data-map-style="<% if $MapStyle %>$MapStyle<% else %>$SiteConfig.MapStyle<% end_if %>"
-	data-geojson="$GeoJSON.XML"
+	data-map-style="<% if $MapStyle %>$MapStyle.XML<% else %>$SiteConfig.MapStyle.XML<% end_if %>"
+	<% if $GeoJSON %>data-geojson="$GeoJSON.XML"<% end_if %>
+	<% if $ID %>
+	    data-id="$ID"
+	<% end_if %>
+	<% if $MapIcon %>
+		data-icon="$Icon.XML"
+	<% end_if %>
+	<% if $MapTitle %>
+	    data-content="$MapTitle.XML"
+	<% end_if %>
+	<% if $Lat && $Lng %>
+	    data-lat="$Lat"
+	    data-lng="$Lng"
+	<% else_if $Address %>
+		data-address="$Address.XML"
+	<% end_if %>
     data-fly-to-marker="true"
     data-fly-to-bounds="false"
 >

@@ -1,11 +1,12 @@
 ---
 Name: 'webapp-requirements'
 ---
-Site\Templates\DeferedRequirements:
+Site\Templates\DeferredRequirements:
   nojquery: false
   nofontawesome: false
   version: false
   static_domain: false
+  deferred: true
 
 SilverStripe\View\Requirements:
   disable_flush_combined: true

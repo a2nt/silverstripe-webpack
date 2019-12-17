@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <a href="/" class="logo2">
-                    <img src="$ResourcesURL('logo2.png')" alt="National Children's Alliance" />
+                    <img src="$ResourcesURL('logo2.png')" alt="{$Title}" />
                 </a>
 
                 <div class="field">
@@ -28,12 +28,7 @@
                 <% include Objects\SocialLinks %>
             </div>
             <div class="col-sm-6 text-right">
-                <a href="/" target="_blank" class="external-link">
-                    <img src="$ResourcesURL('logo-alliance.png')" alt="National Children's Alliance" />
-                </a>
-                <a href="/" target="_blank" class="external-link">
-                    <img src="$ResourcesURL('logo-regional.png')" alt="National Children's Alliance" />
-                </a>
+
             </div>
         </div>
     </div>
@@ -41,10 +36,7 @@
 
 <div class="copyright footer">
     <div class="container">
-        <div class="text-right hotline">
-            Child Abuse Hotline <a href="calto:+18003423720" class="tel">1-800-342-3720</a>
-        </div>
-        <%-- div class="row">
+        <div class="row">
             <div class="col-sm-6">
                 Copyright &copy; {$Top.CurrentTime.Format("Y")} {$Title} All rights reserved.
             </div>
@@ -56,7 +48,7 @@
                     <a href="$Sitemap.Link">$Sitemap.Title</a>
                 <% end_if %>
             </div>
-        </div --%>
+        </div>
     </div>
 </div>
 <% end_with %>

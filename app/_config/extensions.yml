@@ -9,8 +9,8 @@ SilverStripe\Admin\LeftAndMain:
 
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
-    - Site\Extensions\SiteConfigExtension
     - Site\Extensions\SocialExtension
+    - Site\Extensions\SiteConfigExtension
 
 SilverStripe\CMS\Model\SiteTree:
   extensions:
@@ -31,6 +31,8 @@ SilverStripe\Core\Injector\Injector:
     class: Site\Extensions\LostPasswordHandlerExtension
   Sheadawson\Linkable\Forms\EmbeddedObjectField:
     class: Site\Extensions\EmbedObjectField
+  SilverStripe\Forms\CompositeField:
+    class: Site\Extensions\CompositeFieldExtension
 
 # User Forms module
 SilverStripe\UserForms\Form\UserForm:

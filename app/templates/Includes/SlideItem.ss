@@ -4,9 +4,12 @@
             $Video.EmbedHTML.RAW
         </div>
     <% else %>
-        <% if $Image %>
+        <% if $Image || $ImageURL %>
             <span class="img">
-                <img class="d-block w-100" src="$Image.Fill(1400,650).URL" alt="<% if $Headline %>$Headline<% end_if %>">
+                <img class="d-block w-100"
+                    src="<% if $ImageURL %>$ImageURL<% else %>$Image.Fill(1400,650).URL<% end_if %>"
+                    alt="<% if $Headline %>$Headline.XML<% end_if %>"
+                />
             </span>
         <% end_if %>
 
@@ -16,13 +19,18 @@
                     <span class="sr-only">$Title</span>
                 </a>
             <% end_with %>
+        <% else_if $SlideLinkURL %>
+            <a href="$SlideLinkURL" title="$Headline.XML" class="stretched-link">
+                <span class="sr-only">$Headline</span>
+            </a>
         <% end_if %>
+
     <% end_if %>
 <% end_if %>
 
 <% if $Content || $Headline || $Description || $SlideLinkID %>
     <div class="carousel-caption container">
-        <div class="carousel-caption-container typography col-md-6">
+        <div class="carousel-caption-container typography">
             <% if $Headline %><h2 class="carousel-title">$Headline</h2><% end_if %>
 
             <% if $Content %>

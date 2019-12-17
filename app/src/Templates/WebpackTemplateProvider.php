@@ -65,7 +65,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
      */
     public static function loadJS($path): void
     {
-        Requirements::javascript(self::_getPath($path));
+        Requirements::javascript(self::_getPath($path), ['type' => '']);
     }
 
     public static function projectName(): string
@@ -102,7 +102,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     {
         return self::isActive() && strpos($path, '//') === false ?
             self::_toDevServerPath($path) :
-            self::_toPublicPath($path);
+            self::toPublicPath($path);
     }
 
     protected static function _toDevServerPath($path): string
@@ -117,11 +117,12 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
         );
     }
 
-    protected static function _toPublicPath($path): string
+    public static function toPublicPath($path): string
     {
         $cfg = self::config();
         return strpos($path, '//') === false ?
             Controller::join_links(
+                RESOURCES_DIR,
                 self::projectName(),
                 $cfg['DIST'],
                 (strpos($path, '.css') ? 'css' : 'js'),
