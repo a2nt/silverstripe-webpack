@@ -3,11 +3,11 @@
 
 namespace Site\Widgets;
 
-
 use DNADesign\Elemental\Forms\ElementalAreaField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Widgets\Forms\WidgetAreaEditor;
 use SilverStripe\Widgets\Model\Widget;
+use SilverStripe\Widgets\Model\WidgetArea;
 
 class WidgetPageExtension extends \SilverStripe\Widgets\Extensions\WidgetPageExtension
 {
@@ -33,5 +33,17 @@ class WidgetPageExtension extends \SilverStripe\Widgets\Extensions\WidgetPageExt
             $this->owner->Sidebar(),
             $available
         ));
+    }
+
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+
+        if (!$this->owner->getField('SideBarID')) {
+            $area = WidgetArea::create();
+            $area->write();
+
+            $this->owner->setField('SideBarID', $area->ID);
+        }
     }
 }

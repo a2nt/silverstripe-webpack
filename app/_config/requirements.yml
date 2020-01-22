@@ -7,6 +7,8 @@ Site\Templates\DeferredRequirements:
   version: false
   static_domain: false
   deferred: true
+  jquery_version: '3.4.1'
+  fontawesome_version: '5.10.2'
 
 SilverStripe\View\Requirements:
   disable_flush_combined: true

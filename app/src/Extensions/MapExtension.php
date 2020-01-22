@@ -13,6 +13,7 @@ use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\DataExtension;
 use Site\Models\MapPin;
@@ -42,8 +43,14 @@ class MapExtension extends DataExtension
                 'Locations',
                 'Locations',
                 $this->owner->Locations(),
-                GridFieldConfig_RelationEditor::create(100)
+                $cfg = GridFieldConfig_RelationEditor::create(100)
             )
+        ]);
+
+        $cfg->getComponentByType(GridFieldDataColumns::class)->setFieldFormatting([
+            'ShowAtMap' => static function ($v, $obj) {
+                return $v ? 'YES' : 'NO';
+            }
         ]);
 
         $fields->findOrMakeTab('Root.MapPins')->setTitle('Locations');
@@ -51,10 +58,13 @@ class MapExtension extends DataExtension
 
     public function getGeoJSON(): string
     {
+        $locs = $this->owner->Locations()->filter('ShowAtMap', true);
+
         $pins = [];
-        foreach ($this->owner->Locations() as $off) {
+        foreach ($locs as $off) {
             $pins[] = $off->getGeo();
         }
+
         return json_encode([
             'type' => 'MarkerCollection',
             'features' => $pins

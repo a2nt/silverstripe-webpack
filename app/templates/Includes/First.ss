@@ -13,5 +13,10 @@
     </div>
 </div>
 
+
+<% if $isDev || $WebpackActive %>
+	<div id="DevOriginal"></div>
+<% end_if %>
+
 <%-- Site Wide Alert Message --%>
 <% include SiteWideMessage %>

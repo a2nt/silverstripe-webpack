@@ -4,13 +4,13 @@
     <% if $Address2 %>
         <div class="addr2">{$Address2}</div>
     <% end_if %>
-    <% if $City || $PostalCode %>
+    <% if $City || $Suburb || $PostalCode || $Postcode %>
         <div class="city">
-            {$City}, {$State} {$PostalCode}
+            {$City}{$Suburb}, {$State} {$PostalCode}{$Postcode}
         </div>
     <% end_if %>
     <% if $Country %>
-        <div class="d-none">{$Country}</div>
+        <div class="country d-none">{$Country}</div>
     <% end_if %>
     <% if $PhoneNumber %>
         <% with $PhoneNumber %>

@@ -32,6 +32,8 @@ $MetaTags
 <link rel="author" type="text/plain" href="{$AbsoluteBaseURL}humans.txt" />
 <link rel="sitemap" type="application/xml" title="Sitemap" href="{$AbsoluteBaseURL}sitemap.xml" />
 
+
+<link rel="preconnect" href="https://use.fontawesome.com/" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://maps.google.com" />
 <link rel="preconnect" href="https://ajax.googleapis.com" />

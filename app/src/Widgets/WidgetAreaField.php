@@ -3,7 +3,6 @@
 
 namespace Site\Widgets;
 
-
 use DNADesign\Elemental\Controllers\ElementalAreaController;
 use DNADesign\Elemental\Forms\ElementalAreaConfig;
 use DNADesign\Elemental\Forms\ElementalAreaField;
@@ -67,10 +66,10 @@ class WidgetAreaField extends GridField
             'Title' => 'Title',
             'Enabled' => 'Enabled',
         ])->setFieldFormatting([
-            'Icon' => static function($v, Widget $item) {
+            'Icon' => static function ($v, Widget $item) {
                 return '<span style="font-size:2rem">'.$item::config()->get('icon').'</span>';
             },
-            'Enabled' => static function($v, Widget $item) {
+            'Enabled' => static function ($v, Widget $item) {
                 return $item->getField('Enabled') ? 'Yes' : 'No';
             },
         ]);
@@ -141,7 +140,7 @@ class WidgetAreaField extends GridField
             // Extract the ID
             $elementId = (int) substr($form, $idPrefixLength);
 
-            /** @var BaseElement $element */
+            // @var BaseElement $element
             $element = $this->getArea()->Widgets()->byID($elementId);
 
             if (!$element) {

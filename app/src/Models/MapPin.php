@@ -24,6 +24,7 @@ class MapPin extends DataObject
 
     private static $db = [
         'Title' => 'Varchar(255)',
+        'ShowAtMap' => 'Boolean(1)',
     ];
 
     private static $has_one = [
@@ -42,6 +43,12 @@ class MapPin extends DataObject
     ];
 
     private static $default_sort = 'Title ASC, ID DESC';
+
+    private static $summary_fields = [
+        'Title',
+        'Address',
+        'ShowAtMap',
+    ];
 
     public function getCMSFields()
     {
@@ -63,6 +70,7 @@ class MapPin extends DataObject
         $fields->removeByName(['Map', 'LatLngOverride', 'Lng','Lat']);
 
         $fields->addFieldsToTab('Root.Main', [
+            CheckboxField::create('ShowAtMap', 'Show at the map?'),
             CheckboxField::create('LatLngOverride', 'Override Latitude and Longitude?')
                 ->setDescription('Check this box and save to be able to edit the latitude and longitude manually.'),
             MapboxField::create('Map', 'Choose a location', 'Lat', 'Lng'),

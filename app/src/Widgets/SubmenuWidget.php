@@ -3,10 +3,6 @@
 
 namespace Site\Widgets;
 
-use Sheadawson\Linkable\Forms\LinkField;
-use Sheadawson\Linkable\Models\Link;
-use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Assets\Image;
 use SilverStripe\Widgets\Model\Widget;
 
 if (!class_exists(Widget::class)) {

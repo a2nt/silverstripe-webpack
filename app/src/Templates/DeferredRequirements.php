@@ -19,7 +19,9 @@ class DeferredRequirements implements TemplateGlobalProvider
     private static $static_domain;
     private static $version;
     private static $nojquery = false;
+    private static $jquery_version = '3.4.1';
     private static $nofontawesome = false;
+    private static $fontawesome_version = '5.10.2';
     private static $custom_requirements = [];
 
     /**
@@ -60,12 +62,19 @@ class DeferredRequirements implements TemplateGlobalProvider
 
         // Main libs
         if (!$config['nojquery']) {
-            self::loadJS('//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+            self::loadJS(
+                '//ajax.googleapis.com/ajax/libs/jquery/'
+                .$config['jquery_version'].'/jquery.min.js'
+            );
         }
         // App libs
         if (!$config['nofontawesome']) {
-            self::loadCSS('//use.fontawesome.com/releases/v5.4.0/css/all.css');
+            self::loadCSS(
+                '//use.fontawesome.com/releases/v'
+                .$config['fontawesome_version'].'/css/all.css'
+            );
         }
+
         self::loadCSS($mainTheme.'.css');
         self::loadJS($mainTheme.'.js');
 
@@ -176,17 +185,16 @@ class DeferredRequirements implements TemplateGlobalProvider
             return $url;
         }
 
-        $version = $config['version'];
-        $version = $version
-            ? strpos($url, '?') // inner URL
-                ? '&'.$version // add param
-                : '?'.$version // new param
-            : ''; // no version defined
+        $path = WebpackTemplateProvider::toPublicPath($url);
 
+        $absolutePath = Director::getAbsFile($path);
+        $hash = sha1_file($absolutePath);
+
+        $version = $config['version'] ? '&v='.$config['version'] : '';
         //$static_domain = $config['static_domain'];
         //$static_domain = $static_domain ?: '';
 
-        return WebpackTemplateProvider::toPublicPath($url.$version);
+        return Controller::join_links(WebpackTemplateProvider::toPublicPath($url), '?m='.$hash.$version);
     }
 
     public static function config(): array

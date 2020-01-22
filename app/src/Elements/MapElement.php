@@ -19,6 +19,7 @@ use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\NumericField;
 use Site\Controllers\MapElementController;
 use Site\Extensions\MapExtension;
+use SilverStripe\Forms\GridField\GridFieldDataColumns;
 
 class MapElement extends ElementContent
 {
@@ -60,8 +61,14 @@ class MapElement extends ElementContent
                 'Locations',
                 'Locations',
                 $this->owner->Locations(),
-                GridFieldConfig_RelationEditor::create(100)
+                $cfg = GridFieldConfig_RelationEditor::create(100)
             )
+        ]);
+
+        $cfg->getComponentByType(GridFieldDataColumns::class)->setFieldFormatting([
+            'ShowAtMap' => static function ($v, $obj) {
+                return $v ? 'YES' : 'NO';
+            }
         ]);
 
         return $fields;

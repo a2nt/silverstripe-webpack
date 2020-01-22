@@ -49,7 +49,9 @@ class SiteConfigExtension extends DataExtension
                 'Navigation',
                 'Navigation',
                 SiteTree::class
-            ),
+            )->setDisableFunction(static function ($el) {
+                return $el->getField('ParentID') !== 0;
+            }),
             TextareaField::create('Description', 'Website Description'),
             TextareaField::create('ExtraCode', 'Extra site-wide HTML code'),
             DropdownField::create(

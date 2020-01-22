@@ -17,20 +17,21 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack');
 
 let plugins = [
   new webpack.DefinePlugin({
     'process.env': {
-      'NODE_ENV': JSON.stringify('production')
-    }
+      NODE_ENV: JSON.stringify('production'),
+    },
   }),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
-    debug: false
+    debug: false,
   }),
   new ExtractTextPlugin({
     filename: 'css/[name].css',
-    allChunks: true
+    allChunks: true,
   }),
 
   new FaviconsWebpackPlugin({
@@ -51,8 +52,8 @@ let plugins = [
       opengraph: true,
       twitter: true,
       yandex: true,
-      windows: true
-    }
+      windows: true,
+    },
   }),
   new OptimizeCssAssetsPlugin({
     //assetNameRegExp: /\.optimize\.css$/g,
@@ -71,38 +72,73 @@ let plugins = [
       discardOverridden: true,
       discardDuplicates: true,
       discardComments: {
-        removeAll: true
+        removeAll: true,
       },
     },
-    canPrint: true
+    canPrint: true,
+  }),
+  new ImageminPlugin({
+    bail: false, // Ignore errors on corrupted images
+    cache: true,
+    filter: (source, sourcePath) => {
+      if (source.byteLength < 512000) {
+        return false;
+      }
+
+      return true;
+    },
+    imageminOptions: {
+      plugins: [
+        ['gifsicle', { interlaced: true }],
+        ['jpegtran', { progressive: true }],
+        ['optipng', { optimizationLevel: 5 }],
+        [
+          'svgo',
+          {
+            plugins: [
+              {
+                removeViewBox: false,
+              },
+            ],
+          },
+        ],
+      ],
+    },
   }),
 ];
 
 // add themes favicons
-commonVariables.themes.forEach((theme) => {
+commonVariables.themes.forEach(theme => {
   const faviconPath = path.join(__dirname, theme, conf.SRC, 'favicon.png');
   if (filesystem.existsSync(faviconPath)) {
-    plugins.push(new FaviconsWebpackPlugin({
-      title: 'Webpack App',
-      logo: faviconPath,
-      prefix: '/' + theme + '-icons/',
-      emitStats: false,
-      persistentCache: true,
-      inject: false,
-      statsFilename: path.join(conf.APPDIR, conf.DIST, theme + '-icons', 'iconstats.json'),
-      icons: {
-        android: true,
-        appleIcon: true,
-        appleStartup: true,
-        coast: true,
-        favicons: true,
-        firefox: true,
-        opengraph: true,
-        twitter: true,
-        yandex: true,
-        windows: true
-      }
-    }));
+    plugins.push(
+      new FaviconsWebpackPlugin({
+        title: 'Webpack App',
+        logo: faviconPath,
+        prefix: '/' + theme + '-icons/',
+        emitStats: false,
+        persistentCache: true,
+        inject: false,
+        statsFilename: path.join(
+          conf.APPDIR,
+          conf.DIST,
+          theme + '-icons',
+          'iconstats.json',
+        ),
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: true,
+          favicons: true,
+          firefox: true,
+          opengraph: true,
+          twitter: true,
+          yandex: true,
+          windows: true,
+        },
+      }),
+    );
   }
 });
 
@@ -110,9 +146,10 @@ module.exports = merge(common, {
   mode: 'production',
   optimization: {
     namedModules: true, // NamedModulesPlugin()
-    splitChunks: { // CommonsChunkPlugin()
+    splitChunks: {
+      // CommonsChunkPlugin()
       name: 'vendor',
-      minChunks: 2
+      minChunks: 2,
     },
     noEmitOnErrors: true, // NoEmitOnErrorsPlugin
     concatenateModules: true, //ModuleConcatenationPlugin
@@ -129,7 +166,7 @@ module.exports = merge(common, {
           },
         },
       }),
-    ]
+    ],
   },
 
   devtool: '',
@@ -141,66 +178,78 @@ module.exports = merge(common, {
   },
 
   module: {
-    rules: [{
-      test: /\.s?css$/,
-      use: ExtractTextPlugin.extract({
-        fallback: "style-loader",
-        use: [{
-          loader: 'css-loader',
-          options: {
-            sourceMap: false
-          }
-        }, {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: false,
-            plugins: [
-              autoprefixer()
-            ]
-          }
-        }, {
-          loader: 'resolve-url-loader'
-        }, {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: false
-          }
-        }, ]
-      })
-    }, {
-      test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-      use: [{
+    rules: [
+      {
+        test: /\.s?css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: false,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: false,
+                plugins: [autoprefixer()],
+              },
+            },
+            {
+              loader: 'resolve-url-loader',
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: false,
+              },
+            },
+          ],
+        }),
+      },
+      {
+        test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+              publicPath: '../fonts/',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ttf|otf|eot|svg|woff(2)?)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+              publicPath: '../fonts/',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: 'fonts/',
-          publicPath: '../fonts/'
-        }
-      }]
-    }, {
-      test: /\.(ttf|otf|eot|svg|woff(2)?)$/,
-      use: [{
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'fonts/',
-          publicPath: '../fonts/'
-        }
-      }]
-    }, {
-      test: /\.(png|jpg|jpeg|gif|svg)$/,
-      loader: 'file-loader',
-      options: {
-        name: '[name].[ext]',
-        outputPath: 'img/',
-        publicPath: '../img/'
+          outputPath: 'img/',
+          publicPath: '../img/',
           /*,
                           name(file) {
                               //return 'public/[path][name].[ext]';
                               return '[hash].[ext]';
                           },*/
+        },
       },
-    }, ]
+    ],
   },
 
   plugins: plugins,

@@ -14,6 +14,7 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\LiteralField;
 
 class ElementRows extends DataExtension
 {
@@ -95,6 +96,15 @@ class ElementRows extends DataExtension
         } else {
             $fields->removeByName('Size');
         }
+
+        $tab = $fields->findOrMakeTab('Root.Settings')
+        ->push(LiteralField::create(
+            'ClassName',
+            '<div class="form-group field text">'
+            .'<div class="form__field-label">Class</div>'
+            .'<div class="form__field-holder">'.$this->owner->getField('ClassName').'</div>'
+            .'</div>'
+        ));
     }
 
     public function getWidthPercetage()

@@ -3,7 +3,6 @@
 
 namespace Site\Extensions;
 
-
 use SilverStripe\ORM\DataExtension;
 
 class EmbeddedObjectExtension extends DataExtension
@@ -25,7 +24,15 @@ class EmbeddedObjectExtension extends DataExtension
     public function setEmbedParams($params = [])
     {
         // YouTube params
-        if(stripos($this->owner->EmbedHTML, 'https://www.youtube.com/embed/') > 0) {
+        if (stripos($this->owner->EmbedHTML, 'https://www.youtube.com/embed/') > 0) {
+            $url = $this->owner->getField('SourceURL');
+            preg_match(
+                '/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&"\'>]+)/',
+                $url,
+                $matches
+            );
+            $videoID = $matches[1];
+
             $params = array_merge([
                 'feature=oembed',
                 'wmode=transparent',
@@ -48,7 +55,7 @@ class EmbeddedObjectExtension extends DataExtension
 
             $this->owner->EmbedHTML = preg_replace(
                 '/src="([A-z0-9:\/\.]+)\??(.*?)"/',
-                'src="${1}?' . implode('&', $params) . '"',
+                'src="https://www.youtube.com/embed/'.$videoID.'?' . implode('&', $params) . '"',
                 $this->owner->EmbedHTML
             );
         }

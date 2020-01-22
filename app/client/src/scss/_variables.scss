@@ -2,19 +2,45 @@
  * Your custom variables
  */
 
-$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1390px, xxxl: 1590px);
-$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1330px, xxxl: 1560px);
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1390px,
+	xxxl: 1590px,
+);
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1140px,
+	xxl: 1330px,
+	xxxl: 1560px,
+);
 
-$font-family-base: "Lato", sans-serif;
+$font-family-base: 'Lato', sans-serif;
 
 $grid-gutter-width: 2rem;
 $grid-gutter-height: 2rem;
+$grid-gutter-element-height: $grid-gutter-height * 2;
 
-@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_variables";
+@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_variables';
 
 // Add your site-wide + content editor typography styling
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-    color: $dark;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	color: $headings-color;
 }

@@ -3,7 +3,10 @@
 use SilverStripe\Forms\HTMLEditor\HtmlEditorConfig;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\ORM\Search\FulltextSearchable;
+use SilverStripe\View\Parsers\ShortcodeParser;
+use Site\Extensions\EmbedShortcodeProvider;
 
+// setup TinyMCE editor
 $config = HtmlEditorConfig::get('cms');
 $config->enablePlugins([
     'template',
@@ -29,3 +32,9 @@ $config->setOption(
 );
 
 FulltextSearchable::enable();
+
+// replace embed parser
+$parser = ShortcodeParser::get('default');
+$parser->unregister('embed');
+$parser->register('embed', [EmbedShortcodeProvider::class, 'handle_shortcode']);
+

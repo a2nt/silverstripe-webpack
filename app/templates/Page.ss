@@ -10,31 +10,49 @@
 
     <div class="wrapper">
         <header id="Header">
-            <div class="$DefaultContainer">
-                <% include Header %>
-            </div>
+            <% include Header %>
         </header>
 
         <main id="MainContent" data-ajax-region="LayoutAjax">
             <% if $ParentID %>
-                $Breadcrumbs
+                <div id="PageBreadcumbs">
+                    $Breadcrumbs
+                </div>
+            <% else_if $ClassName != 'Site\Pages\HomePage' %>
+                <div id="PageBreadcumbs">
+                    <nav class="breadcrumbs $DefaultContainer" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/">Home</a>
+                            </li>
+
+                            <li class="breadcrumb-item current active" aria-current="page">
+                                <a href="$Link" class="breadcrumb-2">
+                                    $MenuTitle
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
             <% end_if %>
 
             <% if $SideBarView && $SideBarView.Widgets.Count %>
-            <div class="$DefaultContainer">
-                <div class="row">
-                    <div class="col-md-8">
-                        $Layout
-                    </div>
-                    <div class="col-md-4">
-                        <div class="sidebar page-content">
-                            $SideBarView
+                <div class="content-holder">
+                    <div class="row">
+                        <div class="col-md-9">
+                            $Layout
+                        </div>
+                        <div class="col-md-3">
+                            <div class="page-content-sidebar page-content">
+                                $SideBarView
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             <% else %>
+            <div class="content-holder">
                 $Layout
+            </div>
             <% end_if %>
         </main>
     </div>
