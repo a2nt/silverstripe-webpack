@@ -18,6 +18,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack');
+const ImageSpritePlugin = require('@a2nt/image-sprite-webpack-plugin');
 
 let plugins = [
   new webpack.DefinePlugin({
@@ -32,28 +33,6 @@ let plugins = [
   new ExtractTextPlugin({
     filename: 'css/[name].css',
     allChunks: true,
-  }),
-
-  new FaviconsWebpackPlugin({
-    title: 'Webpack App',
-    logo: path.join(__dirname, conf.APPDIR, conf.SRC, 'favicon.png'),
-    prefix: '/icons/',
-    emitStats: false,
-    persistentCache: true,
-    inject: false,
-    statsFilename: path.join(conf.APPDIR, conf.DIST, 'icons', 'iconstats.json'),
-    icons: {
-      android: true,
-      appleIcon: true,
-      appleStartup: true,
-      coast: true,
-      favicons: true,
-      firefox: true,
-      opengraph: true,
-      twitter: true,
-      yandex: true,
-      windows: true,
-    },
   }),
   new OptimizeCssAssetsPlugin({
     //assetNameRegExp: /\.optimize\.css$/g,
@@ -77,15 +56,34 @@ let plugins = [
     },
     canPrint: true,
   }),
+  new FaviconsWebpackPlugin({
+    title: 'Webpack App',
+    logo: path.join(__dirname, conf.APPDIR, conf.SRC, 'favicon.png'),
+    prefix: '/icons/',
+    emitStats: false,
+    persistentCache: true,
+    inject: false,
+    statsFilename: path.join(conf.APPDIR, conf.DIST, 'icons', 'iconstats.json'),
+    icons: {
+      android: true,
+      appleIcon: true,
+      appleStartup: true,
+      coast: true,
+      favicons: true,
+      firefox: true,
+      opengraph: true,
+      twitter: true,
+      yandex: true,
+      windows: true,
+    },
+  }),
   new ImageminPlugin({
     bail: false, // Ignore errors on corrupted images
     cache: true,
+    maxConcurrency: 3,
+    exclude: /original/,
     filter: (source, sourcePath) => {
-      if (source.byteLength < 512000) {
-        return false;
-      }
-
-      return true;
+      return source.byteLength < 512000;
     },
     imageminOptions: {
       plugins: [
@@ -104,6 +102,17 @@ let plugins = [
         ],
       ],
     },
+  }),
+  new ImageSpritePlugin({
+    exclude: /exclude|original|default-|icons|sprite/,
+    commentOrigin: false,
+    compress: true,
+    extensions: ['png'],
+    indent: '',
+    log: true,
+    //outputPath: path.join(__dirname, conf.APPDIR, conf.DIST),
+    outputFilename: 'img/sprite-[hash].png',
+    padding: 0,
   }),
 ];
 

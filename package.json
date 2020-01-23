@@ -31,6 +31,7 @@
     "yarn": "^1.21.1"
   },
   "devDependencies": {
+    "@a2nt/image-sprite-webpack-plugin": "^0.2.5",
     "@google/markerclusterer": "^1.0.3",
     "animate.css": "^3.7.0",
     "autoprefixer": "^7.2.5",
