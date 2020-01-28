@@ -8,7 +8,9 @@ Site\Templates\DeferredRequirements:
   static_domain: false
   deferred: true
   jquery_version: '3.4.1'
-  fontawesome_version: '5.10.2'
+
+SilverStripe\FontAwesome\FontAwesomeField:
+  version: '5.12.0'
 
 SilverStripe\View\Requirements:
   disable_flush_combined: true

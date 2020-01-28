@@ -10,6 +10,7 @@ use SilverStripe\View\Requirements;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Path;
+use SilverStripe\FontAwesome\FontAwesomeField;
 
 class DeferredRequirements implements TemplateGlobalProvider
 {
@@ -21,7 +22,6 @@ class DeferredRequirements implements TemplateGlobalProvider
     private static $nojquery = false;
     private static $jquery_version = '3.4.1';
     private static $nofontawesome = false;
-    private static $fontawesome_version = '5.10.2';
     private static $custom_requirements = [];
 
     /**
@@ -33,6 +33,7 @@ class DeferredRequirements implements TemplateGlobalProvider
             'AutoRequirements' => 'Auto',
             'DeferedCSS' => 'loadCSS',
             'DeferedJS' => 'loadJS',
+            'WebpackActive' => 'webpackActive',
         ];
     }
 
@@ -69,10 +70,11 @@ class DeferredRequirements implements TemplateGlobalProvider
         }
         // App libs
         if (!$config['nofontawesome']) {
-            self::loadCSS(
-                '//use.fontawesome.com/releases/v'
-                .$config['fontawesome_version'].'/css/all.css'
-            );
+            $v = !isset($config['fontawesome_version']) || !$config['fontawesome_version']
+                ? Config::inst()->get(FontAwesomeField::class, 'version')
+                : $config['fontawesome_version'];
+
+            self::loadCSS('//use.fontawesome.com/releases/v'.$v.'/css/all.css');
         }
 
         self::loadCSS($mainTheme.'.css');
@@ -116,7 +118,7 @@ class DeferredRequirements implements TemplateGlobalProvider
     public static function loadCSS($css): void
     {
         $external = (mb_strpos($css, '//') === 0 || mb_strpos($css, 'http') === 0);
-        if ($external || (self::getDeferred() && !self::_webpackActive())) {
+        if ($external || (self::getDeferred() && !self::webpackActive())) {
             self::$css[] = $css;
         } else {
             WebpackTemplateProvider::loadCSS($css);
@@ -128,14 +130,14 @@ class DeferredRequirements implements TemplateGlobalProvider
         /*$external = (mb_substr($js, 0, 2) === '//' || mb_substr($js, 0, 4) === 'http');
         if ($external || (self::getDeferred() && !self::_webpackActive())) {*/
         // webpack supposed to load external JS
-        if (self::getDeferred() && !self::_webpackActive()) {
+        if (self::getDeferred() && !self::webpackActive()) {
             self::$js[] = $js;
         } else {
             WebpackTemplateProvider::loadJS($js);
         }
     }
 
-    protected static function _webpackActive(): bool
+    public static function webpackActive(): bool
     {
         return WebpackTemplateProvider::isActive();
     }
