@@ -32,12 +32,21 @@ $MetaTags
 <link rel="author" type="text/plain" href="{$AbsoluteBaseURL}humans.txt" />
 <link rel="sitemap" type="application/xml" title="Sitemap" href="{$AbsoluteBaseURL}sitemap.xml" />
 
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<link rel="dns-prefetch" href="https://use.fontawesome.com" />
+<link rel="dns-prefetch" href="https://ajax.googleapis.com" />
 
-<link rel="preconnect" href="https://use.fontawesome.com/" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://maps.google.com" />
-<link rel="preconnect" href="https://ajax.googleapis.com" />
+<link rel="preconnect" href="https://use.fontawesome.com" crossorigin />
+<link rel="preconnect" href="https://ajax.googleapis.com" crossorigin />
+
+
+<link rel="dns-prefetch" href="https://csi.gstatic.com" />
+<link rel="dns-prefetch" href="https://maps.google.com" />
+<link rel="dns-prefetch" href="https://maps.googleapis.com" />
+
 <link rel="preconnect" href="https://csi.gstatic.com" />
+<link rel="preconnect" href="https://maps.google.com" />
 <link rel="preconnect" href="https://maps.googleapis.com" />
 
 <link rel="preconnect" href="https://www.youtube.com" />

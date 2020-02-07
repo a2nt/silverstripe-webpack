@@ -43,8 +43,10 @@
                             $Layout
                         </div>
                         <div class="col-md-3">
-                            <div class="page-content-sidebar page-content">
-                                $SideBarView
+                            <div class="page-content-sidebar page-content jsSidebarUI">
+                                <div class="jsSidebarUI__inner">
+                                    $SideBarView
+                                </div>
                             </div>
                         </div>
                     </div>

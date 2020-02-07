@@ -5,7 +5,12 @@
     </div>
     <% if $FeaturedImage %>
         <div class="img card-img-top">
-            <a href="$Link">$FeaturedImage.Fill(350,200)</a>
+            <a href="$Link">
+                <img
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    data-lazy-src="$FeaturedImage.Fill(350,200).URL" alt="$Title.ATT"
+                />
+            </a>
         </div>
     <% end_if %>
 

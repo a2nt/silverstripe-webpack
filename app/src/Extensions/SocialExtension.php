@@ -24,7 +24,7 @@ class SocialExtension extends DataExtension
     private static $has_one = [
         'Facebook' => Link::class,
         'LinkedIn' => Link::class,
-        'GooglePlus' => Link::class,
+        'Pinterest' => Link::class,
         'Instagram' => Link::class,
         'Twitter' => Link::class,
         'PublicEmail' => Link::class,
@@ -38,7 +38,7 @@ class SocialExtension extends DataExtension
         $linkFields = [
             LinkField::create('FacebookID'),
             LinkField::create('LinkedInID'),
-            LinkField::create('GooglePlusID'),
+            LinkField::create('PinterestID'),
             LinkField::create('InstagramID'),
             LinkField::create('TwitterID'),
         ];

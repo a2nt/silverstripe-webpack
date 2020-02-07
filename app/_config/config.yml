@@ -1,7 +1,6 @@
 ---
 Name: webapp
 ---
-
 SilverStripe\Core\Manifest\ModuleManifest:
   project: app
 
@@ -16,8 +15,10 @@ Page:
 #    - 'colymba/gridfield-bulk-editing-tools:client/dist/styles/main.css'
 
 SilverStripe\Admin\LeftAndMain:
+  extra_requirements_js:
+    - 'app/client/dist/css/app_cms.js'
   extra_requirements_css:
-  - 'app/client/dist/css/app_cms.css'
+    - 'app/client/dist/css/app_cms.css'
 
 SilverStripe\Forms\HTMLEditor\TinyMCEConfig:
   editor_css:

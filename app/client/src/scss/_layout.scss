@@ -1,6 +1,17 @@
 /**
  * Your custom style
  */
+.field {
+    margin: 2rem 0;
+    &.required:after {
+        display: none;
+    }
+}
+.form-control,
+.select2-container--default .select2-selection,
+.select2-dropdown .select2-search__field {
+    border-width: 0 0 1px 0;
+}
 
 .bg-alt {
     @extend .bg-dark;

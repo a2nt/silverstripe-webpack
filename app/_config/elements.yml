@@ -5,10 +5,13 @@ After:
   - elemental-list
   - elementalvirtual
 ---
-
 Page:
   extensions:
     - DNADesign\Elemental\Extensions\ElementalPageExtension
+
+DNADesign\Elemental\Models\ElementalArea:
+  extensions:
+    - Site\Extensions\ElementalArea
 
 DNADesign\Elemental\Models\BaseElement:
   default_global_elements: true
@@ -17,34 +20,34 @@ DNADesign\Elemental\Models\BaseElement:
 
 SilverStripe\CMS\Model\SiteTree:
   allowed_elements:
-      - DNADesign\ElementalList\Model\ElementList
-      - DNADesign\Elemental\Models\ElementContent
-      - DNADesign\ElementalUserForms\Model\ElementForm
-      - Dynamic\Elements\Image\Elements\ElementImage
-      - Dynamic\Elements\Blog\Elements\ElementBlogPosts
-      - Dynamic\Elements\Oembed\Elements\ElementOembed
-      - Dynamic\Elements\Elements\ElementTestimonials
-      #- Site\Elements\TeamMembersElement
-      - Site\Elements\SliderElement
-      - Site\Elements\BlockElement
-      - Site\Elements\MapElement
-      - DNADesign\ElementalVirtual\Model\ElementVirtual
+    - DNADesign\ElementalList\Model\ElementList
+    - DNADesign\Elemental\Models\ElementContent
+    - DNADesign\ElementalUserForms\Model\ElementForm
+    - Dynamic\Elements\Image\Elements\ElementImage
+    - Dynamic\Elements\Blog\Elements\ElementBlogPosts
+    - Dynamic\Elements\Oembed\Elements\ElementOembed
+    - Dynamic\Elements\Elements\ElementTestimonials
+    #- Site\Elements\TeamMembersElement
+    - Site\Elements\SliderElement
+    - Site\Elements\BlockElement
+    - Site\Elements\MapElement
+    - DNADesign\ElementalVirtual\Model\ElementVirtual
 
 DNADesign\ElementalList\Model\ElementList:
   inline_editable: false
   default_global_elements: false
   allowed_elements:
-      - DNADesign\ElementalList\Model\ElementList
-      - DNADesign\Elemental\Models\ElementContent
-      - DNADesign\ElementalUserForms\Model\ElementForm
-      - Dynamic\Elements\Image\Elements\ElementImage
-      - Dynamic\Elements\Blog\Elements\ElementBlogPosts
-      - Dynamic\Elements\Oembed\Elements\ElementOembed
-      - Dynamic\Elements\Elements\ElementTestimonials
-      #- Site\Elements\TeamMembersElement
-      - Site\Elements\SliderElement
-      - Site\Elements\BlockElement
-      - Site\Elements\MapElement
+    - DNADesign\ElementalList\Model\ElementList
+    - DNADesign\Elemental\Models\ElementContent
+    - DNADesign\ElementalUserForms\Model\ElementForm
+    - Dynamic\Elements\Image\Elements\ElementImage
+    - Dynamic\Elements\Blog\Elements\ElementBlogPosts
+    - Dynamic\Elements\Oembed\Elements\ElementOembed
+    - Dynamic\Elements\Elements\ElementTestimonials
+    #- Site\Elements\TeamMembersElement
+    - Site\Elements\SliderElement
+    - Site\Elements\BlockElement
+    - Site\Elements\MapElement
   styles:
     whiteframe: 'White Frame'
     greybg: 'Grey Background'

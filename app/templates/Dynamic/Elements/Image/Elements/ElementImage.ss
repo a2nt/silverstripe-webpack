@@ -1,7 +1,10 @@
 <% if $ImageResized %>
     <div class="image-element__image<% if $Resize %><% if $Height %> height{$Height}<% end_if %><% if $Width %> width{$Width}<% end_if %><% end_if %>">
         <% if $ImageLink %><a href="$ImageLink.URL"><% end_if %>
-        <img src="$ImageResized.URL" class="img-responsive" alt="$Title.ATT" />
+        <img
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            data-lazy-src="$ImageResized.URL" class="img-responsive" alt="$Title.ATT"
+        />
         <% if $ImageLink %></a><% end_if %>
     </div>
 <% end_if %>

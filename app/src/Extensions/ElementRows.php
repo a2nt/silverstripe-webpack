@@ -8,6 +8,7 @@
 
 namespace Site\Extensions;
 
+use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalList\Model\ElementList;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\CheckboxField;
@@ -28,6 +29,7 @@ class ElementRows extends DataExtension
 
     private static $db = [
         'ContainerType' => 'Varchar(254)',
+        //'SidebarOnly' => 'Boolean(0)',
         'Size' => 'Enum("1,2,3,4,5,6,7,8,9,10,11,12,auto","auto")',
     ];
 
@@ -37,9 +39,11 @@ class ElementRows extends DataExtension
 
         // move available globaly to main tab
         $fields->removeByName('AvailableGlobally');
+        //$fields->removeByName('SidebarOnly');
 
         $tab = $fields->findOrMakeTab('Root.Main');
         $tab->push(CheckboxField::create('AvailableGlobally'));
+        //$tab->push(CheckboxField::create('SidebarOnly', 'Hidden (Sidebar Only)'));
 
         // container type
         if ($this->isRoot()) {
@@ -97,14 +101,31 @@ class ElementRows extends DataExtension
             $fields->removeByName('Size');
         }
 
-        $tab = $fields->findOrMakeTab('Root.Settings')
-        ->push(LiteralField::create(
-            'ClassName',
-            '<div class="form-group field text">'
-            .'<div class="form__field-label">Class</div>'
-            .'<div class="form__field-holder">'.$this->owner->getField('ClassName').'</div>'
-            .'</div>'
-        ));
+        // move parent elements
+        if($this->isList()){
+            $tab->push(DropdownField::create(
+                'MoveElementIDToParent',
+                'Move an element from the list to parent',
+                $this->owner->getField('Elements')->Elements()->map('ID', 'Title')
+            )->setEmptyString('(select an element to move)'));
+
+            $tab->push(DropdownField::create(
+                'MoveElementIDFromParent',
+                'Move an element from parent to the list',
+                $this->owner->Parent()->Elements()
+                    ->exclude('ID', $this->owner->ID)
+                    ->map('ID', 'Title')
+            )->setEmptyString('(select an element to move)'));
+        }
+
+        $fields->findOrMakeTab('Root.Settings')
+            ->push(LiteralField::create(
+                'ClassName',
+                '<div class="form-group field text">'
+                .'<div class="form__field-label">Class</div>'
+                .'<div class="form__field-holder">'.$this->owner->getField('ClassName').'</div>'
+                .'</div>'
+            ));
     }
 
     public function getWidthPercetage()
@@ -246,5 +267,36 @@ class ElementRows extends DataExtension
         }
 
         return $type;
+    }
+
+    public static function MoveElement($moveID, $targetID) {
+        $el = BaseElement::get_by_id($moveID);
+        if(!$el) {
+            return false;
+        }
+
+        $el->setField('ParentID', $targetID);
+        $el->write();
+
+        return true;
+    }
+
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+
+        $moveID = $this->owner->getField('MoveElementIDFromParent');
+        $targetID = $moveID ? $this->owner->Elements()->ID : null;
+
+        if($moveID && $targetID) {
+            self::MoveElement($moveID, $targetID);
+        }
+
+        $moveID = $this->owner->getField('MoveElementIDToParent');
+        $targetID = $moveID ? $this->owner->Parent()->ID : null;
+
+        if($moveID && $targetID) {
+            self::MoveElement($moveID, $targetID);
+        }
     }
 }

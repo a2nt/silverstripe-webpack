@@ -10,6 +10,7 @@ use DNADesign\Elemental\Models\ElementContent;
 class Page extends SiteTree
 {
     private static $default_container_class = 'container';
+    protected $_cached = [];
 
     public static function DefaultContainer()
     {
@@ -22,9 +23,14 @@ class Page extends SiteTree
      */
     public function Summary($wordsToDisplay = 30)
     {
+        if (isset($this->_cached['summary'.$wordsToDisplay])) {
+            return $this->_cached['summary'.$wordsToDisplay];
+        }
+
         $summary = $this->getField('Summary');
         if ($summary) {
-            return $summary;
+            $this->_cached['summary'.$wordsToDisplay] = $summary;
+            return $this->_cached['summary'.$wordsToDisplay];
         }
 
         $element = ElementContent::get()->filter([
@@ -33,10 +39,12 @@ class Page extends SiteTree
         ])->first();
 
         if ($element) {
-            return $element->dbObject('HTML')->Summary($wordsToDisplay);
+            $this->_cached['summary'.$wordsToDisplay] = $element->dbObject('HTML')->Summary($wordsToDisplay);
+            return $this->_cached['summary'.$wordsToDisplay];
         }
 
-        return false;
+        $this->_cached['summary'.$wordsToDisplay] = false;
+        return $this->_cached['summary'.$wordsToDisplay];
     }
 
     public function CSSClass()
