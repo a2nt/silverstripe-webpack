@@ -24,9 +24,12 @@ class SliderElement extends ElementSlideshow
 
     private static $plural_name = 'Sliders';
 
-    private static $description = 'Displays slideshow';
+    private static $description = 'Displays slide show';
 
     private static $table_name = 'SliderElement';
+
+    private static $slide_width = 2140;
+    private static $slide_height = 700;
 
     private static $db = [
         'Interval' => 'Int',
@@ -45,6 +48,16 @@ class SliderElement extends ElementSlideshow
     public function getType()
     {
         return self::$singular_name;
+    }
+
+    public function getSlideWidth()
+    {
+        return self::config()->get('slide_width');
+    }
+
+    public function getSlideHeight()
+    {
+        return self::config()->get('slide_height');
     }
 
     public function getCMSFields()
@@ -71,17 +84,17 @@ class SliderElement extends ElementSlideshow
 
         $grid = $fields->dataFieldByName('Slides');
         if ($grid) {
-                $config = $grid->getConfig();
+            $config = $grid->getConfig();
 
-                $columns = new GridFieldEditableColumns();
-                $columns->setDisplayFields([
+            $columns = new GridFieldEditableColumns();
+            $columns->setDisplayFields([
                     'Hide'  => [
                         'title' => 'Hide it?',
                         'field' => CheckboxField::class,
                     ],
                 ]);
 
-                $config->addComponent($columns);
+            $config->addComponent($columns);
         }
 
         return $fields;
@@ -92,14 +105,14 @@ class SliderElement extends ElementSlideshow
      */
     public function getSlideShow()
     {
-        if($this->items) {
+        if ($this->items) {
             return $this->items;
         }
 
         $date = date('Y-m-d H:i:s');
         $this->items = $this->Slides()->filter([
             'Hide' => '0',
-        ])->filterByCallback(function($item, $list) use ($date) {
+        ])->filterByCallback(static function ($item, $list) use ($date) {
             $on = $item->getField('DateOn');
             $off = $item->getField('DateOff');
 
@@ -113,7 +126,7 @@ class SliderElement extends ElementSlideshow
     {
         parent::onBeforeWrite();
 
-        if(!$this->getField('Interval')){
+        if (!$this->getField('Interval')) {
             $this->setField('Interval', 5000);
         }
     }

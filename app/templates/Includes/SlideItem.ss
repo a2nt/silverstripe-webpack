@@ -8,7 +8,7 @@
             <span class="img">
                 <img class="d-block w-100"
                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                    data-lazy-src="<% if $ImageURL %>$ImageURL<% else %>$Image.Fill(1400,650).URL<% end_if %>"
+                    data-lazy-src="<% if $ImageURL %>$ImageURL<% else %>$Image.Fill($SlideWidth,$SlideHeight).URL<% end_if %>"
                     alt="<% if $Headline %>$Headline.XML<% end_if %>"
                 />
             </span>
