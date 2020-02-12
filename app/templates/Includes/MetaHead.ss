@@ -8,7 +8,7 @@ $MetaTags
 <meta name="mobile-web-app-capable" content="yes" />
 
 <%-- OpenGraph --%>
-<meta property="og:url" content="{$AbsoluteBaseURL}" />
+<meta property="og:url" content="{$AbsoluteLink}" />
 <meta property="og:site_name" content="{$SiteConfig.Title}" />
 <meta property="og:locale" content="$ContentLocale.ATT" />
 <% if $MetaTitle %>
@@ -18,9 +18,13 @@ $MetaTags
 <% if $MetaDescription %>
     <meta property="og:description" content="{$MetaDescription}" />
 <% end_if %>
+
 <% if $MetaImage %>
     <meta property="og:image" content="{$MetaImage.Link}" />
+<% else_if $MetaImageLink %>
+    <meta property="og:image" content="{$MetaImageLink}" />
 <% end_if %>
+
 <% if $FacebookAppID %>
     <meta property="fb:app_id" content="{$FacebookAppID}" />
 <% end_if %>

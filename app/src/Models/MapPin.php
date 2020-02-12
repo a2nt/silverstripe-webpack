@@ -86,6 +86,11 @@ class MapPin extends DataObject
         $lng = $this->getField('Lng');
         $lat = $this->getField('Lat');
 
+
+        if (!$this->getField('Country')) {
+            $this->setField('Country', 'us');
+        }
+
         // geocode
         try {
             // reverse geocoding get address

@@ -10,8 +10,8 @@ import 'bootstrap/js/dist/button';
 import 'bootstrap/js/dist/carousel';
 import 'bootstrap/js/dist/collapse';
 
-import 'hammerjs/hammer';
-import 'jquery-hammerjs/jquery.hammer';
+//import 'hammerjs/hammer';
+//import 'jquery-hammerjs/jquery.hammer';
 
 // Routie
 //import 'pouchdb/dist/pouchdb';
@@ -96,3 +96,4 @@ const fontAwesome = importAll(
 
 // Google Analytics
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/drivers/_google.track.external.links';
+//import MarkerClusterer from '@google/markerclusterer/src/markerclusterer.js';

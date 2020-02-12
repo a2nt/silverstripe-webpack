@@ -23,6 +23,7 @@ git clone https://github.com/a2nt/silverstripe-webpack.git
 cd silverstripe-webpack
 composer install
 npm install
+npm install --only=dev
 cp ./env-dist ./.env
 ```
 Those steps depends on your environment:
