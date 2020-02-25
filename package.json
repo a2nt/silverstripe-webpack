@@ -20,7 +20,10 @@
 		"lint:check": "eslint ./app/client/src --config .eslintrc && sass-lint ./app/client/src --config .sasslintrc -v -q",
 		"lint:fix": "eslint ./app/client/src --config .eslintrc --fix && sass-lint ./app/client/src --config .sasslintrc -v -q --fix",
 		"lint:js": "eslint ./app/client/src --config .eslintrc",
-		"lint:sass": "sass-lint ./app/client/src --config .sasslintrc -v -q"
+		"lint:sass": "sass-lint ./app/client/src --config .sasslintrc -v -q",
+		"prunecaches": "rimraf ./node_modules/.cache/",
+		"postinstall": "npm run prunecaches",
+		"postuninstall": "npm run prunecaches"
 	},
 	"browserslist": [
 		"defaults",
