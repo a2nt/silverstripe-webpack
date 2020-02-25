@@ -11,10 +11,15 @@ $MetaTags
 <meta property="og:url" content="{$AbsoluteLink}" />
 <meta property="og:site_name" content="{$SiteConfig.Title}" />
 <meta property="og:locale" content="$ContentLocale.ATT" />
+
 <% if $MetaTitle %>
-	<meta property="og:title" content="{$SiteConfig.Title} - {$MetaTitle}" />
+	<meta property="og:title" content="{$MetaTitle} - {$SiteConfig.Title}" />
 	<meta property="og:image:alt" content="{$MetaTitle}" />
+<% else %>
+	<meta property="og:title" content="{$Title} - {$SiteConfig.Title}" />
+	<meta property="og:image:alt" content="{$Title}" />
 <% end_if %>
+
 <% if $MetaDescription %>
     <meta property="og:description" content="{$MetaDescription}" />
 <% end_if %>

@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const commonVariables = require('./webpack.configuration');
 const conf = commonVariables.configuration;
 
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const path = require('path');
 const filesystem = require('fs');
 
@@ -123,10 +124,12 @@ module.exports = {
 							['@babel/transform-react-jsx'],
 							['react-hot-loader/babel'],
 						],
+						cacheDirectory: true,
+						cacheCompression: false,
 					},
 				},
 			},
-			{
+			/*{
 				test: /\.tsx?$/,
 				use: 'ts-loader',
 				exclude: /node_modules/,
@@ -134,7 +137,7 @@ module.exports = {
 			{
 				test: /\.coffee?$/,
 				use: 'coffee-loader',
-			},
+			},*/
 			{
 				test: /\.worker\.js$/,
 				use: {
@@ -168,5 +171,6 @@ module.exports = {
 			Scrollspy: 'exports-loader?Scrollspy!bootstrap/js/dist/scrollspy',
 			Tab: 'exports-loader?Tab!bootstrap/js/dist/tab',
 		}),
+		new HardSourceWebpackPlugin(),
 	],
 };
