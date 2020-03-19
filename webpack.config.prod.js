@@ -12,13 +12,15 @@ const filesystem = require('fs');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack');
 const ImageSpritePlugin = require('@a2nt/image-sprite-webpack-plugin');
+
+const COMPRESS = true;
 
 let plugins = [
   new webpack.DefinePlugin({
@@ -215,33 +217,33 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.s?css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: false,
-              },
+        use: [
+          {
+            loader: ExtractTextPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: !COMPRESS,
             },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: false,
-                plugins: [autoprefixer()],
-              },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: !COMPRESS,
+              plugins: [autoprefixer()],
             },
-            {
-              loader: 'resolve-url-loader',
+          },
+          {
+            loader: 'resolve-url-loader',
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: !COMPRESS,
             },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: false,
-              },
-            },
-          ],
-        }),
+          },
+        ],
       },
       {
         test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,

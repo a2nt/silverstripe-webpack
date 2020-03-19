@@ -15,7 +15,14 @@
 
 
 <% if $isDev || $WebpackActive %>
-	<div id="DevOriginal"></div>
+	<div id="DevUtilities">
+		$DeferedCSS('app_dev.css')
+		$DeferedJS('app_dev.js')
+		<div class="navs">
+			<button class="toggle-original">Toggle Original</button>
+		</div>
+		<div class="original d-none"></div>
+	</div>
 <% end_if %>
 
 <%-- Site Wide Alert Message --%>
