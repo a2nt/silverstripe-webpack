@@ -102,21 +102,26 @@ class ElementRows extends DataExtension
         }
 
         // move parent elements
-        if($this->isList()){
-            $tab->push(DropdownField::create(
-                'MoveElementIDToParent',
-                'Move an element from the list to parent',
-                $this->owner->getField('Elements')->Elements()->map('ID', 'Title')
-            )->setEmptyString('(select an element to move)'));
+        if ($this->isList()) {
+            $currEls = $this->owner->getField('Elements')->Elements();
+            if ($currEls->count()) {
+                $tab->push(DropdownField::create(
+                    'MoveElementIDToParent',
+                    'Move an element from the current list to parent',
+                    $currEls->map('ID', 'Title')
+                )->setEmptyString('(select an element to move)'));
+            }
 
-            $tab->push(DropdownField::create(
-                'MoveElementIDFromParent',
-                'Move an element from parent to the list',
-                $this->owner->Parent()->Elements()
-                    ->exclude('ID', $this->owner->ID)
-                    ->map('ID', 'Title')
-            )->setEmptyString('(select an element to move)'));
+            $parentEls = $this->owner->Parent()->Elements()->exclude('ID', $this->owner->ID);
+            if ($parentEls->count()) {
+                $tab->push(DropdownField::create(
+                    'MoveElementIDFromParent',
+                    'Move an element from the parent to the current list',
+                    $parentEls->map('ID', 'Title')
+                )->setEmptyString('(select an element to move)'));
+            }
         }
+
 
         $fields->findOrMakeTab('Root.Settings')
             ->push(LiteralField::create(
@@ -269,9 +274,10 @@ class ElementRows extends DataExtension
         return $type;
     }
 
-    public static function MoveElement($moveID, $targetID) {
+    public static function MoveElement($moveID, $targetID)
+    {
         $el = BaseElement::get_by_id($moveID);
-        if(!$el) {
+        if (!$el) {
             return false;
         }
 
@@ -288,14 +294,14 @@ class ElementRows extends DataExtension
         $moveID = $this->owner->getField('MoveElementIDFromParent');
         $targetID = $moveID ? $this->owner->Elements()->ID : null;
 
-        if($moveID && $targetID) {
+        if ($moveID && $targetID) {
             self::MoveElement($moveID, $targetID);
         }
 
         $moveID = $this->owner->getField('MoveElementIDToParent');
         $targetID = $moveID ? $this->owner->Parent()->ID : null;
 
-        if($moveID && $targetID) {
+        if ($moveID && $targetID) {
             self::MoveElement($moveID, $targetID);
         }
     }

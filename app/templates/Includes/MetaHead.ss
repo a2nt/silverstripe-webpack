@@ -44,10 +44,12 @@ $MetaTags
 <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 <link rel="dns-prefetch" href="https://use.fontawesome.com" />
 <link rel="dns-prefetch" href="https://ajax.googleapis.com" />
+<link rel="dns-prefetch" href="https:///www.google-analytics.com" />
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://use.fontawesome.com" crossorigin />
 <link rel="preconnect" href="https://ajax.googleapis.com" crossorigin />
+<link rel="preconnect" href="https:///www.google-analytics.com" crossorigin />
 
 
 <link rel="dns-prefetch" href="https://csi.gstatic.com" />
