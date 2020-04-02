@@ -85,11 +85,15 @@ import './_layout';
 
 // Register service worker
 if ('serviceWorker' in navigator) {
-	var baseHref = (document.getElementsByTagName('base')[0] || {}).href;
+	const baseHref = (document.getElementsByTagName('base')[0] || {}).href;
+	const version = (document.querySelector('meta[name="swversion"]') || {})
+		.content;
 	if (baseHref) {
-		navigator.serviceWorker.register(`${baseHref}sw.js`).then(() => {
-			console.log('Service Worker Registered');
-		});
+		navigator.serviceWorker
+			.register(`${baseHref}sw.js?v=${version}`)
+			.then(() => {
+				console.log('Service Worker Registered');
+			});
 	}
 }
 

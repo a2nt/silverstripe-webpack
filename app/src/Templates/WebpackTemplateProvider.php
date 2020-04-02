@@ -7,6 +7,7 @@
 
 namespace Site\Templates;
 
+use A2nt\ProgressiveWebApp\Controllers\ServiceWorkerController;
 use SilverStripe\Core\Manifest\ModuleManifest;
 use SilverStripe\View\SSViewer;
 use SilverStripe\View\TemplateGlobalProvider;
@@ -43,6 +44,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
             'WebpackJS' => 'loadJS',
             'ResourcesURL' => 'resourcesURL',
             'ProjectName' => 'themeName',
+            'SWVersion' => 'swVersion'
         ];
     }
 
@@ -65,7 +67,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
      */
     public static function loadJS($path): void
     {
-        Requirements::javascript(self::_getPath($path), ['type' => '']);
+        Requirements::javascript(self::_getPath($path));
     }
 
     public static function projectName(): string
@@ -102,7 +104,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     {
         return self::isActive() && strpos($path, '//') === false ?
             self::_toDevServerPath($path) :
-            self::toPublicPath($path);
+            self::_toPublicPath($path);
     }
 
     protected static function _toDevServerPath($path): string
@@ -117,12 +119,11 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
         );
     }
 
-    public static function toPublicPath($path): string
+    protected static function _toPublicPath($path): string
     {
         $cfg = self::config();
         return strpos($path, '//') === false ?
             Controller::join_links(
-                RESOURCES_DIR,
                 self::projectName(),
                 $cfg['DIST'],
                 (strpos($path, '.css') ? 'css' : 'js'),
@@ -134,5 +135,12 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     public static function config(): array
     {
         return Config::inst()->get(__CLASS__);
+    }
+
+    public static function swVersion()
+    {
+        if(class_exists(ServiceWorkerController::class)) {
+            return ServiceWorkerController::Version();
+        }
     }
 }

@@ -47,10 +47,12 @@ $MetaTags
 <link rel="preconnect" href="https://i9.ytimg.com" />
 <link rel="preconnect" href="https://s.ytimg.com" />
 
+<link rel="manifest" href="/manifest.json" />
+<meta name="swversion" content="{$SWVersion}" />
+
 <link rel="shortcut icon" type="image/x-icon" href="{$AbsoluteBaseURL}resources/app/client/dist/icons/favicon.ico" />
 <link rel="apple-touch-icon" href="{$AbsoluteBaseURL}resources/app/client/dist/icons/apple-touch-icon.png" />
 <link rel="apple-touch-icon-precomposed" href="{$AbsoluteBaseURL}resources/app/client/dist/icons/apple-touch-icon-precomposed.png" />
-<link rel="manifest" href="/manifest.json" />
 
 <meta name="application-name" content="{$SiteConfig.Title}" />
 <meta name="msapplication-TileImage" content="{$AbsoluteBaseURL}resources/app/client/dist/icons/mstile-144x144.png" />
