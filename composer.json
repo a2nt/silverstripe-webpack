@@ -2,7 +2,10 @@
   "name": "a2nt/silverstripe-webpack",
   "type": "silverstripe-recipe",
   "description": "SilverStripe WebPack boilerplate + Basics of JS/CSS UI",
-  "keywords": ["silverstripe", "webpack"],
+  "keywords": [
+    "silverstripe",
+    "webpack"
+  ],
   "license": "BSD-3-Clause",
   "require": {
     "php": ">=7.1.0",
@@ -37,19 +40,23 @@
     "silverstripe/widgets": "^2.0",
     "a2nt/silverstripe-font-awesome-field": "dev-master",
     "a2nt/silverstripe-mapboxfield": "dev-master",
+    "a2nt/silverstripe-progressivewebapp": "dev-master",
     "bummzack/sortablefile": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.7",
     "lekoala/silverstripe-debugbar": "dev-master"
   },
-  "repositories": [{
-    "type": "vcs",
-    "url": "https://github.com/a2nt/silverstripe-font-awesome"
-  }, {
-    "type": "vcs",
-    "url": "https://github.com/a2nt/silverstripe-mapboxfield"
-  }],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/silverstripe-font-awesome"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/silverstripe-mapboxfield"
+    }
+  ],
   "extra": {
     "expose": [
       "app/client/dist"

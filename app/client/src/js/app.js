@@ -83,6 +83,16 @@ import '@a2nt/meta-lightbox/src/js/index';
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_main';
 import './_layout';
 
+// Register service worker
+if ('serviceWorker' in navigator) {
+	var baseHref = (document.getElementsByTagName('base')[0] || {}).href;
+	if (baseHref) {
+		navigator.serviceWorker.register(`${baseHref}sw.js`).then(() => {
+			console.log('Service Worker Registered');
+		});
+	}
+}
+
 function importAll(r) {
 	return r.keys().map(r);
 }
