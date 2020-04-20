@@ -25,8 +25,8 @@ Dynamic\FlexSlider\Model\SlideImage:
     - Site\Extensions\SlideImageExtension
 
 SilverStripe\Core\Injector\Injector:
-  SilverStripe\UserForms\Model\UserDefinedForm:
-    class: Site\Extensions\CMSMain_HiddenClass
+  #SilverStripe\UserForms\Model\UserDefinedForm:
+  #  class: Site\Extensions\UserDefinedForm_HiddenClass
   SilverStripe\Security\MemberAuthenticator\LostPasswordHandler:
     class: Site\Extensions\LostPasswordHandlerExtension
   Sheadawson\Linkable\Forms\EmbeddedObjectField:
@@ -35,18 +35,19 @@ SilverStripe\Core\Injector\Injector:
     class: Site\Extensions\CompositeFieldExtension
 
 # User Forms module
+SilverStripe\UserForms\Model\UserDefinedForm:
+  show_in_sitetree: false
+  can_be_root: false
+  extensions:
+    - Site\Extensions\UserDefinedFormExtension
+
 SilverStripe\UserForms\Form\UserForm:
   extensions:
     - Site\Extensions\PlaceholderFormExtension
 
-SilverStripe\UserForms\Model\UserDefinedForm:
-  extensions:
-    - Site\Extensions\UserDefinedFormExtension
-
 DNADesign\ElementalUserForms\Model\ElementForm:
   extensions:
     - Site\Extensions\UserDefinedFormExtension
-
 
 # Blog + Widgets module extensions
 Page:

@@ -43,6 +43,12 @@ class Page extends SiteTree
             return $this->_cached['summary'.$wordsToDisplay];
         }
 
+        $content = $this->getField('Content');
+        if ($content) {
+            $this->_cached['summary'.$wordsToDisplay] = $this->dbObject('Content')->Summary($wordsToDisplay);
+            return $this->_cached['summary'.$wordsToDisplay];
+        }
+
         $this->_cached['summary'.$wordsToDisplay] = false;
         return $this->_cached['summary'.$wordsToDisplay];
     }

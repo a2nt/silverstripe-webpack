@@ -3,51 +3,56 @@
 
 	<div class="page-content">
 		<div class="element">
-			<div class="container blog-post-list">
-
+			<div class="$DefaultContainer">
 				<% if $ArchiveYear %>
-					<span class="action-title"><%t SilverStripe\\Blog\\Model\\Blog.Archive 'Archive' %>:</span>
+					<%t SilverStripe\\Blog\\Model\\Blog.Archive 'Archive' %>:
 					<% if $ArchiveDay %>
-						<h2 class="content-element__title subcategory">$ArchiveDate.Nice</h2>
+						<h2 class="subcategory">$ArchiveDate.Nice</h2>
 					<% else_if $ArchiveMonth %>
-						<h2 class="content-element__title subcategory">$ArchiveDate.format('F, Y')</h2>
+						<h2 class="subcategory">$ArchiveDate.format('F, Y')</h2>
 					<% else %>
-						<h2 class="content-element__title subcategory">$ArchiveDate.format('Y')</h2>
+						<h2 class="subcategory">$ArchiveDate.format('Y')</h2>
 					<% end_if %>
 				<% else_if $CurrentTag %>
-					<h2 class="content-element__title subcategory">
-						<span class="action-title"><%t SilverStripe\\Blog\\Model\\Blog.Tag 'Tag' %>:</span>
-						$CurrentTag.Title
-					</h2>
+					<h2 class="subcategory"><%t SilverStripe\\Blog\\Model\\Blog.Tag 'Tag' %>: $CurrentTag.Title</h2>
 				<% else_if $CurrentCategory %>
-					<h2 class="content-element__title subcategory">
-						<span class="action-title"><%t SilverStripe\\Blog\\Model\\Blog.Category 'Category' %>:</span>
-						$CurrentCategory.Title
-					</h2>
+					<h2 class="subcategory"><%t SilverStripe\\Blog\\Model\\Blog.Category 'Category' %>: $CurrentCategory.Title</h2>
 				<% end_if %>
+			</div>
+		</div>
 
-				<% if $PaginatedList.Exists %>
-					<div class="row">
-						<% loop $PaginatedList %>
-							<div class="col-sm-3 col-md-3">
-								<% include BlogPostInfo %>
-							</div>
-						<% end_loop %>
-					</div>
-				<% else %>
-					<p class="alert alert-info">
-						<%t SilverStripe\\Blog\\Model\\Blog.NoPosts 'There are no posts' %>
-					</p>
-				<% end_if %>
+		<% if $PaginatedList.Exists %>
+			<% loop $PaginatedList %>
+			<div class="element">
+				<div class="$Top.DefaultContainer">
+					<% include BlogPostInfo %>
+				</div>
+			</div>
+			<% end_loop %>
+		<% else %>
+			<div class="element">
+				<div class="$DefaultContainer">
+					<p><%t SilverStripe\\Blog\\Model\\Blog.NoPosts 'There are no posts' %></p>
+				</div>
+			</div>
+		<% end_if %>
 
-				<% with $PaginatedList %>
-					<% include Objects\Pagination %>
-				<% end_with %>
+		<div class="element">
+			<div class="$DefaultContainer">
+			<% with $PaginatedList %>
+				<% include Objects\Pagination %>
+			<% end_with %>
+			</div>
+		</div>
 
+		<% if $CommentsForm %>
+		<div class="element">
+			<div class="$DefaultContainer">
 				$CommentsForm
 			</div>
 		</div>
-    </div>
+		<% end_if %>
+	</div>
 </div>
 
 <%-- include SilverStripe\\Blog\\BlogSideBar --%>

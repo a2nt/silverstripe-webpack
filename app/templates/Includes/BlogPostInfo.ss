@@ -1,32 +1,33 @@
-<div class="blog-post-info card">
-    <div class="published-date">
-        <div class="day">$PublishDate.Format("d")</div>
-        <div class="month">$PublishDate.Format("MMM")</div>
-    </div>
+<div class="blog-post-info row">
     <% if $FeaturedImage %>
+    <div class="col col-sm-3">
         <div class="img card-img-top">
-            <a href="$Link">
-                <img
-                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                    data-lazy-src="$FeaturedImage.Fill(350,200).URL" alt="$Title.ATT"
-                />
-            </a>
+            <img
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                data-lazy-src="$FeaturedImage.Fill(350,200).URL" alt="$Title.ATT"
+            />
         </div>
+    </div>
     <% end_if %>
 
-    <div class="card-body">
-        <h5 class="card-title title">
-            <a href="$Link.ATT" title="Go to the $Title post">
+    <div class="col">
+        <div class="card-body">
+            <h3 class="card-title title">
                 $Title
-            </a>
-        </h5>
+            </h3>
 
-        <div class="card-text typography summary">
-            $Summary
+            <div class="published-date">
+                <span class="day">$PublishDate.Format("d")</span>
+                <span class="month">$PublishDate.Format("MMM")</span>
+            </div>
+
+            <div class="card-text typography summary">
+                $Summary
+            </div>
+
+            <% include SilverStripe\\Blog\\EntryMeta %>
         </div>
-
-        <a href="{$Link}" class="btn btn-link"><%t SilverStripe\\Blog\\Model\\Blog.READMORE "Read More" %> &raquo;</a>
-
-        <% include SilverStripe\\Blog\\EntryMeta %>
     </div>
+
+    <a href="{$Link}" class="btn btn-link stretched-link"><span class="sr-only">$Title</span></a>
 </div>

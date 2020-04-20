@@ -7,7 +7,6 @@
 
 namespace Site\Templates;
 
-use A2nt\ProgressiveWebApp\Controllers\ServiceWorkerController;
 use SilverStripe\Core\Manifest\ModuleManifest;
 use SilverStripe\View\SSViewer;
 use SilverStripe\View\TemplateGlobalProvider;
@@ -44,7 +43,6 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
             'WebpackJS' => 'loadJS',
             'ResourcesURL' => 'resourcesURL',
             'ProjectName' => 'themeName',
-            'SWVersion' => 'swVersion'
         ];
     }
 
@@ -104,7 +102,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     {
         return self::isActive() && strpos($path, '//') === false ?
             self::_toDevServerPath($path) :
-            self::_toPublicPath($path);
+            self::toPublicPath($path);
     }
 
     protected static function _toDevServerPath($path): string
@@ -119,13 +117,13 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
         );
     }
 
-    protected static function _toPublicPath($path): string
+    public static function toPublicPath($path): string
     {
         $cfg = self::config();
         return strpos($path, '//') === false ?
             Controller::join_links(
                 self::projectName(),
-                $cfg['DIST'],
+                $cfg['dist'],
                 (strpos($path, '.css') ? 'css' : 'js'),
                 $path
             )
@@ -135,12 +133,5 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
     public static function config(): array
     {
         return Config::inst()->get(__CLASS__);
-    }
-
-    public static function swVersion()
-    {
-        if(class_exists(ServiceWorkerController::class)) {
-            return ServiceWorkerController::Version();
-        }
     }
 }
