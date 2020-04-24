@@ -6,6 +6,7 @@
 
 use SilverStripe\Control\Controller;
 use SilverStripe\CMS\Controllers\ContentController;
+use SilverStripe\Control\Director;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\View\ArrayData;
 use SilverStripe\CMS\Model\SiteTree;

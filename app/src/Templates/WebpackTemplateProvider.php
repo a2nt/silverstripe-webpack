@@ -122,6 +122,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
         $cfg = self::config();
         return strpos($path, '//') === false ?
             Controller::join_links(
+                RESOURCES_DIR,
                 self::projectName(),
                 $cfg['dist'],
                 (strpos($path, '.css') ? 'css' : 'js'),
