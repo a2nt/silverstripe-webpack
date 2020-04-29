@@ -7,7 +7,7 @@
 <%-- Loading Spinner --%>
 <div id="PageLoading">
     <div class="loading-spinner">
-        <img src="favicon.ico" alt="{$SiteConfig.Title}" /><br/>
+        <img src="{$ResourcesURL('logo.png')}" alt="{$SiteConfig.Title}" /><br/>
         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         <br/><%t Page.LOADINGTEXT 'LOADING ..' %>
     </div>
