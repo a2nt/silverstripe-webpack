@@ -10,7 +10,7 @@
 <% end_if %>
 
 <% if $SlideShow %>
-    <div id="Carousel{$ID}" class="carousel slide js-carousel d-none d-sm-block"<% if $SlideShow.count > 1 %><% if $Interval %> data-interval="$Interval"<% end_if %> data-indicators="true" data-arrows="true"<% end_if %>>
+    <div id="Carousel{$ID}" class="carousel slide js-carousel"<% if $SlideShow.count > 1 %><% if $Interval %> data-interval="$Interval"<% end_if %> data-indicators="true" data-arrows="true"<% end_if %>>
         <div class="carousel-inner">
             <% loop $SlideShow %>
                 <div class="carousel-item carousel-item-{$SlideType}<% if no $Controls %> carousel-item-nocontrols<% end_if %><% if $First %> active<% end_if %>">

@@ -5,7 +5,9 @@
 <div class="page-content page-content-extra">
 	<div class="element">
 		<div class="element_container">
-			<% include Innoweb/Sitemap/Sitemap %>
+			<div class="{$DefaultContainer}">
+				<% include Innoweb/Sitemap/Sitemap %>
+			</div>
 		</div>
 	</div>
 </div>

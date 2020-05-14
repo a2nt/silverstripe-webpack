@@ -38,6 +38,7 @@ SilverStripe\CMS\Model\SiteTree:
     - Site\Elements\SliderElement
     - Site\Elements\BlockElement
     - Site\Elements\MapElement
+    #- Site\Elements\AccordionElement
     - DNADesign\ElementalVirtual\Model\ElementVirtual
 
 DNADesign\ElementalList\Model\ElementList:

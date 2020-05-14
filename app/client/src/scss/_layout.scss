@@ -26,12 +26,22 @@
     color: #212529;
 }
 
+$full-body-min-width: map-get($grid-breakpoints, 'sm') !default;
+
+@media (max-width: $full-body-min-width - 1) {
+    .jsSidebarUI__inner {
+        width: auto !important;
+        transform: none !important;
+        position: static !important;
+    }
+}
+
 // shrink elements on scroll
 body.shrink {
 }
 
 // sticky footer
-@media (min-width: map-get($grid-breakpoints, 'sm')) {
+@media (min-width: $full-body-min-width) {
     html,
     body {
         height: 100%;
@@ -78,6 +88,12 @@ body.shrink {
                 @extend .bg-dark;
             }
         }
+    }
+}
+
+.content-holder__sidebar {
+    > .container {
+        padding: 0;
     }
 }
 
@@ -130,7 +146,7 @@ body.shrink {
         }
     }
 
-    @media (min-width: map-get($grid-breakpoints, 'sm')) {
+    @media (min-width: $full-body-min-width) {
         .wrapper {
             padding-bottom: $footer-bar-size;
         }

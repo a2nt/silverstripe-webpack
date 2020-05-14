@@ -57,16 +57,16 @@ import SidebarUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_compone
 //import FormStepped from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.stepped';
 
 // Forms validation functionality
-//import FormValidate from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.validate';
+import FormValidate from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.validate';
 
 // Store forms data into localStorage
-//import FormStorage from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.storage';
+import FormStorage from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.storage';
+
+// Google NoCaptcha fields
+import NoCaptcha from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.nocaptcha';
 
 // client-side images cropping
 //import FormCroppie from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.croppie';
-
-// Google NoCaptcha fields
-//import NoCaptcha from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.nocaptcha';
 
 // youtube video preview image
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.video.preview';

@@ -37,24 +37,26 @@
             <% end_if %>
 
             <% if $SideBarView && $SideBarView.Widgets.Count %>
-                <div class="content-holder">
-                    <div class="row">
-                        <div class="col-md-9">
-                            $Layout
-                        </div>
-                        <div class="col-md-3">
-                            <div class="page-content-sidebar page-content jsSidebarUI">
-                                <div class="jsSidebarUI__inner">
-                                    $SideBarView
+                <div class="content-holder content-holder__sidebar">
+                    <div class="{$DefaultContainer}">
+                        <div class="row">
+                            <div class="col-md-9">
+                                $Layout
+                            </div>
+                            <div class="col-md-3">
+                                <div class="page-content-sidebar page-content jsSidebarUI">
+                                    <div class="jsSidebarUI__inner">
+                                        $SideBarView
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             <% else %>
-            <div class="content-holder">
-                $Layout
-            </div>
+                <div class="content-holder">
+                    $Layout
+                </div>
             <% end_if %>
         </main>
     </div>
