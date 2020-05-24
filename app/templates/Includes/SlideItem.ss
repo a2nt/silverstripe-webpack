@@ -16,7 +16,10 @@
 
         <% if $SlideLinkID %>
             <% with $SlideLink %>
-                <a href="$LinkURL" title="$Title.XML" class="stretched-link">
+                <a
+	                href="$LinkURL" title="$Title.XML"
+	                class="stretched-link"<% if $OpenInNewWindow %> target="_blank"<% end_if %>
+                >
                     <span class="sr-only">$Title</span>
                 </a>
             <% end_with %>
@@ -43,7 +46,10 @@
             <% if $SlideLinkID %>
                 <% with $SlideLink %>
                     <div class="text-right">
-                        <a href="$LinkURL" title="$Title.XML" class="slide-link">
+                        <a
+                        	href="$LinkURL" title="$Title.XML" class="slide-link"
+							<% if $OpenInNewWindow %> target="_blank"<% end_if %>
+                        >
                             $Title &raquo;
                         </a>
                     </div>

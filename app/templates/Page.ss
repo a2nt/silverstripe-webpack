@@ -18,8 +18,9 @@
                 <div id="PageBreadcumbs">
                     $Breadcrumbs
                 </div>
-            <% else_if $ClassName != 'Site\Pages\HomePage' %>
+            <% else_if $URLSegment != 'home' %>
                 <div id="PageBreadcumbs">
+                    $URLSegment
                     <nav class="breadcrumbs $DefaultContainer" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">

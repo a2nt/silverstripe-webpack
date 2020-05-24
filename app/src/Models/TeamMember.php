@@ -8,7 +8,6 @@
 
 namespace Site\Models;
 
-
 use SilverStripe\Assets\Image;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
@@ -24,6 +23,7 @@ class TeamMember extends DataObject
         'LastName' => 'Varchar(254)',
         'Company' => 'Varchar(254)',
         'Position' => 'Varchar(254)',
+        'Content' => 'HTMLText',
     ];
 
     private static $has_one = [
@@ -45,6 +45,17 @@ class TeamMember extends DataObject
         'FirstName',
         'LastName',
         'Position',
+    ];
+
+    private static $searchable_fields = [
+        'FirstName',
+        'LastName',
+    ];
+
+    private static $frontend_searchable_fields = [
+        'FirstName:PartialMatch',
+        'LastName:PartialMatch',
+        'Content:PartialMatch',
     ];
 
     public function getTitle()

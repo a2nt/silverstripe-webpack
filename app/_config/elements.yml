@@ -6,6 +6,10 @@ After:
   - elementalvirtual
 ---
 Page:
+  searchable_elements:
+    - DNADesign\Elemental\Models\ElementContent
+  searchable_objects:
+    - Site\Models\TeamMember
   extensions:
     - DNADesign\Elemental\Extensions\ElementalPageExtension
 
@@ -66,6 +70,9 @@ DNADesign\Elemental\Models\ElementContent:
   inline_editable: false
   extensions:
     - Site\Extensions\ElementContentWidget
+  frontend_searchable_fields:
+    - 'Title:PartialMatch'
+    - 'HTML:PartialMatch'
 
 Dynamic\Elements\Image\Elements\ElementImage:
   inline_editable: false

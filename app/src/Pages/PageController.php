@@ -7,6 +7,7 @@
 use SilverStripe\Control\Controller;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Control\Director;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\View\ArrayData;
 use SilverStripe\CMS\Model\SiteTree;
@@ -21,12 +22,21 @@ use SilverStripe\ORM\ArrayList;
 use DNADesign\Elemental\Models\ElementContent;
 use DNADesign\Elemental\Models\ElementalArea;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
+use Site\Models\TeamMember;
 use Site\Templates\DeferredRequirements;
 
 class PageController extends ContentController
 {
     private static $allowed_actions = [
         'SearchForm',
+    ];
+
+    private static $searchable_elements = [
+        ElementContent::class,
+    ];
+
+    private static $searchable_objects = [
+        TeamMember::class,
     ];
 
     private $site_message;
@@ -102,6 +112,22 @@ class PageController extends ContentController
         return $this->renderWith([__CLASS__.'_search', 'Page']);
     }
 
+    private static function getSearchObjects($classNames, $term)
+    {
+        $elements = ArrayList::create();
+        foreach ($classNames as $class) {
+            $fields = Config::inst()->get($class, 'frontend_searchable_fields');
+            $find = array_combine($fields, $fields);
+            $find = array_map(static function () use ($term) {
+                return $term;
+            }, $find);
+
+            $elements->merge($class::get()->filterAny($find)->sort('Created DESC'));
+        }
+
+        return $elements;
+    }
+
     public function SearchResults()
     {
         $term = $this->search_term;
@@ -120,13 +146,28 @@ class PageController extends ContentController
         $results->merge($pages);
 
         // get pages by elements
-        $elements = ElementContent::get()->filterAny([
-            'Title:PartialMatch' => $term,
-            'HTML:PartialMatch' => $term,
-        ])->sort('Created DESC');
+        $elements = self::getSearchObjects(
+            self::config()->get('searchable_elements'),
+            $term
+        );
 
         foreach ($elements as $element) {
             $page = Page::get()->filter('ElementalAreaID', $element->getField('ParentID'))->first();
+            if (!$page) {
+                continue;
+            }
+
+            $results->push($page);
+        }
+
+        // get pages by onjects
+        $elements = self::getSearchObjects(
+            self::config()->get('searchable_objects'),
+            $term
+        );
+
+        foreach ($elements as $element) {
+            $page = $element->Page();
             if (!$page) {
                 continue;
             }

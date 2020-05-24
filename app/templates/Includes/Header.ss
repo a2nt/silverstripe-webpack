@@ -17,12 +17,15 @@
                         </span>
                     <% end_if %>
                 <% end_with %>
+                <% if $Menu(1) %>
+                    <% include Navigation Navigation=$Menu(1), NavID="Navigation" %>
+                <% end_if %>
                 <%-- if $SearchForm %>
                     <div id="SearchFormContainer">$SearchForm</div>
                 <% end_if --%>
-                <% if $SiteConfig.Navigation %>
+                <%-- if $SiteConfig.Navigation %>
                     <% include Navigation Navigation=$SiteConfig.Navigation, NavID="Navigation" %>
-                <% end_if %>
+                <% end_if --%>
             </div>
         </div>
     </div>

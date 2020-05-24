@@ -97,6 +97,17 @@ body.shrink {
     }
 }
 
+#SiteWideMessage {
+    text-align: center;
+    .alert {
+        margin-bottom: 0;
+        .btn-close {
+            margin-top: -0.5rem;
+            float: right;
+        }
+    }
+}
+
 // stick navbar to top using mobile layout
 /*#Header {
     position: relative;
