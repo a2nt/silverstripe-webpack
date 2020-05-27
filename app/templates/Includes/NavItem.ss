@@ -23,9 +23,6 @@
     </li>
 <% else %>
     <li class="nav-item {$CSSClass} $ExtraClass <% if $isCurrent || $isSection %> active<% end_if %>">
-        <a class="nav-link" href="{$Link}" title="$Title.XML">
-            $MenuTitle.XML
-            <% if $isCurrent || $isSection %><i class="sr-only">(current)</i><% end_if %>
-        </a>
+        <% include NavItem_link %>
     </li>
 <% end_if %>

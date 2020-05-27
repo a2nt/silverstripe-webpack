@@ -36,6 +36,17 @@ $grid-gutter-width: 2rem;
 $grid-gutter-height: 2rem;
 $grid-gutter-element-height: $grid-gutter-height;
 
+$border-radius: 0.25rem;
+$border-radius-lg: 0.3rem;
+$border-radius-sm: 0.2rem;
+
+$font-size-base: 1rem;
+$h1-font-size: $font-size-base * 2.25;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+
 @import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_variables';
 
 // Add your site-wide + content editor typography styling

@@ -4,17 +4,33 @@
 // extends global Page class
 //namespace Site\Pages;
 
+use Sheadawson\Linkable\Forms\LinkField;
 use SilverStripe\CMS\Model\SiteTree;
 use DNADesign\Elemental\Models\ElementContent;
+use SilverStripe\FontAwesome\FontAwesomeField;
 
 class Page extends SiteTree
 {
     private static $default_container_class = 'container';
     protected $_cached = [];
+    private static $db = [
+        'BlockIcon' => 'Varchar(255)',
+    ];
 
     public static function DefaultContainer()
     {
         return self::config()->get('default_container_class');
+    }
+
+    public function getSettingsFields()
+    {
+        $fields = parent::getSettingsFields();
+
+        $fields->addFieldsToTab('Root.Icon', [
+            FontAwesomeField::create('BlockIcon', 'Page link Icon'),
+        ]);
+
+        return $fields;
     }
 
     /*
