@@ -32,7 +32,7 @@
 	],
 	"dependencies": {
 		"@a2nt/meta-lightbox": "^2.0.9",
-		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.1.1",
+		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.1.2",
 		"bootbox": "^4.4.0",
 		"bootstrap": "^4.5.0",
 		"bootstrap-confirmation2": "^4.1.0",
@@ -60,10 +60,10 @@
 	},
 	"devDependencies": {
 		"@a2nt/image-sprite-webpack-plugin": "^0.2.5",
-		"@babel/core": "^7.9.6",
-		"@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+		"@babel/core": "^7.10.0",
+		"@babel/plugin-proposal-object-rest-spread": "^7.10.0",
 		"@babel/plugin-transform-react-jsx": "^7.9.4",
-		"@babel/preset-env": "^7.9.6",
+		"@babel/preset-env": "^7.10.0",
 		"@google/markerclusterer": "^1.0.3",
 		"animate.css": "^3.7.2",
 		"ansi-html": "^0.0.7",
