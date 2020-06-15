@@ -1,15 +1,30 @@
 <% if $ShowNotifications && $NotificationsToday %>
-	<div class="notifications-list">
+    <div class="notifications-list">
     <% loop $NotificationsToday %>
         <div class="alert alert-warning">
-            <div class="$Top.DefaultContainer">
+            <div class="container">
                 <b class="btn btn-danger btn-close" data-dismiss="alert" aria-label="Close">
                     <i class="fas fa-times"></i>
                 </b>
+
                 <% if $Title %>
-                    <b>$Title:</b>
+                    <h2>$Title</h2>
                 <% end_if %>
-                $Content
+
+                <div class="typography">
+                    $Content
+                </div>
+
+                <% if $TargetLink %>
+                    <% with $TargetLink %>
+                        <a
+                            class="alert-link" href="$LinkURL"
+                            <% if $OpenInNewWindow %> target="_blank"<% end_if %>
+                        >
+                            $Title
+                        </a>
+                    <% end_with %>
+                <% end_if %>
             </div>
         </div>
     <% end_loop %>

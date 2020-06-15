@@ -28,6 +28,7 @@ class Notification extends DataObject
 
     private static $has_one = [
         'Parent' => SiteConfig::class,
+        'TargetLink' => Link::class,
     ];
 
 
@@ -39,6 +40,17 @@ class Notification extends DataObject
     ];
 
     private static $default_sort = 'DateOn DESC, DateOff DESC, Title ASC';
+
+    public function getCMSFields()
+    {
+        $fields = parent::getCMSFields();
+
+        $fields->addFieldsToTab('Root.Main', [
+            LinkField::create('TargetLinkID', 'Link'),
+        ]);
+
+        return $fields;
+    }
 
     public function validate()
     {

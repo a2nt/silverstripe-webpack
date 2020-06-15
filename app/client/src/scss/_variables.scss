@@ -24,13 +24,15 @@ $container-max-widths: (
 	xxxxl: 1836px,
 );
 
+$full-body-min-width: map-get($grid-breakpoints, 'lg');
+
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 	'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-	'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+	'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-	'Liberation Mono', 'Courier New', monospace !default;
+	'Liberation Mono', 'Courier New', monospace;
 
-$font-family-base: 'Lato', $font-family-sans-serif !default;
+$font-family-base: 'Lato', $font-family-sans-serif;
 
 $grid-gutter-width: 2rem;
 $grid-gutter-height: 2rem;

@@ -37,16 +37,17 @@
                 </div>
             <% end_if %>
 
-            <% if $SideBarView && $SideBarView.Widgets.Count %>
+            <% if $SideBarContent || $SideBarView && $SideBarView.Widgets.Count %>
                 <div class="content-holder content-holder__sidebar">
                     <div class="{$DefaultContainer}">
                         <div class="row">
-                            <div class="col-md-9">
+                            <div class="col-md-9 layout__col">
                                 $Layout
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 sidebar__col">
                                 <div class="page-content-sidebar page-content jsSidebarUI">
                                     <div class="jsSidebarUI__inner">
+                                        $SideBarContent
                                         $SideBarView
                                     </div>
                                 </div>

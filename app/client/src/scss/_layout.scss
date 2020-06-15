@@ -1,6 +1,9 @@
 /**
  * Your custom style
  */
+body {
+    position: relative;
+}
 .field {
     margin: 2rem 0;
     &.required:after {
@@ -33,6 +36,20 @@ $full-body-min-width: map-get($grid-breakpoints, 'sm') !default;
         width: auto !important;
         transform: none !important;
         position: static !important;
+    }
+}
+
+.dropdown-menu {
+    padding: 0;
+    border-radius: 0;
+
+    .dropdown-list {
+        @extend .list-unstyled;
+    }
+
+    .dropdown-menu {
+        top: 0;
+        left: 100%;
     }
 }
 
@@ -91,6 +108,10 @@ body.shrink {
     }
 }
 
+.sidebar__col {
+    position: relative;
+    margin-bottom: $grid-gutter-element-height * 2;
+}
 .content-holder__sidebar {
     > .container {
         padding: 0;
@@ -132,6 +153,10 @@ body.shrink {
         margin-top: 1rem;
     }
 }*/
+#PageBreadcumbs {
+    position: relative;
+    z-index: 2;
+}
 
 #Footer {
     background-color: $dark;

@@ -13,6 +13,8 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\Forms\GridField\GridFieldEditButton;
 use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\LiteralField;
@@ -61,6 +63,8 @@ class NotificationsExtension extends DataExtension
             new GridFieldTitleHeader(),
             new GridFieldEditableColumns(),
             new GridFieldAddNewInlineButton('toolbar-header-right'),
+            new GridFieldDetailForm(),
+            new GridFieldEditButton(),
             new GridFieldDeleteAction(),
         ]);
 
