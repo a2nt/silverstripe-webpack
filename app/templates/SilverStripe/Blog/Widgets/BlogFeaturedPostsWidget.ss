@@ -1,8 +1,9 @@
 <% if $Posts %>
-	<ul class="list-unstyled">
+	<ul>
 		<% loop $Posts %>
 			<li>
-				<a href="$Link">
+				<a href="$Link" title="$Title">
+					<span class="arrow">&rarr;</span>
 					<span class="text">$Title</span>
 				</a>
 			</li>

@@ -1,7 +1,7 @@
 <div id="PageContainer" class="page{$CSSClass} action{$Action}">
     <article class="blog-entry">
 
-    	<% if $FeaturedImage %>
+    	<%-- if $FeaturedImage %>
 	    <div id="CarouselTop" class="carousel slide js-carousel d-none d-sm-block">
 	        <div class="carousel-inner">
 	            <div class="carousel-item active">
@@ -9,13 +9,13 @@
 	            </div>
 	        </div>
 	    </div>
-	    <% end_if %>
+	    <% end_if --%>
 
 		<% include Content %>
 
         <div class="page-content">
-			<div class="element">
-				<div class="container">
+			<div class="element element__blog-meta">
+				<div class="element-container $Top.DefaultContainer">
 					<% include SilverStripe\\Blog\\EntryMeta %>
 				</div>
 			</div>
@@ -23,8 +23,8 @@
     </article>
 
 	<% if $CommentsForm %>
-    <div class="page-content">
-		<div class="element">
+	<div class="element element__comments">
+		<div class="element-container $DefaultContainer">
 			$CommentsForm
 		</div>
 	</div>

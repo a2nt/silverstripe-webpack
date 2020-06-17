@@ -1,8 +1,11 @@
 @import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/types/editor';
 @import '../_variables';
 
+// Add content editor (only) typography styling
 a {
 	color: $link-color;
 }
 
-// Add content editor (only) typography styling
+img {
+	border: 1px dashed #dedede;
+}

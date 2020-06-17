@@ -1,9 +1,9 @@
-<% if $Categories %>
+<% if $Tags %>
 	<ul class="list-unstyled list-inline">
-		<% loop $Categories %>
+		<% loop $Tags %>
 			<li class="list-inline-item">
 				<a href="$Link">
-					<span class="text">$Title</span>
+					<span class="text tagCount{$NormalizedTag}">$TagName</span>
 				</a>
 			</li>
 		<% end_loop %>

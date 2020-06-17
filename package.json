@@ -31,8 +31,8 @@
 		"ie>=11"
 	],
 	"dependencies": {
-		"@a2nt/meta-lightbox": "^2.1.0",
-		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.1.7",
+		"@a2nt/meta-lightbox": "^2.2.0",
+		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.1.9",
 		"bootbox": "^4.4.0",
 		"bootstrap": "^4.5.0",
 		"bootstrap-confirmation2": "^4.1.0",
@@ -70,7 +70,7 @@
 		"babel-eslint": "^8.2.6",
 		"babel-loader": "^8.1.0",
 		"copy-webpack-plugin": "^4.6.0",
-		"croppie": "^2.6.4",
+		"croppie": "^2.6.5",
 		"cross-env": "^5.2.1",
 		"css-loader": "^3.6.0",
 		"eslint": "^4.19.1",

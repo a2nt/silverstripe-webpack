@@ -1,6 +1,6 @@
-<% if $Posts %>
-	<ul class="list-unstyled">
-		<% loop $Posts %>
+<% if $Archive %>
+	<ul>
+		<% loop $Archive %>
 			<li>
 				<a href="$Link">
 					<span class="text">$Title</span>

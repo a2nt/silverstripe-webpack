@@ -161,6 +161,9 @@ body.shrink {
 #Footer {
     background-color: $dark;
     color: darken($white, 5%);
+    > .wrapper {
+        padding-top: $grid-gutter-element-height;
+    }
 
     a {
         color: $white;
