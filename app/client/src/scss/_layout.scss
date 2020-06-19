@@ -153,6 +153,12 @@ body.shrink {
         margin-top: 1rem;
     }
 }*/
+
+#MainContent {
+    padding-top: $grid-gutter-element-height;
+    padding-bottom: $grid-gutter-element-height;
+}
+
 #PageBreadcumbs {
     position: relative;
     z-index: 2;

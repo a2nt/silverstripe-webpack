@@ -23,7 +23,7 @@
 	    </div>
 	<% end_if %>
 
-	<% if $URLSegment = 'home' %>
+	<% if $URLSegment = 'home' && $Action = 'index' %>
 		<% with $SiteConfig %>
 		    <% include Site\Objects\NotificationsList %>
 		<% end_with %>
