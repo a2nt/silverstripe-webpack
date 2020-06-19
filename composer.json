@@ -5,7 +5,9 @@
   "description": "SilverStripe WebPack boilerplate + Basics of JS/CSS UI",
   "keywords": [
     "silverstripe",
-    "webpack"
+    "webpack",
+    "bootstrap",
+    "boilerplate"
   ],
   "license": "BSD-3-Clause",
   "require": {
