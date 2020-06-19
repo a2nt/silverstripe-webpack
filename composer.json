@@ -1,6 +1,7 @@
 {
   "name": "a2nt/silverstripe-webpack",
   "type": "silverstripe-recipe",
+  "version": "2.2.1",
   "description": "SilverStripe WebPack boilerplate + Basics of JS/CSS UI",
   "keywords": [
     "silverstripe",
