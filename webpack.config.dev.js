@@ -77,7 +77,7 @@ const config = merge.strategy({
         ],
       },
       {
-        test: /\.(gif|png|jpg|jpeg|ttf|otf|eot|svg|woff(2)?)$/,
+        test: /\.(gif|png|jpg|jpeg|ttf|otf|eot|svg|webp|woff(2)?)$/,
         use: [
           {
             loader: 'file-loader',

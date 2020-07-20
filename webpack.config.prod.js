@@ -102,10 +102,11 @@ let plugins = [
             ],
           },
         ],
+        ['webp', { quality: 100 }],
       ],
     },
   }),
-  new ImageSpritePlugin({
+  /*new ImageSpritePlugin({
     exclude: /exclude|original|default-|icons|sprite/,
     commentOrigin: false,
     compress: true,
@@ -115,11 +116,11 @@ let plugins = [
     //outputPath: path.join(__dirname, conf.APPDIR, conf.DIST),
     outputFilename: 'img/sprite-[hash].png',
     padding: 0,
-  }),
+  }),*/
 ];
 
 // add themes favicons
-commonVariables.themes.forEach(theme => {
+commonVariables.themes.forEach((theme) => {
   const faviconPath = path.join(__dirname, theme, conf.SRC, 'favicon.png');
   if (filesystem.existsSync(faviconPath)) {
     plugins.push(
@@ -272,17 +273,24 @@ module.exports = merge(common, {
         ],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        test: /\.(png|webp|jpg|jpeg|gif|svg)$/,
+        loader: 'img-optimize-loader',
+        options: {
+          compress: {
+            // This will take more time and get smaller images.
+            mode: 'high', // 'lossless', 'low'
+            disableOnDevelopment: true,
+            webp: conf['webp'],
+          },
+        },
+      },
+      {
+        test: /\.(png|webp|jpg|jpeg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]',
+          name: conf['webp'] ? '[name].webp' : '[name].[ext]',
           outputPath: 'img/',
           publicPath: '../img/',
-          /*,
-                          name(file) {
-                              //return 'public/[path][name].[ext]';
-                              return '[hash].[ext]';
-                          },*/
         },
       },
     ],

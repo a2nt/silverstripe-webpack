@@ -74,7 +74,7 @@ class MapElement extends ElementContent
         return $fields;
     }
 
-    public function MapAPIKey(): string
+    public static function MapAPIKey(): string
     {
         $type = self::config()->get('map_type');
 

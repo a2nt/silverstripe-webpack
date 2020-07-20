@@ -80,6 +80,13 @@ class TestServer extends BuildTask
             echo self::error('Assets dir <b>'.ASSETS_DIR.'</b> dir is no writable!');
         }
 
+        if (function_exists('imagewebp')) {
+            echo self::success('WebP is available');
+        } else {
+            echo self::error('WebP is not available');
+        }
+
+
         die();
     }
 

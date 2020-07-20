@@ -9,7 +9,6 @@
                 aria-haspopup="true"
                 aria-expanded="false"
                 href="{$Link}"
-                title="$Title.XML"
         >
             $MenuTitle.XML
             <% if $isCurrent || $isSection %><i class="sr-only">(current)</i><% end_if %>

@@ -3,11 +3,7 @@
     <% loop $NotificationsToday %>
         <div class="alert alert-warning">
             <div class="container">
-                <b class="btn btn-danger btn-close" data-dismiss="alert" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </b>
-
-                <% if $Title %>
+                <% if $DisplayTitle && $Title %>
                     <h2>$Title</h2>
                 <% end_if %>
 
@@ -25,6 +21,10 @@
                         </a>
                     <% end_with %>
                 <% end_if %>
+
+                <b class="btn btn-danger btn-close" data-dismiss="alert" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </b>
             </div>
         </div>
     <% end_loop %>

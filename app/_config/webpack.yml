@@ -11,3 +11,4 @@ Site\Templates\WebpackTemplateProvider:
   DIST: client/dist
   TYPESJS: client/src/js/types
   TYPESSCSS: client/src/scss/types
+  webp: false

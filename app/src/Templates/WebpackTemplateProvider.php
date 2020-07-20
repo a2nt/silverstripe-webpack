@@ -31,6 +31,7 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
      * @var string assets static files directory
      */
     private static $dist = 'client/dist';
+    private static $webp = false;
 
     /**
      * @return array
@@ -81,7 +82,20 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
 
     public static function resourcesURL($link = null): string
     {
-        return Controller::join_links(Director::baseURL(), '/resources/'.self::projectName().'/client/dist/img/', $link);
+        $cfg = self::config();
+
+        if ($cfg['webp'] && !self::isActive()) {
+            $link = str_replace(['.png','.jpg','.jpeg'], '.webp', $link);
+        }
+
+        return Controller::join_links(
+            Director::baseURL(),
+            '/resources/',
+            self::projectName(),
+            $cfg['dist'],
+            'img',
+            $link
+        );
     }
 
 
