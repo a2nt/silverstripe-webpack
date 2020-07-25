@@ -16,6 +16,7 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
+use Site\Elements\AccordionElement;
 
 class ElementRows extends DataExtension
 {
@@ -140,7 +141,7 @@ class ElementRows extends DataExtension
 
     public function isList()
     {
-        return is_a($this->owner, ElementList::class);
+        return is_a($this->owner, ElementList::class) && !is_a($this->owner, AccordionElement::class);
     }
 
     public function isRow()

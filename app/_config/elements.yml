@@ -44,6 +44,10 @@ SilverStripe\CMS\Model\SiteTree:
     - Site\Elements\MapElement
     #- Site\Elements\AccordionElement
     - DNADesign\ElementalVirtual\Model\ElementVirtual
+    - Site\Elements\ColorBarElement
+    - Site\Elements\AccordionElement
+    - Site\Elements\VideoElement
+    - Site\Elements\GalleryElement
 
 DNADesign\ElementalList\Model\ElementList:
   inline_editable: false
@@ -60,10 +64,15 @@ DNADesign\ElementalList\Model\ElementList:
     - Site\Elements\SliderElement
     - Site\Elements\BlockElement
     - Site\Elements\MapElement
+    - Site\Elements\ColorBarElement
+    - Site\Elements\AccordionElement
   styles:
     whiteframe: 'White Frame'
-    greybg: 'Grey Background'
     noframe: 'No Frame'
+
+Site\Elements\AccordionElement:
+  allowed_elements:
+    - DNADesign\Elemental\Models\ElementContent
 
 DNADesign\Elemental\Models\ElementContent:
   default_global_elements: false

@@ -11,6 +11,7 @@ SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - Site\Extensions\SocialExtension
     - Site\Extensions\SiteConfigExtension
+    - Site\Extensions\NotificationsExtension
 
 SilverStripe\CMS\Model\SiteTree:
   extensions:
@@ -19,6 +20,10 @@ SilverStripe\CMS\Model\SiteTree:
 Sheadawson\Linkable\Models\EmbeddedObject:
   extensions:
     - Site\Extensions\EmbeddedObjectExtension
+  
+SilverStripe\Assets:
+  extensions:
+    - Site\Extensions\ImageExtension
 
 Dynamic\FlexSlider\Model\SlideImage:
   extensions:
