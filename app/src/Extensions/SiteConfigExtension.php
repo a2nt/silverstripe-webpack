@@ -44,6 +44,16 @@ class SiteConfigExtension extends DataExtension
 
     public function updateCMSFields(FieldList $fields)
     {
+        $img = Image::get()->filter([
+            'ParentID' => 0,
+            'FileFilename' => 'qrcode.png',
+        ])->first();
+        if ($img) {
+            $fields->addFieldsToTab('Root.Main', [
+                LiteralField::create('QRCode', '<img src="'.$img->Link().'" alt="QR code" width="200" style="float:left" />'),
+            ]);
+        }
+
         $fields->addFieldsToTab('Root.Main', [
             TreeMultiselectField::create(
                 'Navigation',

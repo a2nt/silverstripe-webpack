@@ -1,88 +1,90 @@
 {
-  "name": "a2nt/silverstripe-webpack",
-  "type": "silverstripe-recipe",
-  "version": "2.2.1",
-  "description": "SilverStripe WebPack boilerplate + Basics of JS/CSS UI",
-  "keywords": [
-    "silverstripe",
-    "webpack",
-    "bootstrap",
-    "boilerplate"
-  ],
-  "license": "BSD-3-Clause",
-  "require": {
-    "php": ">=7.1.0",
-    "ext-json": "*",
-    "silverstripe/recipe-cms": "^4",
-    "wilr/silverstripe-googlesitemaps": "*",
-    "silverstripe/userforms": "*",
-    "undefinedoffset/sortablegridfield": "*",
-    "silverstripe/spamprotection": "*",
-    "silverstripe/recaptcha": "*",
-    "jonom/silverstripe-betternavigator": "*",
-    "silverstripe/externallinks": "*",
-    "symbiote/silverstripe-gridfieldextensions": "*",
-    "colymba/gridfield-bulk-editing-tools": "^3",
-    "dnadesign/silverstripe-elemental-list": "*",
-    "dnadesign/silverstripe-elemental-virtual": "*",
-    "dnadesign/silverstripe-elemental-userforms": "*",
-    "dynamic/silverstripe-elemental-blocks": "*",
-    "drmartingonzo/ss-tinymce-charcount": "*",
-    "axllent/silverstripe-version-truncator": "*",
-    "gorriecoe/silverstripe-dataobjecthistory": "*",
-    "axllent/silverstripe-bootstrap-forms": "*",
-    "silverstripe/redirectedurls": "*",
-    "undefinedoffset/silverstripe-nocaptcha": "*",
-    "stevie-mayhew/silverstripe-svg": "*",
-    "betterbrief/silverstripe-googlemapfield": "*",
-    "innoweb/silverstripe-sitemap": "*",
-    "silverstripe/multiuser-editing-alert": "*",
-    "gorriecoe/silverstripe-link": "*",
-    "gorriecoe/silverstripe-linkfield": "*",
-    "silverstripe/environmentcheck": "*",
-    "silverstripe/widgets": "^2.0",
-    "a2nt/silverstripe-font-awesome-field": "dev-master",
-    "a2nt/silverstripe-mapboxfield": "dev-master",
-    "a2nt/silverstripe-progressivewebapp": "dev-master",
-    "bummzack/sortablefile": "*",
-    "showpro/silverstripe-seo-images": "*"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^5.7",
-    "lekoala/silverstripe-debugbar": "dev-master"
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/a2nt/silverstripe-font-awesome"
+    "name": "a2nt/silverstripe-webpack",
+    "type": "silverstripe-recipe",
+    "description": "SilverStripe WebPack boilerplate + Basics of JS/CSS UI",
+    "keywords": [
+        "silverstripe",
+        "webpack"
+    ],
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=7.1.0",
+        "ext-json": "*",
+        "silverstripe/recipe-cms": "^4",
+        "wilr/silverstripe-googlesitemaps": "*",
+        "silverstripe/userforms": "*",
+        "undefinedoffset/sortablegridfield": "*",
+        "silverstripe/spamprotection": "*",
+        "silverstripe/recaptcha": "*",
+        "jonom/silverstripe-betternavigator": "*",
+        "silverstripe/externallinks": "*",
+        "symbiote/silverstripe-gridfieldextensions": "*",
+        "colymba/gridfield-bulk-editing-tools": "*",
+        "dnadesign/silverstripe-elemental-list": "*",
+        "dnadesign/silverstripe-elemental-virtual": "*",
+        "dnadesign/silverstripe-elemental-userforms": "*",
+        "dynamic/silverstripe-elemental-blocks": "*",
+        "drmartingonzo/ss-tinymce-charcount": "*",
+        "axllent/silverstripe-version-truncator": "*",
+        "gorriecoe/silverstripe-dataobjecthistory": "*",
+        "axllent/silverstripe-bootstrap-forms": "*",
+        "silverstripe/redirectedurls": "*",
+        "undefinedoffset/silverstripe-nocaptcha": "*",
+        "stevie-mayhew/silverstripe-svg": "*",
+        "betterbrief/silverstripe-googlemapfield": "*",
+        "innoweb/silverstripe-sitemap": "*",
+        "silverstripe/multiuser-editing-alert": "*",
+        "gorriecoe/silverstripe-link": "*",
+        "gorriecoe/silverstripe-linkfield": "*",
+        "silverstripe/environmentcheck": "*",
+        "silverstripe/widgets": "^2.0",
+        "a2nt/silverstripe-font-awesome-field": "dev-master",
+        "a2nt/silverstripe-mapboxfield": "dev-master",
+        "a2nt/silverstripe-progressivewebapp": "dev-master",
+        "bummzack/sortablefile": "*",
+        "barryvdh/composer-cleanup-plugin": "0.2.x",
+        "eluceo/ical": "^0.16.0",
+        "ezyang/htmlpurifier": "^4.13",
+        "showpro/silverstripe-seo-images": "^1.0",
+        "endroid/qr-code": "^3.9"
     },
-    {
-      "type": "vcs",
-      "url": "https://github.com/a2nt/silverstripe-mapboxfield"
-    }
-  ],
-  "extra": {
-    "expose": [
-      "app/client/dist"
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "lekoala/silverstripe-debugbar": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/a2nt/silverstripe-font-awesome"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/a2nt/silverstripe-mapboxfield"
+        }
     ],
-    "project-files-installed": [
-      "app/.htaccess",
-      "app/_config.php",
-      "app/_config/mysite.yml",
-      "app/src/Page.php",
-      "app/src/PageController.php"
-    ],
-    "public-files-installed": [
-      ".htaccess",
-      "index.php",
-      "install-frameworkmissing.html",
-      "install.php",
-      "web.config"
-    ]
-  },
-  "config": {
-    "process-timeout": 600
-  },
-  "prefer-stable": true,
-  "minimum-stability": "dev"
+    "extra": {
+        "expose": [
+            "app/client/dist"
+        ],
+        "project-files-installed": [
+            "app/.htaccess",
+            "app/_config.php",
+            "app/_config/mimevalidator.yml",
+            "app/_config/mysite.yml",
+            "app/src/Page.php",
+            "app/src/PageController.php"
+        ],
+        "public-files-installed": [
+            ".htaccess",
+            "index.php",
+            "install-frameworkmissing.html",
+            "install.php",
+            "web.config"
+        ]
+    },
+    "config": {
+        "process-timeout": 600
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }
