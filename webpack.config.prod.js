@@ -18,9 +18,11 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack');
-const ImageSpritePlugin = require('@a2nt/image-sprite-webpack-plugin');
+//const ImageSpritePlugin = require('@a2nt/image-sprite-webpack-plugin');
 
 const COMPRESS = true;
+
+console.log('WebP images: ' + conf['webp']);
 
 let plugins = [
   new webpack.DefinePlugin({
@@ -276,12 +278,16 @@ module.exports = merge(common, {
         test: /\.(png|webp|jpg|jpeg|gif|svg)$/,
         loader: 'img-optimize-loader',
         options: {
+          name: '[path][name].[ext]', //'[path][name]-[contenthash].[ext]'
           compress: {
             // This will take more time and get smaller images.
-            mode: 'high', // 'lossless', 'low'
+            mode: 'lossless', // 'high', 'low'
             disableOnDevelopment: true,
             webp: conf['webp'],
           },
+          /*inline: {
+            limit: 1,
+          },*/
         },
       },
       {

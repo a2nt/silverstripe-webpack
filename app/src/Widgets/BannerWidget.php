@@ -35,7 +35,7 @@ class BannerWidget extends Widget
     {
         $fields = parent::getCMSFields();
 
-        $fields->push(UploadField::create('Image')
+        $fields->push(UploadField::create('Image', 'Image (minimal width 301px)')
                 ->setAllowedFileCategories(['image/supported']));
 
         $fields->push(LinkField::create('LinkID', 'Link'));

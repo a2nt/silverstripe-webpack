@@ -79,13 +79,6 @@
          * Released under MIT license, http://github.com/requirejs/almond/LICENSE
          */
 
-/**
- * Sticky Sidebar JavaScript Plugin.
- * @version 3.3.1
- * @author Ahmed Bouhuolia <a.bouhuolia@gmail.com>
- * @license The MIT License (MIT)
- */
-
 /**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
  * @version 1.16.1
