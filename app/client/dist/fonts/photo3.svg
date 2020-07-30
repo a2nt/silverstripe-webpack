@@ -1,1 +1,1 @@
-module.exports = "data:image/svg+xml;base64,ZXhwb3J0IGRlZmF1bHQgIi4uL2ltZy9waG90bzMuc3ZnIjs="
+export default "../img/photo3.svg";
