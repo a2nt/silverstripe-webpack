@@ -10,6 +10,7 @@ namespace Site\Elements;
 
 use A2nt\SilverStripeMapboxField\MapboxField;
 use BetterBrief\GoogleMapField;
+use Colymba\BulkManager\BulkManager;
 use DNADesign\Elemental\Models\ElementContent;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\FieldList;
@@ -70,6 +71,7 @@ class MapElement extends ElementContent
                 return $v ? 'YES' : 'NO';
             }
         ]);
+        $cfg->addComponent(new BulkManager());
 
         return $fields;
     }
