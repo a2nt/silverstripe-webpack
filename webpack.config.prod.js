@@ -274,12 +274,10 @@ module.exports = merge(common, {
           },
         ],
       },
-      /*{
+      {
         test: /\.(png|webp|jpg|jpeg|gif|svg)$/,
         loader: 'img-optimize-loader',
         options: {
-          //name: '[path][name].[ext]', //'[path][name]-[contenthash].[ext]'
-          name: conf['webp'] ? '[path][name].webp' : '[path][name].[ext]',
           outputPath: 'img/',
           publicPath: '../img/',
           compress: {
@@ -291,15 +289,6 @@ module.exports = merge(common, {
           inline: {
             limit: 1,
           },
-        },
-      },*/
-      {
-        test: /\.(png|webp|jpg|jpeg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: conf['webp'] ? '[name].webp' : '[name].[ext]',
-          outputPath: 'img/',
-          publicPath: '../img/',
         },
       },
     ],
