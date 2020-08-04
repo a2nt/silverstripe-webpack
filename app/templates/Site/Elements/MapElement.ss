@@ -12,7 +12,7 @@
     <div class="locations">
         <div class="row">
             <% loop $Locations %>
-                <div class="col-sm-3">
+                <div class="col">
                     $forTemplate
                 </div>
             <% end_loop %>

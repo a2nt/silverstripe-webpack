@@ -19,6 +19,8 @@ import 'bootstrap/js/dist/collapse';
 
 // conflicts with _components/_ui.hover.js (shows dropdown on hover)
 //import 'bootstrap/js/dist/dropdown';
+
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.shrink';
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.hover';
 
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.carousel';
