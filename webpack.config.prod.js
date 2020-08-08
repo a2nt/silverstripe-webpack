@@ -5,7 +5,7 @@
 const webpack = require('webpack');
 const commonVariables = require('./webpack.configuration');
 const conf = commonVariables.configuration;
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.config.common.js');
 
 const filesystem = require('fs');

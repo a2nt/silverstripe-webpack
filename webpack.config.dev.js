@@ -5,7 +5,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.config.common.js');
 const commonVariables = require('./webpack.configuration');
 const conf = commonVariables.configuration;
@@ -13,13 +13,11 @@ const conf = commonVariables.configuration;
 const IP = process.env.IP || conf.HOSTNAME;
 const PORT = process.env.PORT || conf.PORT;
 
-const config = merge.strategy({
-  entry: 'prepend',
-})(common, {
+const config = merge(common, {
   mode: 'development',
 
   entry: {
-    app: [
+    hot: [
       'react-hot-loader/patch',
       'webpack-dev-server/client?https://' + conf.HOSTNAME + ':' + conf.PORT,
       'webpack/hot/only-dev-server',
@@ -40,9 +38,7 @@ const config = merge.strategy({
         use: [
           {
             loader: 'style-loader',
-            options: {
-              sourceMap: true,
-            },
+            options: {},
           },
           {
             loader: 'css-loader',
@@ -97,7 +93,7 @@ const config = merge.strategy({
     host: IP,
     port: PORT,
     historyApiFallback: true,
-    hot: false,
+    hot: true,
     clientLogLevel: 'info',
     disableHostCheck: true,
     contentBase: [

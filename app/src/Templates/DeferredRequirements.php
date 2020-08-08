@@ -78,6 +78,12 @@ class DeferredRequirements implements TemplateGlobalProvider
         }
 
         self::loadCSS($mainTheme.'.css');
+
+        // hot reloading
+        if (self::webpackActive()) {
+            self::loadJS('hot.js');
+        }
+
         self::loadJS($mainTheme.'.js');
 
         // Custom controller requirements
