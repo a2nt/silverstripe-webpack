@@ -1,4 +1,6 @@
-<div class="content-element__content<% if $BlockLink %> has-blockLink<% end_if %><% if $BlockIcon %> has-blockIcon<% end_if %><% if $Style %> $CssStyle<% end_if %>">
+<div
+class="content-element__content<% if $BlockLink %> has-blockLink<% end_if %><% if $BlockIcon %> has-blockIcon<% end_if %><% if $Style %> $CssStyle<% end_if %>"
+>
     <% if $BlockIcon %>
         <i class="content-element__icon $BlockIcon"></i>
     <% end_if %>

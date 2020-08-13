@@ -5,7 +5,7 @@
 	    <div id="CarouselTop" class="carousel slide js-carousel d-none d-sm-block">
 	        <div class="carousel-inner">
 	            <div class="carousel-item active">
-	                <img class="d-block w-100" src="$FeaturedImage.Fill(1200,400).URL" alt="$Title">
+	                <img class="d-block w-100" src="$FeaturedImage.FocusFill(1200,400).URL" alt="$Title">
 	            </div>
 	        </div>
 	    </div>

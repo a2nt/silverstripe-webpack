@@ -7,7 +7,7 @@
 	    <div class="col-sm-5">
 		    <% if $FeaturedImage %>
 		        <div class="img card-img-top">
-		            $FeaturedImage.Fill(350,200)
+		            $FeaturedImage.FocusFill(350,200)
 		        </div>
 		    <% end_if %>
 		</div>

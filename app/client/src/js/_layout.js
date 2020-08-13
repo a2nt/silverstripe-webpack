@@ -3,7 +3,11 @@
 import $ from 'jquery';
 import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_events';
 
-const LayoutUI = ($ => {
+// AOS
+import 'aos/dist/aos.css';
+import AOS from 'aos/dist/aos.js';
+
+const LayoutUI = (($) => {
   // Constants
   const W = window;
   const D = document;
@@ -18,6 +22,7 @@ const LayoutUI = ($ => {
 
       console.log(`Initializing: ${NAME}`);
       // your custom UI
+      AOS.init();
 
       // Fire further js when layout is ready
       $(W).trigger(Events.LODEDANDREADY);

@@ -2,7 +2,7 @@
     <div class="img">
         <img
                 class="photo u-photo"
-                src="<% if $Photo %>{$Photo.Fill(300,300).Link}<% else %>https://placehold.it/300x300<% end_if %>"
+                src="<% if $Photo %>{$Photo.FocusFill(300,300).Link}<% else %>https://placehold.it/300x300<% end_if %>"
                 alt="{$Title}"
         />
         <div class="caption">

@@ -59,7 +59,6 @@ body.shrink {
 
 // sticky footer
 @media (min-width: $full-body-min-width) {
-    html,
     body {
         height: 100%;
         min-height: 100%;

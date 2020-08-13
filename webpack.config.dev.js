@@ -3,7 +3,7 @@
  */
 
 const path = require('path');
-const autoprefixer = require('autoprefixer');
+//const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.config.common.js');
@@ -46,13 +46,13 @@ const config = merge(common, {
               sourceMap: true,
             },
           },
-          {
+          /*{
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              plugins: [autoprefixer()],
+              //plugins: [autoprefixer()],
             },
-          },
+          },*/
           {
             loader: 'resolve-url-loader',
           },
