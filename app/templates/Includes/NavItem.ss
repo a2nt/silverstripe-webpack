@@ -1,18 +1,18 @@
 <% if $Children %>
     <li class="nav-item dropdown<% if $isCurrent || $isSection %> active <% end_if %> {$CSSClass} {$ExtraClass}">
-        <a
-                class="nav-link dropdown-toggle"
-                id="NavItem{$ID}"
+        <% include NavItem_link %>
+
+        <b
+                class="nav-dropdown dropdown-toggle"
+                id="NavDropdownToggler{$ID}"
                 role="button"
                 data-toggle="hover"
                 data-allow-click="true"
                 aria-haspopup="true"
                 aria-expanded="false"
-                href="{$Link}"
         >
-            $MenuTitle.XML
-            <% if $isCurrent || $isSection %><i class="sr-only">(current)</i><% end_if %>
-        </a>
+            <i class="fas fa-chevron-right"></i>
+        </b>
 
         <ul class="dropdown-menu" aria-labelledby="NavItem{$ID}">
             <% loop $Children %>

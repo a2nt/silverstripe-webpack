@@ -10,7 +10,6 @@ const common = require('./webpack.config.common.js');
 
 const filesystem = require('fs');
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 
 const ExtractTextPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
@@ -60,6 +59,7 @@ let plugins = [
     },
     canPrint: true,
   }),
+  require('autoprefixer'),
   new FaviconsWebpackPlugin({
     title: 'Webpack App',
     logo: path.join(__dirname, conf.APPDIR, conf.SRC, 'favicon.png'),
@@ -234,7 +234,6 @@ module.exports = merge(common, {
             loader: 'postcss-loader',
             options: {
               sourceMap: !COMPRESS,
-              plugins: [autoprefixer()],
             },
           },
           {
