@@ -10,6 +10,7 @@ import AOS from 'aos/dist/aos.js';
 const LayoutUI = (($) => {
   // Constants
   const W = window;
+  const $W = $(W);
   const D = document;
   const $Body = $('body');
 
@@ -20,12 +21,12 @@ const LayoutUI = (($) => {
       const ui = this;
       ui.dispose();
 
-      console.log(`Initializing: ${NAME}`);
+      console.log(`${NAME}: init`);
       // your custom UI
       AOS.init();
 
       // Fire further js when layout is ready
-      $(W).trigger(Events.LODEDANDREADY);
+      $W.trigger(Events.LODEDANDREADY);
 
       // Custom fonts
       $Body.append(
@@ -57,11 +58,11 @@ const LayoutUI = (($) => {
     }
 
     static dispose() {
-      console.log(`Destroying: ${NAME}`);
+      console.log(`${NAME}: dispose`);
     }
   }
 
-  $(W).on(`${Events.AJAX} ${Events.LOADED}`, () => {
+  $W.on(`${NAME}.init ${Events.AJAX} ${Events.LOADED}`, () => {
     LayoutUI.init();
   });
 
