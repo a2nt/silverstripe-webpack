@@ -31,8 +31,8 @@
 		"ie>=11"
 	],
 	"dependencies": {
-		"@a2nt/meta-lightbox": "^2.2.9",
-		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.4.9",
+		"@a2nt/meta-lightbox": "^2.3.0",
+		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.5.1",
 		"aos": "^2.3.4",
 		"bootbox": "^5.4.0",
 		"bootstrap": "^4.5.2",

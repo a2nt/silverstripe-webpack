@@ -21,6 +21,8 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const COMPRESS = true;
 
+const UIInfo = require('./node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/package.json');
+
 console.log('WebP images: ' + conf['webp']);
 
 let plugins = [
@@ -28,6 +30,9 @@ let plugins = [
     'process.env': {
       NODE_ENV: JSON.stringify('production'),
     },
+    UINAME: JSON.stringify(UIInfo.name),
+    UIVERSION: JSON.stringify(UIInfo.version),
+    UIAUTHOR: JSON.stringify(UIInfo.author),
   }),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
