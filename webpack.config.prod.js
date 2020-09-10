@@ -22,6 +22,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const COMPRESS = true;
 
 const UIInfo = require('./node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/package.json');
+const UIMetaInfo = require('./node_modules/@a2nt/meta-lightbox/package.json');
 
 console.log('WebP images: ' + conf['webp']);
 
@@ -33,6 +34,8 @@ let plugins = [
     UINAME: JSON.stringify(UIInfo.name),
     UIVERSION: JSON.stringify(UIInfo.version),
     UIAUTHOR: JSON.stringify(UIInfo.author),
+    UIMetaNAME: JSON.stringify(UIMetaInfo.name),
+    UIMetaVersion: JSON.stringify(UIMetaInfo.version),
   }),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
