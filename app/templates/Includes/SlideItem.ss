@@ -7,7 +7,7 @@
         <% if $Image || $ImageURL %>
             <span class="img">
                 <img class="d-block w-100"
-                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    src="{$EmptyImgSrc}"
                     data-lazy-src="<% if $ImageURL %>$ImageURL<% else %>$Image.FocusFill($SlideWidth,$SlideHeight).URL<% end_if %>"
                     alt="<% if $Headline %>$Headline.XML<% end_if %>"
                 />

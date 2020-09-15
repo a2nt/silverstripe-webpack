@@ -34,6 +34,7 @@ class DeferredRequirements implements TemplateGlobalProvider
             'DeferedCSS' => 'loadCSS',
             'DeferedJS' => 'loadJS',
             'WebpackActive' => 'webpackActive',
+            'EmptyImgSrc' => 'emptyImageSrc',
         ];
     }
 
@@ -203,6 +204,11 @@ class DeferredRequirements implements TemplateGlobalProvider
         //$static_domain = $static_domain ?: '';
 
         return Controller::join_links(WebpackTemplateProvider::toPublicPath($url), '?m='.$hash.$version);
+    }
+
+    public static function emptyImageSrc(): string
+    {
+        return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
     }
 
     public static function config(): array
