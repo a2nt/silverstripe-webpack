@@ -16,6 +16,8 @@
 	<% if $Lat && $Lng %>
 	    data-lat="$Lat"
 	    data-lng="$Lng"
+    <% else_if $FullAddress %>
+    	data-address="$FullAddress.XML"
 	<% else_if $Address %>
 		data-address="$Address.XML"
 	<% end_if %>

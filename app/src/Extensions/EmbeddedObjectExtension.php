@@ -56,6 +56,7 @@ class EmbeddedObjectExtension extends DataExtension
 
             if ($this->owner->getField('Loop')) {
                 $params[] = 'loop=1';
+                $params[] = 'playlist='.$videoID;
             }
 
             $this->owner->EmbedHTML = preg_replace(

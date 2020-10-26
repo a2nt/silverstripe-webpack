@@ -29,3 +29,6 @@ SilverStripe\Control\Session:
   cookie_secure: true
   strict_user_agent_check: false
   timeout: 604800
+
+SilverStripe\Control\Email\Email:
+  send_all_emails_from: noreply@twma.pro
