@@ -48,6 +48,7 @@ SilverStripe\CMS\Model\SiteTree:
     - Site\Elements\AccordionElement
     - Site\Elements\VideoElement
     - Site\Elements\GalleryElement
+    - Site\Elements\CustomSnippetElement
 
 DNADesign\ElementalList\Model\ElementList:
   inline_editable: false

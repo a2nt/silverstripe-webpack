@@ -16,7 +16,7 @@ Page:
 
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_js:
-    - 'app/client/dist/css/app_cms.js'
+    - 'app/client/dist/js/app_cms.js'
   extra_requirements_css:
     - 'app/client/dist/css/app_cms.css'
 
