@@ -15,7 +15,7 @@ Page:
 #    - 'colymba/gridfield-bulk-editing-tools:client/dist/styles/main.css'
 
 SilverStripe\Admin\LeftAndMain:
-  extra_requirements_js:
+  extra_requirements_javascript:
     - 'app/client/dist/js/app_cms.js'
   extra_requirements_css:
     - 'app/client/dist/css/app_cms.css'
