@@ -1,0 +1,177 @@
+{
+	"name": "ss-webpack-boilerplate",
+	"version": "2.0.2",
+	"description": "Lets you create SilverStripe faster",
+	"author": "Tony Air <tony@twma.pro>",
+	"license": "MIT",
+	"private": false,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/a2nt/silverstripe-webpack"
+	},
+	"engines": {
+		"yarn": ">= 1.0.0"
+	},
+	"scripts": {
+		"start": "cross-env NODE_ENV=development webpack-dev-server --https --config webpack.config.serve.js",
+		"dash": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server --config webpack.config.serve.js",
+		"prebuild": "rimraf ./app/client/dist",
+		"build": "cross-env NODE_ENV=production webpack --progress --stats-all",
+		"lint:check": "eslint ./app/client/src --config .eslintrc && sass-lint ./app/client/src --config .sasslintrc -v -q",
+		"lint:fix": "eslint ./app/client/src --config .eslintrc --fix && sass-lint ./app/client/src --config .sasslintrc -v -q --fix",
+		"lint:js": "eslint ./app/client/src --config .eslintrc",
+		"lint:sass": "sass-lint ./app/client/src --config .sasslintrc -v -q",
+		"prunecaches": "rimraf ./node_modules/.cache/",
+		"postinstall": "npm run prunecaches",
+		"postuninstall": "npm run prunecaches",
+		"preinstall": "npx only-allow pnpm"
+	},
+	"browserslist": [
+		"defaults",
+		"ie>=11"
+	],
+	"dependencies": {
+		"@a2nt/meta-lightbox": "^2.4.0",
+		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.6.3",
+		"aos": "^2.3.4",
+		"bootbox": "^5.5.2",
+		"bootstrap": "^4.5.3",
+		"bootstrap-confirmation2": "^4.1.0",
+		"bootstrap-datepicker": "^1.9.0",
+		"bootstrap-offcanvas": "^1.0.0",
+		"bootstrap-table": "^1.18.1",
+		"bootstrap-timepicker": "^0.5.2",
+		"font-awesome": "^4.7.0",
+		"hammerjs": "^2.0.8",
+		"inputmask": "^5.0.5",
+		"jquery": "^3.5.1",
+		"jquery-hammerjs": "^2.0.0",
+		"jquery-hoverintent": "*",
+		"jquery-zoom": "^1.7.21",
+		"jquery.appear": "^1.0.1",
+		"jquery.instagramFeed": "github:jsanahuja/jquery.instagramFeed",
+		"lodash.debounce": "^4.0.8",
+		"lodash.throttle": "^4.1.1",
+		"mapbox-gl": "^2.0.1",
+		"material-design-color": "^2.3.2",
+		"moment": "^2.29.1",
+		"offcanvas-bootstrap": "^2.5.2",
+		"popper.js": "*",
+		"select2": "^4.0.13",
+		"setimmediate": "^1.0.5",
+		"smooth-scroll": "^16.1.3",
+		"sticky-sidebar": "^3.3.1",
+		"tablednd": "^1.0.5",
+		"yarn": "^1.22.10"
+	},
+	"devDependencies": {
+		"@a2nt/image-sprite-webpack-plugin": "^0.2.5",
+		"@babel/core": "^7.12.10",
+		"@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+		"@babel/plugin-transform-react-jsx": "^7.12.12",
+		"@babel/preset-env": "^7.12.11",
+		"@googlemaps/markerclustererplus": "*",
+		"animate.css": "^4.1.1",
+		"ansi-html": "^0.0.7",
+		"ansi-regex": "^5.0.0",
+		"autoprefixer": "^10.1.0",
+		"babel-eslint": "^10.1.0",
+		"babel-loader": "^8.2.2",
+		"copy-webpack-plugin": "^7.0.0",
+		"croppie": "^2.6.5",
+		"cross-env": "^7.0.3",
+		"css-loader": "^5.0.1",
+		"eslint": "^7.16.0",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-jquery": "^1.5.1",
+		"eslint-plugin-react": "^7.21.5",
+		"exif-js": "^2.3.0",
+		"exports-loader": "^1.1.1",
+		"fast-levenshtein": "^3.0.0",
+		"fastest-levenshtein": "^1.0.12",
+		"favicons-webpack-plugin": "^4.2.0",
+		"file-loader": "^6.2.0",
+		"font-awesome": "^4.7.0",
+		"hoist-non-react-statics": "^3.3.2",
+		"html-entities": "^1.4.0",
+		"html-webpack-plugin": "^4.5.0",
+		"image-minimizer-webpack-plugin": "^2.1.0",
+		"imagemin-jpegtran": "^7.0.0",
+		"img-optimize-loader": "^1.0.7",
+		"loglevel": "^1.7.1",
+		"mini-css-extract-plugin": "^1.3.3",
+		"node-sass": "^5.0.0",
+		"object-assign": "^4.1.1",
+		"optimize-css-assets-webpack-plugin": "^5.0.4",
+		"postcss-loader": "^4.1.0",
+		"prop-types": "^15.7.2",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-hot-loader": "^4.13.0",
+		"react-is": "^17.0.1",
+		"react-lifecycles-compat": "^3.0.4",
+		"resolve-url-loader": "^3.1.2",
+		"rimraf": "^3.0.2",
+		"routie": "0.0.1",
+		"sass-lint": "^1.13.1",
+		"sass-lint-fix": "^1.12.1",
+		"sass-loader": "^10.1.0",
+		"scheduler": "^0.20.1",
+		"script-ext-html-webpack-plugin": "^2.1.5",
+		"shallowequal": "^1.1.0",
+		"sockjs-client": "^1.5.0",
+		"strip-ansi": "^6.0.0",
+		"style-loader": "^2.0.0",
+		"svg-url-loader": "^7.1.1",
+		"terser-webpack-plugin": "^5.0.3",
+		"url-loader": "^4.1.1",
+		"webpack": "^5.11.0",
+		"webpack-cli": "^4.2.0",
+		"webpack-dev-server": "^4.0.0-beta.0",
+		"webpack-manifest-plugin": "^3.0.0",
+		"webpack-merge": "^5.7.3"
+	},
+	"stylelint": {
+		"rules": {
+			"block-no-empty": null,
+			"color-no-invalid-hex": true,
+			"comment-empty-line-before": [
+				"always",
+				{
+					"ignore": [
+						"stylelint-commands",
+						"after-comment"
+					]
+				}
+			],
+			"declaration-colon-space-after": "always",
+			"indentation": [
+				4,
+				{
+					"except": [
+						"value"
+					]
+				}
+			],
+			"max-empty-lines": 2,
+			"rule-empty-line-before": [
+				"always",
+				{
+					"except": [
+						"first-nested"
+					],
+					"ignore": [
+						"after-comment"
+					]
+				}
+			],
+			"unit-whitelist": [
+				"em",
+				"rem",
+				"%",
+				"s",
+				"px"
+			]
+		}
+	}
+}
