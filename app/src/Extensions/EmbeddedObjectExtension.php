@@ -38,7 +38,7 @@ class EmbeddedObjectExtension extends DataExtension
             );
             $videoID = $matches[1];
 
-            $params = array_merge([
+            $params = array_merge($params, [
                 'feature=oembed',
                 'wmode=transparent',
                 'enablejsapi=1',
@@ -47,8 +47,8 @@ class EmbeddedObjectExtension extends DataExtension
                 'modestbranding=1',
                 'rel=0',
                 'showinfo=0',
-                'controls='.($this->owner->getField('Controls') ? '1': '0'),
-            ], $params);
+                //'controls='.($this->owner->getField('Controls') ? '1': '0')
+            ]);
 
             if ($this->owner->getField('Autoplay')) {
                 $params[] = 'autoplay=1';
@@ -62,6 +62,34 @@ class EmbeddedObjectExtension extends DataExtension
             $this->owner->EmbedHTML = preg_replace(
                 '/src="([A-z0-9:\/\.]+)\??(.*?)"/',
                 'src="https://www.youtube.com/embed/'.$videoID.'?' . implode('&', $params) . '"',
+                $this->owner->EmbedHTML
+            );
+        }
+
+        if (stripos($this->owner->EmbedHTML, 'https://player.vimeo.com/video/') > 0) {
+             $url = $this->owner->getField('SourceURL');
+            preg_match(
+                '/^https:\/\/vimeo\.com\/([A-z0-9]+)/',
+                $url,
+                $matches
+            );
+            $videoID = $matches[1];
+
+            $params = array_merge($params, [
+                'controls='.($this->owner->getField('Controls') ? '1': '0'),
+                'background=1',
+            ]);
+
+            if ($this->owner->getField('Autoplay')) {
+                $params[] = 'autoplay=1';
+            }
+
+            if ($this->owner->getField('Loop')) {
+                $params[] = 'loop=1';
+            }
+            $this->owner->EmbedHTML = preg_replace(
+                '/src="([A-z0-9:\/\.]+)\??(.*?)"/',
+                'src="https://player.vimeo.com/video/'.$videoID.'?' . implode('&', $params) . '"',
                 $this->owner->EmbedHTML
             );
         }

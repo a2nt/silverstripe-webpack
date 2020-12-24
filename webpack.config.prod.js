@@ -43,7 +43,6 @@ let plugins = [
   }),
   new ExtractTextPlugin({
     filename: 'css/[name].css',
-    allChunks: true,
   }),
   new OptimizeCssAssetsPlugin({
     //assetNameRegExp: /\.optimize\.css$/g,
@@ -68,33 +67,6 @@ let plugins = [
     canPrint: true,
   }),
   require('autoprefixer'),
-  /*new ImageminPlugin({
-    bail: false, // Ignore errors on corrupted images
-    cache: true,
-    maxConcurrency: 3,
-    exclude: /original/,
-    filter: (source, sourcePath) => {
-      return source.byteLength < 512000;
-    },
-    imageminOptions: {
-      plugins: [
-        ['gifsicle', { interlaced: true }],
-        ['jpegtran', { progressive: true }],
-        ['optipng', { optimizationLevel: 5 }],
-        [
-          'svgo',
-          {
-            plugins: [
-              {
-                removeViewBox: false,
-              },
-            ],
-          },
-        ],
-        ['webp', { quality: 100 }],
-      ],
-    },
-  }),*/
   /*new ImageSpritePlugin({
     exclude: /exclude|original|default-|icons|sprite/,
     commentOrigin: false,
@@ -179,9 +151,8 @@ module.exports = merge(common, {
   mode: 'production',
   optimization: {
     removeAvailableModules: false,
-    namedModules: true, // NamedModulesPlugin()
+    namedModules: true,
     splitChunks: {
-      // CommonsChunkPlugin()
       name: 'vendor',
       minChunks: 2,
     },
@@ -245,12 +216,6 @@ module.exports = merge(common, {
           },
           {
             loader: 'css-loader',
-            options: {
-              sourceMap: !COMPRESS,
-            },
-          },
-          {
-            loader: 'postcss-loader',
             options: {
               sourceMap: !COMPRESS,
             },

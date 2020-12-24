@@ -1,6 +1,13 @@
 /*
  * Common Environment
  */
+const UIInfo = require('./node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/package.json');
+console.log(
+	'UI: ' +
+		JSON.stringify(UIInfo.name) +
+		' ver: ' +
+		JSON.stringify(UIInfo.version),
+);
 
 const webpack = require('webpack');
 const commonVariables = require('./webpack.configuration');
