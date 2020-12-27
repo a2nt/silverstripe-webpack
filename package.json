@@ -31,8 +31,8 @@
 		"ie>=11"
 	],
 	"dependencies": {
-		"@a2nt/meta-lightbox": "^2.4.0",
-		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.6.3",
+		"@a2nt/meta-lightbox": "^2.7.1",
+		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.7.0",
 		"aos": "^2.3.4",
 		"bootbox": "^5.5.2",
 		"bootstrap": "^4.5.3",
@@ -126,7 +126,7 @@
 		"terser-webpack-plugin": "^5.0.3",
 		"url-loader": "^4.1.1",
 		"webpack": "^5.11.0",
-		"webpack-cli": "^4.2.0",
+		"webpack-cli": "^4.3.0",
 		"webpack-dev-server": "^4.0.0-beta.0",
 		"webpack-manifest-plugin": "^3.0.0",
 		"webpack-merge": "^5.7.3"
