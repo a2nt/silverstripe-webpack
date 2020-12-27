@@ -7,7 +7,7 @@ After:
 SilverStripe\Core\Injector\Injector:
   A2nt\SilverStripeMapboxField\MarkerExtension:
     properties:
-      geocoder: %$Symbiote\Addressable\MapboxGeocodeService
+      geocoder: '%$Symbiote\Addressable\MapboxGeocodeService'
   Symbiote\Addressable\GeocodeServiceInterface:
     class: Symbiote\Addressable\MapboxGeocodeService
 

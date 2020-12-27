@@ -42,7 +42,6 @@
         "a2nt/silverstripe-mapboxfield": "dev-master",
         "a2nt/silverstripe-progressivewebapp": "dev-master",
         "bummzack/sortablefile": "*",
-        "barryvdh/composer-cleanup-plugin": "0.2.x",
         "eluceo/ical": "^0.16.0",
         "ezyang/htmlpurifier": "^4.13",
         "showpro/silverstripe-seo-images": "^1.0",
@@ -70,6 +69,7 @@
         "project-files-installed": [
             "app/.htaccess",
             "app/_config.php",
+            "app/_config/database.yml",
             "app/_config/mimevalidator.yml",
             "app/_config/mysite.yml",
             "app/src/Page.php",

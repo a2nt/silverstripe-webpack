@@ -1,18 +1,21 @@
 /*
  * Common Environment
  */
+const UIInfo = require('./node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/package.json');
+console.log(
+	'UI: ' +
+		JSON.stringify(UIInfo.name) +
+		' ver: ' +
+		JSON.stringify(UIInfo.version),
+);
 
 const webpack = require('webpack');
 const commonVariables = require('./webpack.configuration');
 const conf = commonVariables.configuration;
 
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const path = require('path');
 const filesystem = require('fs');
-
-const UIInfo = require('./node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/package.json');
-const UINAME = JSON.stringify(UIInfo.name);
-const UIVERSION = JSON.stringify(UIInfo.version);
-console.info(`%cUI Kit ${UINAME} ${UIVERSION}`, 'color:yellow;font-size:14px');
 
 const includes = {};
 const modules = [
@@ -101,16 +104,81 @@ commonVariables.themes.forEach((theme) => {
 
 module.exports = {
 	entry: includes,
+	devtool: 'source-map',
 	externals: {
 		jquery: 'jQuery',
+	},
+	optimization: {
+		namedModules: true, // NamedModulesPlugin()
+		splitChunks: {
+			// CommonsChunkPlugin()
+			name: 'vendor',
+			minChunks: 2,
+		},
+		noEmitOnErrors: true, // NoEmitOnErrorsPlugin
+		concatenateModules: true, //ModuleConcatenationPlugin
+	},
+
+	module: {
+		rules: [
+			{
+				test: /\.jsx?$/,
+				//exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env'], //Preset used for env setup
+						plugins: [
+							['@babel/transform-react-jsx'],
+							['react-hot-loader/babel'],
+						],
+						cacheDirectory: true,
+						cacheCompression: false,
+					},
+				},
+			},
+			/*{
+				test: /\.tsx?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/,
+			},
+			{
+				test: /\.coffee?$/,
+				use: 'coffee-loader',
+			},*/
+			{
+				test: /\.worker\.js$/,
+				use: {
+					loader: 'worker-loader',
+				},
+			},
+		],
 	},
 	resolve: {
 		modules: modules,
 		alias: {
-			'window.jQuery': require.resolve('jquery'),
-			$: require.resolve('jquery'),
 			jquery: require.resolve('jquery'),
 			jQuery: require.resolve('jquery'),
 		},
 	},
+	plugins: [
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+			'window.jQuery': 'jquery',
+			Popper: ['popper.js', 'default'],
+			Util: 'exports-loader?Util!bootstrap/js/dist/util',
+			Alert: 'exports-loader?Alert!bootstrap/js/dist/alert',
+			Button: 'exports-loader?Button!bootstrap/js/dist/button',
+			Carousel: 'exports-loader?Carousel!bootstrap/js/dist/carousel',
+			Collapse: 'exports-loader?Collapse!bootstrap/js/dist/collapse',
+			Dropdown: 'exports-loader?Dropdown!bootstrap/js/dist/dropdown',
+			Modal: 'exports-loader?Modal!bootstrap/js/dist/modal',
+			Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
+			Popover: 'exports-loader?Popover!bootstrap/js/dist/popover',
+			Scrollspy: 'exports-loader?Scrollspy!bootstrap/js/dist/scrollspy',
+			Tab: 'exports-loader?Tab!bootstrap/js/dist/tab',
+		}),
+		new HardSourceWebpackPlugin(),
+	],
 };

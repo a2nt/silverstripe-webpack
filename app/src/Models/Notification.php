@@ -24,6 +24,7 @@ class Notification extends DataObject
         'Content' => 'Text',
         'DateOn' => 'Date',
         'DateOff' => 'Date',
+	    'Area' => 'Enum("Site","Site")',
     ];
 
     private static $has_one = [
