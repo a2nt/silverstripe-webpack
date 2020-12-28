@@ -5,6 +5,10 @@ After:
   - elemental-list
   - elementalvirtual
 ---
+Site\Elements\SliderElement:
+  slide_width: 2140
+  slide_height: 700
+
 Page:
   searchable_elements:
     - DNADesign\Elemental\Models\ElementContent
