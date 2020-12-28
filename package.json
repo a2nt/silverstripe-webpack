@@ -31,8 +31,8 @@
 		"ie>=11"
 	],
 	"dependencies": {
-		"@a2nt/meta-lightbox": "^2.7.1",
-		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.7.0",
+		"@a2nt/meta-lightbox": "^2.4.0",
+		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.6.3",
 		"aos": "^2.3.4",
 		"bootbox": "^5.5.2",
 		"bootstrap": "^4.5.3",
@@ -89,7 +89,7 @@
 		"exports-loader": "^1.1.1",
 		"fast-levenshtein": "^3.0.0",
 		"fastest-levenshtein": "^1.0.12",
-		"favicons-webpack-plugin": "^4.2.0",
+		"favicons-webpack-plugin": "github:jantimon/favicons-webpack-plugin#benkostr-webpack-5",
 		"file-loader": "^6.2.0",
 		"font-awesome": "^4.7.0",
 		"hoist-non-react-statics": "^3.3.2",
@@ -126,7 +126,7 @@
 		"terser-webpack-plugin": "^5.0.3",
 		"url-loader": "^4.1.1",
 		"webpack": "^5.11.0",
-		"webpack-cli": "^4.3.0",
+		"webpack-cli": "^4.2.0",
 		"webpack-dev-server": "^4.0.0-beta.0",
 		"webpack-manifest-plugin": "^3.0.0",
 		"webpack-merge": "^5.7.3"

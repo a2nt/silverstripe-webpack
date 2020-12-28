@@ -11,6 +11,7 @@
         "php": ">=7.1.0",
         "ext-json": "*",
         "silverstripe/recipe-cms": "^4",
+        "silverstripe/recipe-plugin": "^1.5",
         "wilr/silverstripe-googlesitemaps": "*",
         "silverstripe/userforms": "*",
         "undefinedoffset/sortablegridfield": "*",

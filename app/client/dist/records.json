@@ -31,6 +31,29 @@
       831
     ]
   },
+  "favicons-webpack-plugin": [
+    {
+      "chunks": {
+        "byName": {
+          "favicon.png": 561
+        },
+        "bySource": {
+          "0 favicon.png": 561
+        },
+        "usedIds": [
+          561
+        ]
+      },
+      "modules": {
+        "byIdentifier": {
+          "./node_modules/.pnpm/cache-loader@4.1.0_webpack@5.11.0/node_modules/cache-loader/dist/cjs.js?{\"cacheDirectory\":\"/mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.cache/favicons-webpack-plugin\"}!./node_modules/.pnpm/github.com/jantimon/favicons-webpack-plugin@ee2818afa97c4b4bf1c6f919a403e56203e26606_webpack@5.11.0/node_modules/favicons-webpack-plugin/src/loader.js?{\"prefix\":\"/icons/\",\"options\":{\"appName\":\"ss-webpack-boilerplate\",\"appDescription\":\"Lets you create SilverStripe faster\",\"version\":\"2.0.2\",\"developerName\":\"Tony Air\"},\"path\":\"app/client/dist\"}!./app/client/src/favicon.png": 407
+        },
+        "usedIds": [
+          407
+        ]
+      }
+    }
+  ],
   "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@5.0.1_webpack@5.11.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.0_node-sass@5.0.0+webpack@5.11.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./app/client/src/scss/_cms.scss": [
     {
       "chunks": {
