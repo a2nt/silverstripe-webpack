@@ -78,35 +78,6 @@ body.shrink {
     }
 }
 
-// site blocks (elements)
-.element {
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    &.site__elements__sliderelement {
-        .element-container {
-            width: 100%;
-            padding: 0;
-            max-width: none;
-        }
-    }
-
-    &.dynamic__elements__image__elements__elementimage {
-        text-align: center;
-    }
-
-    &.site__elements__accordion {
-        .card {
-            padding-left: 0;
-            padding-right: 0;
-
-            .card-header {
-                @extend .bg-dark;
-            }
-        }
-    }
-}
-
 .sidebar__col {
     position: relative;
     margin-bottom: $grid-gutter-element-height * 2;

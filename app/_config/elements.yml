@@ -44,10 +44,7 @@ SilverStripe\CMS\Model\SiteTree:
     - Site\Elements\MapElement
     #- Site\Elements\AccordionElement
     - DNADesign\ElementalVirtual\Model\ElementVirtual
-    - Site\Elements\ColorBarElement
     - Site\Elements\AccordionElement
-    - Site\Elements\VideoElement
-    - Site\Elements\GalleryElement
     - Site\Elements\CustomSnippetElement
 
 DNADesign\ElementalList\Model\ElementList:
@@ -65,7 +62,6 @@ DNADesign\ElementalList\Model\ElementList:
     - Site\Elements\SliderElement
     - Site\Elements\BlockElement
     - Site\Elements\MapElement
-    - Site\Elements\ColorBarElement
     - Site\Elements\AccordionElement
   styles:
     whiteframe: 'White Frame'
