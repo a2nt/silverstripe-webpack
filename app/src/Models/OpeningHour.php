@@ -33,6 +33,7 @@ class OpeningHour extends DataObject
     ];
 
     private static $defaults = [
+        'Day' => 'Monday',
         'From' => '09:00:00',
         'Till' => '22:00:00',
     ];
@@ -53,8 +54,7 @@ class OpeningHour extends DataObject
         $result = parent::validate();
 
 
-        if(
-            !$this->getField('Day')
+        if (!$this->getField('Day')
             || !$this->getField('From')
             || !$this->getField('Till')
             || $this->getField('From') > $this->getField('Till')
@@ -73,7 +73,7 @@ class OpeningHour extends DataObject
             'Till:LessThanOrEqual' => $this->getField('Till'),
         ])->exists();
 
-        if($exists) {
+        if ($exists) {
             return $result->addError(
                 'Hours were defined already for specified range.',
                 ValidationResult::TYPE_ERROR

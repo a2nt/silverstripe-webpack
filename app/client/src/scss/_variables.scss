@@ -52,6 +52,20 @@ $h6-font-size: $font-size-base;
 @import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_variables';
 
 // Add your site-wide + content editor typography styling
+$full-body-min-width: map-get($grid-breakpoints, 'md');
+
+$header-bg: $dark;
+$header-color: darken($white, 5%);
+$header-link: $white;
+
+$footer-size: 7rem;
+$footer-bar-size: 2rem;
+
+$footer-bg: $dark;
+$footer-color: darken($white, 5%);
+$footer-link: $white;
+
+$footer-footer-bg: darken($dark, 5%);
 
 h1,
 h2,

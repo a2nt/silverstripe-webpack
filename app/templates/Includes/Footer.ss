@@ -4,21 +4,21 @@
         <div class="footer__container $Top.DefaultContainer">
             <div class="row">
                 <div class="col-sm-6">
-                    <a href="/" class="logo2">
-                        <img src="$ResourcesURL('logo2.png')" alt="{$Title}" />
-                    </a>
-
                     <div class="field">
                         <div class="fn">$Title</div>
-                        <address>
-                            $Address<br/>
-                            $Suburb, $State $ZipCode
-                        </address>
+                        <% if $Address %>
+                            <address>
+                                $Address<br/>
+                                $Suburb, $State $ZipCode
+                            </address>
+                        <% end_if %>
                     </div>
 
-                    <div class="field">
-                        T: $PhoneNumber
-                    </div>
+                    <% if $PhoneNumber %>
+                        <div class="field">
+                            T: $PhoneNumber
+                        </div>
+                    <% end_if %>
 
                     <% if $PublicEmail %>
                         <div class="field">

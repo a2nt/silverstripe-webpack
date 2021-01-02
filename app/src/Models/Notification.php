@@ -24,12 +24,16 @@ class Notification extends DataObject
         'Content' => 'Text',
         'DateOn' => 'Date',
         'DateOff' => 'Date',
-	    'Area' => 'Enum("Site","Site")',
+        'Area' => 'Enum("Site","Site")',
     ];
 
     private static $has_one = [
         'Parent' => SiteConfig::class,
         'TargetLink' => Link::class,
+    ];
+
+    private static $defaults = [
+        'Area' => 'Site',
     ];
 
 
@@ -57,14 +61,14 @@ class Notification extends DataObject
     {
         $result = parent::validate();
 
-        if(!$this->getField('DateOn') || !$this->getField('DateOff')) {
+        if (!$this->getField('DateOn') || !$this->getField('DateOff')) {
             return $result->addError(
                 'Turn on and turn off dates are required.',
                 ValidationResult::TYPE_ERROR
             );
         }
 
-        if(!$this->getField('Content')) {
+        if (!$this->getField('Content')) {
             return $result->addError(
                 'Text field required.',
                 ValidationResult::TYPE_ERROR

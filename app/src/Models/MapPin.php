@@ -50,6 +50,14 @@ class MapPin extends DataObject
         'ShowAtMap',
     ];
 
+    private static $defaults = [
+        'ShowAtMap' => '1',
+        'Suburb' => 'Syracuse',
+        'State' => 'NY',
+        'Postcode' => '13210',
+        'Country' => 'US',
+    ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
