@@ -16,13 +16,13 @@
 
                     <% if $PhoneNumber %>
                         <div class="field">
-                            T: $PhoneNumber
+                            $PhoneNumber
                         </div>
                     <% end_if %>
 
                     <% if $PublicEmail %>
                         <div class="field">
-                            E: $PublicEmail
+                            $PublicEmail
                         </div>
                     <% end_if %>
 

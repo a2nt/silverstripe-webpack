@@ -28,6 +28,11 @@ class EmbeddedObjectExtension extends DataExtension
 
     public function setEmbedParams($params = [])
     {
+        $iframe_params = [];
+        if ($this->owner->getField('Autoplay')) {
+            $iframe_params[] = 'allow="autoplay"';
+        }
+
         // YouTube params
         if (stripos($this->owner->EmbedHTML, 'https://www.youtube.com/embed/') > 0) {
             $url = $this->owner->getField('SourceURL');
@@ -61,7 +66,8 @@ class EmbeddedObjectExtension extends DataExtension
 
             $this->owner->EmbedHTML = preg_replace(
                 '/src="([A-z0-9:\/\.]+)\??(.*?)"/',
-                'src="https://www.youtube.com/embed/'.$videoID.'?' . implode('&', $params) . '"',
+                'src="https://www.youtube.com/embed/'.$videoID.'?' . implode('&', $params) . '" '
+                .implode(' ', $iframe_params),
                 $this->owner->EmbedHTML
             );
         }
@@ -89,7 +95,8 @@ class EmbeddedObjectExtension extends DataExtension
             }
             $this->owner->EmbedHTML = preg_replace(
                 '/src="([A-z0-9:\/\.]+)\??(.*?)"/',
-                'src="https://player.vimeo.com/video/'.$videoID.'?' . implode('&', $params) . '"',
+                'src="https://player.vimeo.com/video/'.$videoID.'?' . implode('&', $params) . '" '
+                .implode(' ', $iframe_params),
                 $this->owner->EmbedHTML
             );
         }

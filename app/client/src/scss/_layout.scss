@@ -141,6 +141,21 @@ body.shrink {
         justify-content: flex-end;
         align-items: center;
     }
+
+    .logo {
+        filter: invert(100%);
+    }
+}
+
+#Navigation {
+    font-size: 1.5rem;
+    padding: 0;
+    @media (min-width: map-get($grid-breakpoints, 'md')) {
+        .navbar-nav .nav-link {
+            padding-right: 2rem;
+            padding-left: 2rem;
+        }
+    }
 }
 
 #MainContent {

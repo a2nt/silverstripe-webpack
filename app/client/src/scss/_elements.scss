@@ -1,4 +1,123 @@
 /* style elements here */
+.carousel-item-Image,
+.carousel-item-Video {
+	.carousel-slide {
+		flex-direction: column;
+		max-height: 70vh;
+		max-height: calc(100vh - 8.5rem);
+		height: 80vh;
+		height: calc(100vh - 8.5rem);
+		align-items: center;
+		justify-content: center;
+		.img {
+			height: 100%;
+			width: auto;
+			min-width: 100%;
+			img {
+				min-height: 100%;
+				min-width: 100%;
+				max-width: inherit;
+				width: auto !important;
+
+				@media (min-height: 700px) {
+					width: auto !important;
+				}
+
+				@media (min-width: 2140px) {
+					width: 100% !important;
+				}
+			}
+		}
+
+		.video {
+			padding-bottom: 56.25%;
+			position: relative;
+			iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		@media (max-width: map-get($grid-breakpoints, 'sm') - 1) {
+			padding-bottom: 54rem;
+		}
+	}
+
+	.carousel-title {
+		font-size: 4.375rem;
+		a {
+			color: $white;
+		}
+	}
+	.carousel-caption {
+		width: 100%;
+		right: 0;
+		left: 0;
+		bottom: 5vh;
+	}
+	.slide-link {
+		color: $white;
+	}
+
+	.carousel-caption-container {
+		position: absolute;
+		top: auto;
+		bottom: 0;
+		left: auto;
+		right: 0;
+		background: transparentize($black, 0.5);
+		max-width: 60%;
+		padding: 1rem;
+	}
+
+	@media (max-width: $full-body-min-width - 1) {
+		.carousel-title,
+		.carousel-caption,
+		.slide-link {
+			color: $black;
+		}
+		.carousel-title {
+			font-size: 1.6rem;
+			a {
+				color: $body-color;
+			}
+		}
+		.carousel-caption {
+			position: static;
+			padding: 0;
+			.container {
+				padding: 0;
+			}
+			.carousel-caption-container {
+				position: relative;
+				background: $bg-alt;
+				color: $black;
+				max-width: 100%;
+				width: 100%;
+			}
+		}
+	}
+}
+
+.carousel-item-Video {
+	.carousel-slide {
+		height: auto !important;
+		@media (max-width: map-get($grid-breakpoints, 'sm') - 1) {
+			padding-bottom: 0;
+		}
+	}
+}
+
+.carousel-slide .video {
+	height: 100%;
+	background: $black;
+	iframe {
+		height: 100% !important;
+	}
+}
 
 .element {
 	background-size: cover;
@@ -12,6 +131,7 @@
 		max-width: none;
 	}
 	&:first-child {
+		margin-top: -$grid-gutter-element-height;
 	}
 }
 
