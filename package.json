@@ -32,7 +32,7 @@
 	],
 	"dependencies": {
 		"@a2nt/meta-lightbox": "^2.7.1",
-		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.7.1",
+		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.7.2",
 		"aos": "^2.3.4",
 		"bootbox": "^5.5.2",
 		"bootstrap": "^4.5.3",
@@ -94,7 +94,7 @@
 		"font-awesome": "^4.7.0",
 		"hoist-non-react-statics": "^3.3.2",
 		"html-entities": "^1.4.0",
-		"html-webpack-plugin": "^4.5.0",
+		"html-webpack-plugin": "^4.5.1",
 		"image-minimizer-webpack-plugin": "^2.1.0",
 		"imagemin-jpegtran": "^7.0.0",
 		"img-optimize-loader": "^1.0.7",

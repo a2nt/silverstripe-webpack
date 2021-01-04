@@ -5,6 +5,11 @@
                 <a id="Logo" class="logo" href="/">
                     <img src="{$ResourcesURL('logo.svg')}" width="100" alt="{$SiteConfig.Title}" />
                 </a>
+                <% with $SiteConfig %>
+                    <% if $Tagline %>
+                        <div class="tagline">$Tagline</div>
+                    <% end_if %>
+                <% end_with %>
             </div>
             <div class="col-sm-8 nav-container">
                 <% if $Menu(1) %>

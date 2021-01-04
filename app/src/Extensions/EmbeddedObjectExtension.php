@@ -57,6 +57,7 @@ class EmbeddedObjectExtension extends DataExtension
 
             if ($this->owner->getField('Autoplay')) {
                 $params[] = 'autoplay=1';
+                $params[] = 'mute=1';
             }
 
             if ($this->owner->getField('Loop')) {

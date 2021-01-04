@@ -1,6 +1,6 @@
 <a
-    class="nav-item-link <% if $LinkClass %>{$LinkClass}<% else %>nav-link<% end_if %>" href="{$Link}"
-    <% if $ExternalURL || $OpenInNewWindow %> target="_blank"<% end_if %>
+    class="nav-item-link <% if $LinkClass %>{$LinkClass}<% else %>nav-link<% end_if %><% if $RedirectionType = 'External' || $ExternalURL || $OpenInNewWindow %> external<% end_if %>" href="{$Link}"
+    <% if $RedirectionType = 'External' || $OpenInNewWindow %> target="_blank"<% end_if %>
 >
 	<% if $BlockIcon %>
 	    <i class="fa-icon $BlockIcon"></i>

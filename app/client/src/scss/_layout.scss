@@ -145,11 +145,20 @@ body.shrink {
     .logo {
         filter: invert(100%);
     }
+
+    .tagline {
+        display: inline-block;
+        font-size: 1.2rem;
+        margin-left: 2em;
+    }
 }
 
 #Navigation {
     font-size: 1.5rem;
     padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+
     @media (min-width: map-get($grid-breakpoints, 'md')) {
         .navbar-nav .nav-link {
             padding-right: 2rem;
