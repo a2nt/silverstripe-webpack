@@ -88,7 +88,12 @@ class DeferredRequirements implements TemplateGlobalProvider
         self::loadJS($mainTheme.'.js');
 
         // Custom controller requirements
-        $curr_class = $class ?: get_class(Controller::curr());
+	    $curr = Controller::curr();
+	    if(isset($curr->record, $curr->record['ClassName']) && !$class) {
+	    	$class = $curr->record['ClassName'];
+	    }
+        $curr_class = $class ?: get_class($curr);
+	    
         if (isset($config['custom_requirements'][$curr_class])) {
             foreach ($config['custom_requirements'][$curr_class] as $file) {
                 if (strpos($file, '.css')) {

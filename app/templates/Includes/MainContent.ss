@@ -1,4 +1,4 @@
-<div class="mainContent-page-{$CSSClass}">
+<div class="maincontent maincontent-{$CSSClass} maincontent-{$URLSegment}<% if $URLSegment != 'home' %> maincontent-inner-page<% end_if %>">
 	<% if $HeroImageRecursive %>
 	    <div class="element element__hero-image">
 	        <div class="element-container">
@@ -37,12 +37,14 @@
 	                    $Layout
 	                </div>
 	                <div class="col-md-3 sidebar__col">
-	                    <div class="page-content-sidebar page-content jsSidebarUI">
-	                        <div class="jsSidebarUI__inner">
-	                            $SideBarContent
-	                            $SideBarView
-	                        </div>
-	                    </div>
+	                	<div class="{$DefaultContainer}">
+		                    <div class="page-content-sidebar page-content jsSidebarUI">
+		                        <div class="jsSidebarUI__inner">
+		                            $SideBarContent
+		                            $SideBarView
+		                        </div>
+		                    </div>
+		                </div>
 	                </div>
 	            </div>
 	        </div>

@@ -3,11 +3,10 @@
 
 namespace Site\Widgets;
 
-use Sheadawson\Linkable\Forms\LinkField;
-use Sheadawson\Linkable\Models\Link;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Widgets\Model\Widget;
+use Site\Extensions\ElementImageWidget;
 
 if (!class_exists(Widget::class)) {
     return;
@@ -23,23 +22,28 @@ class BannerWidget extends Widget
 
     private static $has_one = [
         'Image' => Image::class,
-        'Link' => Link::class,
     ];
 
     private static $owns = [
         'Image',
-        'Link',
+    ];
+
+    private static $extensions = [
+        ElementImageWidget::class,
     ];
 
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
 
-        $fields->push(UploadField::create('Image', 'Image (minimal width 301px)')
+        $fields->push(UploadField::create('Image', 'Image')
                 ->setAllowedFileCategories(['image/supported']));
 
-        $fields->push(LinkField::create('LinkID', 'Link'));
-
         return $fields;
+    }
+
+    public function getSibling()
+    {
+    	return false;
     }
 }

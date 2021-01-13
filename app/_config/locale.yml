@@ -1,6 +1,24 @@
 ---
-Name: 'webapp-us-locale'
+Name: 'webapp-locale'
 ---
+TractorCow\Fluent\Model\Locale:
+  default_records:
+    en:
+      Title: 'EN'
+      Locale: en_US
+      URLSegment: en
+      IsGlobalDefault: 1
+  us:
+    Locale: en_US
+    Title: 'EN'
+    URLSegment: en
+  ru:
+    Locale: ru_RU
+    Title: 'RU'
+    URLSegment: ru
+    Fallbacks:
+      - =>TractorCow\Fluent\Model\Locale.us
+
 Symbiote\Addressable\Addressable:
   allowed_countries:
     'us': 'United States'

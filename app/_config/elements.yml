@@ -15,7 +15,9 @@ Page:
   searchable_objects:
     - Site\Models\TeamMember
   extensions:
+    - DNADesign\Elemental\TopPage\SiteTreeExtension
     - DNADesign\Elemental\Extensions\ElementalPageExtension
+    - Site\Extensions\PageFluentExtension
 
 SilverStripe\CMS\Controllers\ContentController:
   extensions:
@@ -26,11 +28,15 @@ SilverStripe\CMS\Controllers\ContentController:
 
 DNADesign\Elemental\Models\ElementalArea:
   extensions:
+    #- DNADesign\Elemental\TopPage\DataExtension
+    - DNADesign\Elemental\TopPage\FluentExtension
     - Site\Extensions\ElementalArea
 
 DNADesign\Elemental\Models\BaseElement:
   default_global_elements: true
   extensions:
+    #- DNADesign\Elemental\TopPage\DataExtension
+    - DNADesign\Elemental\TopPage\FluentExtension
     - Site\Extensions\ElementRows
 
 SilverStripe\CMS\Model\SiteTree:

@@ -1,41 +1,38 @@
-<% with $SiteConfig %>
 <div class="wrapper">
     <div class="element">
-        <div class="footer__container $Top.DefaultContainer">
-            <div class="row">
-                <div class="col-sm-6">
+        <div class="footer__container $DefaultContainer">
+            <% with $SiteConfig %>
+                <div class="field">
+                    <div class="fn">$Title</div>
+                    <% if $Address %>
+                        <address>
+                            $Address<br/>
+                            $Suburb, $State $ZipCode
+                        </address>
+                    <% end_if %>
+                </div>
+
+                <% if $PhoneNumber %>
                     <div class="field">
-                        <div class="fn">$Title</div>
-                        <% if $Address %>
-                            <address>
-                                $Address<br/>
-                                $Suburb, $State $ZipCode
-                            </address>
-                        <% end_if %>
+                        $PhoneNumber
                     </div>
+                <% end_if %>
 
-                    <% if $PhoneNumber %>
-                        <div class="field">
-                            $PhoneNumber
-                        </div>
-                    <% end_if %>
+                <% if $PublicEmail %>
+                    <div class="field">
+                        $PublicEmail
+                    </div>
+                <% end_if %>
 
-                    <% if $PublicEmail %>
-                        <div class="field">
-                            $PublicEmail
-                        </div>
-                    <% end_if %>
-
-                    <% include Objects\SocialLinks %>
-                </div>
-                <div class="col-sm-6 text-right">
-
-                </div>
-            </div>
+                <% include Objects\SocialLinks %>
+            <% end_with %>
+            
+            <% include LocaleMenu %>
         </div>
     </div>
 </div>
 
+<% with $SiteConfig %>
 <div class="copyright footer">
     <div class="container">
         <div class="row">

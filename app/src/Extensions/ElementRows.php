@@ -38,10 +38,10 @@ class ElementRows extends DataExtension
     {
         parent::updateCMSFields($fields);
 
-        // move available globaly to main tab
-        $fields->removeByName('AvailableGlobally');
+        $fields->removeByName(['AvailableGlobally', 'TopPageLocale', 'TopPageID']);
         //$fields->removeByName('SidebarOnly');
 
+	    // move available globaly to main tab
         $tab = $fields->findOrMakeTab('Root.Main');
         $tab->push(CheckboxField::create('AvailableGlobally'));
         //$tab->push(CheckboxField::create('SidebarOnly', 'Hidden (Sidebar Only)'));

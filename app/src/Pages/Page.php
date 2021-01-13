@@ -8,6 +8,7 @@ use Sheadawson\Linkable\Forms\LinkField;
 use SilverStripe\CMS\Model\SiteTree;
 use DNADesign\Elemental\Models\ElementContent;
 use SilverStripe\FontAwesome\FontAwesomeField;
+use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 
 class Page extends SiteTree
 {
@@ -16,6 +17,11 @@ class Page extends SiteTree
     private static $db = [
         'BlockIcon' => 'Varchar(255)',
     ];
+
+    private static $field_include = [
+        'ElementalAreaID',
+    ];
+
 
     public static function DefaultContainer()
     {
@@ -72,5 +78,17 @@ class Page extends SiteTree
     public function CSSClass()
     {
         return str_replace(['\\'], '-', $this->getField('ClassName'));
+    }
+
+    protected function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+
+        if (class_exists(FluentSiteTreeExtension::class) && !$this->isDraftedInLocale() && $this->isInDB()) {
+            $elementalArea = $this->ElementalArea();
+
+            $elementalAreaNew = $elementalArea->duplicate();
+            $this->setField('ElementalAreaID', $elementalAreaNew->ID);
+        }
     }
 }

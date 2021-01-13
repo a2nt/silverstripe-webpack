@@ -28,7 +28,6 @@ class TeamMember extends DataObject
 
     private static $has_one = [
         'Photo' => Image::class,
-        'Page' => TeamPage::class,
     ];
 
     private static $extensions = [

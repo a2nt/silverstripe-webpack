@@ -1,7 +1,7 @@
 <div class="element">
     <div class="element__container $DefaultContainer">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-xl-4">
                 <a id="Logo" class="logo" href="/">
                     <img src="{$ResourcesURL('logo.svg')}" width="100" alt="{$SiteConfig.Title}" />
                 </a>
@@ -11,7 +11,7 @@
                     <% end_if %>
                 <% end_with %>
             </div>
-            <div class="col-sm-8 nav-container">
+            <div class="col-xl-8 nav-container">
                 <% if $Menu(1) %>
                     <% include Navigation Navigation=$Menu(1), NavID="Navigation" %>
                 <% end_if %>

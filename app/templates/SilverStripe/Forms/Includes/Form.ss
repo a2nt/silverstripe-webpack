@@ -2,13 +2,13 @@
 <form $AttributesHTML>
 <% end_if %>
 	<% if $Message %>
-	<p id="{$FormName}_error" class="message $MessageType">$Message.RAW</p>
+	<div id="{$FormName}_error" class="form__message alert alert-{$MessageType} message $MessageType">$Message.RAW</div>
 	<% else %>
-	<p id="{$FormName}_error" class="message $MessageType" style="display: none"></p>
+	<div id="{$FormName}_error" class="form__message alert alert-{$MessageType} message {$MessageType}" style="display: none"></div>
 	<% end_if %>
 
-	<fieldset>
-		<% if $Legend %><legend>$Legend</legend><% end_if %>
+	<fieldset class="form__fieldset">
+		<% if $Legend %><legend class="form__legend">$Legend</legend><% end_if %>
 		<% loop $Fields %>
 			$FieldHolder
 		<% end_loop %>
@@ -16,7 +16,7 @@
 	</fieldset>
 
 	<% if $Actions %>
-	<div class="btn-toolbar">
+	<div class="form__actions btn-toolbar">
 		<% loop $Actions %>
 			$Field
 		<% end_loop %>

@@ -20,6 +20,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const ImageminPlugin = require('image-minimizer-webpack-plugin');
 const ImageSpritePlugin = require('@a2nt/image-sprite-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const UIInfo = require('./node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/package.json');
 const UIMetaInfo = require('./node_modules/@a2nt/meta-lightbox/package.json');
@@ -116,6 +117,15 @@ let plugins = [
 		//outputPath: path.join(__dirname, conf.APPDIR, conf.DIST),
 		outputFilename: 'img/sprite-[hash].png',
 		padding: 0,
+	}),
+	new CopyPlugin({
+		patterns: [
+			{
+				from: path.join(__dirname, conf.APPDIR, conf.SRC, 'extras'),
+				to: path.join(__dirname, conf.APPDIR, conf.DIST, 'extras'),
+				noErrorOnMissing: true,
+			},
+		],
 	}),
 ];
 

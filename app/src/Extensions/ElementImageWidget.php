@@ -13,6 +13,7 @@ use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
@@ -25,9 +26,17 @@ class ElementImageWidget extends DataExtension
         '600' => 'Big (600px)',
     ];
 
+    private static $available_widths = [
+    	'300' => 'Small (300px)',
+        '400' => 'Medium (400px)',
+        '600' => 'Big (600px)',
+    ];
+
     private static $db = [
         'Resize' => 'Boolean(1)',
+	    'ManualWidth' => 'Boolean(0)',
         'ImageHeight' => 'Float',
+	    'ImageWidth' => 'Float',
         'Content' => 'HTMLText',
     ];
 
@@ -39,31 +48,42 @@ class ElementImageWidget extends DataExtension
     {
         parent::updateCMSFields($fields);
 
-        $fields->insertBefore(
-            'Image',
-            LinkField::create('ImageLinkID', 'Link')
-        );
+        $fields->removeByName(['ImageLinkID', 'Resize']);
+
+        $fields->push(LinkField::create('ImageLinkID', 'Link'));
 
         $this->owner->ImageHeight = $this->getHeight();
 
         $heights = Config::inst()->get(__CLASS__, 'available_heights');
+        $widths = Config::inst()->get(__CLASS__, 'available_widths');
 
-        $fields->replaceField('Resize', CheckboxField::create(
+        $fields->push(CheckboxField::create(
             'Resize',
             'Would you like to scale image?'
         ));
 
         if (count($heights)) {
-            $fields->replaceField(
-                'ImageHeight',
-                DropdownField::create(
-                    'ImageHeight',
-                    'Image Height',
-                    $heights,
-                    $this->getHeight()
+        	$fields->removeByName(['ManualWidth','ImageWidth', 'ImageHeight']);
+            $fields->push(
+                CompositeField::create(
+	                DropdownField::create(
+	                    'ImageHeight',
+	                    'Image Height',
+	                    $heights,
+	                    $this->getHeight()
+	                )
+	                    ->setEmptyString('(auto)')
+                        ->displayIf('Resize')->isChecked()->end(),
+	                CheckboxField::create('ManualWidth', 'Set Width Manually')
+                        ->displayIf('Resize')->isChecked()->end(),
+	                DropdownField::create(
+	                    'ImageWidth',
+	                    'Image Width',
+	                    $widths
+	                )
+	                    ->setEmptyString('(auto)')
+	                    ->displayIf('ManualWidth')->isChecked()->end()
                 )
-                    ->setEmptyString('(unspecified)')
-                    ->displayIf('Resize')->isChecked()->end()
             );
         } else {
             $fields->dataFieldByName('ImageHeight')
@@ -95,7 +115,10 @@ class ElementImageWidget extends DataExtension
 
     public function getWidth()
     {
-        return $this->owner->getColumnWidthRecursive();
+    	$obj = $this->owner;
+        return $obj->getField('ManualWidth') && $obj->getField('ImageWidth')
+	        ? $obj->getField('ImageWidth')
+	        : $obj->getColumnWidthRecursive();
     }
 
     public function getHeight()

@@ -1,9 +1,8 @@
 ---
 Name: 'webapp-themes'
 ---
-
 SilverStripe\View\SSViewer:
-  source_file_comments: true
+  source_file_comments: false
   themes:
     - '$public'
     - '$default'

@@ -9,9 +9,6 @@ $grid-breakpoints: (
 	md: 768px,
 	lg: 992px,
 	xl: 1168px,
-	xxl: 1368px,
-	xxxl: 1568px,
-	xxxxl: 1868px,
 );
 // screen size - (32px * 2) (ex. 1400 - 64 = 1336)
 $container-max-widths: (
@@ -19,9 +16,6 @@ $container-max-widths: (
 	md: 720px,
 	lg: 960px,
 	xl: 1136px,
-	xxl: 1336px,
-	xxxl: 1536px,
-	xxxxl: 1836px,
 );
 
 $full-body-min-width: map-get($grid-breakpoints, 'lg');
@@ -52,11 +46,27 @@ $h6-font-size: $font-size-base;
 @import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_variables';
 
 // Add your site-wide + content editor typography styling
+$nav-link-hover-bg: darken($body-bg, 10%);
+$nav-link-hover-color: lighten($body-color, 10%);
+
 $full-body-min-width: map-get($grid-breakpoints, 'md');
 
 $header-bg: $dark;
 $header-color: darken($white, 5%);
 $header-link: $white;
+
+$main-nav-link-color: $white;
+$main-nav-link-bg: none;
+
+$main-nav-toggler-size: 2rem;
+
+$main-nav-link-hover-bg: none;
+$main-nav-link-hover-color: $primary;
+
+$main-nav-dropdown-bg: $header-bg;
+$main-nav-dropdown-color: $header-link;
+$main-nav-dropdown-hover-bg: darken($header-bg, 10%);
+$main-nav-dropdown-hover-color: $primary;
 
 $footer-size: 7rem;
 $footer-bar-size: 2rem;

@@ -5,17 +5,27 @@ namespace Site\Tasks;
 
 use SilverStripe\Assets\File;
 use SilverStripe\Dev\BuildTask;
+use SilverStripe\ORM\DB;
 
 class BrokenFilesTask extends BuildTask
 {
-    protected $title = 'Broken Files Task';
+    protected $title = 'Fix Broken Task';
 
-    protected $description = 'Broken files report';
+    protected $description = 'Fix missing PRIMARY keys and Broken files';
 
     protected $enabled = true;
 
     public function run($request)
     {
+    	$q = DB::query('show tables');
+    	$tables = array_keys($q->map());
+
+    	foreach ($tables as $t) {
+		    try {
+			    DB::query('ALTER TABLE `'.$t.'` ADD PRIMARY KEY (`ID`)');
+		    }catch (\Exception $e) {}
+	    }
+
         $files = File::get();
         $i = 0;
         foreach ($files as $file) {
