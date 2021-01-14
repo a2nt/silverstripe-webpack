@@ -24,12 +24,16 @@ class SiteMemberLoginForm extends MemberLoginForm
 
 		$email = $fields->fieldByName('Email');
 		if ($email) {
-			$email->setAttribute('autocomplete', 'email');
+			$email
+				->setAttribute('placeholder', 'your@email.com')
+				->setAttribute('autocomplete', 'email')
+				->setAttribute('type', 'email');
 		}
 
 		$pass = $fields->fieldByName('Password');
 		if($pass) {
 			//$pass->setAttribute('autocomplete', 'current-password');
+			$pass->setAttribute('placeholder', '**********');
 			$pass->setAutofocus(true);
 		}
 
