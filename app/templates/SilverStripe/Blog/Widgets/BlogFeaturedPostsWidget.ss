@@ -1,4 +1,5 @@
 <% if $Posts %>
+<div class="blog-posts__featured">
 	<ul>
 		<% loop $Posts %>
 			<li>
@@ -9,4 +10,5 @@
 			</li>
 		<% end_loop %>
 	</ul>
+</div>
 <% end_if %>

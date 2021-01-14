@@ -1,4 +1,4 @@
-<div id="uff">
+<div id="uff" class="userdefinedform__thx">
 	<div class="on-complete-message user-form">
         $OnCompleteMessage
     </div>

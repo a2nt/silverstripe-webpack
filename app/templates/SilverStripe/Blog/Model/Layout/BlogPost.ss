@@ -1,5 +1,5 @@
 <div id="PageContainer" class="page{$CSSClass} action{$Action}">
-    <article class="blog-entry">
+    <article class="blog-post blog-entry">
 
     	<%-- if $FeaturedImage %>
 	    <div id="CarouselTop" class="carousel slide js-carousel d-none d-sm-block">
@@ -23,7 +23,7 @@
     </article>
 
 	<% if $CommentsForm %>
-	<div class="element element__comments">
+	<div class="element element__comments blog__comments blog-post__comments">
 		<div class="element-container $DefaultContainer">
 			$CommentsForm
 		</div>

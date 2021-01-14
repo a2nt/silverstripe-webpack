@@ -1,4 +1,5 @@
 <% if $Archive %>
+<div class="blog__archive">
 	<ul>
 		<% loop $Archive %>
 			<li>
@@ -8,4 +9,5 @@
 			</li>
 		<% end_loop %>
 	</ul>
+</div>
 <% end_if %>

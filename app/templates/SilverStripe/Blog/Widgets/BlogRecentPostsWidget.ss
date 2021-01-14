@@ -1,4 +1,5 @@
 <% if $Posts %>
+<div class="blog-posts__recent">
 	<ul class="list-unstyled">
 		<% loop $Posts %>
 			<li>
@@ -8,4 +9,5 @@
 			</li>
 		<% end_loop %>
 	</ul>
+</div>
 <% end_if %>

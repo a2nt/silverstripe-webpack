@@ -42,7 +42,7 @@
 		<% else %>
 			<div class="element element__no_blogposts">
 				<div class="element-container $DefaultContainer">
-					<p class="alert alert-info alert-block">
+					<p class="blog__no-posts alert alert-info alert-block">
 						<%t SilverStripe\\Blog\\Model\\Blog.NoPosts 'There are no posts' %>
 					</p>
 				</div>
@@ -58,7 +58,7 @@
 		</div>
 
 		<% if $CommentsForm %>
-		<div class="element element__comments">
+		<div class="element element__comments blog__comments">
 			<div class="element-container $DefaultContainer">
 				$CommentsForm
 			</div>
