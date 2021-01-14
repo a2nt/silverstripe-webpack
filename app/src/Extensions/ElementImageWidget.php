@@ -48,42 +48,44 @@ class ElementImageWidget extends DataExtension
     {
         parent::updateCMSFields($fields);
 
-        $fields->removeByName(['ImageLinkID', 'Resize']);
-
-        $fields->push(LinkField::create('ImageLinkID', 'Link'));
+        $fields->insertBefore(
+            'Image',
+            LinkField::create('ImageLinkID', 'Link')
+        );
 
         $this->owner->ImageHeight = $this->getHeight();
 
         $heights = Config::inst()->get(__CLASS__, 'available_heights');
         $widths = Config::inst()->get(__CLASS__, 'available_widths');
 
-        $fields->push(CheckboxField::create(
+        $fields->replaceField('Resize', CheckboxField::create(
             'Resize',
             'Would you like to scale image?'
         ));
 
         if (count($heights)) {
-        	$fields->removeByName(['ManualWidth','ImageWidth', 'ImageHeight']);
-            $fields->push(
-                CompositeField::create(
-	                DropdownField::create(
-	                    'ImageHeight',
-	                    'Image Height',
-	                    $heights,
-	                    $this->getHeight()
+        	$fields->removeByName(['ManualWidth','ImageWidth',]);
+            $fields->replaceField(
+                'ImageHeight',
+	                CompositeField::create(
+		                DropdownField::create(
+		                    'ImageHeight',
+		                    'Image Height',
+		                    $heights,
+		                    $this->getHeight()
+		                )
+		                    ->setEmptyString('(auto)')
+	                        ->displayIf('Resize')->isChecked()->end(),
+		                CheckboxField::create('ManualWidth', 'Set Width Manually')
+	                        ->displayIf('Resize')->isChecked()->end(),
+		                DropdownField::create(
+		                    'ImageWidth',
+		                    'Image Width',
+		                    $widths
+		                )
+		                    ->setEmptyString('(auto)')
+		                    ->displayIf('ManualWidth')->isChecked()->end()
 	                )
-	                    ->setEmptyString('(auto)')
-                        ->displayIf('Resize')->isChecked()->end(),
-	                CheckboxField::create('ManualWidth', 'Set Width Manually')
-                        ->displayIf('Resize')->isChecked()->end(),
-	                DropdownField::create(
-	                    'ImageWidth',
-	                    'Image Width',
-	                    $widths
-	                )
-	                    ->setEmptyString('(auto)')
-	                    ->displayIf('ManualWidth')->isChecked()->end()
-                )
             );
         } else {
             $fields->dataFieldByName('ImageHeight')

@@ -1,0 +1,20 @@
+---
+Name: 'webapp-security'
+After: 'framework/*, cms/*, security_baseline'
+---
+SilverStripe\Security\Member:
+  lock_out_after_incorrect_logins: 5
+  lock_out_delay_mins: 5
+  # Password expiry should only happen when the password is leaked (optionally expire automatically if PCI/NIST compliance is required)
+  # password_expiry_days: 90
+  # instead of password change, we send out a notice on change of password OR Email (notify_account_security_change)
+  notify_password_change: false
+
+SilverStripe\Forms\PasswordField:
+  autocompleate: false
+
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Security\MemberAuthenticator\LostPasswordHandler:
+    class: Site\Extensions\LostPasswordHandlerExtension
+  SilverStripe\Security\MemberAuthenticator\MemberLoginForm:
+    class: Site\Extensions\SiteMemberLoginForm

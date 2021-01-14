@@ -20,7 +20,7 @@ SilverStripe\CMS\Model\SiteTree:
 Sheadawson\Linkable\Models\EmbeddedObject:
   extensions:
     - Site\Extensions\EmbeddedObjectExtension
-  
+
 SilverStripe\Assets:
   extensions:
     - Site\Extensions\ImageExtension
@@ -32,8 +32,6 @@ Dynamic\FlexSlider\Model\SlideImage:
 SilverStripe\Core\Injector\Injector:
   #SilverStripe\UserForms\Model\UserDefinedForm:
   #  class: Site\Extensions\UserDefinedForm_HiddenClass
-  SilverStripe\Security\MemberAuthenticator\LostPasswordHandler:
-    class: Site\Extensions\LostPasswordHandlerExtension
   Sheadawson\Linkable\Forms\EmbeddedObjectField:
     class: Site\Extensions\EmbedObjectField
   SilverStripe\Forms\CompositeField:

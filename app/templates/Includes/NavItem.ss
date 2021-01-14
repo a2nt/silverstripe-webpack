@@ -10,6 +10,7 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                     data-href="{$Link}"
+                    data-text="{$MenuTitle.XML}"
                     <% if $RedirectionType = 'External' || $OpenInNewWindow %>data-target="_blank"<% end_if %>
             >
                 $MenuTitle.XML
@@ -25,6 +26,7 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                     href="{$Link}"
+                    data-text="{$MenuTitle.XML}"
                     <% if $RedirectionType = 'External' || $OpenInNewWindow %>target="_blank"<% end_if %>
             >
                 $MenuTitle.XML

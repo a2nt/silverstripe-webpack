@@ -86,11 +86,13 @@ $full-body-min-width: map-get($grid-breakpoints, 'sm') !default;
 }
 
 .nav-link {
+	@include fix-bold();
 	&:focus,
 	&:hover,
 	&.active {
 		background: $nav-link-hover-bg;
 		color: $nav-link-hover-color;
+		font-weight: bold;
 	}
 }
 
@@ -286,6 +288,7 @@ body > .wrapper {
 	}
 
 	.dropdown-menu {
+		border-color: $main-nav-dropdown-bg;
 		background: $main-nav-dropdown-bg;
 		margin-top: 0;
 		border-top: 0;
@@ -307,6 +310,7 @@ body > .wrapper {
 		.nav-item-link {
 			width: 100%;
 			justify-content: flex-start;
+			align-items: flex-start;
 		}
 	}
 
