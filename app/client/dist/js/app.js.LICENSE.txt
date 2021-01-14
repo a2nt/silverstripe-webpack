@@ -58,14 +58,6 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 
-/*!
- * Select2 4.0.13
- * https://select2.github.io
- *
- * Released under the MIT license
- * https://github.com/select2/select2/blob/master/LICENSE.md
- */
-
 /*! Hammer.JS - v2.0.7 - 2016-04-22
  * http://hammerjs.github.io/
  *

@@ -79,8 +79,10 @@ import '@a2nt/meta-lightbox/src/js/app';
 //import Confirmation from 'bootstrap-confirmation2/dist/bootstrap-confirmation';
 //import Table from 'bootstrap-table/dist/bootstrap-table';
 
+//import FormSelect2 from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.form.select2';
+
 // AJAX UI
-//import AjaxUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.ajax';
+import AjaxUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.ajax';
 
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_main';
 import './_layout';
