@@ -38,3 +38,11 @@ $parser = ShortcodeParser::get('default');
 $parser->unregister('embed');
 $parser->register('embed', [EmbedShortcodeProvider::class, 'handle_shortcode']);
 
+if (!Director::isDev()) {
+    $validator = new SecurityPasswordValidator();
+    $validator->setMinLength(8);
+    $validator->maxLength(72);
+    $validator->setHistoricCount(6);
+    $validator->characterStrength(3, [ 'lowercase', 'uppercase', 'digits', 'punctuation' ]);
+    Member::set_password_validator($validator);
+}
