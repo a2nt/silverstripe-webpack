@@ -20,13 +20,25 @@ class SiteMemberLoginForm extends MemberLoginForm
 		parent::__construct($controller, $authenticatorClass, $name, $fields, $actions, $checkCurrentUser);
 
 		$fields = $this->Fields();
+		$actions = $this->Actions();
 
 		$email = $fields->fieldByName('Email');
-		$email->setAttribute('autocomplete', 'email');
+		if ($email) {
+			$email->setAttribute('autocomplete', 'email');
+		}
 
 		$pass = $fields->fieldByName('Password');
-		//$pass->setAttribute('autocomplete', 'current-password');
-		$pass->setAutofocus(true);
+		if($pass) {
+			//$pass->setAttribute('autocomplete', 'current-password');
+			$pass->setAutofocus(true);
+		}
+
+		$btn = $actions->fieldByName('action_doLogin');
+		if($btn) {
+			$btn->setUseButtonTag(true);
+			$btn->setButtonContent('<i class="fas fa-check"></i> '.$btn->Title());
+			$btn->addExtraClass('btn-lg');
+		}
 
 		if (Director::isLive()) {
 			$this->enableSpamProtection();
