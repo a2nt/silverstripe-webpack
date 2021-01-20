@@ -16,12 +16,11 @@ console.info(`%cUI Kit ${UINAME} ${UIVERSION}`, 'color:yellow;font-size:14px');
 
 const includes = {};
 const modules = [
-	path.resolve(__dirname, conf.APPDIR, 'client', 'src'),
-	path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'js'),
-	path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'scss'),
-	path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'img'),
-	path.resolve(__dirname, conf.APPDIR, 'client', 'src', 'thirdparty'),
-	path.resolve(__dirname, conf.APPDIR, 'client', 'node_modules'),
+	path.resolve(__dirname, conf.APPDIR, conf.SRC),
+	path.resolve(__dirname, conf.APPDIR, conf.SRC, 'js'),
+	path.resolve(__dirname, conf.APPDIR, conf.SRC, 'scss'),
+	path.resolve(__dirname, conf.APPDIR, conf.SRC, 'img'),
+	path.resolve(__dirname, conf.APPDIR, conf.SRC, 'thirdparty'),
 	path.resolve(__dirname, 'node_modules'),
 	path.resolve(__dirname),
 	path.resolve(__dirname, 'public'),
@@ -29,7 +28,10 @@ const modules = [
 
 const _addAppFiles = (theme) => {
 	const dirPath = path.resolve(__dirname, theme);
-	const themeName = path.basename(theme);
+	let themeName = path.basename(theme);
+	if (themeName == '.') {
+		themeName = 'app';
+	}
 
 	if (filesystem.existsSync(path.join(dirPath, conf.SRC, 'js', 'app.js'))) {
 		includes[`${themeName}`] = path.join(dirPath, conf.SRC, 'js', 'app.js');
@@ -44,10 +46,10 @@ const _addAppFiles = (theme) => {
 		);
 	}
 
-	modules.push(path.join(dirPath, 'client', 'src', 'js'));
-	modules.push(path.join(dirPath, 'client', 'src', 'scss'));
-	modules.push(path.join(dirPath, 'client', 'src', 'img'));
-	modules.push(path.join(dirPath, 'client', 'src', 'thirdparty'));
+	modules.push(path.join(dirPath, conf.SRC, 'js'));
+	modules.push(path.join(dirPath, conf.SRC, 'scss'));
+	modules.push(path.join(dirPath, conf.SRC, 'img'));
+	modules.push(path.join(dirPath, conf.SRC, 'thirdparty'));
 
 	const _getAllFilesFromFolder = function (dir, includeSubFolders = true) {
 		const dirPath = path.resolve(__dirname, dir);

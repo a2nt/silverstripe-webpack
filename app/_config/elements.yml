@@ -60,6 +60,8 @@ SilverStripe\CMS\Model\SiteTree:
 DNADesign\ElementalList\Model\ElementList:
   inline_editable: false
   default_global_elements: false
+  extensions:
+    - Site\Elements\ElementListExtension
   allowed_elements:
     - DNADesign\ElementalList\Model\ElementList
     - DNADesign\Elemental\Models\ElementContent
