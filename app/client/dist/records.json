@@ -206,7 +206,7 @@
       }
     }
   ],
-  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@5.0.1_webpack@5.16.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.1_node-sass@5.0.0+webpack@5.16.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./node_modules/.pnpm/@a2nt/ss-bootstrap-ui-webpack-boilerplate@2.8.3/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.map.scss": [
+  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@5.0.1_webpack@5.16.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.1_node-sass@5.0.0+webpack@5.16.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./node_modules/.pnpm/@a2nt/ss-bootstrap-ui-webpack-boilerplate@2.8.4/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.map.scss": [
     {
       "chunks": {
         "byName": {
@@ -222,11 +222,11 @@
       "modules": {
         "byIdentifier": {
           "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@5.0.1_webpack@5.16.0/node_modules/css-loader/dist/runtime/api.js": 183,
-          "./node_modules/.pnpm/css-loader@5.0.1_webpack@5.16.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.1_node-sass@5.0.0+webpack@5.16.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./node_modules/.pnpm/@a2nt/ss-bootstrap-ui-webpack-boilerplate@2.8.3/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.map.scss": 618
+          "./node_modules/.pnpm/css-loader@5.0.1_webpack@5.16.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/resolve-url-loader@3.1.2/node_modules/resolve-url-loader/index.js!./node_modules/.pnpm/sass-loader@10.1.1_node-sass@5.0.0+webpack@5.16.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./node_modules/.pnpm/@a2nt/ss-bootstrap-ui-webpack-boilerplate@2.8.4/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.map.scss": 338
         },
         "usedIds": [
           183,
-          618
+          338
         ]
       }
     }
@@ -286,12 +286,12 @@
   "modules": {
     "byIdentifier": {
       "./app/client/src/img|sync|nonrecursive|../../../../../../\\.(png|jpe?g|svg)$/": 999,
-      "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/app.js|fe8aac1e378d651dc5d78c7e975102f2": 286,
-      "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/SilverShop.Page.CheckoutPageController.js|f2a9d481ec45eead6046212b51920757": 669,
-      "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/Site.Controllers.MapElementController.js|2680eccefbcd3ae18c737394ed3eaff3": 590,
+      "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/app.js|f6b4f5ad9a4cc1899e534fbbf97f4783": 145,
+      "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/SilverShop.Page.CheckoutPageController.js|fae47322dac2dc65254f14cebdfe053c": 724,
+      "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/Site.Controllers.MapElementController.js|8bbd4b20c36292da496b019ac08b37c1": 958,
       "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/cms.js": 976,
-      "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/dev.js|75be0f5cd47af863b44068d155a3f67e": 716,
-      "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt/ss-bootstrap-ui-webpack-boilerplate@2.8.3/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/drivers/_google.track.external.links.js": 955,
+      "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/dev.js|da0cd41d785b0cb984e00105b7359333": 581,
+      "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt/ss-bootstrap-ui-webpack-boilerplate@2.8.4/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/drivers/_google.track.external.links.js": 120,
       "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/aos@2.3.4/node_modules/aos/dist/aos.js": 303,
       "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/bootstrap@4.6.0_jquery@3.5.1+popper.js@1.16.1/node_modules/bootstrap/js/dist/alert.js": 875,
       "./node_modules/.pnpm/babel-loader@8.2.2_f0c87bb7cbf8c08531ee428ecaa3548a/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/bootstrap@4.6.0_jquery@3.5.1+popper.js@1.16.1/node_modules/bootstrap/js/dist/button.js": 93,
@@ -326,11 +326,12 @@
       71,
       89,
       93,
+      120,
       121,
+      145,
       154,
       189,
       222,
-      286,
       303,
       305,
       314,
@@ -341,13 +342,12 @@
       479,
       487,
       497,
-      590,
+      581,
       594,
       609,
       616,
-      669,
       695,
-      716,
+      724,
       734,
       761,
       764,
@@ -355,8 +355,8 @@
       893,
       897,
       918,
-      955,
       956,
+      958,
       976,
       999
     ]

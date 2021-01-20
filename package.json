@@ -32,7 +32,7 @@
 	],
 	"dependencies": {
 		"@a2nt/meta-lightbox": "^2.7.3",
-		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.8.3",
+		"@a2nt/ss-bootstrap-ui-webpack-boilerplate": "^2.8.4",
 		"aos": "^2.3.4",
 		"bootbox": "^5.5.2",
 		"bootstrap": "^4.6.0",
