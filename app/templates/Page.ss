@@ -6,14 +6,16 @@
 </head>
 
 <body oncontextmenu="return false;"<% with $SiteConfig %> data-default-lng="$Longitude" data-default-lat="$Latitude"<% end_with %>>
-	<% include First %>
-
     <div class="wrapper">
+        <% include First %>
+
+        <div id="MetaLightboxApp"></div>
+
         <header id="Header">
             <% include Header %>
         </header>
 
-        <main id="MainContent" data-ajax-region="LayoutAjax">
+        <main id="MainContent" class="page-content" data-ajax-region="LayoutAjax">
             <% include MainContent Layout=$Layout %>
         </main>
     </div>

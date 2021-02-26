@@ -47,9 +47,6 @@ $MetaTags
 <link rel="preconnect" href="https://i9.ytimg.com" />
 <link rel="preconnect" href="https://s.ytimg.com" />
 
-<link rel="manifest" href="/manifest.json" />
-<meta name="swversion" content="{$SWVersion}" />
-
 <link rel="shortcut icon" type="image/x-icon" href="{$AbsoluteBaseURL}resources/app/client/dist/icons/favicon.ico" />
 <link rel="apple-touch-icon" href="{$AbsoluteBaseURL}resources/app/client/dist/icons/apple-touch-icon.png" />
 <link rel="apple-touch-icon-precomposed" href="{$AbsoluteBaseURL}resources/app/client/dist/icons/apple-touch-icon-precomposed.png" />
@@ -63,4 +60,9 @@ $MetaTags
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1" />
 
-<% include Prestyling %>
+<link rel="manifest" href="/manifest.json" />
+
+<meta name="swversion" content="{$SWVersion}" />
+<meta name="ping" content="/Security/ping" />
+<meta name="api_url" content="{$AbsoluteBaseURL}graphql" />
+<meta name="api_static_domain" content="{$AbsoluteBaseURL}" />

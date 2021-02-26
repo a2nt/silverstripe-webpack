@@ -53,9 +53,9 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
      */
     public static function loadCSS($path): void
     {
-        if (self::isActive()) {
+        /*if (self::isActive()) {
             return;
-        }
+        }*/
 
         Requirements::css(self::_getPath($path));
     }
@@ -124,10 +124,11 @@ class WebpackTemplateProvider implements TemplateGlobalProvider
         $cfg = self::config();
         return sprintf(
             '%s%s:%s/%s',
-            Director::protocol(),
+            ($cfg['HTTPS'] ? 'https://' : 'http://'),
             $cfg['HOSTNAME'],
             $cfg['PORT'],
             basename($path)
+            //Controller::join_links($cfg['APPDIR'], $cfg['SRC'], basename($path))
         );
     }
 

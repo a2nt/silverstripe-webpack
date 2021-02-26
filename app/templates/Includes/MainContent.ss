@@ -1,4 +1,4 @@
-<div class="maincontent maincontent-{$CSSClass} maincontent-{$URLSegment}<% if $URLSegment != 'home' %> maincontent-inner-page<% end_if %>">
+<div class="mainContent-page-{$CSSClass}">
 	<% if $HeroImageRecursive %>
 	    <div class="element element__hero-image">
 	        <div class="element-container">
@@ -7,25 +7,9 @@
 	    </div>
 	<% end_if %>
 
-	<% if $ParentID %>
-	    <div id="PageBreadcumbs">
+	<% if $URLSegment != 'home' %>
+	    <div id="PageBreadcumbs" class="element element__breadcrumbs">
 	        $Breadcrumbs
-	    </div>
-	<% else_if $URLSegment != 'home' %>
-	    <div id="PageBreadcumbs">
-	        <nav class="breadcrumbs $DefaultContainer" aria-label="breadcrumb">
-	            <ol class="breadcrumb">
-	                <li class="breadcrumb-item">
-	                    <a href="/">Home</a>
-	                </li>
-
-	                <li class="breadcrumb-item current active" aria-current="page">
-	                    <a href="$Link" class="breadcrumb-2">
-	                        $MenuTitle
-	                    </a>
-	                </li>
-	            </ol>
-	        </nav>
 	    </div>
 	<% end_if %>
 

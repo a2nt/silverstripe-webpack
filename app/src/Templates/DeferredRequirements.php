@@ -69,6 +69,17 @@ class DeferredRequirements implements TemplateGlobalProvider
                 .$config['jquery_version'].'/jquery.min.js'
             );
         }
+
+        if (!$config['noreact']) {
+            if (!Director::isDev()) {
+                self::loadJS('https://unpkg.com/react@17/umd/react.production.min.js');
+                self::loadJS('https://unpkg.com/react-dom@17/umd/react-dom.production.min.js');
+            } else {
+                self::loadJS('https://unpkg.com/react@17/umd/react.development.js');
+                self::loadJS('https://unpkg.com/react-dom@17/umd/react-dom.development.js');
+            }
+        }
+
         // App libs
         if (!$config['nofontawesome']) {
             $v = !isset($config['fontawesome_version']) || !$config['fontawesome_version']
@@ -81,19 +92,14 @@ class DeferredRequirements implements TemplateGlobalProvider
         self::loadCSS($mainTheme.'.css');
 
         // hot reloading
-        if (self::webpackActive()) {
+        /*if (self::webpackActive()) {
             self::loadJS('hot.js');
-        }
+        }*/
 
         self::loadJS($mainTheme.'.js');
 
         // Custom controller requirements
-	    $curr = Controller::curr();
-	    if(isset($curr->record, $curr->record['ClassName']) && !$class) {
-	    	$class = $curr->record['ClassName'];
-	    }
-        $curr_class = $class ?: get_class($curr);
-	    
+        $curr_class = $class ?: get_class(Controller::curr());
         if (isset($config['custom_requirements'][$curr_class])) {
             foreach ($config['custom_requirements'][$curr_class] as $file) {
                 if (strpos($file, '.css')) {
@@ -130,7 +136,7 @@ class DeferredRequirements implements TemplateGlobalProvider
     public static function loadCSS($css): void
     {
         $external = (mb_strpos($css, '//') === 0 || mb_strpos($css, 'http') === 0);
-        if ($external || (self::getDeferred() && !self::webpackActive())) {
+        if ($external) {
             self::$css[] = $css;
         } else {
             WebpackTemplateProvider::loadCSS($css);

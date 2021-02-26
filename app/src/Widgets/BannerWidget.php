@@ -3,10 +3,11 @@
 
 namespace Site\Widgets;
 
+use Sheadawson\Linkable\Forms\LinkField;
+use Sheadawson\Linkable\Models\Link;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Widgets\Model\Widget;
-use Site\Extensions\ElementImageWidget;
 
 if (!class_exists(Widget::class)) {
     return;
@@ -22,29 +23,24 @@ class BannerWidget extends Widget
 
     private static $has_one = [
         'Image' => Image::class,
+        'Link' => Link::class,
     ];
 
     private static $owns = [
         'Image',
-    ];
-
-    private static $extensions = [
-        ElementImageWidget::class,
+        'Link',
     ];
 
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
 
-        $fields->push(UploadField::create('Image', 'Image')
+        $fields->push(UploadField::create('Image', 'Image (minimal width 301px)')
                 ->setAllowedFileCategories(['image/supported']));
 
-        return $fields;
-    }
+        $fields->push(LinkField::create('LinkID', 'Link'));
 
-    public function getSibling()
-    {
-        return false;
+        return $fields;
     }
 
     private $_random;
@@ -59,12 +55,12 @@ class BannerWidget extends Widget
 
     public function onBeforeWrite()
     {
-        $title = $this->getField('Title');
-        $img = $this->Image();
-        if (!$title && $img) {
-            $this->setField('Title', $img->getTitle());
-        }
+    	$title = $this->getField('Title');
+    	$img = $this->Image();
+    	if(!$title && $img) {
+    		$this->setField('Title', $img->getTitle());
+	    }
 
-        parent::onBeforeWrite();
+	    parent::onBeforeWrite();
     }
 }

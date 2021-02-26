@@ -2,7 +2,7 @@
     <nav>
         <ul class="nav flex-column">
         	<% with $Page.Level(1) %>
-        	    <li class="nav-item-level1 nav-item {$CSSClass} $ExtraClass <% if $isCurrent || $isSection %> active<% end_if %>">
+        	    <li class="nav-item-level1 nav-item {$CSSClass} $ExtraClass">
 			        <b class="nav-link">
 			            $MenuTitle.XML
 			            <% if $isCurrent || $isSection %><i class="sr-only">(current)</i><% end_if %>

@@ -1,5 +1,5 @@
 ---
-Name: webapp-files
+Name: webapp-base-files
 ---
 SilverStripe\Blog\Model\BlogPost:
     featured_images_directory: 'blog-posts'

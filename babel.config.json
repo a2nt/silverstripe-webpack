@@ -1,0 +1,28 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "node": "6.10",
+                    "esmodules": true
+                }
+            }
+        ],
+        [
+            "@babel/preset-react",
+            {
+                "pragma": "dom", // default pragma is React.createElement (only in classic runtime)
+                "pragmaFrag": "DomFrag", // default is React.Fragment (only in classic runtime)
+                "throwIfNamespace": false, // defaults to true
+                "runtime": "classic" // defaults to classic
+                // "importSource": "custom-jsx-library" // defaults to react (only in automatic runtime)
+            }
+        ]
+    ],
+    "plugins": [
+        "@babel/plugin-syntax-top-level-await",
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-syntax-jsx"
+    ]
+}

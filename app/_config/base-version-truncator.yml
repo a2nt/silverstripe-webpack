@@ -1,5 +1,5 @@
 ---
-Name: 'webapp-version-truncator'
+Name: 'webapp-base-version-truncator'
 ---
 Axllent\VersionTruncator\VersionTruncator:
   keep_versions: 4           # how many (published) versions of each page to keep

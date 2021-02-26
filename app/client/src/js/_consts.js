@@ -15,7 +15,7 @@ const CONSTS = {
     'xxl',
     'xxxl',
   ],
-  MAP_DRIVER: MAP_DRIVER
+  MAP_DRIVER,
 };
 
 export default CONSTS;

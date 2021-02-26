@@ -59,13 +59,18 @@ class PageController extends ContentController
         return $this->render();
     }
 
+    public function setAction($action)
+    {
+    	$this->action = $action;
+    }
+
     public function ElementalArea()
     {
-        if ($this->CurrentElement() || $this->getAction() !== 'index') {
-            return false;
-        }
+    	if(!$this->getAction() || $this->getAction() === 'index') {
+    		return ElementalArea::get()->byID($this->getField('ElementalAreaID'));
+	    }
 
-        return ElementalArea::get()->byID($this->getField('ElementalAreaID'));
+    	return false;
     }
 
     public function CurrentElement()

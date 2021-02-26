@@ -1,12 +1,19 @@
 ---
-Name: 'webapp-themes'
+Name: webapp-templates-themes
+After:
+  - webapp-options-elements
 ---
 SilverStripe\View\SSViewer:
-  source_file_comments: false
+  source_file_comments: true
   themes:
     - '$public'
     - '$default'
 
+Site\Elements\SliderElement:
+  slide_width: 2140
+  slide_height: 700
+
 # 2x container width to automatically resize images for 2K display
 Site\Extensions\ElementRows:
   container_max_width: 2280
+  column_class: 'col-block col-md'

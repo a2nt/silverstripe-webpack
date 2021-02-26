@@ -2,7 +2,7 @@
     <div class="image-element__image<% if $Resize %><% if $Height %> height{$Height}<% end_if %><% if $Width %> width{$Width}<% end_if %><% end_if %>">
         <img
             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            data-lazy-src="$ImageResized.URL" class="img-responsive" alt="$Title"
+            data-lazy-src="$ImageResized.URL" class="img-responsive" alt="$Title.ATT"
         />
     </div>
 <% end_if %>
@@ -18,7 +18,7 @@
 <% end_if %>
 
 <% if $ImageLink %>
-    <a href="$ImageLink.LinkURL" class="stretched-link">
+    <a href="$ImageLink.LinkURL" class="graphql-page stretched-link">
         <b class="sr-only">$ImageLink.Title</b>
     </a>
 <% end_if %>

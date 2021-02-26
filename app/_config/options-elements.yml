@@ -1,14 +1,10 @@
 ---
-Name: webapp-elemental
+Name: webapp-options-elements
 After:
   - elemental
   - elemental-list
   - elementalvirtual
 ---
-Site\Elements\SliderElement:
-  slide_width: 2140
-  slide_height: 700
-
 Page:
   searchable_elements:
     - DNADesign\Elemental\Models\ElementContent
@@ -17,7 +13,6 @@ Page:
   extensions:
     - DNADesign\Elemental\TopPage\SiteTreeExtension
     - DNADesign\Elemental\Extensions\ElementalPageExtension
-    - Site\Extensions\PageFluentExtension
 
 SilverStripe\CMS\Controllers\ContentController:
   extensions:
@@ -29,14 +24,12 @@ SilverStripe\CMS\Controllers\ContentController:
 DNADesign\Elemental\Models\ElementalArea:
   extensions:
     #- DNADesign\Elemental\TopPage\DataExtension
-    - DNADesign\Elemental\TopPage\FluentExtension
     - Site\Extensions\ElementalArea
 
 DNADesign\Elemental\Models\BaseElement:
   default_global_elements: true
   extensions:
     #- DNADesign\Elemental\TopPage\DataExtension
-    - DNADesign\Elemental\TopPage\FluentExtension
     - Site\Extensions\ElementRows
 
 SilverStripe\CMS\Model\SiteTree:
@@ -56,6 +49,7 @@ SilverStripe\CMS\Model\SiteTree:
     - DNADesign\ElementalVirtual\Model\ElementVirtual
     - Site\Elements\AccordionElement
     - Site\Elements\CustomSnippetElement
+    - Site\Elements\InstagramElement
 
 DNADesign\ElementalList\Model\ElementList:
   inline_editable: false
@@ -75,6 +69,8 @@ DNADesign\ElementalList\Model\ElementList:
     - Site\Elements\BlockElement
     - Site\Elements\MapElement
     - Site\Elements\AccordionElement
+    - Site\Elements\CustomSnippetElement
+    - Site\Elements\InstagramElement
   styles:
     whiteframe: 'White Frame'
     noframe: 'No Frame'

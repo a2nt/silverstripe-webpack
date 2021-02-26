@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import $ from 'jquery';
+/*import $ from 'jquery';
 import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_events';
 
 // Mapbox API
@@ -59,4 +59,4 @@ const LocationUI = (($) => {
 
 })($);
 
-export default LocationUI;
+export default LocationUI;*/

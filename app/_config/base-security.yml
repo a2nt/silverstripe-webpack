@@ -1,5 +1,5 @@
 ---
-Name: 'webapp-security'
+Name: 'webapp-base-security'
 After: 'framework/*, cms/*, security_baseline'
 ---
 SilverStripe\Core\Injector\Injector:
@@ -11,6 +11,12 @@ SilverStripe\Core\Injector\Injector:
 Except:
   environment: dev
 ---
+# Secure cookies
+SilverStripe\Control\Session:
+  cookie_secure: true
+  strict_user_agent_check: false
+  timeout: 604800
+
 SilverStripe\Forms\PasswordField:
   autocompleate: false
 

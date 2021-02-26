@@ -4,17 +4,10 @@
 <%-- No JS enabled notice --%>
 <noscript><div class="main-bn"><%t Page.JAVASCRIPTREQUIRED 'Please, enable javascript.' %></div></noscript>
 
-<%-- Loading Spinner --%>
-<div id="PageLoading">
-    <div class="loading-spinner">
-        <img class="logo" src="{$ResourcesURL('logo.svg')}" width="200" alt="{$SiteConfig.Title}" /><br/>
-        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-        <br/><%t Page.LOADINGTEXT 'LOADING ..' %>
-    </div>
-</div>
+<% include LoadingSpinner %>
 
 
-<% if $isDev || $WebpackActive %>
+<%-- if $isDev || $WebpackActive %>
 	<div id="DevUtilities">
 		$DeferedCSS('app_dev.css')
 		$DeferedJS('app_dev.js')
@@ -23,7 +16,7 @@
 		</div>
 		<div class="original d-none"></div>
 	</div>
-<% end_if %>
+<% end_if --%>
 
 <%-- Site Wide Alert Message --%>
-<% include SiteWideMessage %>
+<% include Alerts %>

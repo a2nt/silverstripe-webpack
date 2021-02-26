@@ -1,5 +1,5 @@
 ---
-Name: webapp-dev-errors
+Name: webapp-base-logs-dev
 Only:
   environment: dev
 ---
@@ -15,7 +15,7 @@ SilverStripe\Core\Injector\Injector:
       Formatter: '%$SilverStripe\Logging\DetailedErrorFormatter'
       CLIFormatter: '%$SilverStripe\Logging\DetailedErrorFormatter'
 ---
-Name: webapp-live-errors
+Name: webapp-base-logs-live
 Except:
   environment: dev
 ---

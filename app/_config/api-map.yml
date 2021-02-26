@@ -1,5 +1,5 @@
 ---
-Name: 'webapp-map'
+Name: webapp-api-map
 After:
   - 'silverstripe-mapboxfield'
   - 'addressable'

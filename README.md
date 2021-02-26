@@ -1,5 +1,4 @@
-# silverstripe-webpack SS4.\*
-
+# tony
 ## Simple WebPack boiler plate for SilverStripe
 
 Checkout files at /app/ folder for details
@@ -75,7 +74,7 @@ php -d memory_limit=-1 composer.phar update --ignore-platform-reqs
 -   Folder /app/client/src/js/types is used to create page specific JS (just create JS file there and it will be compiled)
 -   Folder /app/clent/src/scss/types is used to create page specific CSS (just create SCSS file there and it will be compiled)
 -   Automatic linting (JS+SCSS)
--   Bootstrap 4 included by default
+-   Bootstrap 5 included by default
 -   Font-Awesome included by default
 -   Deferred requirements loading
 -   Requirements auto-loading
@@ -115,8 +114,3 @@ php -d memory_limit=-1 composer.phar update --ignore-platform-reqs
 -   yarn build - to build production assets
 -   yarn lint:check - to check SCSS and JS linting
 -   yarn lint:fix - to fix SCSS and JS linting automatically
-
-### TODO:
-
--   Planktos torrent auto-generation for static files (https://github.com/xuset/planktos#----------planktos)
--   ServiceWorker auto-generation

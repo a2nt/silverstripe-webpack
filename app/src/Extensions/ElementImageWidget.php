@@ -27,16 +27,16 @@ class ElementImageWidget extends DataExtension
     ];
 
     private static $available_widths = [
-        '300' => 'Small (300px)',
+    	'300' => 'Small (300px)',
         '400' => 'Medium (400px)',
         '600' => 'Big (600px)',
     ];
 
     private static $db = [
         'Resize' => 'Boolean(1)',
-        'ManualWidth' => 'Boolean(0)',
+	    'ManualWidth' => 'Boolean(0)',
         'ImageHeight' => 'Float',
-        'ImageWidth' => 'Float',
+	    'ImageWidth' => 'Float',
         'Content' => 'HTMLText',
     ];
 
@@ -48,42 +48,44 @@ class ElementImageWidget extends DataExtension
     {
         parent::updateCMSFields($fields);
 
-        $fields->removeByName(['ImageLinkID', 'Resize']);
-
-        $fields->push(LinkField::create('ImageLinkID', 'Link'));
+        $fields->insertBefore(
+            'Image',
+            LinkField::create('ImageLinkID', 'Link')
+        );
 
         $this->owner->ImageHeight = $this->getHeight();
 
         $heights = Config::inst()->get(__CLASS__, 'available_heights');
         $widths = Config::inst()->get(__CLASS__, 'available_widths');
 
-        $fields->push(CheckboxField::create(
+        $fields->replaceField('Resize', CheckboxField::create(
             'Resize',
             'Would you like to scale image?'
         ));
 
         if (count($heights)) {
-            $fields->removeByName(['ManualWidth','ImageWidth', 'ImageHeight']);
-            $fields->push(
-                CompositeField::create(
-                    DropdownField::create(
-                        'ImageHeight',
-                        'Image Height',
-                        $heights,
-                        $this->getHeight()
-                    )
-                        ->setEmptyString('(auto)')
-                        ->displayIf('Resize')->isChecked()->end(),
-                    CheckboxField::create('ManualWidth', 'Set Width Manually')
-                        ->displayIf('Resize')->isChecked()->end(),
-                    DropdownField::create(
-                        'ImageWidth',
-                        'Image Width',
-                        $widths
-                    )
-                        ->setEmptyString('(auto)')
-                        ->displayIf('ManualWidth')->isChecked()->end()
-                )
+        	$fields->removeByName(['ManualWidth','ImageWidth',]);
+            $fields->replaceField(
+                'ImageHeight',
+	                CompositeField::create(
+		                DropdownField::create(
+		                    'ImageHeight',
+		                    'Image Height',
+		                    $heights,
+		                    $this->getHeight()
+		                )
+		                    ->setEmptyString('(auto)')
+	                        ->displayIf('Resize')->isChecked()->end(),
+		                CheckboxField::create('ManualWidth', 'Set Width Manually')
+	                        ->displayIf('Resize')->isChecked()->end(),
+		                DropdownField::create(
+		                    'ImageWidth',
+		                    'Image Width',
+		                    $widths
+		                )
+		                    ->setEmptyString('(auto)')
+		                    ->displayIf('ManualWidth')->isChecked()->end()
+	                )
             );
         } else {
             $fields->dataFieldByName('ImageHeight')
@@ -115,10 +117,10 @@ class ElementImageWidget extends DataExtension
 
     public function getWidth()
     {
-        $obj = $this->owner;
+    	$obj = $this->owner;
         return $obj->getField('ManualWidth') && $obj->getField('ImageWidth')
-            ? $obj->getField('ImageWidth')
-            : $obj->getColumnWidthRecursive();
+	        ? $obj->getField('ImageWidth')
+	        : $obj->getColumnWidthRecursive();
     }
 
     public function getHeight()
@@ -137,16 +139,5 @@ class ElementImageWidget extends DataExtension
         }
 
         return 0;
-    }
-
-    public function onBeforeWrite()
-    {
-        $title = $this->owner->getField('Title');
-        $img = $this->owner->Image();
-        if (!$title && $img) {
-            $this->owner->setField('Title', $img->getTitle());
-        }
-
-        parent::onBeforeWrite();
     }
 }

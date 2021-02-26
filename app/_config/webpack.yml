@@ -1,14 +1,21 @@
+# Name: webapp-webpack
 # that's important to place this file into /app/_config/webpack.yml
 # with all configuration variables presented
 # Cuz WebPack compiling script use it to set configuration
 
 Site\Templates\WebpackTemplateProvider:
-  APPDIR: app
-  THEMESDIR: themes
-  HOSTNAME: localhost
+  APPDIR: './app'
+  THEMESDIR: './themes'
+  HOSTNAME: 127.0.0.1
   PORT: 3000
   SRC: client/src
   DIST: client/dist
   TYPESJS: client/src/js/types
   TYPESSCSS: client/src/scss/types
   webp: false
+  NODE_ENV: production #production,development
+  HTTPS: true
+  injectClient: true
+  GRAPHQL_URL: '/graphql'
+  GRAPHQL_API_KEY: 'LgPaRkVPYa8IY7x3AjbLC8wx6oPPSlO01yPflFXecvQ'
+  #STATIC_URL: 'http://127.0.0.1'

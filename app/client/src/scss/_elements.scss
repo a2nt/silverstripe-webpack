@@ -1,5 +1,7 @@
+@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_components/_ui.elemental';
+
 /* style elements here */
-.element {
+/*.element {
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -200,3 +202,19 @@
 		width: 100%;
 	}
 }
+
+.site__elements__instagramelement {
+	.jsInstagramFeed-item {
+		flex: 25%;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+	}
+}
+*/

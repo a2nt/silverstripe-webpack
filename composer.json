@@ -48,11 +48,13 @@
         "showpro/silverstripe-seo-images": "^1.0",
         "endroid/qr-code": "^3.9",
         "jonom/focuspoint": "^3.1",
-        "restruct/silverstripe-security-baseline": "*"
+        "restruct/silverstripe-security-baseline": "*",
+        "silverstripe/graphql": "^3.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
-        "lekoala/silverstripe-debugbar": "dev-master"
+        "lekoala/silverstripe-debugbar": "dev-master",
+        "silverstripe/graphql-devtools": "1.x-dev"
     },
     "repositories": [
         {

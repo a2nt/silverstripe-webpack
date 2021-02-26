@@ -1,5 +1,5 @@
 ---
-Name: 'webapp-payment'
+Name: 'webapp-api-payment'
 ---
 SilverStripe\Omnipay\Model\Payment:
   allowed_gateways:

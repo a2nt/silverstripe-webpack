@@ -11,7 +11,7 @@
         <div class="elemental-area">
             <% if $ElementalArea.Elements.Count %>
                 $ElementalArea
-            <% else %>
+            <% else_if $Content %>
                 <div class="element element_content_field dnadesign__elemental__models__elementcontent">
                     <div class="element-container {$DefaultContainer}">
                         <% include DNADesign\Elemental\Models\ElementContent HTML=$Content %>

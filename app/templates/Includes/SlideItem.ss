@@ -33,7 +33,8 @@
 <% end_if %>
 
 <% if $Content || $Headline || $Description || $SlideLinkID %>
-    <div class="carousel-caption container">
+<div class="container">
+    <div class="carousel-caption">
         <div class="carousel-caption-container typography">
             <% if $Headline %><h2 class="carousel-title">$Headline</h2><% end_if %>
 
@@ -57,4 +58,5 @@
             <% end_if %>
         </div>
     </div>
+</div>
 <% end_if %>

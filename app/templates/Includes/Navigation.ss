@@ -1,18 +1,18 @@
-<nav id="{$NavID}" class="navbar navbar-expand-lg dropdown-hover">
+<nav id="{$NavID}" class="navbar navbar-expand-lg">
     <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#{$NavID}Content"
-            aria-controls="{$NavID}Content"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-    >
-        <i class="fas fa-bars"></i>
-    </button>
+		class="navbar-toggler"
+		type="button"
+		data-bs-toggle="collapse"
+		data-bs-target="#{$NavID}Content"
+		aria-controls="{$NavID}Content"
+		aria-expanded="false"
+		aria-label="Toggle navigation"
+	>
+		<i class="navbar-toggler-icon fa fas fa-bars"></i>
+	</button>
 
-    <div class="collapse navbar-collapse" id="{$NavID}Content">
-        <ul class="navbar-nav mr-auto w-100 justify-content-between">
+    <div id="{$NavID}Content" class="collapse navbar-collapse">
+        <ul class="navbar-nav">
             <% loop $Navigation %>
                 <% include NavItem %>
             <% end_loop %>

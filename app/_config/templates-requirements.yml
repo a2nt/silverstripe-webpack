@@ -1,12 +1,13 @@
 ---
-Name: 'webapp-requirements'
+Name: webapp-templates-requirements
 ---
 Site\Templates\DeferredRequirements:
-  nojquery: false
   nofontawesome: false
   version: false
   static_domain: false
   deferred: true
+  noreact: false
+  nojquery: true
   jquery_version: '3.4.1'
 
 SilverStripe\FontAwesome\FontAwesomeField:
