@@ -2,7 +2,7 @@
     <div class="image-element__image<% if $Resize %><% if $Height %> height{$Height}<% end_if %><% if $Width %> width{$Width}<% end_if %><% end_if %>">
         <img
             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            data-lazy-src="$ImageResized.URL" class="img-responsive" alt="$Title.ATT"
+            data-lazy-src="$ImageResized.URL" class="img-responsive" alt="$Title"
         />
     </div>
 <% end_if %>

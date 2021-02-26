@@ -44,6 +44,27 @@ class BannerWidget extends Widget
 
     public function getSibling()
     {
-    	return false;
+        return false;
+    }
+
+    private $_random;
+    public function Random()
+    {
+        if (!$this->_random) {
+            $this->_random = self::get()->filter('Enabled', true)->sort('RAND()')->first();
+        }
+
+        return $this->_random;
+    }
+
+    public function onBeforeWrite()
+    {
+        $title = $this->getField('Title');
+        $img = $this->Image();
+        if (!$title && $img) {
+            $this->setField('Title', $img->getTitle());
+        }
+
+        parent::onBeforeWrite();
     }
 }
