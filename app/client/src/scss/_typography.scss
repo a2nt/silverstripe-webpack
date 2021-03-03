@@ -1,26 +1,31 @@
 // Add your site-wide, but not content editor typography styling
 
 .bg-dark {
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	.h1,
-	.h2,
-	.h3,
-	.h4,
-	.h5,
-	.h6,
-	.typography,
-	a {
-		color: $white;
-	}
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    .typography,
+    a {
+        color: $white;
+    }
 }
 
 .typography {
-	@include clearfix;
+    @include clearfix;
 
-	@import './types/editor';
+    @import './types/editor';
+
+    img {
+        border: 0;
+    }
 }

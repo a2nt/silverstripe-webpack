@@ -9,27 +9,7 @@ SilverStripe\Control\Director:
 SilverStripe\GraphQL\Controller:
   cors:
     Enabled: true
-    Allow-Origin:
-      - '127.0.0.1:3001'
-      - 'localhost:3001'
-      - 'http://127.0.0.1'
-      - 'http://127.0.0.1:3001'
-      - 'http://127.0.0.1:3000'
-      - 'https://127.0.0.1'
-      - 'https://127.0.0.1:3001'
-      - 'https://127.0.0.1:3000'
-      - 'http://localhost'
-      - 'http://localhost:3001'
-      - 'http://localhost:3000'
-      - 'https://localhost'
-      - 'https://localhost:3001'
-      - 'https://localhost:3000'
-      - 'twma.pro'
-      - 'tony.twma.pro'
-      - 'http://twma.pro'
-      - 'https://twma.pro'
-      - 'http://tony.twma.pro'
-      - 'https://tony.twma.pro'
+    Allow-Origin: '*'
     Allow-Headers: 'Authorization, Content-Type, Content-Language, apikey'
     Allow-Methods: 'GET, PUT, DELETE, OPTIONS, POST'
     #Allow-Credentials: 'true'

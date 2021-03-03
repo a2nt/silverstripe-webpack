@@ -18,7 +18,7 @@ use SilverStripe\Security\Member;
 class SocialExtension extends DataExtension
 {
     private static $db = [
-        'PhoneNumber' => 'Varchar(255)',
+        //'PhoneNumber' => 'Varchar(255)',
     ];
 
     private static $has_one = [
@@ -28,7 +28,7 @@ class SocialExtension extends DataExtension
         'Instagram' => Link::class,
         'Twitter' => Link::class,
         'PublicEmail' => Link::class,
-        //'PhoneNumber' => Link::class,
+        'PhoneNumber' => Link::class,
     ];
 
     public function updateCMSFields(FieldList $fields)
@@ -50,11 +50,10 @@ class SocialExtension extends DataExtension
         $fields->findOrMakeTab('Root.Social');
 
         $fields->addFieldsToTab('Root.Social', [
-            TextField::create('PhoneNumber'),
             LinkField::create('PublicEmailID', 'Public Email')
                 ->setAllowedTypes(['Email']),
-            /*LinkField::create('PhoneNumberID', 'Phone Number')
-                ->setAllowedTypes(['Phone']),*/
+            LinkField::create('PhoneNumberID', 'Phone Number')
+                ->setAllowedTypes(['Phone']),
         ]);
 
         $fields->addFieldsToTab('Root.Social', $linkFields);
