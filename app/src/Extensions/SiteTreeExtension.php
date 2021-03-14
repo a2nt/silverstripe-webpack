@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\ORM\DataExtension;

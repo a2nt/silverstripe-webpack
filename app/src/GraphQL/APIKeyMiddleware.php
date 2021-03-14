@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Site\GraphQL;
+namespace App\GraphQL;
 
 
 use GraphQL\Type\Schema;
 use SilverStripe\GraphQL\Middleware\QueryMiddleware;
-use Site\Templates\WebpackTemplateProvider;
+use App\Templates\WebpackTemplateProvider;
 
 class APIKeyMiddleware implements QueryMiddleware
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 
 use Sheadawson\Linkable\Forms\EmbeddedObjectField;

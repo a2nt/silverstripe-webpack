@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use A2nt\SilverStripeMapboxField\MapboxField;
 use Innoweb\Sitemap\Pages\SitemapPage;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Widgets;
+namespace App\Widgets;
 
 use DNADesign\Elemental\Controllers\ElementalAreaController;
 use DNADesign\Elemental\Forms\ElementalAreaConfig;

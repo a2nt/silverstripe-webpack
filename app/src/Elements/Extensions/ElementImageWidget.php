@@ -6,7 +6,7 @@
  * Time: 1:46 AM
  */
 
-namespace Site\Extensions;
+namespace App\Elements\Extensions;
 
 use Dynamic\Elements\Image\Elements\ElementImage;
 use Sheadawson\Linkable\Forms\LinkField;

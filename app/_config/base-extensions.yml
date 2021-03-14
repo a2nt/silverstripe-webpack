@@ -2,52 +2,46 @@
 Name: webapp-base-extensions
 ---
 # Basic extensions
-
 SilverStripe\Admin\LeftAndMain:
   extensions:
-    - Site\Extensions\LeftAndMainExtension
+    - App\Extensions\LeftAndMainExtension
 
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
-    - Site\Extensions\SocialExtension
-    - Site\Extensions\SiteConfigExtension
-    - Site\Extensions\NotificationsExtension
+    - App\Extensions\SocialExtension
+    - App\Extensions\SiteConfigExtension
+    - App\Extensions\NotificationsExtension
 
 SilverStripe\CMS\Model\SiteTree:
   extensions:
-    - Site\Extensions\SiteTreeExtension
+    - App\Extensions\SiteTreeExtension
 
 Sheadawson\Linkable\Models\EmbeddedObject:
   extensions:
-    - Site\Extensions\EmbeddedObjectExtension
+    - App\Extensions\EmbeddedObjectExtension
 
 SilverStripe\Assets:
   extensions:
-    - Site\Extensions\ImageExtension
+    - App\Extensions\ImageExtension
 
 Dynamic\FlexSlider\Model\SlideImage:
   extensions:
-    - Site\Extensions\SlideImageExtension
+    - App\Extensions\SlideImageExtension
 
 SilverStripe\Core\Injector\Injector:
   #SilverStripe\UserForms\Model\UserDefinedForm:
-  #  class: Site\Extensions\UserDefinedForm_HiddenClass
+  #  class: App\Extensions\UserDefinedForm_HiddenClass
   Sheadawson\Linkable\Forms\EmbeddedObjectField:
-    class: Site\Extensions\EmbedObjectField
+    class: App\Extensions\EmbedObjectField
   SilverStripe\Forms\CompositeField:
-    class: Site\Extensions\CompositeFieldExtension
-
-# User Forms module
-SilverStripe\UserForms\Model\UserDefinedForm:
-  show_in_sitetree: false
-  can_be_root: false
-  extensions:
-    - Site\Extensions\UserDefinedFormExtension
+    class: App\Extensions\CompositeFieldExtension
 
 SilverStripe\UserForms\Form\UserForm:
   extensions:
-    - Site\Extensions\PlaceholderFormExtension
+    - App\Extensions\PlaceholderFormExtension
 
-DNADesign\ElementalUserForms\Model\ElementForm:
+Page:
+  searchable_objects:
+    - App\Models\TeamMember
   extensions:
-    - Site\Extensions\UserDefinedFormExtension
+    - DNADesign\Elemental\Extensions\ElementalPageExtension

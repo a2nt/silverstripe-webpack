@@ -6,7 +6,7 @@
  * Time: 12:55 PM
  */
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 
 use SilverStripe\Core\Extension;

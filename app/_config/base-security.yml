@@ -4,9 +4,9 @@ After: 'framework/*, cms/*, security_baseline'
 ---
 SilverStripe\Core\Injector\Injector:
   SilverStripe\Security\MemberAuthenticator\LostPasswordHandler:
-    class: Site\Extensions\LostPasswordHandlerExtension
+    class: App\Extensions\LostPasswordHandlerExtension
   SilverStripe\Security\MemberAuthenticator\MemberLoginForm:
-    class: Site\Extensions\SiteMemberLoginForm
+    class: App\Extensions\SiteMemberLoginForm
 ---
 Except:
   environment: dev

@@ -5,7 +5,7 @@
     <div class="row">
     <% loop $PostsList %>
         <div class="col-sm-4">
-            <% include BlogPostInfo %>
+            <% include SilverStripe\Blog\Includes\BlogPostInfo %>
         </div>
     <% end_loop %>
     </div>

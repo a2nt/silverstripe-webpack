@@ -3,7 +3,7 @@
 # with all configuration variables presented
 # Cuz WebPack compiling script use it to set configuration
 
-Site\Templates\WebpackTemplateProvider:
+App\Templates\WebpackTemplateProvider:
   APPDIR: './app'
   THEMESDIR: './themes'
   HOSTNAME: 127.0.0.1

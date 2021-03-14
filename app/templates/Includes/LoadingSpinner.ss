@@ -28,8 +28,8 @@
 		font-size: 14px;
 		margin: 0;
 		padding: 0;
-		background: #fff;
-		color: #333;
+		background: #1c2947;
+		color: #fff;
 		overflow-x: hidden;
 	}
 	@media (min-width: 2000px) {
@@ -52,8 +52,8 @@
 		justify-content: center;
 		z-index: 2000;
 		will-change: opacity;
-		background: #fff;
-		color: #212529;
+		background: #1c2947;
+		color: #fff;
 	}
 	#PageLoading .logo {
 		width:100px;
@@ -62,7 +62,7 @@
 	#PageLoading .tagline {
 		margin-top:1rem;
 		margin-bottom:1rem;
-		color: #212529;
+		color: #fff;
 		font-size:1.8rem;
 		font-size: 4vh;
 		letter-spacing: .25em;

@@ -6,7 +6,7 @@
  * Time: 2:55 AM
  */
 
-namespace Site\Models;
+namespace App\Models;
 
 use Dynamic\FlexSlider\Model\SlideImage;
 use Sheadawson\Linkable\Forms\LinkField;

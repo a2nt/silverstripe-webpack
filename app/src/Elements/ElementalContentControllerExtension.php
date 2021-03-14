@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Elements;
+namespace App\Elements;
 
 
 use DNADesign\Elemental\Models\BaseElement;

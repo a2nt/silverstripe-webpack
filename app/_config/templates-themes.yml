@@ -9,11 +9,11 @@ SilverStripe\View\SSViewer:
     - '$public'
     - '$default'
 
-Site\Elements\SliderElement:
+App\Elements\SliderElement:
   slide_width: 2140
   slide_height: 700
 
 # 2x container width to automatically resize images for 2K display
-Site\Extensions\ElementRows:
+App\Elements\Extensions\ElementRows:
   container_max_width: 2280
   column_class: 'col-block col-md'

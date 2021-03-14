@@ -4,33 +4,44 @@ After:
   - elemental
   - elemental-list
   - elementalvirtual
+  - webapp-base-extensions
 ---
+
+# User Forms module
+DNADesign\ElementalUserForms\Model\ElementForm:
+  extensions:
+    - App\Elements\Extensions\UserDefinedFormExtension
+
+SilverStripe\UserForms\Model\UserDefinedForm:
+  show_in_sitetree: false
+  can_be_root: false
+  extensions:
+    - App\Elements\Extensions\UserDefinedFormExtension
+##################
+
 Page:
   searchable_elements:
     - DNADesign\Elemental\Models\ElementContent
-  searchable_objects:
-    - Site\Models\TeamMember
   extensions:
-    - DNADesign\Elemental\TopPage\SiteTreeExtension
     - DNADesign\Elemental\Extensions\ElementalPageExtension
 
 SilverStripe\CMS\Controllers\ContentController:
   extensions:
     - DNADesign\Elemental\Extensions\ElementalContentControllerExtension
-    - Site\Elements\ElementalContentControllerExtension
+    - App\Elements\ElementalContentControllerExtension
   url_handlers:
     'element/$ID!': 'handleElement'
 
 DNADesign\Elemental\Models\ElementalArea:
   extensions:
     #- DNADesign\Elemental\TopPage\DataExtension
-    - Site\Extensions\ElementalArea
+    - App\Elements\Extensions\ElementalArea
 
 DNADesign\Elemental\Models\BaseElement:
   default_global_elements: true
   extensions:
     #- DNADesign\Elemental\TopPage\DataExtension
-    - Site\Extensions\ElementRows
+    - App\Elements\Extensions\ElementRows
 
 SilverStripe\CMS\Model\SiteTree:
   allowed_elements:
@@ -41,21 +52,21 @@ SilverStripe\CMS\Model\SiteTree:
     - Dynamic\Elements\Blog\Elements\ElementBlogPosts
     - Dynamic\Elements\Oembed\Elements\ElementOembed
     - Dynamic\Elements\Elements\ElementTestimonials
-    #- Site\Elements\TeamMembersElement
-    - Site\Elements\SliderElement
-    - Site\Elements\BlockElement
-    - Site\Elements\MapElement
-    #- Site\Elements\AccordionElement
+    #- App\Elements\TeamMembersElement
+    - App\Elements\SliderElement
+    - App\Elements\BlockElement
+    - App\Elements\MapElement
+    #- App\Elements\AccordionElement
     - DNADesign\ElementalVirtual\Model\ElementVirtual
-    - Site\Elements\AccordionElement
-    - Site\Elements\CustomSnippetElement
-    - Site\Elements\InstagramElement
+    - App\Elements\AccordionElement
+    - App\Elements\CustomSnippetElement
+    - App\Elements\InstagramElement
 
 DNADesign\ElementalList\Model\ElementList:
   inline_editable: false
   default_global_elements: false
   extensions:
-    - Site\Elements\ElementListExtension
+    - App\Elements\ElementListExtension
   allowed_elements:
     - DNADesign\ElementalList\Model\ElementList
     - DNADesign\Elemental\Models\ElementContent
@@ -64,18 +75,18 @@ DNADesign\ElementalList\Model\ElementList:
     - Dynamic\Elements\Blog\Elements\ElementBlogPosts
     - Dynamic\Elements\Oembed\Elements\ElementOembed
     - Dynamic\Elements\Elements\ElementTestimonials
-    #- Site\Elements\TeamMembersElement
-    - Site\Elements\SliderElement
-    - Site\Elements\BlockElement
-    - Site\Elements\MapElement
-    - Site\Elements\AccordionElement
-    - Site\Elements\CustomSnippetElement
-    - Site\Elements\InstagramElement
+    #- App\Elements\TeamMembersElement
+    - App\Elements\SliderElement
+    - App\Elements\BlockElement
+    - App\Elements\MapElement
+    - App\Elements\AccordionElement
+    - App\Elements\CustomSnippetElement
+    - App\Elements\InstagramElement
   styles:
     whiteframe: 'White Frame'
     noframe: 'No Frame'
 
-Site\Elements\AccordionElement:
+App\Elements\AccordionElement:
   allowed_elements:
     - DNADesign\Elemental\Models\ElementContent
 
@@ -83,7 +94,7 @@ DNADesign\Elemental\Models\ElementContent:
   default_global_elements: false
   inline_editable: false
   extensions:
-    - Site\Extensions\ElementContentWidget
+    - App\Elements\Extensions\ElementContentWidget
   frontend_searchable_fields:
     - 'Title:PartialMatch'
     - 'HTML:PartialMatch'
@@ -91,4 +102,4 @@ DNADesign\Elemental\Models\ElementContent:
 Dynamic\Elements\Image\Elements\ElementImage:
   inline_editable: false
   extensions:
-    - Site\Extensions\ElementImageWidget
+    - App\Elements\Extensions\ElementImageWidget

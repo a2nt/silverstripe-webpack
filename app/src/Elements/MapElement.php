@@ -6,7 +6,7 @@
  * Time: 11:54 PM
  */
 
-namespace Site\Elements;
+namespace App\Elements;
 
 use A2nt\SilverStripeMapboxField\MapboxField;
 use BetterBrief\GoogleMapField;
@@ -18,8 +18,8 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\NumericField;
-use Site\Controllers\MapElementController;
-use Site\Extensions\MapExtension;
+use App\Controllers\MapElementController;
+use App\Elements\Extensions\MapExtension;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 
 class MapElement extends ElementContent

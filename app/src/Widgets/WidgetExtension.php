@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Widgets;
+namespace App\Widgets;
 
 
 use DNADesign\Elemental\Forms\TextCheckboxGroupField;

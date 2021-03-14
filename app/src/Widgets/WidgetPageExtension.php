@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Widgets;
+namespace App\Widgets;
 
 use DNADesign\Elemental\Forms\ElementalAreaField;
 use SilverStripe\Forms\FieldList;

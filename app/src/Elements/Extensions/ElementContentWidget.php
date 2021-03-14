@@ -6,7 +6,7 @@
  * Time: 2:35 PM
  */
 
-namespace Site\Extensions;
+namespace App\Elements\Extensions;
 
 use SilverStripe\ORM\DataExtension;
 

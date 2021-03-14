@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Widgets;
+namespace App\Widgets;
 
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Widgets\Model\Widget;

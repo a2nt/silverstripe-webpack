@@ -6,7 +6,7 @@
  * Time: 11:54 PM
  */
 
-namespace Site\Elements;
+namespace App\Elements;
 
 use DNADesign\Elemental\Models\ElementContent;
 use SilverStripe\AssetAdmin\Forms\UploadField;

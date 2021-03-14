@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\Form;

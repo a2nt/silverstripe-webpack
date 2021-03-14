@@ -7,7 +7,7 @@
  * Ref: Dynamic\FlexSlider\Model\SlideImage
  */
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DatetimeField;

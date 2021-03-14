@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use SilverStripe\ORM\HiddenClass;
 use SilverStripe\UserForms\Model\UserDefinedForm;

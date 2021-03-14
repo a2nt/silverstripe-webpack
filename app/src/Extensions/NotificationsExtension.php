@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use Dynamic\Elements\Blog\Elements\ElementBlogPosts;
 use Innoweb\Sitemap\Pages\SitemapPage;
@@ -25,9 +25,9 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TreeMultiselectField;
 use BetterBrief\GoogleMapField;
-use Site\Models\Holiday;
-use Site\Models\Notification;
-use Site\Models\OpeningHour;
+use App\Models\Holiday;
+use App\Models\Notification;
+use App\Models\OpeningHour;
 use Symbiote\GridFieldExtensions\GridFieldAddNewInlineButton;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
 use Symbiote\GridFieldExtensions\GridFieldTitleHeader;
@@ -73,7 +73,7 @@ class NotificationsExtension extends DataExtension
             LiteralField::create(
                 'CurrentNotifications',
                 '<b>Current:</b>'
-                .$this->owner->renderWith('Site\\Objects\\NotificationsList')
+                .$this->owner->renderWith('App\\Objects\\NotificationsList')
             ),
             CheckboxField::create('ShowNotifications'),
             GridField::create(

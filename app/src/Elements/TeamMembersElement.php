@@ -6,9 +6,9 @@
  * Time: 11:54 PM
  */
 
-namespace Site\Elements;
+namespace App\Elements;
 use DNADesign\Elemental\Models\BaseElement;
-use Site\Models\TeamMember;
+use App\Models\TeamMember;
 
 class TeamMembersElement extends BaseElement
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Widgets;
+namespace App\Widgets;
 
 use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;

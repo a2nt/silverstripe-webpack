@@ -6,7 +6,7 @@
  * Time: 1:05 AM
  */
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use SilverStripe\ORM\HiddenClass;
 use Page;

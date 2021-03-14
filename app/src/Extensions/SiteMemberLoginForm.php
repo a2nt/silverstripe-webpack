@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 
 use SilverStripe\Control\Director;

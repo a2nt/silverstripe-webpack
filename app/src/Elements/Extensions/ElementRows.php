@@ -6,7 +6,7 @@
  * Time: 1:23 PM
  */
 
-namespace Site\Extensions;
+namespace App\Elements\Extensions;
 
 use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalList\Model\ElementList;
@@ -16,7 +16,7 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
-use Site\Elements\AccordionElement;
+use App\Elements\AccordionElement;
 
 class ElementRows extends DataExtension
 {
@@ -36,6 +36,7 @@ class ElementRows extends DataExtension
 
     public function updateCMSFields(FieldList $fields)
     {
+        $obj = $this->owner;
         parent::updateCMSFields($fields);
 
         $fields->removeByName(['AvailableGlobally', 'TopPageLocale', 'TopPageID']);
@@ -62,8 +63,7 @@ class ElementRows extends DataExtension
 
         // column size
         if ($this->isColumn()) {
-            $sizes = $this->owner->dbObject('Size');
-            $defaultSize = $sizes->getDefaultValue();
+            $sizes = $obj->dbObject('Size');
 
             $sizeDropdown = DropdownField::create(
                 'Size',
@@ -92,11 +92,16 @@ class ElementRows extends DataExtension
             );
             $tab->push($sizeDropdown);
 
-            // set default size
-            if (!$this->owner->getField('Size')) {
+            // set default size if size field wasn't set or if it's new object without title set and the size is default
+            $size = $obj->getField('Size');
+            if (!$size || (!$obj->getField('Title') && $size === 'auto')) {
                 $sibling = $this->getSibling();
 
-                $sizeDropdown->setValue($sibling ? $sibling->getField('Size') : $defaultSize);
+                $defaultSize = $sizes->getDefaultValue();
+                $defaultSize = $sibling ? $sibling->getField('Size') : $defaultSize;
+
+                $obj->setField('Size', $defaultSize);
+                $sizeDropdown->setValue($defaultSize);
             }
         } else {
             $fields->removeByName('Size');
@@ -104,7 +109,7 @@ class ElementRows extends DataExtension
 
         // move parent elements
         if ($this->isList()) {
-            $currEls = $this->owner->getField('Elements')->Elements();
+            $currEls = $obj->getField('Elements')->Elements();
             if ($currEls->count()) {
                 $tab->push(DropdownField::create(
                     'MoveElementIDToParent',
@@ -113,7 +118,7 @@ class ElementRows extends DataExtension
                 )->setEmptyString('(select an element to move)'));
             }
 
-            $parentEls = $this->owner->Parent()->Elements()->exclude('ID', $this->owner->ID);
+            $parentEls = $obj->Parent()->Elements()->exclude('ID', $obj->ID);
             if ($parentEls->count()) {
                 $tab->push(DropdownField::create(
                     'MoveElementIDFromParent',
@@ -129,7 +134,7 @@ class ElementRows extends DataExtension
                 'ClassName',
                 '<div class="form-group field text">'
                 .'<div class="form__field-label">Class</div>'
-                .'<div class="form__field-holder">'.$this->owner->getField('ClassName').'</div>'
+                .'<div class="form__field-holder">'.$obj->getField('ClassName').'</div>'
                 .'</div>'
             ));
     }

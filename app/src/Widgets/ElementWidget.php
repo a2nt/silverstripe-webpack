@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Widgets;
+namespace App\Widgets;
 
 use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalList\Model\ElementList;

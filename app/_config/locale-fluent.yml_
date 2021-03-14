@@ -29,14 +29,14 @@ Page:
   extensions:
     - DNADesign\Elemental\TopPage\SiteTreeExtension
     - DNADesign\Elemental\Extensions\ElementalPageExtension
-    - Site\Extensions\PageFluentExtension
+    - App\Extensions\PageFluentExtension
 
 DNADesign\Elemental\Models\ElementalArea:
   extensions:
     - DNADesign\Elemental\TopPage\FluentExtension
-    - Site\Extensions\ElementalArea
+    - App\Extensions\ElementalArea
 
 DNADesign\Elemental\Models\BaseElement:
   extensions:
     - DNADesign\Elemental\TopPage\FluentExtension
-    - Site\Extensions\ElementRows
+    - App\Extensions\ElementRows

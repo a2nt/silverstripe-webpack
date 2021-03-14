@@ -6,7 +6,7 @@
  * Time: 5:31 AM
  */
 
-namespace Site\Tests;
+namespace App\Tests;
 
 use SilverStripe\Assets\Upload_Validator;
 use SilverStripe\Core\Cache\FilesystemCacheFactory;

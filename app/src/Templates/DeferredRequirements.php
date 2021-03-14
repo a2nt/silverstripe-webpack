@@ -2,7 +2,7 @@
 
 /** @noinspection PhpUnusedPrivateFieldInspection */
 
-namespace Site\Templates;
+namespace App\Templates;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\View\TemplateGlobalProvider;

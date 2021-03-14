@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use Dynamic\Elements\Blog\Elements\ElementBlogPosts;
 use Innoweb\Sitemap\Pages\SitemapPage;
@@ -23,8 +23,8 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TreeMultiselectField;
 use BetterBrief\GoogleMapField;
-use Site\Models\Holiday;
-use Site\Models\OpeningHour;
+use App\Models\Holiday;
+use App\Models\OpeningHour;
 use Symbiote\GridFieldExtensions\GridFieldAddNewInlineButton;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
 use Symbiote\GridFieldExtensions\GridFieldTitleHeader;
@@ -80,7 +80,7 @@ class OpenningHoursExtension extends DataExtension
                 'CurrentOpeningHour',
                 '<b>Today:</b>'
                 .'<p class="message notice">'
-                .$this->owner->renderWith('Site\\Objects\\OpeningHoursList')
+                .$this->owner->renderWith('App\\Objects\\OpeningHoursList')
                 .'</p>'
             ),
             CheckboxField::create('ShowOpeningHours'),

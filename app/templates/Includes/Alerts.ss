@@ -48,6 +48,6 @@
 	<% end_if %>
 
 	<% with $SiteConfig %>
-	    <% include Site\Objects\NotificationsList NotificationsToday=$NotificationsToday.filter('Area', 'Site') %>
+	    <% include App\Objects\NotificationsList NotificationsToday=$NotificationsToday.filter('Area', 'Site') %>
 	<% end_with %>
 </div>

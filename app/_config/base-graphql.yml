@@ -17,22 +17,22 @@ SilverStripe\GraphQL\Controller:
 
 SilverStripe\GraphQL\Auth\Handler:
   authenticators:
-    - class: Site\GraphQL\APIKeyAuthenticator
+    - class: App\GraphQL\APIKeyAuthenticator
       priority: 30
 
 SilverStripe\GraphQL\Manager.default:
   properties:
     Middlewares:
-      APIKeyMiddleware: Site\GraphQL\APIKeyMiddleware
+      APIKeyMiddleware: App\GraphQL\APIKeyMiddleware
 
 SilverStripe\GraphQL\Manager:
   schemas:
     default:
       types:
-        member: 'Site\GraphQL\MemberTypeCreator'
-        page: 'Site\GraphQL\PageTypeCreator'
-        element: 'Site\GraphQL\ElementTypeCreator'
+        member: 'App\GraphQL\MemberTypeCreator'
+        page: 'App\GraphQL\PageTypeCreator'
+        element: 'App\GraphQL\ElementTypeCreator'
       queries:
-        readPages: 'Site\GraphQL\PaginatedReadPagesQueryCreator'
-        readMembers: 'Site\GraphQL\ReadMembersQueryCreator'
-        paginatedReadMembers: 'Site\GraphQL\PaginatedReadMembersQueryCreator'
+        readPages: 'App\GraphQL\PaginatedReadPagesQueryCreator'
+        readMembers: 'App\GraphQL\ReadMembersQueryCreator'
+        paginatedReadMembers: 'App\GraphQL\PaginatedReadMembersQueryCreator'

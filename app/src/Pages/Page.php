@@ -2,7 +2,7 @@
 
 // vendor/silverstripe/errorpage/src/ErrorPage.php
 // extends global Page class
-//namespace Site\Pages;
+//namespace App\Pages;
 
 use Sheadawson\Linkable\Forms\LinkField;
 use SilverStripe\CMS\Model\SiteTree;

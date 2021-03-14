@@ -14,7 +14,7 @@ SilverStripe\Core\Injector\Injector:
 A2nt\SilverStripeMapboxField\MapboxField:
   map_style: 'mapbox://styles/mapbox/streets-v9' #'mapbox://styles/mapbox/light-v10'
 
-Site\Elements\MapElement:
+App\Elements\MapElement:
   map_type: 'google-maps'
 
 BetterBrief\GoogleMapField:

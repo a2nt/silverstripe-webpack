@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Extensions;
+namespace App\Elements\Extensions;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;

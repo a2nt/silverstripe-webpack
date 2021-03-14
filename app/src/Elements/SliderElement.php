@@ -6,7 +6,7 @@
  * Time: 11:54 PM
  */
 
-namespace Site\Elements;
+namespace App\Elements;
 
 use Dynamic\Elements\Flexslider\Elements\ElementSlideshow;
 use Dynamic\FlexSlider\Model\SlideImage;

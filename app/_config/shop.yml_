@@ -3,20 +3,20 @@ Name: webapp-shop
 ---
 SilverStripe\Core\Injector\Injector:
   SilverShop\Checkout\SinglePageCheckoutComponentConfig:
-    class: Site\Models\CheckoutNoDeliveryConfig
+    class: App\Models\CheckoutNoDeliveryConfig
 
 SilverShop\Extension\ShopConfigExtension:
   base_currency: USD
 
 SilverShop\Model\Address:
   extensions:
-  - Site\Extensions\AddressExtension
+  - App\Extensions\AddressExtension
 
 SilverShop\Cart\ShoppingCartController:
   extensions:
-    - Site\Extensions\ShoppingCartControllerExtension
+    - App\Extensions\ShoppingCartControllerExtension
 
-Site\Templates\DeferedRequirements:
+App\Templates\DeferedRequirements:
   custom_requirements:
     SilverShop\Page\AccountPageController:
       - SilverShop.Page.CheckoutPageController.js

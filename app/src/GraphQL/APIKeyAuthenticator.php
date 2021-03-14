@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\GraphQL;
+namespace App\GraphQL;
 
 
 use SilverStripe\Control\Director;
@@ -9,7 +9,7 @@ use SilverStripe\Control\HTTPRequest;
 use SilverStripe\GraphQL\Auth\AuthenticatorInterface;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\Security\Member;
-use Site\Templates\WebpackTemplateProvider;
+use App\Templates\WebpackTemplateProvider;
 
 class APIKeyAuthenticator implements AuthenticatorInterface
 {

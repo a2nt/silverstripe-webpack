@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Extension;
 use SilverStripe\FontAwesome\FontAwesomeField;
 use SilverStripe\View\Requirements;
-use Site\Templates\DeferredRequirements;
+use App\Templates\DeferredRequirements;
 
 class LeftAndMainExtension extends Extension
 {

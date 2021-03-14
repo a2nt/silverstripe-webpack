@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\GraphQL;
+namespace App\GraphQL;
 
 
 use GraphQL\Type\Definition\Type;

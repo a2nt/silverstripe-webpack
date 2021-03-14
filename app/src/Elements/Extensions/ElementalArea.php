@@ -6,7 +6,7 @@
  * Time: 1:23 PM
  */
 
-namespace Site\Extensions;
+namespace App\Elements\Extensions;
 
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\ORM\ArrayList;

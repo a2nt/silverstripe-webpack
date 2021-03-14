@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Traits;
+namespace App\Traits;
 
 trait PaginatedListing
 {

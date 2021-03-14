@@ -6,13 +6,12 @@
  * Time: 11:36 PM
  */
 
-namespace Site\Models;
+namespace App\Models;
 
 use SilverStripe\Assets\Image;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
-use Site\Extensions\SocialExtension;
-use Site\Pages\TeamPage;
+use App\Extensions\SocialExtension;
 
 class TeamMember extends DataObject
 {

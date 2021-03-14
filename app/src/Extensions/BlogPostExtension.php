@@ -6,7 +6,7 @@
  * Time: 12:10 AM
  */
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use DNADesign\Elemental\Models\ElementContent;
 use SilverStripe\Forms\CheckboxField;

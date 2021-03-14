@@ -4,19 +4,19 @@ Name: webapp-options-widgets
 # Blog + Widgets module extensions
 Page:
   extensions:
-    - Site\Widgets\WidgetPageExtension
+    - App\Widgets\WidgetPageExtension
 
 SilverStripe\Blog\Model\Blog:
   extensions:
-    - Site\Extensions\BlogExtension
+    - App\Extensions\BlogExtension
 SilverStripe\Blog\Model\BlogPost:
   extensions:
-    - Site\Extensions\BlogPostExtension
+    - App\Extensions\BlogPostExtension
 
 SilverStripe\Widgets\Model\Widget:
   icon: '<i class="icon font-icon-p-document"></i>'
   extensions:
-    - Site\Widgets\WidgetExtension
+    - App\Widgets\WidgetExtension
 SilverStripe\Blog\Widgets\BlogArchiveWidget:
   icon: '<i class="icon font-icon-p-archive"></i>'
 SilverStripe\Blog\Widgets\BlogCategoriesWidget:

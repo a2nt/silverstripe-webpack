@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Site\Controllers;
+namespace App\Controllers;
 
 use DNADesign\Elemental\Controllers\ElementController;
-use Site\Templates\DeferredRequirements;
+use App\Templates\DeferredRequirements;
 
 class MapElementController extends ElementController
 {

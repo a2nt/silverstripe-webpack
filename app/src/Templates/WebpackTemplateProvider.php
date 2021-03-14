@@ -5,7 +5,7 @@
  * Directs assets requests to Webpack server or to static files
  */
 
-namespace Site\Templates;
+namespace App\Templates;
 
 use SilverStripe\Core\Manifest\ModuleManifest;
 use SilverStripe\View\SSViewer;

@@ -2,7 +2,7 @@
 
 // vendor/silverstripe/errorpage/src/ErrorPageController.php
 // extends global PageController class
-//namespace Site\Pages;
+//namespace App\Pages;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\CMS\Controllers\ContentController;
@@ -22,8 +22,8 @@ use SilverStripe\ORM\ArrayList;
 use DNADesign\Elemental\Models\ElementContent;
 use DNADesign\Elemental\Models\ElementalArea;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
-use Site\Models\TeamMember;
-use Site\Templates\DeferredRequirements;
+use App\Models\TeamMember;
+use App\Templates\DeferredRequirements;
 
 class PageController extends ContentController
 {

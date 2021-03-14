@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Tasks;
+namespace App\Tasks;
 
 use SilverStripe\Assets\File;
 use SilverStripe\CMS\Model\SiteTree;

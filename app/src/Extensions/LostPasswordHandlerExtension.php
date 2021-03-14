@@ -6,7 +6,7 @@
  * Time: 11:37 PM
  */
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;

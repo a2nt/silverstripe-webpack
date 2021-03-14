@@ -6,7 +6,7 @@
  * Time: 2:55 AM
  */
 
-namespace Site\Models;
+namespace App\Models;
 
 use A2nt\SilverStripeMapboxField\MapboxField;
 use A2nt\SilverStripeMapboxField\MarkerExtension;
@@ -15,7 +15,7 @@ use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
-use Site\Elements\MapElement;
+use App\Elements\MapElement;
 use Symbiote\Addressable\Addressable;
 
 class MapPin extends DataObject

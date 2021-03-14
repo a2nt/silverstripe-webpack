@@ -6,7 +6,7 @@
  * Time: 1:08 PM
  */
 
-namespace Site\Models;
+namespace App\Models;
 
 
 use SilverShop\Checkout\Checkout;

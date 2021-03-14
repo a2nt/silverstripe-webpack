@@ -1,7 +1,7 @@
 ---
 Name: webapp-templates-requirements
 ---
-Site\Templates\DeferredRequirements:
+App\Templates\DeferredRequirements:
   nofontawesome: false
   version: false
   static_domain: false

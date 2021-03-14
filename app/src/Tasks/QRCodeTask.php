@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\Tasks;
+namespace App\Tasks;
 
 use Endroid\QrCode\ErrorCorrectionLevel;
 use Endroid\QrCode\LabelAlignment;

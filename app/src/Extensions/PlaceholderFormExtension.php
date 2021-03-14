@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Extensions;
+namespace App\Extensions;
 
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\CompositeField;

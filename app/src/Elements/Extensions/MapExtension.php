@@ -6,7 +6,7 @@
  * Time: 12:55 PM
  */
 
-namespace Site\Extensions;
+namespace App\Elements\Extensions;
 
 use SilverStripe\Core\Extension;
 use SilverStripe\Forms\CompositeField;
@@ -16,7 +16,7 @@ use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\DataExtension;
-use Site\Models\MapPin;
+use App\Models\MapPin;
 
 class MapExtension extends DataExtension
 {
