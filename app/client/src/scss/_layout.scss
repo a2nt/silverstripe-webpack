@@ -2,6 +2,16 @@
  * Your custom style
  */
 
+body {
+    --header-bg: #{inspect($body-header-bg)};
+    --header-color: #{inspect($body-header-color)};
+    --header-link: #{inspect($body-header-link)};
+    --main-nav-link-color:#{inspect($body-main-nav-link-color)};
+    --main-nav-link-hover-color:#{inspect($body-main-nav-link-hover-color)};
+    --main-nav-dropdown-hover-bg:#{inspect($body-main-nav-dropdown-hover-bg)};
+    --footer-footer-bg:#{inspect($body-footer-footer-bg)};
+}
+
 .carousel-caption {
     padding: 6rem 0;
     font-size: 3rem;

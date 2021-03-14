@@ -1,5 +1,8 @@
 @import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_variables';
 
+$body-bg: #fff;
+$body-color: #212529;
+
 // site specific variables
 // bootstrap settings
 // screen size - 32px (ex. 1400 - 32 = 1368)
@@ -14,34 +17,42 @@ md: 720px,
 lg: 960px,
 xl: 1136px);
 
+$body-header-bg: $body-bg;
+$body-header-color: $body-color;
+$body-header-link: $body-color;
+$body-main-nav-link-color: $body-color;
+$body-main-nav-link-hover-color: $body-color;
+$body-main-nav-dropdown-hover-bg: $body-color;
+$body-footer-footer-bg: $body-bg;
+
 $font-family-base: 'Roboto',
 $font-family-sans-serif;
 
 $full-body-min-width: map-get($grid-breakpoints, 'lg');
 $typography-breakpoint: map-get($grid-breakpoints, 'sm') - 1;
 
-$header-bg: var(--bs-white);
-$header-color: var(--bs-dark);
-$header-link: var(--bs-black);
+$header-bg: var(--header-bg);
+$header-color: var(--header-color);
+$header-link: var(--header-link);
 
-$main-nav-link-color: var(--bs-black);
+$main-nav-link-color: var(--main-nav-link-color);
 $main-nav-link-bg: none;
 
 $main-nav-toggler-size: 2rem;
 
 $main-nav-link-hover-bg: none;
-$main-nav-link-hover-color: var(--bs-primary);
+$main-nav-link-hover-color: var(--main-nav-link-hover-color);
 
 $main-nav-dropdown-bg: $header-bg;
 $main-nav-dropdown-color: $header-link;
-$main-nav-dropdown-hover-bg: var(--bs-black);
+$main-nav-dropdown-hover-bg: var(--main-nav-dropdown-hover-bg);
 $main-nav-dropdown-hover-color: $main-nav-link-hover-color;
 
 $footer-bg: $header-bg;
 $footer-color: $header-color;
 $footer-link: $header-link;
 
-$footer-footer-bg: $main-nav-dropdown-hover-bg;
+$footer-footer-bg: var(--footer-footer-bg);
 
 $sliderelement-carousel-slide-max-y: none;
 $sliderelement-carousel-slide-bg: $header-bg;
