@@ -1,9 +1,9 @@
-<div
-data-aos="fade-up"
-class="form-element__form"
->
+<div data-aos="fade-up" class="element__content">
     <% if $Title && $ShowTitle %>
-        <h2 class="form-element__title">$Title</h2>
+        <h2 class="element__title">$Title</h2>
     <% end_if %>
-    $Form
+
+    <div class="element__form">
+	    $Form
+	</div>
 </div>

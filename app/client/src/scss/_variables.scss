@@ -4,6 +4,7 @@ $body-bg: #fff;
 $body-color: #212529;
 
 // site specific variables
+
 // bootstrap settings
 // screen size - 32px (ex. 1400 - 32 = 1368)
 $grid-breakpoints: (xs: 0,
@@ -17,6 +18,9 @@ md: 720px,
 lg: 960px,
 xl: 1136px);
 
+$enable-gradients: false;
+$enable-shadows: false;
+
 $body-header-bg: $body-bg;
 $body-header-color: $body-color;
 $body-header-link: $body-color;
@@ -27,6 +31,7 @@ $body-footer-footer-bg: $body-bg;
 
 $font-family-base: 'Roboto',
 $font-family-sans-serif;
+//
 
 $full-body-min-width: map-get($grid-breakpoints, 'lg');
 $typography-breakpoint: map-get($grid-breakpoints, 'sm') - 1;

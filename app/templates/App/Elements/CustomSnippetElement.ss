@@ -1,14 +1,14 @@
-<div class="custom-snippet content-element__content<% if $Style %> $CssStyle<% end_if %>">
+<div class="element__content<% if $Style %> $CssStyle<% end_if %>">
 	<% if $ShowTitle %>
-        <h2 class="content-element__title">$Title</h2>
+        <h2 class="element__title">$Title</h2>
     <% end_if %>
 
-    <div class="typography">
+    <div class="element__html typography">
         $HTML
     </div>
 
     <% if $BlockLink %>
-        <a href="$BlockLink.LinkURL" class="btn btn-default stretched-link">
+        <a href="$BlockLink.LinkURL" class="element__link btn btn-default stretched-link">
             $BlockLink.Title
         </a>
     <% end_if %>

@@ -25,6 +25,10 @@
 
     @import './types/editor';
 
+    a.btn-primary {
+        color: $white;
+    }
+
     img {
         border: 0;
     }
