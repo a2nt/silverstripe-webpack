@@ -41,6 +41,7 @@ DNADesign\Elemental\Models\BaseElement:
   default_global_elements: true
   extensions:
     #- DNADesign\Elemental\TopPage\DataExtension
+    - App\Elements\Extensions\BaseElementEx
     - App\Elements\Extensions\ElementRows
 
 SilverStripe\CMS\Model\SiteTree:

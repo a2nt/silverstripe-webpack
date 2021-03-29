@@ -28,8 +28,8 @@
 		font-size: 14px;
 		margin: 0;
 		padding: 0;
-		background: #1c2947;
-		color: #fff;
+		background: #fff;
+		color: #212529;
 		overflow-x: hidden;
 	}
 	@media (min-width: 2000px) {
@@ -52,8 +52,8 @@
 		justify-content: center;
 		z-index: 2000;
 		will-change: opacity;
-		background: #1c2947;
-		color: #fff;
+		background: #fff;
+		color: #212529;
 	}
 	#PageLoading .logo {
 		width:100px;

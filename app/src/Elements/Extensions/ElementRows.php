@@ -15,7 +15,6 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\LiteralField;
 use App\Elements\AccordionElement;
 
 class ElementRows extends DataExtension
@@ -127,16 +126,6 @@ class ElementRows extends DataExtension
                 )->setEmptyString('(select an element to move)'));
             }
         }
-
-
-        $fields->findOrMakeTab('Root.Settings')
-            ->push(LiteralField::create(
-                'ClassName',
-                '<div class="form-group field text">'
-                .'<div class="form__field-label">Class</div>'
-                .'<div class="form__field-holder">'.$obj->getField('ClassName').'</div>'
-                .'</div>'
-            ));
     }
 
     public function getWidthPercetage()

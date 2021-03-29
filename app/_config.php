@@ -34,6 +34,6 @@ $config->setOption(
 FulltextSearchable::enable();
 
 // replace embed parser
-$parser = ShortcodeParser::get('default');
+/*$parser = ShortcodeParser::get('default');
 $parser->unregister('embed');
-$parser->register('embed', [EmbedShortcodeProvider::class, 'handle_shortcode']);
+$parser->register('embed', [EmbedShortcodeProvider::class, 'handle_shortcode']);*/
