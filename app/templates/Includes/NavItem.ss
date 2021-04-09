@@ -1,5 +1,5 @@
 <% if $Children %>
-    <div class="nav-item dropdown dropdown-hover<% if $isCurrent || $isSection %> active <% end_if %><% if $isSection %> section<% end_if %><% if $SubmenuColumns %> submenu-cols-dropdown<% end_if %> {$CSSClass} {$ExtraClass}">
+    <div class="nav-item dropdown dropdown-hover<% if $SubmenuColumns %> submenu-cols-dropdown<% end_if %> {$CSSClass} {$ExtraClass}">
         <% include NavItem_link ExtraClass="dropdown-toggle-fl dropdown-toggle-notouch" %>
 
         <button
@@ -22,7 +22,7 @@
         </div>
     </div>
 <% else %>
-    <div class="nav-item {$CSSClass} $ExtraClass <% if $isCurrent || $isSection %> active<% end_if %>">
+    <div class="nav-item {$CSSClass} $ExtraClass">
         <% include NavItem_link ExtraClass='' %>
     </div>
 <% end_if %>

@@ -12,10 +12,10 @@
 	</button>
 
     <div id="{$NavID}Content" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
+        <div class="navbar-nav">
             <% loop $Navigation %>
                 <% include NavItem %>
             <% end_loop %>
-        </ul>
+        </div>
     </div>
 </nav>
