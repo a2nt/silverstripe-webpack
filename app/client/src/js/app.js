@@ -5,6 +5,7 @@ import '../scss/app.scss';
 
 import MainUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_components/_main';
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_ui.instagram.feed';
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_ui.carousel';
 
 import './_layout';
 
@@ -30,5 +31,5 @@ const images = importAll(
     require.context('../img/', false, /\.(png|jpe?g|svg)$/),
 );
 const fontAwesome = importAll(
-    require.context('font-awesome', false, /\.(otf|eot|svg|ttf|woff|woff2)$/),
+    require.context('font-awesome', false, /\.(otf|eot|ttf|woff|woff2)$/),
 );

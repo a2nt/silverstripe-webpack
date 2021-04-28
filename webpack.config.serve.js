@@ -66,8 +66,7 @@ if (filesystem.existsSync(indexPath)) {
                 GRAPHQL_URL: conf['GRAPHQL_URL'],
                 STATIC_URL: conf['STATIC_URL'],
                 REACT_SCRIPTS: NODE_ENV === 'production' ?
-                    '<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script><script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>' :
-                    '<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script><script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>',
+                    '<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script><script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>' : '<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script><script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>',
             },
         }),
     );
@@ -89,8 +88,8 @@ const config = merge(common, {
         filename: '[name].js',
         // necessary for HMR to know where to load the hot update chunks
         publicPath: `http${conf['HTTPS'] ? 's' : ''}://${conf['HOSTNAME']}:${
-			conf.PORT
-		}/`,
+            conf.PORT
+        }/`,
     },
 
     module: {
@@ -142,7 +141,7 @@ const config = merge(common, {
                 ],
             },
             {
-                test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                test: /fontawesome([^.]+).(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
                 use: [{
                     loader: 'url-loader',
                 }, ],

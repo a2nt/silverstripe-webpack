@@ -41,36 +41,38 @@ class EmbeddedObjectExtension extends DataExtension
                 $url,
                 $matches
             );
-            $videoID = $matches[1];
+            if (isset($matches[1])) {
+	            $videoID = $matches[1];
 
-            $params = array_merge($params, [
-                'feature=oembed',
-                'wmode=transparent',
-                'enablejsapi=1',
-                'disablekb=1',
-                'iv_load_policy=3',
-                'modestbranding=1',
-                'rel=0',
-                'showinfo=0',
-                //'controls='.($this->owner->getField('Controls') ? '1': '0')
-            ]);
+	            $params = array_merge($params, [
+		            'feature=oembed',
+		            'wmode=transparent',
+		            'enablejsapi=1',
+		            'disablekb=1',
+		            'iv_load_policy=3',
+		            'modestbranding=1',
+		            'rel=0',
+		            'showinfo=0',
+		            //'controls='.($this->owner->getField('Controls') ? '1': '0')
+	            ]);
 
-            if ($this->owner->getField('Autoplay')) {
-                $params[] = 'autoplay=1';
-                $params[] = 'mute=1';
+	            if ($this->owner->getField('Autoplay')) {
+		            $params[] = 'autoplay=1';
+		            $params[] = 'mute=1';
+	            }
+
+	            if ($this->owner->getField('Loop')) {
+		            $params[] = 'loop=1';
+		            $params[] = 'playlist=' . $videoID;
+	            }
+
+	            $this->owner->EmbedHTML = preg_replace(
+		            '/src="([A-z0-9:\/\.]+)\??(.*?)"/',
+		            'src="https://www.youtube.com/embed/' . $videoID . '?' . implode('&', $params) . '" '
+		            . implode(' ', $iframe_params),
+		            $this->owner->EmbedHTML
+	            );
             }
-
-            if ($this->owner->getField('Loop')) {
-                $params[] = 'loop=1';
-                $params[] = 'playlist='.$videoID;
-            }
-
-            $this->owner->EmbedHTML = preg_replace(
-                '/src="([A-z0-9:\/\.]+)\??(.*?)"/',
-                'src="https://www.youtube.com/embed/'.$videoID.'?' . implode('&', $params) . '" '
-                .implode(' ', $iframe_params),
-                $this->owner->EmbedHTML
-            );
         }
 
         if (stripos($this->owner->EmbedHTML, 'https://player.vimeo.com/video/') > 0) {

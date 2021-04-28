@@ -1,4 +1,5 @@
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_variables';
+$white: #fff;
+$black: #000;
 
 $body-bg: #fff;
 $body-color: #212529;
@@ -29,8 +30,7 @@ $body-main-nav-link-hover-color: $body-color;
 $body-main-nav-dropdown-hover-bg: $body-color;
 $body-footer-footer-bg: $body-bg;
 
-$font-family-base: 'Roboto',
-$font-family-sans-serif;
+$font-family-base: 'Roboto';
 //
 
 $full-body-min-width: map-get($grid-breakpoints, 'lg');
@@ -72,3 +72,7 @@ $carousel-controls-zindex: 11;
 $carousel-controls-shadow: 1px 1px $black;
 $carousel-controls-hover-bg: transparentize($black, 0.4);
 $carousel-slide-img-loading-max-height: 70vh;
+
+@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_variables';
+$font-family-base: 'Roboto',
+$font-family-sans-serif;

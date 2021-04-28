@@ -26,7 +26,7 @@
 
                 <% include Objects\SocialLinks %>
             <% end_with %>
-            
+
             <% include LocaleMenu %>
         </div>
     </div>
