@@ -2,13 +2,42 @@
  * Common Environment
  */
 
-const webpack = require('webpack');
-const commonVariables = require('./webpack.configuration');
-const conf = commonVariables.configuration;
+const YML_PATH = '/app/_config/webpack.yml';
+const CONF_VAR = 'App\\Templates\\WebpackTemplateProvider';
 
 const path = require('path');
-const filesystem = require('fs');
+const fs = require('fs');
+const yaml = require('js-yaml');
+const webpack = require('webpack');
 
+/*
+ * Load webpack configuration from webpack.yml
+ */
+
+const yml = yaml.safeLoad(
+    fs.readFileSync(path.join(__dirname, YML_PATH), 'utf8'),
+);
+const conf = yml[CONF_VAR]
+
+let themes = [];
+// add themes
+if (conf.THEMESDIR) {
+    const themeDir = conf.THEMESDIR;
+    const dir = path.resolve(__dirname, themeDir);
+
+    if (fs.existsSync(dir)) {
+        fs.readdirSync(dir).forEach((file) => {
+            filePath = path.join(themeDir, file);
+            const stat = fs.statSync(filePath);
+
+            if (stat && stat.isDirectory()) {
+                themes.push(filePath);
+            }
+        });
+    }
+}
+
+/* Setup Entries */
 const includes = {};
 const modules = [
     path.resolve(__dirname, conf.APPDIR, conf.SRC),
@@ -28,10 +57,10 @@ const _addAppFiles = (theme) => {
         themeName = 'app';
     }
 
-    if (filesystem.existsSync(path.join(dirPath, conf.SRC, 'js', 'app.js'))) {
+    if (fs.existsSync(path.join(dirPath, conf.SRC, 'js', 'app.js'))) {
         includes[`${themeName}`] = path.join(dirPath, conf.SRC, 'js', 'app.js');
     } else if (
-        filesystem.existsSync(path.join(dirPath, conf.SRC, 'scss', 'app.scss'))
+        fs.existsSync(path.join(dirPath, conf.SRC, 'scss', 'app.scss'))
     ) {
         includes[`${themeName}`] = path.join(
             dirPath,
@@ -50,13 +79,13 @@ const _addAppFiles = (theme) => {
         const dirPath = path.resolve(__dirname, dir);
         let results = [];
 
-        filesystem.readdirSync(dirPath).forEach((file) => {
+        fs.readdirSync(dirPath).forEach((file) => {
             if (file.charAt(0) === '_') {
                 return;
             }
 
             const filePath = path.join(dirPath, file);
-            const stat = filesystem.statSync(filePath);
+            const stat = fs.statSync(filePath);
 
             if (stat && stat.isDirectory() && includeSubFolders) {
                 results = results.concat(
@@ -72,7 +101,7 @@ const _addAppFiles = (theme) => {
 
     // add page specific scripts
     const typesJSPath = path.join(theme, conf.TYPESJS);
-    if (filesystem.existsSync(typesJSPath)) {
+    if (fs.existsSync(typesJSPath)) {
         const pageScripts = _getAllFilesFromFolder(typesJSPath, true);
         pageScripts.forEach((file) => {
             includes[`${themeName}_${path.basename(file, '.js')}`] = file;
@@ -81,7 +110,7 @@ const _addAppFiles = (theme) => {
 
     // add page specific scss
     const typesSCSSPath = path.join(theme, conf.TYPESSCSS);
-    if (filesystem.existsSync(typesSCSSPath)) {
+    if (fs.existsSync(typesSCSSPath)) {
         const scssIncludes = _getAllFilesFromFolder(typesSCSSPath, true);
         scssIncludes.forEach((file) => {
             includes[`${themeName}_${path.basename(file, '.scss')}`] = file;
@@ -91,33 +120,42 @@ const _addAppFiles = (theme) => {
 
 _addAppFiles(conf.APPDIR);
 
+// remove some backend includes
+delete includes['app_editor'];
+delete includes['app_cms'];
+delete includes['app_order'];
+
 // add themes
-commonVariables.themes.forEach((theme) => {
+themes.forEach((theme) => {
     _addAppFiles(theme);
 });
 
 module.exports = {
-    entry: includes,
-    externals: {
-        // comment out jQuery if you don't use it to prevent bootstrap thinking that there's jQuery present
-        //jquery: 'jQuery',
-        react: 'React',
-        'react-dom': 'ReactDOM',
-    },
-    resolve: {
-        modules: modules,
-        alias: {
+    configuration: conf,
+    themes: themes,
+    webpack: {
+        entry: includes,
+        externals: {
             // comment out jQuery if you don't use it to prevent bootstrap thinking that there's jQuery present
-            /*'window.jQuery': require.resolve('jquery'),
-            $: require.resolve('jquery'),
-            jquery: require.resolve('jquery'),
-            jQuery: require.resolve('jquery'),*/
-            react: require.resolve('react'),
-            'react-dom': require.resolve('react-dom'),
+            //jquery: 'jQuery',
+            react: 'React',
+            'react-dom': 'ReactDOM',
         },
-        fallback: { path: false },
-    },
-    experiments: {
-        topLevelAwait: true,
-    },
+        resolve: {
+            modules: modules,
+            alias: {
+                // comment out jQuery if you don't use it to prevent bootstrap thinking that there's jQuery present
+                /*'window.jQuery': require.resolve('jquery'),
+                $: require.resolve('jquery'),
+                jquery: require.resolve('jquery'),
+                jQuery: require.resolve('jquery'),*/
+                react: require.resolve('react'),
+                'react-dom': require.resolve('react-dom'),
+            },
+            fallback: { path: false },
+        },
+        experiments: {
+            topLevelAwait: true,
+        },
+    }
 };

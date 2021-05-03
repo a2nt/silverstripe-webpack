@@ -5,7 +5,7 @@
     <% include MetaHead %>
 </head>
 
-<body oncontextmenu="return false;"<% with $SiteConfig %> data-default-lng="$Longitude" data-default-lat="$Latitude"<% end_with %>>
+<body <% with $SiteConfig %> data-default-lng="$Longitude" data-default-lat="$Latitude"<% end_with %>>
     <% include First %>
 
     <div class="wrapper">
