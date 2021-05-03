@@ -283,10 +283,10 @@ const cfg = merge(common.webpack, {
                 test: /\.jsx?$/,
                 //exclude: /node_modules/,
                 use: {
-                    loader: '@sucrase/webpack-loader', // babel-loader
+                    loader: 'babel-loader', //'@sucrase/webpack-loader',
                     options: {
-                        transforms: ['jsx']
-                        /*presets: [
+                        //transforms: ['jsx']
+                        presets: [
                             '@babel/preset-env',
                             '@babel/react',
                             {
@@ -299,7 +299,7 @@ const cfg = merge(common.webpack, {
                             ['@babel/transform-react-jsx']
                         ],
                         cacheDirectory: true,
-                        cacheCompression: true,*/
+                        cacheCompression: true,
                     },
                 },
             },

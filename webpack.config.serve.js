@@ -95,9 +95,10 @@ const config = merge(common.webpack, {
                 test: /\.jsx?$/,
                 //exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: '@sucrase/webpack-loader', //'babel-loader',
                     options: {
-                        presets: [
+                        transforms: ['jsx']
+                        /*presets: [
                             '@babel/preset-env',
                             '@babel/react',
                             {
@@ -112,7 +113,7 @@ const config = merge(common.webpack, {
                             ['@babel/plugin-syntax-top-level-await'],
                         ],
                         cacheDirectory: true,
-                        cacheCompression: true,
+                        cacheCompression: true,*/
                     },
                 },
             },
