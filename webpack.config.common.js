@@ -3,7 +3,7 @@
  */
 
 const YML_PATH = '/app/_config/webpack.yml';
-const CONF_VAR = 'App\\Templates\\WebpackTemplateProvider';
+const CONF_VAR = 'A2nt\\CMSNiceties\\Templates\\WebpackTemplateProvider';
 
 const path = require('path');
 const fs = require('fs');
@@ -120,11 +120,6 @@ const _addAppFiles = (theme) => {
 
 _addAppFiles(conf.APPDIR);
 
-// remove some backend includes
-delete includes['app_editor'];
-delete includes['app_cms'];
-delete includes['app_order'];
-
 // add themes
 themes.forEach((theme) => {
     _addAppFiles(theme);
@@ -152,7 +147,9 @@ module.exports = {
                 react: require.resolve('react'),
                 'react-dom': require.resolve('react-dom'),
             },
-            fallback: { path: false },
+            fallback: {
+                path: false
+            },
         },
         experiments: {
             topLevelAwait: true,

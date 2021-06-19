@@ -1,0 +1,102 @@
+#Navigation {
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    width: 100%;
+    background: $header-bg;
+
+    .navbar-nav {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .navbar-toggler {
+        color: $main-nav-link-color;
+        font-size: $main-nav-toggler-size;
+    }
+
+    .nav-item,
+    .nav-link {
+        flex-direction: column;
+        /*@media (min-width: $full-body-min-width) {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }*/
+    }
+
+    .nav-link {
+        color: $main-nav-link-color;
+        background: $main-nav-link-bg;
+
+        &:focus,
+        &:hover,
+        &.active {
+            background: $main-nav-link-hover-bg;
+            color: $main-nav-link-hover-color;
+        }
+    }
+
+    .active {
+        >.nav-link {
+            background: $main-nav-link-hover-bg;
+            color: $main-nav-link-hover-color;
+        }
+    }
+
+    .nav-item .nav-dropdown {
+        .fa-chevron-right //&:after
+
+            {
+            display: none;
+        }
+    }
+
+    .dropdown-menu {
+        border-color: $main-nav-dropdown-bg;
+        background: $main-nav-dropdown-bg;
+        margin-top: 0;
+        border-top: 0;
+        min-width: 100%;
+
+        .nav-item-link {
+            color: $main-nav-dropdown-color;
+        }
+    }
+
+    .dropdown-item {
+
+        &.active,
+        &:active,
+        &:focus,
+        &:hover {
+            background: $main-nav-dropdown-hover-bg;
+
+            .nav-item-link {
+                color: $main-nav-dropdown-hover-color;
+            }
+        }
+
+        .nav-item-link {
+            width: 100%;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+
+    @media (min-width: $full-body-min-width) {
+        .navbar-nav>.nav-item {
+            padding-right: 2rem;
+            padding-left: 2rem;
+        }
+
+        .dropdown-item .nav-item-link {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+}
+
+#PageBreadcumbs {
+    position: relative;
+    z-index: 2;
+}

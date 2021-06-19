@@ -22,8 +22,8 @@ use SilverStripe\ORM\ArrayList;
 use DNADesign\Elemental\Models\ElementContent;
 use DNADesign\Elemental\Models\ElementalArea;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
-use App\Models\TeamMember;
-use App\Templates\DeferredRequirements;
+use A2nt\ElementalBasics\Models\TeamMember;
+use A2nt\CMSNiceties\Templates\DeferredRequirements;
 
 class PageController extends ContentController
 {

@@ -1,0 +1,18 @@
+/**
+ * Your custom style
+ */
+
+body {
+    --header-bg: #{inspect($body-header-bg)};
+    --header-color: #{inspect($body-header-color)};
+    --header-link: #{inspect($body-header-link)};
+    --main-nav-link-color:#{inspect($body-main-nav-link-color)};
+    --main-nav-link-hover-color:#{inspect($body-main-nav-link-hover-color)};
+    --main-nav-dropdown-hover-bg:#{inspect($body-main-nav-dropdown-hover-bg)};
+    --footer-footer-bg:#{inspect($body-footer-footer-bg)};
+}
+
+/*#MainContent {
+	padding-top: 2 * $element-reduced-spacer-y;
+	padding-bottom: 2 * $element-reduced-spacer-y;
+}*/

@@ -19,6 +19,6 @@
 
 <% if $ImageLink %>
     <a href="$ImageLink.LinkURL" class="element__link graphql-page stretched-link">
-        <b class="sr-only">$ImageLink.Title</b>
+        <b class="visually-hidden">$ImageLink.Title</b>
     </a>
 <% end_if %>

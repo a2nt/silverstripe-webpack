@@ -1,0 +1,44 @@
+#SiteWideMessage {
+    text-align: center;
+
+    .alert {
+        margin-bottom: 0;
+
+        .btn-close {
+            margin-top: -0.5rem;
+            float: right;
+        }
+    }
+}
+
+#Header {
+    background-color: $header-bg;
+    color: $header-color;
+
+    a {
+        color: $header-link;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: static;
+    }
+
+    .logo {
+        img {
+            width: 6.5vw;
+
+            @media (orientation: portrait) {
+                width: 20vw;
+            }
+        }
+    }
+
+    .tagline {
+        display: inline-block;
+        font-size: 1.2rem;
+        margin-left: 2em;
+    }
+}

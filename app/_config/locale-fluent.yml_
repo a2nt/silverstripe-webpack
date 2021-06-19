@@ -4,6 +4,7 @@ After:
   - webapp-extensions
   - webapp-elemental
   - webapp-locale
+  - a2nt-cms-niceties-locale-fluent
 ---
 # Define Fluent locales
 TractorCow\Fluent\Model\Locale:
@@ -29,14 +30,14 @@ Page:
   extensions:
     - DNADesign\Elemental\TopPage\SiteTreeExtension
     - DNADesign\Elemental\Extensions\ElementalPageExtension
-    - App\Extensions\PageFluentExtension
+    - A2nt\CMSNiceties\Extensions\PageFluentExtension
 
 DNADesign\Elemental\Models\ElementalArea:
   extensions:
     - DNADesign\Elemental\TopPage\FluentExtension
-    - App\Extensions\ElementalArea
+    - A2nt\CMSNiceties\Extensions\ElementalArea
 
 DNADesign\Elemental\Models\BaseElement:
   extensions:
     - DNADesign\Elemental\TopPage\FluentExtension
-    - App\Extensions\ElementRows
+    - A2nt\CMSNiceties\Extensions\ElementRows

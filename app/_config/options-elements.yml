@@ -4,45 +4,15 @@ After:
   - elemental
   - elemental-list
   - elementalvirtual
+  - elemental-basics
+  - a2nt-cms-niceties-options-elements
   - webapp-base-extensions
 ---
-
-# User Forms module
-DNADesign\ElementalUserForms\Model\ElementForm:
-  extensions:
-    - App\Elements\Extensions\UserDefinedFormExtension
-
-SilverStripe\UserForms\Model\UserDefinedForm:
-  show_in_sitetree: false
-  can_be_root: false
-  extensions:
-    - App\Elements\Extensions\UserDefinedFormExtension
-##################
-
 Page:
   searchable_elements:
     - DNADesign\Elemental\Models\ElementContent
   extensions:
     - DNADesign\Elemental\Extensions\ElementalPageExtension
-
-SilverStripe\CMS\Controllers\ContentController:
-  extensions:
-    - DNADesign\Elemental\Extensions\ElementalContentControllerExtension
-    - App\Elements\ElementalContentControllerExtension
-  url_handlers:
-    'element/$ID!': 'handleElement'
-
-DNADesign\Elemental\Models\ElementalArea:
-  extensions:
-    #- DNADesign\Elemental\TopPage\DataExtension
-    - App\Elements\Extensions\ElementalArea
-
-DNADesign\Elemental\Models\BaseElement:
-  default_global_elements: true
-  extensions:
-    #- DNADesign\Elemental\TopPage\DataExtension
-    - App\Elements\Extensions\BaseElementEx
-    - App\Elements\Extensions\ElementRows
 
 SilverStripe\CMS\Model\SiteTree:
   allowed_elements:
@@ -53,21 +23,18 @@ SilverStripe\CMS\Model\SiteTree:
     - Dynamic\Elements\Blog\Elements\ElementBlogPosts
     - Dynamic\Elements\Oembed\Elements\ElementOembed
     - Dynamic\Elements\Elements\ElementTestimonials
-    #- App\Elements\TeamMembersElement
-    - App\Elements\SliderElement
-    - App\Elements\BlockElement
-    - App\Elements\MapElement
-    #- App\Elements\AccordionElement
+    #- A2nt\ElementalBasics\Elements\TeamMembersElement
+    - A2nt\ElementalBasics\Elements\SliderElement
+    - A2nt\ElementalBasics\Elements\MapElement
+    #- A2nt\ElementalBasics\Elements\AccordionElement
     - DNADesign\ElementalVirtual\Model\ElementVirtual
-    - App\Elements\AccordionElement
-    - App\Elements\CustomSnippetElement
-    - App\Elements\InstagramElement
+    - A2nt\ElementalBasics\Elements\AccordionElement
+    - A2nt\ElementalBasics\Elements\CustomSnippetElement
+    - A2nt\ElementalBasics\Elements\InstagramElement
 
 DNADesign\ElementalList\Model\ElementList:
   inline_editable: false
   default_global_elements: false
-  extensions:
-    - App\Elements\ElementListExtension
   allowed_elements:
     - DNADesign\ElementalList\Model\ElementList
     - DNADesign\Elemental\Models\ElementContent
@@ -76,31 +43,12 @@ DNADesign\ElementalList\Model\ElementList:
     - Dynamic\Elements\Blog\Elements\ElementBlogPosts
     - Dynamic\Elements\Oembed\Elements\ElementOembed
     - Dynamic\Elements\Elements\ElementTestimonials
-    #- App\Elements\TeamMembersElement
-    - App\Elements\SliderElement
-    - App\Elements\BlockElement
-    - App\Elements\MapElement
-    - App\Elements\AccordionElement
-    - App\Elements\CustomSnippetElement
-    - App\Elements\InstagramElement
+    #- A2nt\ElementalBasics\Elements\TeamMembersElement
+    - A2nt\ElementalBasics\Elements\SliderElement
+    - A2nt\ElementalBasics\Elements\MapElement
+    - A2nt\ElementalBasics\Elements\AccordionElement
+    - A2nt\ElementalBasics\Elements\CustomSnippetElement
+    - A2nt\ElementalBasics\Elements\InstagramElement
   styles:
     whiteframe: 'White Frame'
     noframe: 'No Frame'
-
-App\Elements\AccordionElement:
-  allowed_elements:
-    - DNADesign\Elemental\Models\ElementContent
-
-DNADesign\Elemental\Models\ElementContent:
-  default_global_elements: false
-  inline_editable: false
-  extensions:
-    - App\Elements\Extensions\ElementContentWidget
-  frontend_searchable_fields:
-    - 'Title:PartialMatch'
-    - 'HTML:PartialMatch'
-
-Dynamic\Elements\Image\Elements\ElementImage:
-  inline_editable: false
-  extensions:
-    - App\Elements\Extensions\ElementImageWidget

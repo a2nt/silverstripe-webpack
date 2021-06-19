@@ -1,33 +1,5 @@
 ---
 Name: webapp-options-widgets
+After:
+  - a2nt-cms-niceties-options-widgets
 ---
-# Blog + Widgets module extensions
-Page:
-  extensions:
-    - App\Widgets\WidgetPageExtension
-
-SilverStripe\Blog\Model\Blog:
-  extensions:
-    - App\Extensions\BlogExtension
-SilverStripe\Blog\Model\BlogPost:
-  extensions:
-    - App\Extensions\BlogPostExtension
-
-SilverStripe\Widgets\Model\Widget:
-  icon: '<i class="icon font-icon-p-document"></i>'
-  extensions:
-    - App\Widgets\WidgetExtension
-SilverStripe\Blog\Widgets\BlogArchiveWidget:
-  icon: '<i class="icon font-icon-p-archive"></i>'
-SilverStripe\Blog\Widgets\BlogCategoriesWidget:
-  icon: '<i class="icon font-icon-page-multiple"></i>'
-SilverStripe\Blog\Widgets\BlogFeaturedPostsWidget:
-  icon: '<i class="icon font-icon-chart-line"></i>'
-SilverStripe\Blog\Widgets\BlogRecentPostsWidget:
-  icon: '<i class="icon font-icon-back-in-time"></i>'
-SilverStripe\Blog\Widgets\BlogTagsCloudWidget:
-  icon: '<i class="icon font-icon-tags"></i>'
-SilverStripe\Blog\Widgets\BlogTagsWidget:
-  icon: '<i class="icon font-icon-tags"></i>'
-  only_available_in:
-    - CMSMain_HiddenClass

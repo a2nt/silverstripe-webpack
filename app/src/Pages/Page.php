@@ -4,7 +4,6 @@
 // extends global Page class
 //namespace App\Pages;
 
-use Sheadawson\Linkable\Forms\LinkField;
 use SilverStripe\CMS\Model\SiteTree;
 use DNADesign\Elemental\Models\ElementContent;
 use SilverStripe\FontAwesome\FontAwesomeField;
