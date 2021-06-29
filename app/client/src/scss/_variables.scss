@@ -73,9 +73,9 @@ $carousel-controls-shadow: 1px 1px $black;
 $carousel-controls-hover-bg: transparentize($black, 0.4);
 $carousel-slide-img-loading-max-height: 70vh;
 
+@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_variables';
+
 $headings-margin-bottom: $spacer;
 $headings-line-height: 1.2;
-
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_variables';
 $font-family-base: 'Roboto',
 $font-family-sans-serif;
