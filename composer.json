@@ -57,7 +57,8 @@
         "lekoala/silverstripe-debugbar": "dev-master",
         "silverstripe/graphql-devtools": "1.x-dev"
     },
-    "repositories": [{
+    "repositories": [
+        {
             "type": "vcs",
             "url": "https://github.com/a2nt/silverstripe-font-awesome"
         },

@@ -8,7 +8,7 @@ A2nt\CMSNiceties\Templates\DeferredRequirements:
   version: false
   static_domain: false
   deferred: true
-  noreact: false
+  noreact: true
   nojquery: true
   jquery_version: '3.4.1'
 

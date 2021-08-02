@@ -1,14 +1,25 @@
 'use strict';
 
-import '@a2nt/meta-lightbox-react/src/js/app';
+/*
+ * UI Basics 
+ */
 import '../scss/app.scss';
 
 import MainUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_components/_main';
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_ui.instagram.feed';
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_ui.carousel';
 
+/*
+ * Extra functionality
+ */
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_ui.carousel';
+//import '@a2nt/meta-lightbox-react/src/js/app';
+//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_ui.instagram.feed';
+
+// site specific modules
 import './_layout';
 
+/*
+ * Service workers
+ */
 // Register service worker
 if ('serviceWorker' in navigator) {
     const baseHref = (document.getElementsByTagName('base')[0] || {}).href;

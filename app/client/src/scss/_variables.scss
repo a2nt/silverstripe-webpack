@@ -73,6 +73,8 @@ $carousel-controls-shadow: 1px 1px $black;
 $carousel-controls-hover-bg: transparentize($black, 0.4);
 $carousel-slide-img-loading-max-height: 70vh;
 
+// disable large screen sizing by default
+$extra-large-screen: 80000px;
 @import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_variables';
 
 $headings-margin-bottom: $spacer;

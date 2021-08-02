@@ -32,11 +32,11 @@
 		color: #212529;
 		overflow-x: hidden;
 	}
-	@media (min-width: 2000px) {
+	/*@media (min-width: 2000px) {
 		html, body {
 			font-size: .9vw;
 		}
-	}
+	}*/
 	#PageLoading {
 		position: fixed;
 		left: 0;
