@@ -200,7 +200,7 @@
       }
     }
   ],
-  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@6.2.0_webpack@5.48.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_node-sass@6.0.1+webpack@5.48.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@4.0.8/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_ui/map.api.scss": [
+  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@6.2.0_webpack@5.48.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_node-sass@6.0.1+webpack@5.48.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@4.0.9/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_ui/map.api.scss": [
     {
       "chunks": {
         "byName": {
@@ -217,10 +217,10 @@
         "byIdentifier": {
           "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.2.0_webpack@5.48.0/node_modules/css-loader/dist/runtime/api.js": 588,
           "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.2.0_webpack@5.48.0/node_modules/css-loader/dist/runtime/cssWithMappingToString.js": 773,
-          "./node_modules/.pnpm/css-loader@6.2.0_webpack@5.48.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_node-sass@6.0.1+webpack@5.48.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@4.0.8/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_ui/map.api.scss": 508
+          "./node_modules/.pnpm/css-loader@6.2.0_webpack@5.48.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_node-sass@6.0.1+webpack@5.48.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@4.0.9/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_ui/map.api.scss": 451
         },
         "usedIds": [
-          508,
+          451,
           588,
           773
         ]
@@ -291,9 +291,37 @@
   "modules": {
     "byIdentifier": {
       "./app/client/src/img|sync|nonrecursive|../../../../../../\\.(png|jpe?g|svg)$/": 999,
-      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/app.js|5d7bf5b5399bad503e06764a532b2299": 757,
+      "./node_modules/.pnpm/@a2nt+meta-lightbox-js@4.0.0/node_modules/@a2nt/meta-lightbox-js/src/img|sync|nonrecursive|../../../../../../\\.(png|jpe?g|svg)$/": 455,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/app.js|9e0ce5ed154698fcb23a089e4f643f94": 649,
       "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/SilverShop.Page.CheckoutPageController.js": 663,
-      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/Site.Controllers.MapElementController.js|1d6ddd2006d04d4638b466171539d7a7": 637,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/Site.Controllers.MapElementController.js|bd5f4c7af7e765ee799519f11fa41105": 103,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.js": 680,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/adapters/xhr.js": 765,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/axios.js": 612,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/cancel/Cancel.js": 629,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/cancel/CancelToken.js": 6,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/cancel/isCancel.js": 198,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/core/Axios.js": 703,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/core/InterceptorManager.js": 946,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/core/buildFullPath.js": 828,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/core/createError.js": 81,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/core/dispatchRequest.js": 891,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/core/enhanceError.js": 459,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/core/mergeConfig.js": 235,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/core/settle.js": 291,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/core/transformData.js": 930,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/defaults.js": 402,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/helpers/bind.js": 988,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/helpers/buildURL.js": 430,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/helpers/combineURLs.js": 200,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/helpers/cookies.js": 288,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/helpers/isAbsoluteURL.js": 758,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/helpers/isAxiosError.js": 463,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/helpers/isURLSameOrigin.js": 482,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/helpers/normalizeHeaderName.js": 979,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/helpers/parseHeaders.js": 400,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/helpers/spread.js": 475,
+      "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.1/node_modules/axios/lib/utils.js": 79,
       "./node_modules/.pnpm/babel-loader@8.2.2_8b0464c8bf295490a69e78f11399b5a8/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./themes/sample/client/src/js/app.js": 856,
       "./node_modules/.pnpm/img-optimize-loader@1.0.7_file-loader@6.2.0+webpack@5.48.0/node_modules/img-optimize-loader/dist/index.js??ruleSet[1].rules[4].use[0]!./app/client/src/img/bg.png": 139,
       "./node_modules/.pnpm/img-optimize-loader@1.0.7_file-loader@6.2.0+webpack@5.48.0/node_modules/img-optimize-loader/dist/index.js??ruleSet[1].rules[4].use[0]!./app/client/src/img/logo.png": 502,
@@ -303,6 +331,9 @@
       "./node_modules/.pnpm/img-optimize-loader@1.0.7_file-loader@6.2.0+webpack@5.48.0/node_modules/img-optimize-loader/dist/index.js??ruleSet[1].rules[4].use[0]!./app/client/src/img/photo1.png": 659,
       "./node_modules/.pnpm/img-optimize-loader@1.0.7_file-loader@6.2.0+webpack@5.48.0/node_modules/img-optimize-loader/dist/index.js??ruleSet[1].rules[4].use[0]!./app/client/src/img/photo2.jpg": 137,
       "./node_modules/.pnpm/img-optimize-loader@1.0.7_file-loader@6.2.0+webpack@5.48.0/node_modules/img-optimize-loader/dist/index.js??ruleSet[1].rules[4].use[0]!./app/client/src/img/photo3.svg": 617,
+      "./node_modules/.pnpm/img-optimize-loader@1.0.7_file-loader@6.2.0+webpack@5.48.0/node_modules/img-optimize-loader/dist/index.js??ruleSet[1].rules[4].use[0]!./node_modules/.pnpm/@a2nt+meta-lightbox-js@4.0.0/node_modules/@a2nt/meta-lightbox-js/src/img/photo1.png": 862,
+      "./node_modules/.pnpm/img-optimize-loader@1.0.7_file-loader@6.2.0+webpack@5.48.0/node_modules/img-optimize-loader/dist/index.js??ruleSet[1].rules[4].use[0]!./node_modules/.pnpm/@a2nt+meta-lightbox-js@4.0.0/node_modules/@a2nt/meta-lightbox-js/src/img/photo2.jpg": 20,
+      "./node_modules/.pnpm/img-optimize-loader@1.0.7_file-loader@6.2.0+webpack@5.48.0/node_modules/img-optimize-loader/dist/index.js??ruleSet[1].rules[4].use[0]!./node_modules/.pnpm/@a2nt+meta-lightbox-js@4.0.0/node_modules/@a2nt/meta-lightbox-js/src/img/photo3.svg": 608,
       "./node_modules/.pnpm/mini-css-extract-plugin@2.1.0_webpack@5.48.0/node_modules/mini-css-extract-plugin/dist/loader.js??ruleSet[1].rules[1].use[0]!./node_modules/.pnpm/css-loader@6.2.0_webpack@5.48.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_node-sass@6.0.1+webpack@5.48.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./app/client/src/scss/types/cms.scss": 80,
       "./node_modules/.pnpm/mini-css-extract-plugin@2.1.0_webpack@5.48.0/node_modules/mini-css-extract-plugin/dist/loader.js??ruleSet[1].rules[1].use[0]!./node_modules/.pnpm/css-loader@6.2.0_webpack@5.48.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_node-sass@6.0.1+webpack@5.48.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./app/client/src/scss/types/dev.scss": 582,
       "./node_modules/.pnpm/mini-css-extract-plugin@2.1.0_webpack@5.48.0/node_modules/mini-css-extract-plugin/dist/loader.js??ruleSet[1].rules[1].use[0]!./node_modules/.pnpm/css-loader@6.2.0_webpack@5.48.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_node-sass@6.0.1+webpack@5.48.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./app/client/src/scss/types/editor.scss": 914,
@@ -310,23 +341,54 @@
       "./node_modules/font-awesome|sync|nonrecursive|../../../../../../\\.(otf|eot|ttf|woff|woff2)$/": 429
     },
     "usedIds": [
+      6,
+      20,
+      79,
       80,
+      81,
+      103,
       137,
       139,
+      198,
+      200,
+      235,
       287,
+      288,
+      291,
+      400,
+      402,
       429,
+      430,
+      455,
+      459,
+      463,
+      475,
+      482,
       502,
       582,
+      608,
+      612,
       617,
       621,
-      637,
+      629,
+      649,
       659,
       663,
+      680,
+      703,
       747,
       751,
-      757,
+      758,
+      765,
+      828,
       856,
+      862,
+      891,
       914,
+      930,
+      946,
+      979,
+      988,
       999
     ]
   }

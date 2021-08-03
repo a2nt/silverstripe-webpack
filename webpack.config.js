@@ -24,7 +24,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const UIInfo = require('./package.json');
 const UIVERSION = JSON.stringify(UIInfo.version);
-const UIMetaInfo = require('./node_modules/@a2nt/meta-lightbox-react/package.json');
+const UIMetaInfo = require('./node_modules/@a2nt/meta-lightbox-js/package.json');
 
 const NODE_ENV = conf.NODE_ENV || process.env.NODE_ENV;
 const COMPRESS = NODE_ENV === 'production' ? true : false;
