@@ -14,7 +14,7 @@ const webpack = require('webpack');
  * Load webpack configuration from webpack.yml
  */
 
-const yml = yaml.safeLoad(
+const yml = yaml.load(
     fs.readFileSync(path.join(__dirname, YML_PATH), 'utf8'),
 );
 const conf = yml[CONF_VAR]

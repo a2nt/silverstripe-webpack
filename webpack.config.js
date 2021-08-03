@@ -5,7 +5,9 @@ const common = require('./webpack.config.common.js');
 const conf = common.configuration;
 
 const webpack = require('webpack');
-const { merge } = require('webpack-merge');
+const {
+    merge
+} = require('webpack-merge');
 
 
 const fs = require('fs');
@@ -251,7 +253,9 @@ const cfg = merge(common.webpack, {
                     preset: [
                         'default',
                         {
-                            discardComments: { removeAll: true },
+                            discardComments: {
+                                removeAll: true
+                            },
                             zindex: true,
                             cssDeclarationSorter: true,
                             reduceIdents: false,
@@ -273,120 +277,109 @@ const cfg = merge(common.webpack, {
     },
 
     output: {
-        publicPath: path.join(conf.APPDIR, conf.DIST),
-        path: path.join(__dirname, conf.APPDIR, conf.DIST),
+        publicPath: path.join(conf.APPDIR, conf.DIST) + '/',
+        path: path.join(__dirname, conf.APPDIR, conf.DIST) + '/',
         filename: path.join('js', '[name].js'),
     },
 
     module: {
         rules: [{
-                test: /\.jsx?$/,
-                //exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader', //'@sucrase/webpack-loader',
-                    options: {
-                        //transforms: ['jsx']
-                        presets: [
-                            '@babel/preset-env',
-                            '@babel/react',
-                            {
-                                plugins: [
-                                    '@babel/plugin-proposal-class-properties',
-                                ],
-                            },
-                        ], //Preset used for env setup
-                        plugins: [
-                            ['@babel/transform-react-jsx']
-                        ],
-                        cacheDirectory: true,
-                        cacheCompression: true,
-                    },
+            test: /\.jsx?$/,
+            //exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader', //'@sucrase/webpack-loader',
+                options: {
+                    //transforms: ['jsx']
+                    presets: [
+                        '@babel/preset-env',
+                        '@babel/react',
+                        {
+                            plugins: [
+                                '@babel/plugin-proposal-class-properties',
+                            ],
+                        },
+                    ], //Preset used for env setup
+                    plugins: [
+                        ['@babel/transform-react-jsx']
+                    ],
+                    cacheDirectory: true,
+                    cacheCompression: true,
                 },
             },
-            {
-                test: /\.s?css$/,
-                use: [{
-                        loader: MiniCssExtractPlugin.loader,
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: !COMPRESS,
-                        },
-                    },
-                    {
-                        loader: 'resolve-url-loader',
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: !COMPRESS,
-                        },
-                    },
-                ],
-            },
-            {
-                test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-                use: [{
-                    loader: 'file-loader',
+        },
+        {
+            test: /\.s?css$/,
+            use: [{
+                    loader: MiniCssExtractPlugin.loader,
                     options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/',
-                        publicPath: '../fonts/',
+                        publicPath: "../",
                     },
-                }, ],
-            },
-            {
-                test: /\.(ttf|otf|eot|woff(2)?)$/,
-                use: [{
-                    loader: 'file-loader',
+                },
+                {
+                    loader: 'css-loader',
                     options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/',
-                        publicPath: '../fonts/',
+                        sourceMap: true
                     },
-                }, ],
-            },
-            {
-                test: /\.(png|webp|jpg|jpeg|gif|svg)$/,
-                use: [{
-                    loader: 'img-optimize-loader',
+                },
+                /*{
+                    loader: 'resolve-url-loader',
+                },*/
+                {
+                    loader: 'sass-loader',
                     options: {
-                        name: '[name].[ext]',
-                        outputPath: 'img/',
-                        publicPath: '../img/',
-                        compress: {
-                            // This will take more time and get smaller images.
-                            mode: 'low', // 'lossless', 'high', 'low'
-                            disableOnDevelopment: true,
-                            webp: conf['webp'],
-                            // loseless compression for png
-                            optipng: {
-                                optimizationLevel: 4,
-                            },
-                            // lossy compression for png. This will generate smaller file than optipng.
-                            pngquant: {
-                                quality: [0.2, 0.8],
-                            },
-                            // Compression for svg.
-                            svgo: true,
-                            // Compression for gif.
-                            gifsicle: {
-                                optimizationLevel: 3,
-                            },
-                            // Compression for jpg.
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 60,
-                            },
+                        sourceMap: true
+                    },
+                },
+            ],
+        },
+        {
+            test: /fontawesome([^.]+).(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+            type: "asset/resource",
+        },
+        {
+            test: /\.(ttf|otf|eot|woff(2)?)$/,
+            type: "asset/resource",
+        }, {
+            test: /\.(png|webp|jpg|jpeg|gif|svg)$/,
+            type: "javascript/auto",
+            use: [
+            {
+                loader: 'img-optimize-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'img/',
+                    publicPath: '../img/',
+                    compress: {
+                        // This will take more time and get smaller images.
+                        mode: 'low', // 'lossless', 'high', 'low'
+                        disableOnDevelopment: true,
+                        webp: conf['webp'],
+                        // loseless compression for png
+                        optipng: {
+                            optimizationLevel: 4,
                         },
-                        inline: {
-                            limit: 1,
+                        // lossy compression for png. This will generate smaller file than optipng.
+                        pngquant: {
+                            quality: [0.2, 0.8],
+                        },
+                        // Compression for svg.
+                        svgo: true,
+                        // Compression for gif.
+                        gifsicle: {
+                            optimizationLevel: 3,
+                        },
+                        // Compression for jpg.
+                        mozjpeg: {
+                            progressive: true,
+                            quality: 60,
                         },
                     },
-                }, ],
-            },
-        ],
+                    inline: {
+                        limit: 1,
+                    },
+                },
+            }, ],
+        }, ],
     },
 
     plugins: plugins,
