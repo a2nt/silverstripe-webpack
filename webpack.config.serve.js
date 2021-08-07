@@ -20,6 +20,9 @@ const IP = process.env.IP || conf.HOSTNAME;
 const PORT = process.env.PORT || conf.PORT;
 
 const UIInfo = require('./package.json');
+test: /\.(png|webp|jpg|jpeg|gif|svg)$/,
+    type: "asset/resource",
+},
 const UIVERSION = JSON.stringify(UIInfo.version);
 const UIMetaInfo = require('./node_modules/@a2nt/meta-lightbox-js/package.json');
 
