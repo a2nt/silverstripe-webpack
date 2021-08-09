@@ -22,7 +22,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //const ImageSpritePlugin = require('@a2nt/image-sprite-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const UIInfo = require('./package.json');
+const UIInfo = require('./node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/package.json');
 const UIVERSION = JSON.stringify(UIInfo.version);
 const UIMetaInfo = require('./node_modules/@a2nt/meta-lightbox-js/package.json');
 
@@ -42,19 +42,7 @@ let plugins = [
         react: 'React',
         'react-dom': 'ReactDOM',
         /*$: 'jquery',
-        jQuery: 'jquery',
-        Popper: ['popper.js', 'default'],
-        Util: 'exports-loader?Util!bootstrap/js/dist/util',
-        Alert: 'exports-loader?Alert!bootstrap/js/dist/alert',
-        Button: 'exports-loader?Button!bootstrap/js/dist/button',
-        Carousel: 'exports-loader?Carousel!bootstrap/js/dist/carousel',
-        Collapse: 'exports-loader?Collapse!bootstrap/js/dist/collapse',
-        Dropdown: 'exports-loader?Dropdown!bootstrap/js/dist/dropdown',
-        Modal: 'exports-loader?Modal!bootstrap/js/dist/modal',
-        Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
-        Popover: 'exports-loader?Popover!bootstrap/js/dist/popover',
-        Scrollspy: 'exports-loader?Scrollspy!bootstrap/js/dist/scrollspy',
-        Tab: 'exports-loader?Tab!bootstrap/js/dist/tab',*/
+        jQuery: 'jquery',*/
     }),
     new webpack.DefinePlugin({
         'process.env': {
