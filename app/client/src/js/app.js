@@ -16,27 +16,27 @@ const fontAwesome = importAll(
  */
 import '../scss/app.scss';
 
-import MainUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_main/_index';
+import MainUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/main';
 
 /*
  * Extra functionality
  */
 import '@a2nt/meta-lightbox-js/src/js/app';
 import Collapse from 'bootstrap/js/src/collapse';
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_carousel';
-//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_instagram.feed';
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/carousel';
+//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/instagram.feed';
 
 /*
  * AJAX functionality
  */
-//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ajax/_links';
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ajax/_online';
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ajax/_lazy-images';
+//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ajax/links';
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ajax/online';
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ajax/lazy-images';
 
 /*
  * Site specific modules
  */
-import './_layout';
+import './layout';
 
 /*
  * Service workers

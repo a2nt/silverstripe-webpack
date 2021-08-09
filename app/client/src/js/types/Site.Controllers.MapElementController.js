@@ -3,7 +3,7 @@
 import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_events';
 
 // Mapbox API
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_map.api';
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/map.api';
 
 /*const LocationUI = (($) => {
   // Constants

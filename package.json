@@ -32,10 +32,10 @@
   ],
   "dependencies": {
     "@a2nt/meta-lightbox-js": "^4.0.1",
-    "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react": "^4.1.3",
+    "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react": "^4.1.6",
     "@angular/common": "^12.2.0",
     "@angular/core": "^12.2.0",
-    "@apollo/client": "^3.4.5",
+    "@apollo/client": "^3.4.6",
     "@jsanahuja/instagramfeed": "github:jsanahuja/instagramfeed",
     "@popperjs/core": "^2.9.3",
     "aos": "^2.3.4",
