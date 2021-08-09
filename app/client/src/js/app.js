@@ -5,7 +5,7 @@ function importAll(r) {
 }
 
 const images = importAll(
-    require.context('../img/', false, /\.(png|jpe?g|svg)$/),
+    require.context('../img/', false, /\.(png|webp|jpg|jpeg|gif|svg)$/),
 );
 const fontAwesome = importAll(
     require.context('font-awesome', false, /\.(otf|eot|ttf|woff|woff2)$/),
@@ -16,17 +16,26 @@ const fontAwesome = importAll(
  */
 import '../scss/app.scss';
 
-import MainUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_components/_main';
+import MainUI from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_main/_index';
 
 /*
  * Extra functionality
  */
-import Collapse from 'bootstrap/js/src/collapse';
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_ui.carousel';
 import '@a2nt/meta-lightbox-js/src/js/app';
-//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_ui.instagram.feed';
+import Collapse from 'bootstrap/js/src/collapse';
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_carousel';
+//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ui/_instagram.feed';
 
-// site specific modules
+/*
+ * AJAX functionality
+ */
+//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ajax/_links';
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ajax/_online';
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_ajax/_lazy-images';
+
+/*
+ * Site specific modules
+ */
 import './_layout';
 
 /*

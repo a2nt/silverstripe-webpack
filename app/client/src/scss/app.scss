@@ -2,9 +2,11 @@
 @import '_variables';
 
 @import '~@a2nt/meta-lightbox-js/src/scss/app';
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_components/_ui.bootstrap';
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_components/_ui.main';
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_components/_ui.main.ss';
+@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_libs/_bootstrap';
+@import '~bootstrap/scss/card';
+@import '~bootstrap/scss/accordion';
+@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_layout';
+@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_libs/_silverstripe';
 
 // Your custom styling
 @import '_typography';
