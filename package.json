@@ -16,7 +16,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.serve.js",
     "dash": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server --config webpack.config.serve.js",
     "prebuild": "rimraf ./app/client/dist",
-    "build": "cross-env NODE_ENV=production webpack --progress --stats-all",
+    "build": "eslint ./app/client/src --config eslint.config.json --fix && sass-lint ./app/client/src --config sass-lint.yml -v -q --fix && cross-env NODE_ENV=production webpack --progress --stats-all",
     "lint:check": "eslint ./app/client/src --config eslint.config.json && sass-lint ./app/client/src --config sass-lint.yml -v -q",
     "lint:fix": "eslint ./app/client/src --config eslint.config.json --fix && sass-lint ./app/client/src --config sass-lint.yml -v -q --fix",
     "lint:js": "eslint ./app/client/src --config eslint.config.json",
@@ -64,7 +64,8 @@
     "react-tiny-oembed": "^1.1.0",
     "rxjs": "^7.3.0",
     "select2": "^4.0.13",
-    "setimmediate": "^1.0.5"
+    "setimmediate": "^1.0.5",
+    "youtube-embed": "^1.0.0"
   },
   "devDependencies": {
     "@a2nt/image-sprite-webpack-plugin": "^0.2.5",
