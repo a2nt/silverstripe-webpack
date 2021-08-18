@@ -1,14 +1,14 @@
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/types/cms.scss';
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/types/cms";
 
 .notifications-list {
-	.alert {
-		.btn-close {
-			display: none;
-		}
-	}
+  .alert {
+    .btn-close {
+      display: none;
+    }
+  }
 }
 
 .btn-outline-primary,
 .btn-primary {
-	color: #fff;
+  color: #fff;
 }

@@ -1,14 +1,14 @@
 // Your custom variables
-@import '_variables';
+@import "variables";
 
-@import '~@a2nt/meta-lightbox-js/src/scss/app';
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/libs/bootstrap';
-@import '~bootstrap/scss/card';
-@import '~bootstrap/scss/accordion';
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/layout';
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/libs/silverstripe';
+@import "~@a2nt/meta-lightbox-js/src/scss/app";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/libs/bootstrap";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/accordion";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/layout";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/libs/silverstripe";
 
 // Your custom styling
-@import '_typography';
-@import 'layout';
-@import 'elements';
+@import "typography";
+@import "layout";
+@import "elements";

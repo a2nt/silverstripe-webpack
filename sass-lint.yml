@@ -1,8 +1,8 @@
 # sass-lint config to match the AirBNB style guide
 files:
-  include: 'src/**/*.scss'
+  include: 'app/client/src/**/*.scss'
   ignore:
-    - 'src/thirdparty/*'
+    - 'app/client/src/thirdparty/*'
 options:
   formatter: stylish
   merge-default-rules: false
@@ -18,8 +18,8 @@ rules:
   nesting-depth:
     - 1
     - max-depth: 3
-  no-ids: 1
-  no-important: 1
+  no-ids: 0
+  no-important: 0
   no-misspelled-properties:
     - 1
     - extra-properties:
@@ -54,7 +54,7 @@ rules:
   clean-import-paths:
     - 2
     - filename-extension: false
-      leading-underscore: false
+    - leading-underscore: true
   no-debug: 2
   no-empty-rulesets: 2
   no-invalid-hex: 2

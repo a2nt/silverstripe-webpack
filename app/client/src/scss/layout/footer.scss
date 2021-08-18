@@ -1,31 +1,31 @@
 #Footer {
-    border-top: 1px solid #ebebeb;
-    display: flex;
-    flex-direction: column;
-    background-color: $footer-bg;
-    color: $footer-color;
+  background-color: $footer-bg;
+  border-top: 1px solid #ebebeb;
+  color: $footer-color;
+  display: flex;
+  flex-direction: column;
 
-    >.wrapper {
-        padding-top: $element-reduced-spacer-y;
-        padding-bottom: $element-reduced-spacer-y;
+  > .wrapper {
+    padding-bottom: $element-reduced-spacer-y;
+    padding-top: $element-reduced-spacer-y;
+  }
+
+  a,
+  .a {
+    color: $footer-link;
+  }
+
+  .footer {
+    background-color: $footer-footer-bg;
+    padding-bottom: $element-reduced-spacer-y;
+    padding-top: $element-reduced-spacer-y;
+
+    .copyright {
+      padding-right: 0.5rem;
     }
 
-    a,
-    .a {
-        color: $footer-link;
+    li {
+      padding: 0 0.5rem;
     }
-
-    .footer {
-        padding-top: $element-reduced-spacer-y;
-        padding-bottom: $element-reduced-spacer-y;
-        background-color: $footer-footer-bg;
-
-        .copyright {
-            padding-right: 0.5rem;
-        }
-
-        li {
-            padding: 0 0.5rem;
-        }
-    }
+  }
 }

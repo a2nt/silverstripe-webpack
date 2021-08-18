@@ -21,8 +21,8 @@
                                 <div class="card-header" id="Heading{$ID}{$Up.ID}">
                                     <h3
                                             class="mb-0 a"
-                                            data-toggle="collapse"
-                                            data-target="#Collapse{$ID}{$Up.ID}"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#Collapse{$ID}{$Up.ID}"
                                             aria-expanded="false"
                                             aria-controls="Collapse{$ID}{$Up.ID}"
                                     >
@@ -35,7 +35,7 @@
                                         id="Collapse{$ID}{$Up.ID}"
                                         class="collapse"
                                         aria-labelledby="Heading{$ID}{$Up.ID}"
-                                        data-parent="#SearchAccordion{$Up.ID}"
+                                        data-bs-parent="#SearchAccordion{$Up.ID}"
                                 >
                                     <div class="card-body">
                                         <p>$Summary(100)</p>

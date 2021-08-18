@@ -8,16 +8,20 @@ $body-color: #212529;
 
 // bootstrap settings
 // screen size - 32px (ex. 1400 - 32 = 1368)
-$grid-breakpoints: (xs: 0,
-sm: 576px,
-md: 768px,
-lg: 992px,
-xl: 1168px);
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1168px,
+);
 // screen size - (32px * 2) (ex. 1400 - 64 = 1336)
-$container-max-widths: (sm: 540px,
-md: 720px,
-lg: 960px,
-xl: 1136px);
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1136px,
+);
 
 $enable-gradients: false;
 $enable-shadows: false;
@@ -30,11 +34,11 @@ $body-main-nav-link-hover-color: $body-color;
 $body-main-nav-dropdown-hover-bg: $body-color;
 $body-footer-footer-bg: $body-bg;
 
-$font-family-base: 'Roboto';
+$font-family-base: "Roboto";
 //
 
-$full-body-min-width: map-get($grid-breakpoints, 'lg');
-$typography-breakpoint: map-get($grid-breakpoints, 'sm') - 1;
+$full-body-min-width: map-get($grid-breakpoints, "lg");
+$typography-breakpoint: map-get($grid-breakpoints, "sm") - 1;
 
 $header-bg: var(--header-bg);
 $header-color: var(--header-color);
@@ -75,9 +79,8 @@ $carousel-slide-img-loading-max-height: 70vh;
 
 // disable large screen sizing by default
 $extra-large-screen: 80000px;
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/_variables';
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/variables";
 
 $headings-margin-bottom: $spacer;
 $headings-line-height: 1.2;
-$font-family-base: 'Roboto',
-$font-family-sans-serif;
+$font-family-base: "Roboto", $font-family-sans-serif;

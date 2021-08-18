@@ -134,8 +134,8 @@ module.exports = {
         externals: {
             // comment out jQuery if you don't use it to prevent bootstrap thinking that there's jQuery present
             //jquery: 'jQuery',
-            react: 'React',
-            'react-dom': 'ReactDOM',
+            //react: 'React',
+            //'react-dom': 'ReactDOM',
         },
         resolve: {
             modules: modules,
@@ -145,8 +145,8 @@ module.exports = {
                 $: require.resolve('jquery'),
                 jquery: require.resolve('jquery'),
                 jQuery: require.resolve('jquery'),*/
-                react: require.resolve('react'),
-                'react-dom': require.resolve('react-dom'),
+                //react: require.resolve('react'),
+                //'react-dom': require.resolve('react-dom'),
             },
             fallback: {
                 path: false
