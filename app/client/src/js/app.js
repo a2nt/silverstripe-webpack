@@ -10,7 +10,7 @@ import MainUI from "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/main"
  */
 import "@a2nt/meta-lightbox-js/src/js/app";
 import Collapse from "bootstrap/js/src/collapse";
-import Dropdown from "bootstrap/js/src/dropdown";
+import "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/dropdown";
 import "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/carousel";
 //import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/instagram.feed';
 
