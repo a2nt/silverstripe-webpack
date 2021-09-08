@@ -1,3 +1,5 @@
+@import "variables";
+
 @import "~@a2nt/meta-lightbox-js/src/scss/app";
 @import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/libs/bootstrap";
 @import "~bootstrap/scss/card";
@@ -6,7 +8,6 @@
 @import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/libs/silverstripe";
 
 // Your custom styling
-@import "variables";
 @import "typography";
 @import "layout";
 @import "elements";

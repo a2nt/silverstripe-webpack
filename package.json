@@ -88,6 +88,7 @@
     "@wry/trie": "^0.3.1",
     "animate.css": "^4.1.1",
     "ansi-html": "^0.0.7",
+    "ansi-html-community": "^0.0.8",
     "ansi-regex": "^6.0.0",
     "autoprefixer": "^10.3.4",
     "babel-loader": "^8.2.2",
