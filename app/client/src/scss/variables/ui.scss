@@ -1,0 +1,36 @@
+@import "./colors";
+
+// Bootstrap and Webkit bootstrap UI variables
+
+$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-base: "Roboto", $font-family-sans-serif;
+$body-bg: $white;
+$body-color: $gray-1;
+
+// screen size - 32px (ex. 1400 - 32 = 1368)
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1168px,
+);
+// container size - (32px * 2) (ex. 1400 - 64 = 1336)
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1136px,
+);
+$enable-gradients: false;
+$enable-shadows: false;
+//
+
+$full-body-min-width: map-get($grid-breakpoints, "lg");
+$typography-breakpoint: map-get($grid-breakpoints, "sm") - 1;
+$sliderelement-slide-ratio-x: 16;
+$sliderelement-slide-ratio-y: 9;
+
+// disable large screen sizing by default
+$extra-large-screen: 80000px;
+$headings-line-height: 1.2;
