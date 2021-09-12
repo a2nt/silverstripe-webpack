@@ -32,7 +32,7 @@
   ],
   "dependencies": {
     "@a2nt/meta-lightbox-js": "^4.1.2",
-    "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react": "^4.3.0",
+    "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react": "^4.3.2",
     "@angular/common": "^12.2.5",
     "@angular/core": "^12.2.5",
     "@apollo/client": "^3.4.11",
@@ -67,6 +67,7 @@
     "select2": "^4.0.13",
     "setimmediate": "^1.0.5",
     "vanilla-calendar": "^1.0.30",
+    "vanillajs-datepicker": "^1.1.4",
     "youtube-embed": "^1.0.0"
   },
   "devDependencies": {
