@@ -10,7 +10,7 @@ const fs = require('fs');
 //const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const {
-    merge
+    merge,
 } = require('webpack-merge');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -38,7 +38,7 @@ const plugins = [
         'react-dom': 'ReactDOM',
         /*$: 'jquery',
           jQuery: 'jquery',*/
-    }),
+      }),
     new webpack.DefinePlugin({
         UINAME: JSON.stringify(UIInfo.name),
         UIVERSION: UIVERSION,
@@ -50,37 +50,37 @@ const plugins = [
         BASE_HREF: JSON.stringify(
             `http${conf['HTTPS'] ? 's' : ''}://${IP}:${PORT}`,
         ),
-    }),
+      }),
     //new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),
 ];
 
 const indexPath = path.join(__dirname, conf.APPDIR, conf.SRC, 'index.html');
 if (fs.existsSync(indexPath)) {
-    plugins.push(
-        new HtmlWebpackPlugin({
-            publicPath: '',
-            template: path.join(conf.APPDIR, conf.SRC, 'index.html'),
-            templateParameters: {
-                NODE_ENV: NODE_ENV,
-                GRAPHQL_URL: conf['GRAPHQL_URL'],
-                STATIC_URL: conf['STATIC_URL'],
-                REACT_SCRIPTS: NODE_ENV === 'production' ?
-                    '<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script><script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>' : '<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script><script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>',
+  plugins.push(
+      new HtmlWebpackPlugin({
+          publicPath: '',
+          template: path.join(conf.APPDIR, conf.SRC, 'index.html'),
+          templateParameters: {
+              NODE_ENV: NODE_ENV,
+              GRAPHQL_URL: conf['GRAPHQL_URL'],
+              STATIC_URL: conf['STATIC_URL'],
+              REACT_SCRIPTS: NODE_ENV === 'production' ?
+                  '<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script><script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>' : '<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script><script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>',
             },
         }),
-    );
+  );
 }
 
 const config = merge(common.webpack, {
     mode: 'development',
 
     entry: {
-        /*hot: [
-          'react-hot-loader/patch',
-          'webpack-dev-server/?https://' + conf.HOSTNAME + ':' + conf.PORT,
-          'webpack/hot/only-dev-server',
-        ],*/
+      /*hot: [
+        'react-hot-loader/patch',
+        'webpack-dev-server/?https://' + conf.HOSTNAME + ':' + conf.PORT,
+        'webpack/hot/only-dev-server',
+      ],*/
     },
 
     output: {
@@ -90,16 +90,17 @@ const config = merge(common.webpack, {
         publicPath: `http${conf['HTTPS'] ? 's' : ''}://${conf['HOSTNAME']}:${
       conf.PORT
     }/`,
-    },
+      },
 
     module: {
-        rules: [{
+        rules: [
+        { test: /\.tsx?$/, loader: 'ts-loader' }, {
             test: /\.jsx?$/,
             //exclude: /node_modules/,
             use: {
                 loader: '@sucrase/webpack-loader', //'babel-loader',
                 options: {
-                    transforms: ['jsx']
+                    transforms: ['jsx'],
                     /*presets: [
                         '@babel/preset-env',
                         '@babel/react',
@@ -116,36 +117,36 @@ const config = merge(common.webpack, {
                     ],
                     cacheDirectory: true,
                     cacheCompression: true,*/
-                },
-            },
-        },
+                  },
+              },
+          },
         {
             test: /\.s?css$/,
             use: [{
                 loader: 'style-loader', //MiniCssExtractPlugin.loader,
-            },
+              },
             {
                 loader: 'css-loader',
                 options: {
                     sourceMap: true,
-                },
-            },
+                  },
+              },
             {
                 loader: 'sass-loader',
                 options: {
                     sourceMap: true,
-                },
-            }, ],
-        },
+                  },
+              },],
+          },
         {
             test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
             type: 'asset/resource',
-        },
+          },
         {
             test: /\.(gif|png|jpg|jpeg|ttf|otf|eot|svg|webp|woff(2)?)$/,
             type: 'asset/resource',
-        }, ],
-    },
+          },],
+      },
     plugins: plugins,
 
     devServer: {
@@ -161,8 +162,8 @@ const config = merge(common.webpack, {
             'Access-Control-Allow-Origin': '*',
             'Referrer-Policy': 'unsafe-url',
             'service-worker-allowed': '/',
-        },
-    },
-});
+          },
+      },
+  });
 
 module.exports = config;
