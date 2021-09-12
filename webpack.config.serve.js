@@ -93,30 +93,28 @@ const config = merge(common.webpack, {
       },
 
     module: {
-        rules: [
-        { test: /\.tsx?$/, loader: 'ts-loader' }, {
-            test: /\.jsx?$/,
+        rules: [{
+            test: /\.(js|ts)x?$/,
             //exclude: /node_modules/,
             use: {
-                loader: '@sucrase/webpack-loader', //'babel-loader',
+                loader: 'babel-loader', //'@sucrase/webpack-loader',
                 options: {
-                    transforms: ['jsx'],
-                    /*presets: [
+                    //transforms: ['jsx']
+                    presets: [
                         '@babel/preset-env',
                         '@babel/react',
                         {
                             plugins: [
                                 '@babel/plugin-proposal-class-properties',
-                                '@babel/plugin-syntax-top-level-await',
                             ],
-                        },
+                          },
                     ], //Preset used for env setup
                     plugins: [
-                        ['@babel/transform-react-jsx'],
-                        ['@babel/plugin-syntax-top-level-await'],
+                        '@babel/transform-react-jsx',
+                        '@babel/plugin-transform-typescript',
                     ],
                     cacheDirectory: true,
-                    cacheCompression: true,*/
+                    cacheCompression: true,
                   },
               },
           },

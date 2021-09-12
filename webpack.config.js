@@ -270,9 +270,8 @@ const cfg = merge(common.webpack, {
       },
 
     module: {
-        rules: [
-        { test: /\.tsx?$/, loader: 'ts-loader' }, {
-            test: /\.jsx?$/,
+        rules: [{
+            test: /\.(js|ts)x?$/,
             //exclude: /node_modules/,
             use: {
                 loader: 'babel-loader', //'@sucrase/webpack-loader',
@@ -288,7 +287,8 @@ const cfg = merge(common.webpack, {
                           },
                     ], //Preset used for env setup
                     plugins: [
-                        ['@babel/transform-react-jsx'],
+                        '@babel/plugin-transform-typescript',
+                        '@babel/transform-react-jsx',
                     ],
                     cacheDirectory: true,
                     cacheCompression: true,
@@ -304,14 +304,11 @@ const cfg = merge(common.webpack, {
                       },
                   },
                 {
-                    loader: 'css-loader',
-                    options: {
-                        sourceMap: true,
-                      },
-                  },
-                /*{
-                    loader: 'resolve-url-loader',
-                },*/
+                  loader: 'css-loader',
+                  options: {
+                      sourceMap: true,
+                    },
+                },
                 {
                     loader: 'sass-loader',
                     options: {
