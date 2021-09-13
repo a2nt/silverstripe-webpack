@@ -4,6 +4,9 @@
 Checkout files at /app/ folder for details
 Take a look to https://github.com/a2nt/webpack-bootstrap-ui-kit.git for UI Kit details
 
+Note: I prefer using vanilla JS with minimal external dependecies to reach highter loading speed.
+There's no jQuery and no React, but it can be connected optionaly.
+
 # UI Demo
 
 Use UI Repository at https://github.com/a2nt/webpack-bootstrap-ui-kit.git to build static HTML files
