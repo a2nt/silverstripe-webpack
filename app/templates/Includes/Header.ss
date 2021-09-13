@@ -1,17 +1,12 @@
 <div class="element">
     <div class="element__container $DefaultContainer">
         <div class="row">
-            <div class="col-xl-4">
+            <div class="col col-xl-3">
                 <a id="Logo" class="logo" href="/">
-                    <img src="{$ResourcesURL('logo.svg')}" width="100" alt="{$SiteConfig.Title}" />
+                    <img src="{$ResourcesURL('logo.png')}" width="100" alt="{$SiteConfig.Title}" />
                 </a>
-                <% with $SiteConfig %>
-                    <% if $Tagline %>
-                        <div class="tagline">$Tagline</div>
-                    <% end_if %>
-                <% end_with %>
             </div>
-            <div class="col-xl-8 nav-container">
+            <div class="col col-xl-9 nav-container">
                 <% if $Menu(1) %>
                     <% include Navigation Navigation=$Menu(1), NavID="Navigation" %>
                 <% end_if %>

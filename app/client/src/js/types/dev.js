@@ -1,9 +1,10 @@
-'use strict';
+"use strict";
 
-import $ from 'jquery';
+import "../../scss/types/dev.scss";
+
+/*import $ from 'jquery';
 import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_events';
 
-import '../../scss/dev.scss';
 
 const DevUI = ($ => {
   // Constants
@@ -45,4 +46,4 @@ const DevUI = ($ => {
   return DevUI;
 })($);
 
-export default DevUI;
+export default DevUI;*/

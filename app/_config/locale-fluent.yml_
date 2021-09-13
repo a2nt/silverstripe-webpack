@@ -1,0 +1,43 @@
+---
+Name: webapp-locale-fluent
+After:
+  - webapp-extensions
+  - webapp-elemental
+  - webapp-locale
+  - a2nt-cms-niceties-locale-fluent
+---
+# Define Fluent locales
+TractorCow\Fluent\Model\Locale:
+  default_records:
+    en:
+      Title: 'EN'
+      Locale: en_US
+      URLSegment: en
+      IsGlobalDefault: 1
+  us:
+    Locale: en_US
+    Title: 'EN'
+    URLSegment: en
+  ru:
+    Locale: ru_RU
+    Title: 'RU'
+    URLSegment: ru
+    Fallbacks:
+      - =>TractorCow\Fluent\Model\Locale.us
+
+# Enable Fluent extensions
+Page:
+  extensions:
+    - DNADesign\Elemental\TopPage\SiteTreeExtension
+    - DNADesign\Elemental\Extensions\ElementalPageExtension
+    - A2nt\CMSNiceties\Extensions\PageFluentExtension
+
+DNADesign\Elemental\Models\ElementalArea:
+  extensions:
+    - DNADesign\Elemental\TopPage\FluentExtension
+    - A2nt\CMSNiceties\Extensions\ElementalArea
+
+DNADesign\Elemental\Models\BaseElement:
+  extensions:
+    - DNADesign\Elemental\TopPage\FluentExtension
+    - A2nt\CMSNiceties\Extensions\ElementRows

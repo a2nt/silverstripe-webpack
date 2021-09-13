@@ -1,12 +1,12 @@
 "use strict";
 
-import $ from 'jquery';
-import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_events';
+import Events from "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_events";
 
 // Mapbox API
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.map.api';
+import "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/map.api";
+import "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/types/map.api.scss";
 
-const LocationUI = (($) => {
+/*const LocationUI = (($) => {
   // Constants
   const W = window;
   const D = document;
@@ -59,4 +59,4 @@ const LocationUI = (($) => {
 
 })($);
 
-export default LocationUI;
+export default LocationUI;*/

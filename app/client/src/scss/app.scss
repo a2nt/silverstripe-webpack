@@ -1,31 +1,15 @@
-//@import "~bootstrap-select/sass/bootstrap-select.scss";
+@import "variables";
 
-//@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
-//@import "~bootstrap-timepicker/css/bootstrap-timepicker.css";
+@import "~@a2nt/meta-lightbox-js/src/scss/app";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/libs/bootstrap";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/accordion";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/ui/datepicker";
 
-// Your custom variables
-@import '_variables';
-
-//@import "~bootstrap-select/dist/css/bootstrap-select.css";
-// conflicts to bootstrap-select
-//@import "~select2/dist/css/select2.css";
-
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.bootstrap';
-
-// By default we prefer font awesome CDN
-//@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.fontawesome";
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.lightbox';
-
-// Flyout UI
-//@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.flyout";
-
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.main';
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.form.basics';
-@import '~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.elemental';
-
-//@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/scss/_components/_ui.form.stepped";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/layout";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/libs/silverstripe";
 
 // Your custom styling
-@import '_typography';
-@import '_layout';
-@import '_elements';
+@import "typography";
+@import "layout";
+@import "elements";

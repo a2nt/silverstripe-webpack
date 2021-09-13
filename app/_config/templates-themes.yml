@@ -1,0 +1,20 @@
+---
+Name: webapp-templates-themes
+After:
+  - webapp-options-elements
+  - a2nt-cms-niceties-templates-themes
+---
+SilverStripe\View\SSViewer:
+  source_file_comments: true
+  themes:
+    - '$public'
+    - '$default'
+
+A2nt\ElementalBasics\Elements\SliderElement:
+  slide_width: 2140
+  slide_height: 700
+
+# 2x container width to automatically resize images for 2K display
+A2nt\ElementalBasics\Extensions\ElementRows:
+  container_max_width: 2280
+  column_class: 'col-block col-md'

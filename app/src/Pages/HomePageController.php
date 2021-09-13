@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Pages;
+namespace App\Pages;
 
 use PageController;
 

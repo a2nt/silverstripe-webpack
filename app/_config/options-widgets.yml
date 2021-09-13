@@ -1,0 +1,5 @@
+---
+Name: webapp-options-widgets
+After:
+  - a2nt-cms-niceties-options-widgets
+---

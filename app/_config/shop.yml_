@@ -1,22 +1,24 @@
 ---
-Name: 'webapp-shop'
+Name: webapp-shop
+After:
+  - a2nt-cms-niceties-shop
 ---
 SilverStripe\Core\Injector\Injector:
   SilverShop\Checkout\SinglePageCheckoutComponentConfig:
-    class: Site\Models\CheckoutNoDeliveryConfig
+    class: A2nt\CMSNiceties\Models\CheckoutNoDeliveryConfig
 
 SilverShop\Extension\ShopConfigExtension:
   base_currency: USD
 
 SilverShop\Model\Address:
   extensions:
-  - Site\Extensions\AddressExtension
+  - A2nt\CMSNiceties\Extensions\AddressExtension
 
 SilverShop\Cart\ShoppingCartController:
   extensions:
-    - Site\Extensions\ShoppingCartControllerExtension
+    - A2nt\CMSNiceties\Extensions\ShoppingCartControllerExtension
 
-Site\Templates\DeferedRequirements:
+A2nt\CMSNiceties\Templates\DeferedRequirements:
   custom_requirements:
     SilverShop\Page\AccountPageController:
       - SilverShop.Page.CheckoutPageController.js

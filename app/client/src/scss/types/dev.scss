@@ -1,0 +1,40 @@
+/*
+ * Use this file to display original website template image above current layout
+ */
+#DevUtilities {
+  display: none;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+
+  .navs {
+    left: 0;
+    position: fixed;
+    z-index: 999;
+  }
+
+  .original {
+    background-color: transparent;
+
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    background-size: 1854px auto;
+    height: 10000px;
+
+    left: 0;
+
+    /*background-image: url(../img/original2.png);
+		background-image: url(../img/original.png);*/
+
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+---
+Name: webapp-options-elements
+After:
+  - elemental
+  - elemental-list
+  - elementalvirtual
+  - elemental-basics
+  - a2nt-cms-niceties-options-elements
+  - webapp-base-extensions
+---
+Page:
+  searchable_elements:
+    - DNADesign\Elemental\Models\ElementContent
+  extensions:
+    - DNADesign\Elemental\Extensions\ElementalPageExtension
+
+SilverStripe\CMS\Model\SiteTree:
+  allowed_elements:
+    - DNADesign\ElementalList\Model\ElementList
+    - DNADesign\Elemental\Models\ElementContent
+    - DNADesign\ElementalUserForms\Model\ElementForm
+    - Dynamic\Elements\Image\Elements\ElementImage
+    - Dynamic\Elements\Blog\Elements\ElementBlogPosts
+    - Dynamic\Elements\Oembed\Elements\ElementOembed
+    - Dynamic\Elements\Elements\ElementTestimonials
+    #- A2nt\ElementalBasics\Elements\TeamMembersElement
+    - A2nt\ElementalBasics\Elements\SliderElement
+    - A2nt\ElementalBasics\Elements\MapElement
+    #- A2nt\ElementalBasics\Elements\AccordionElement
+    - DNADesign\ElementalVirtual\Model\ElementVirtual
+    - A2nt\ElementalBasics\Elements\AccordionElement
+    - A2nt\ElementalBasics\Elements\CustomSnippetElement
+    - A2nt\ElementalBasics\Elements\InstagramElement
+
+DNADesign\ElementalList\Model\ElementList:
+  inline_editable: false
+  default_global_elements: false
+  allowed_elements:
+    - DNADesign\ElementalList\Model\ElementList
+    - DNADesign\Elemental\Models\ElementContent
+    - DNADesign\ElementalUserForms\Model\ElementForm
+    - Dynamic\Elements\Image\Elements\ElementImage
+    - Dynamic\Elements\Blog\Elements\ElementBlogPosts
+    - Dynamic\Elements\Oembed\Elements\ElementOembed
+    - Dynamic\Elements\Elements\ElementTestimonials
+    #- A2nt\ElementalBasics\Elements\TeamMembersElement
+    - A2nt\ElementalBasics\Elements\SliderElement
+    - A2nt\ElementalBasics\Elements\MapElement
+    - A2nt\ElementalBasics\Elements\AccordionElement
+    - A2nt\ElementalBasics\Elements\CustomSnippetElement
+    - A2nt\ElementalBasics\Elements\InstagramElement
+  styles:
+    whiteframe: 'White Frame'
+    noframe: 'No Frame'

@@ -1,0 +1,14 @@
+//
+// !!! IMPORTANT !!
+// First Define Bootstrap and Webkit bootstrap UI variables
+//
+
+@import "./ui";
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/variables";
+$headings-margin-bottom: $spacer;
+
+//
+// !!! IMPORTANT !!
+// Next Define your project variables
+//
+@import "./app";

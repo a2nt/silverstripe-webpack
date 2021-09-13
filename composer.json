@@ -16,7 +16,6 @@
         "silverstripe/userforms": "*",
         "undefinedoffset/sortablegridfield": "*",
         "silverstripe/spamprotection": "*",
-        "silverstripe/recaptcha": "*",
         "jonom/silverstripe-betternavigator": "*",
         "silverstripe/externallinks": "*",
         "symbiote/silverstripe-gridfieldextensions": "*",
@@ -42,17 +41,21 @@
         "a2nt/silverstripe-font-awesome-field": "dev-master",
         "a2nt/silverstripe-mapboxfield": "dev-master",
         "a2nt/silverstripe-progressivewebapp": "dev-master",
+        "a2nt/silverstripe-elemental-basics": "*",
+        "a2nt/cms-niceties": "*",
         "bummzack/sortablefile": "*",
         "eluceo/ical": "^0.16.0",
         "ezyang/htmlpurifier": "^4.13",
         "showpro/silverstripe-seo-images": "^1.0",
         "endroid/qr-code": "^3.9",
         "jonom/focuspoint": "^3.1",
-        "restruct/silverstripe-security-baseline": "*"
+        "symbiote/silverstripe-addressable": "dev-master",
+        "silverstripe/graphql": "^3.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
-        "lekoala/silverstripe-debugbar": "dev-master"
+        "lekoala/silverstripe-debugbar": "dev-master",
+        "silverstripe/graphql-devtools": "1.x-dev"
     },
     "repositories": [
         {
@@ -62,6 +65,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/a2nt/silverstripe-mapboxfield"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/a2nt/silverstripe-addressable"
         }
     ],
     "extra": {

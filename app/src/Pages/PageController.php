@@ -2,7 +2,7 @@
 
 // vendor/silverstripe/errorpage/src/ErrorPageController.php
 // extends global PageController class
-//namespace Site\Pages;
+//namespace App\Pages;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\CMS\Controllers\ContentController;
@@ -22,8 +22,8 @@ use SilverStripe\ORM\ArrayList;
 use DNADesign\Elemental\Models\ElementContent;
 use DNADesign\Elemental\Models\ElementalArea;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
-use Site\Models\TeamMember;
-use Site\Templates\DeferredRequirements;
+use A2nt\ElementalBasics\Models\TeamMember;
+use A2nt\CMSNiceties\Templates\DeferredRequirements;
 
 class PageController extends ContentController
 {
@@ -59,13 +59,18 @@ class PageController extends ContentController
         return $this->render();
     }
 
+    public function setAction($action)
+    {
+        $this->action = $action;
+    }
+
     public function ElementalArea()
     {
-        if ($this->CurrentElement() || $this->getAction() !== 'index') {
-            return false;
+        if (!$this->getAction() || $this->getAction() === 'index') {
+            return ElementalArea::get()->byID($this->getField('ElementalAreaID'));
         }
 
-        return ElementalArea::get()->byID($this->getField('ElementalAreaID'));
+        return false;
     }
 
     public function CurrentElement()
@@ -79,7 +84,7 @@ class PageController extends ContentController
         return false;
     }
 
-    public function SearchForm()
+    public function SearchForm(): Form
     {
         $config = $this->SiteConfig();
         return Form::create(
@@ -87,7 +92,7 @@ class PageController extends ContentController
             __FUNCTION__,
             FieldList::create(
                 TextField::create('q', 'Search ...')
-                ->setAttribute('placeholder', 'Search '.$config->getField('Title').' Website')
+                    ->setAttribute('placeholder', 'Search '.$config->getField('Title').' Website')
             ),
             FieldList::create(
                 FormAction::create(
@@ -112,7 +117,7 @@ class PageController extends ContentController
         return $this->renderWith([__CLASS__.'_search', 'Page']);
     }
 
-    private static function getSearchObjects($classNames, $term)
+    private static function getSearchObjects($classNames, $term): ArrayList
     {
         $elements = ArrayList::create();
         foreach ($classNames as $class) {
@@ -139,9 +144,9 @@ class PageController extends ContentController
 
         // get pages by title and content
         $pages = SiteTree::get()->filterAny([
-            'Title:PartialMatch' => $term,
-            'Content:PartialMatch' => $term,
-        ])->sort('Created DESC');
+                'Title:PartialMatch' => $term,
+                'Content:PartialMatch' => $term,
+            ])->sort('Created DESC');
 
         $results->merge($pages);
 
@@ -160,7 +165,7 @@ class PageController extends ContentController
             $results->push($page);
         }
 
-        // get pages by onjects
+        // get pages by objects
         $elements = self::getSearchObjects(
             self::config()->get('searchable_objects'),
             $term
