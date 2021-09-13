@@ -200,7 +200,7 @@
       }
     }
   ],
-  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@6.2.0_webpack@5.52.1/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_sass@1.39.2+webpack@5.52.1/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@4.3.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/types/map.api.scss": [
+  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@6.2.0_webpack@5.52.1/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_sass@1.39.2+webpack@5.52.1/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@4.3.3/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/types/map.api.scss": [
     {
       "chunks": {
         "byName": {
@@ -217,11 +217,11 @@
         "byIdentifier": {
           "./node_modules/.pnpm/babel-loader@8.2.2_16ff48a381fa3cd612ae60c01c46e0d7/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.2.0_webpack@5.52.1/node_modules/css-loader/dist/runtime/api.js": 695,
           "./node_modules/.pnpm/babel-loader@8.2.2_16ff48a381fa3cd612ae60c01c46e0d7/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.2.0_webpack@5.52.1/node_modules/css-loader/dist/runtime/cssWithMappingToString.js": 236,
-          "./node_modules/.pnpm/css-loader@6.2.0_webpack@5.52.1/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_sass@1.39.2+webpack@5.52.1/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@4.3.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/types/map.api.scss": 614
+          "./node_modules/.pnpm/css-loader@6.2.0_webpack@5.52.1/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@12.1.0_sass@1.39.2+webpack@5.52.1/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@4.3.3/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/types/map.api.scss": 519
         },
         "usedIds": [
           236,
-          614,
+          519,
           695
         ]
       }
@@ -291,9 +291,9 @@
   "modules": {
     "byIdentifier": {
       "./app/client/src/img|sync|nonrecursive|../../../../../../\\.(png|webp|jpg|jpeg|gif|svg)$/": 779,
-      "./node_modules/.pnpm/babel-loader@8.2.2_16ff48a381fa3cd612ae60c01c46e0d7/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/app.js|970a8a0fb1c126748a34b9514094c4fe": 352,
+      "./node_modules/.pnpm/babel-loader@8.2.2_16ff48a381fa3cd612ae60c01c46e0d7/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/app.js|b60a8c816f2a0c89bca1c7f91da75b8b": 956,
       "./node_modules/.pnpm/babel-loader@8.2.2_16ff48a381fa3cd612ae60c01c46e0d7/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/SilverShop.Page.CheckoutPageController.js": 812,
-      "./node_modules/.pnpm/babel-loader@8.2.2_16ff48a381fa3cd612ae60c01c46e0d7/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/Site.Controllers.MapElementController.js|f782c30cadbc15047cbef40fabd2f9f3": 597,
+      "./node_modules/.pnpm/babel-loader@8.2.2_16ff48a381fa3cd612ae60c01c46e0d7/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/Site.Controllers.MapElementController.js|4a1894733fd6e2d13e4dc7ac9cad80a6": 881,
       "./node_modules/.pnpm/babel-loader@8.2.2_16ff48a381fa3cd612ae60c01c46e0d7/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.4/node_modules/axios/index.js": 916,
       "./node_modules/.pnpm/babel-loader@8.2.2_16ff48a381fa3cd612ae60c01c46e0d7/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.4/node_modules/axios/lib/adapters/xhr.js": 863,
       "./node_modules/.pnpm/babel-loader@8.2.2_16ff48a381fa3cd612ae60c01c46e0d7/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/axios@0.21.4/node_modules/axios/lib/axios.js": 492,
@@ -354,7 +354,6 @@
       290,
       295,
       347,
-      352,
       429,
       431,
       454,
@@ -365,7 +364,6 @@
       529,
       553,
       573,
-      597,
       616,
       626,
       671,
@@ -380,12 +378,14 @@
       855,
       857,
       863,
+      881,
       884,
       889,
       916,
       926,
       932,
       939,
+      956,
       958,
       978
     ]

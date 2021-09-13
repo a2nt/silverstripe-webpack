@@ -1,6 +1,6 @@
 {
   "name": "ss-webpack-boilerplate",
-  "version": "2.0.2",
+  "version": "2.6.3",
   "description": "Lets you create SilverStripe faster",
   "author": "Tony Air <tony@twma.pro>",
   "license": "MIT",
@@ -32,7 +32,7 @@
   ],
   "dependencies": {
     "@a2nt/meta-lightbox-js": "^4.1.2",
-    "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react": "^4.3.2",
+    "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react": "^4.3.3",
     "@angular/common": "^12.2.5",
     "@angular/core": "^12.2.5",
     "@apollo/client": "^3.4.11",
