@@ -61,9 +61,10 @@ let plugins = [
         debug: !COMPRESS,
       }),
     new MiniCssExtractPlugin({
-        filename: 'css/[name].css',
-        //allChunks: true,
-      }),
+      experimentalUseImportModule: false,
+      filename: 'css/[name].css',
+      //allChunks: true,
+    }),
 ];
 
 if (COMPRESS) {
@@ -254,7 +255,7 @@ const cfg = merge(common.webpack, {
                             discardDuplicates: true,
                           },
                     ],
-                  },],
+                  }, ],
                 minify: [
                     CssMinimizerPlugin.cssnanoMinify,
                     //CssMinimizerPlugin.cleanCssMinify,
@@ -363,8 +364,8 @@ const cfg = merge(common.webpack, {
                         limit: 1,
                       },
                   },
-              },],
-          },],
+              }, ],
+          }, ],
       },
 
     plugins: plugins,
