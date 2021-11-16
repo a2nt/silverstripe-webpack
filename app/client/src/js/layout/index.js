@@ -1,20 +1,20 @@
-import Events from "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_events";
+import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_events';
 
 const LayoutUI = ((W) => {
-  const NAME = "_layout";
+  const NAME = '_layout';
   const D = document;
   const BODY = D.body;
 
   const init_fonts = () => {
     console.log(`${NAME}: init_fonts`);
 
-    const css = D.createElement("link");
-    css.rel = "stylesheet";
-    css.type = "text/css";
-    css.media = "all";
+    const css = D.createElement('link');
+    css.rel = 'stylesheet';
+    css.type = 'text/css';
+    css.media = 'all';
     css.href =
-      "https://fonts.googleapis.com/css?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap";
-    D.getElementsByTagName("head")[0].appendChild(css);
+      'https://fonts.googleapis.com/css?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap';
+    D.getElementsByTagName('head')[0].appendChild(css);
   };
 
   const init_analytics = () => {
@@ -43,7 +43,7 @@ const LayoutUI = ((W) => {
         ga('send', 'pageview');*/
   };
 
-  W.addEventListener(`${Events.LOADED}`, () => {
+  W.addEventListener(`${Events.LODEDANDREADY}`, () => {
     init_fonts();
     //init_analytics();
   });

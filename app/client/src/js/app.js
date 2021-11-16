@@ -1,6 +1,7 @@
 /*
  * UI Basics
  */
+//import $ from 'jquery';
 import '../scss/app.scss';
 
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/main';
