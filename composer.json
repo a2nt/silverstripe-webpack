@@ -11,7 +11,7 @@
         "php": ">=7.1.0",
         "ext-json": "*",
         "silverstripe/recipe-cms": "^4",
-        "silverstripe/recipe-plugin": "^1.5",
+        "silverstripe/recipe-plugin": "*",
         "wilr/silverstripe-googlesitemaps": "*",
         "silverstripe/userforms": "*",
         "undefinedoffset/sortablegridfield": "*",
@@ -24,7 +24,6 @@
         "dnadesign/silverstripe-elemental-virtual": "*",
         "dnadesign/silverstripe-elemental-userforms": "*",
         "dynamic/silverstripe-elemental-blocks": "*",
-        "drmartingonzo/ss-tinymce-charcount": "*",
         "axllent/silverstripe-version-truncator": "*",
         "gorriecoe/silverstripe-dataobjecthistory": "*",
         "axllent/silverstripe-bootstrap-forms": "*",
@@ -34,10 +33,7 @@
         "betterbrief/silverstripe-googlemapfield": "*",
         "innoweb/silverstripe-sitemap": "*",
         "silverstripe/multiuser-editing-alert": "*",
-        "gorriecoe/silverstripe-link": "*",
-        "gorriecoe/silverstripe-linkfield": "*",
         "silverstripe/environmentcheck": "*",
-        "silverstripe/widgets": "^2.0",
         "a2nt/silverstripe-font-awesome-field": "dev-master",
         "a2nt/silverstripe-mapboxfield": "dev-master",
         "a2nt/silverstripe-progressivewebapp": "dev-master",
@@ -46,16 +42,14 @@
         "bummzack/sortablefile": "*",
         "eluceo/ical": "^0.16.0",
         "ezyang/htmlpurifier": "^4.13",
-        "showpro/silverstripe-seo-images": "^1.0",
+        "showpro/silverstripe-seo-images": "*",
         "endroid/qr-code": "^3.9",
-        "jonom/focuspoint": "^3.1",
-        "symbiote/silverstripe-addressable": "dev-master",
-        "silverstripe/graphql": "^3.4"
+        "jonom/focuspoint": "*",
+        "symbiote/silverstripe-addressable": "dev-master"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7",
-        "lekoala/silverstripe-debugbar": "dev-master",
-        "silverstripe/graphql-devtools": "1.x-dev"
+        "phpunit/phpunit": "*",
+        "lekoala/silverstripe-debugbar": "dev-master"
     },
     "repositories": [
         {
