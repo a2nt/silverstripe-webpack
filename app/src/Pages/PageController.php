@@ -220,6 +220,11 @@ class PageController extends ContentController
         return $this->site_message;
     }
 
+    public static function DefaultContainer()
+    {
+        return \Page::DefaultContainer();
+    }
+
     public function CurrentTime()
     {
         return DBDatetime::now();
