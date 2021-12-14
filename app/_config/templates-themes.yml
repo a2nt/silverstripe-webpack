@@ -5,7 +5,7 @@ After:
   - a2nt-cms-niceties-templates-themes
 ---
 SilverStripe\View\SSViewer:
-  source_file_comments: true
+  source_file_comments: false
   themes:
     - '$public'
     - '$default'
@@ -18,3 +18,12 @@ A2nt\ElementalBasics\Elements\SliderElement:
 A2nt\ElementalBasics\Extensions\ElementRows:
   container_max_width: 2280
   column_class: 'col-block col-md'
+
+---
+Name: webapp-templates-themes-debug
+Only:
+  environment: dev
+---
+SilverStripe\View\SSViewer:
+  source_file_comments: true
+
