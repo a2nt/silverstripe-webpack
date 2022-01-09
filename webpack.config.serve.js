@@ -19,18 +19,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const IP = process.env.IP || conf.HOSTNAME;
 const PORT = process.env.PORT || conf.PORT;
 
-const UIInfo = require('./node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/package.json');
-const UIVERSION = JSON.stringify(UIInfo.version);
-const UIMetaInfo = require('./node_modules/@a2nt/meta-lightbox-js/package.json');
-
 const NODE_ENV = 'development'; //conf.NODE_ENV || process.env.NODE_ENV;
 const COMPRESS = NODE_ENV === 'production' ? true : false;
-
-console.log('NODE_ENV: ' + NODE_ENV);
-console.log('COMPRESS: ' + COMPRESS);
-console.log('WebP images: ' + conf['webp']);
-console.log('GRAPHQL_API_KEY: ' + conf['GRAPHQL_API_KEY']);
-console.log('HTTPS: ' + conf['HTTPS']);
 
 const plugins = [
     new webpack.ProvidePlugin({
@@ -39,18 +29,7 @@ const plugins = [
         /*$: 'jquery',
           jQuery: 'jquery',*/
       }),
-    new webpack.DefinePlugin({
-        UINAME: JSON.stringify(UIInfo.name),
-        UIVERSION: UIVERSION,
-        UIAUTHOR: JSON.stringify(UIInfo.author),
-        UIMetaNAME: JSON.stringify(UIMetaInfo.name),
-        UIMetaVersion: JSON.stringify(UIMetaInfo.version),
-        GRAPHQL_API_KEY: JSON.stringify(conf['GRAPHQL_API_KEY']),
-        SWVERSION: JSON.stringify(`sw-${new Date().getTime()}`),
-        BASE_HREF: JSON.stringify(
-            `http${conf['HTTPS'] ? 's' : ''}://${IP}:${PORT}`,
-        ),
-      }),
+    new webpack.DefinePlugin(common['JSVARS']),
     //new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),
 ];
@@ -134,7 +113,7 @@ const config = merge(common.webpack, {
                 options: {
                     sourceMap: true,
                   },
-              },],
+              }, ],
           },
         {
             test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -143,7 +122,7 @@ const config = merge(common.webpack, {
         {
             test: /\.(gif|png|jpg|jpeg|ttf|otf|eot|svg|webp|woff(2)?)$/,
             type: 'asset/resource',
-          },],
+          }, ],
       },
     plugins: plugins,
 

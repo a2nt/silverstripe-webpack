@@ -45,7 +45,8 @@
         "showpro/silverstripe-seo-images": "*",
         "endroid/qr-code": "^3.9",
         "jonom/focuspoint": "*",
-        "symbiote/silverstripe-addressable": "dev-master"
+        "symbiote/silverstripe-addressable": "dev-master",
+        "silverstripe/login-forms": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
