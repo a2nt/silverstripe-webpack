@@ -4,15 +4,15 @@
 // extends global Page class
 //namespace App\Pages;
 
-use SilverStripe\CMS\Model\SiteTree;
 use DNADesign\Elemental\Models\ElementContent;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\FontAwesome\FontAwesomeField;
 use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 
 class Page extends SiteTree
 {
-    private static $default_container_class = 'container';
     protected $_cached = [];
+    private static $default_container_class = 'container';
     private static $db = [
         'BlockIcon' => 'Varchar(255)',
     ];
@@ -20,7 +20,6 @@ class Page extends SiteTree
     private static $field_include = [
         'ElementalAreaID',
     ];
-
 
     public static function DefaultContainer()
     {
@@ -44,14 +43,15 @@ class Page extends SiteTree
      */
     public function Summary($wordsToDisplay = 30)
     {
-        if (isset($this->_cached['summary'.$wordsToDisplay])) {
-            return $this->_cached['summary'.$wordsToDisplay];
+        if (isset($this->_cached['summary' . $wordsToDisplay])) {
+            return $this->_cached['summary' . $wordsToDisplay];
         }
 
         $summary = $this->getField('Summary');
         if ($summary) {
-            $this->_cached['summary'.$wordsToDisplay] = $summary;
-            return $this->_cached['summary'.$wordsToDisplay];
+            $this->_cached['summary' . $wordsToDisplay] = $summary;
+
+            return $this->_cached['summary' . $wordsToDisplay];
         }
 
         $element = ElementContent::get()->filter([
@@ -60,18 +60,21 @@ class Page extends SiteTree
         ])->first();
 
         if ($element) {
-            $this->_cached['summary'.$wordsToDisplay] = $element->dbObject('HTML')->Summary($wordsToDisplay);
-            return $this->_cached['summary'.$wordsToDisplay];
+            $this->_cached['summary' . $wordsToDisplay] = $element->dbObject('HTML')->Summary($wordsToDisplay);
+
+            return $this->_cached['summary' . $wordsToDisplay];
         }
 
         $content = $this->getField('Content');
         if ($content) {
-            $this->_cached['summary'.$wordsToDisplay] = $this->dbObject('Content')->Summary($wordsToDisplay);
-            return $this->_cached['summary'.$wordsToDisplay];
+            $this->_cached['summary' . $wordsToDisplay] = $this->dbObject('Content')->Summary($wordsToDisplay);
+
+            return $this->_cached['summary' . $wordsToDisplay];
         }
 
-        $this->_cached['summary'.$wordsToDisplay] = false;
-        return $this->_cached['summary'.$wordsToDisplay];
+        $this->_cached['summary' . $wordsToDisplay] = false;
+
+        return $this->_cached['summary' . $wordsToDisplay];
     }
 
     public function CSSClass()
@@ -83,7 +86,7 @@ class Page extends SiteTree
     {
         parent::onBeforeWrite();
 
-        if (class_exists(FluentSiteTreeExtension::class) && !$this->isDraftedInLocale() && $this->isInDB()) {
+        if (class_exists(FluentSiteTreeExtension::class) && ! $this->isDraftedInLocale() && $this->isInDB()) {
             $elementalArea = $this->ElementalArea();
 
             $elementalAreaNew = $elementalArea->duplicate();

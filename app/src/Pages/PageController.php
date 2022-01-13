@@ -4,26 +4,26 @@
 // extends global PageController class
 //namespace App\Pages;
 
-use SilverStripe\Control\Controller;
+use A2nt\CMSNiceties\Templates\DeferredRequirements;
+use A2nt\ElementalBasics\Models\TeamMember;
+use DNADesign\Elemental\Models\ElementalArea;
+use DNADesign\Elemental\Models\ElementContent;
+use DNADesign\ElementalUserForms\Control\ElementFormController;
 use SilverStripe\CMS\Controllers\ContentController;
-use SilverStripe\Control\Director;
-use SilverStripe\Core\Config\Config;
-use SilverStripe\ORM\FieldType\DBDatetime;
-use SilverStripe\View\ArrayData;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\ORM\PaginatedList;
-use SilverStripe\Forms\Form;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\RequiredFields;
-use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\ArrayList;
-use DNADesign\Elemental\Models\ElementContent;
-use DNADesign\Elemental\Models\ElementalArea;
-use DNADesign\ElementalUserForms\Control\ElementFormController;
-use A2nt\ElementalBasics\Models\TeamMember;
-use A2nt\CMSNiceties\Templates\DeferredRequirements;
+use SilverStripe\ORM\FieldType\DBDatetime;
+use SilverStripe\ORM\PaginatedList;
+use SilverStripe\View\ArrayData;
 
 class PageController extends ContentController
 {
@@ -42,13 +42,6 @@ class PageController extends ContentController
     private $site_message;
     private $search_term;
 
-    protected function init()
-    {
-        DeferredRequirements::Auto();
-
-        return parent::init();
-    }
-
     public function index(HTTPRequest $request)
     {
         $search = $request->getVar('q');
@@ -66,7 +59,7 @@ class PageController extends ContentController
 
     public function ElementalArea()
     {
-        if (!$this->getAction() || $this->getAction() === 'index') {
+        if (! $this->getAction() || 'index' === $this->getAction()) {
             return ElementalArea::get()->byID($this->getField('ElementalAreaID'));
         }
 
@@ -87,12 +80,13 @@ class PageController extends ContentController
     public function SearchForm(): Form
     {
         $config = $this->SiteConfig();
+
         return Form::create(
             $this,
             __FUNCTION__,
             FieldList::create(
                 TextField::create('q', 'Search ...')
-                    ->setAttribute('placeholder', 'Search '.$config->getField('Title').' Website')
+                    ->setAttribute('placeholder', 'Search ' . $config->getField('Title') . ' Website')
             ),
             FieldList::create(
                 FormAction::create(
@@ -103,7 +97,7 @@ class PageController extends ContentController
                     ->addExtraClass('btn-secondary')
                     ->setButtonContent(
                         '<i class="fas fa-search"></i>'
-                        .'<span class="sr-only">Search</span>'
+                        . '<span class="sr-only">Search</span>'
                     )
             ),
             RequiredFields::create(['q'])
@@ -114,29 +108,13 @@ class PageController extends ContentController
     {
         $this->search_term = is_array($data) ? $data['q'] : $data;
 
-        return $this->renderWith([__CLASS__.'_search', 'Page']);
-    }
-
-    private static function getSearchObjects($classNames, $term): ArrayList
-    {
-        $elements = ArrayList::create();
-        foreach ($classNames as $class) {
-            $fields = Config::inst()->get($class, 'frontend_searchable_fields');
-            $find = array_combine($fields, $fields);
-            $find = array_map(static function () use ($term) {
-                return $term;
-            }, $find);
-
-            $elements->merge($class::get()->filterAny($find)->sort('Created DESC'));
-        }
-
-        return $elements;
+        return $this->renderWith([__CLASS__ . '_search', 'Page']);
     }
 
     public function SearchResults()
     {
         $term = $this->search_term;
-        if (!$term) {
+        if (! $term) {
             return false;
         }
 
@@ -144,9 +122,9 @@ class PageController extends ContentController
 
         // get pages by title and content
         $pages = SiteTree::get()->filterAny([
-                'Title:PartialMatch' => $term,
-                'Content:PartialMatch' => $term,
-            ])->sort('Created DESC');
+            'Title:PartialMatch' => $term,
+            'Content:PartialMatch' => $term,
+        ])->sort('Created DESC');
 
         $results->merge($pages);
 
@@ -158,7 +136,7 @@ class PageController extends ContentController
 
         foreach ($elements as $element) {
             $page = Page::get()->filter('ElementalAreaID', $element->getField('ParentID'))->first();
-            if (!$page) {
+            if (! $page) {
                 continue;
             }
 
@@ -173,7 +151,7 @@ class PageController extends ContentController
 
         foreach ($elements as $element) {
             $page = $element->Page();
-            if (!$page) {
+            if (! $page) {
                 continue;
             }
 
@@ -183,7 +161,7 @@ class PageController extends ContentController
         $results->removeDuplicates();
 
         return ArrayData::create([
-            'Title' => 'You searched for: "'.$term.'"',
+            'Title' => 'You searched for: "' . $term . '"',
             'Results' => PaginatedList::create($results),
         ]);
     }
@@ -211,7 +189,7 @@ class PageController extends ContentController
     {
         $request = $this->getRequest();
 
-        if ($request->isGET() && !$this->site_message) {
+        if ($request->isGET() && ! $this->site_message) {
             $session = $request->getSession();
             $this->site_message = $session->get('SiteWideMessage');
             $session->clear('SiteWideMessage');
@@ -233,5 +211,28 @@ class PageController extends ContentController
     public function isDev()
     {
         return Director::isDev();
+    }
+
+    protected function init()
+    {
+        DeferredRequirements::Auto();
+
+        return parent::init();
+    }
+
+    private static function getSearchObjects($classNames, $term): ArrayList
+    {
+        $elements = ArrayList::create();
+        foreach ($classNames as $class) {
+            $fields = Config::inst()->get($class, 'frontend_searchable_fields');
+            $find = array_combine($fields, $fields);
+            $find = array_map(static function () use ($term) {
+                return $term;
+            }, $find);
+
+            $elements->merge($class::get()->filterAny($find)->sort('Created DESC'));
+        }
+
+        return $elements;
     }
 }
