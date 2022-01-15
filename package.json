@@ -35,7 +35,7 @@
   ],
   "dependencies": {
     "@a2nt/meta-lightbox-js": "^4.1.7",
-    "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react": "^4.4.5",
+    "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react": "^4.4.6",
     "@angular/common": "^13.1.2",
     "@angular/core": "^13.1.2",
     "@apollo/client": "^3.5.7",
