@@ -13,7 +13,7 @@ const {
     merge,
 } = require('webpack-merge');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { default: MiniCssExtractPlugin } = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const IP = process.env.IP || conf.HOSTNAME;
@@ -113,7 +113,7 @@ const config = merge(common.webpack, {
                 options: {
                     sourceMap: true,
                   },
-              }, ],
+              },],
           },
         {
             test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -122,7 +122,7 @@ const config = merge(common.webpack, {
         {
             test: /\.(gif|png|jpg|jpeg|ttf|otf|eot|svg|webp|woff(2)?)$/,
             type: 'asset/resource',
-          }, ],
+          },],
       },
     plugins: plugins,
 

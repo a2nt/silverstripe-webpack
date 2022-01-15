@@ -142,18 +142,16 @@ console.log('WebP images: ' + conf['webp']);
 console.log('GRAPHQL_API_KEY: ' + conf['GRAPHQL_API_KEY']);
 
 const JSVARS = {
-  'process.env': {
     NODE_ENV: JSON.stringify(NODE_ENV),
-  },
-  UINAME: JSON.stringify(UIInfo.name),
-  UIVERSION: UIVERSION,
-  UIAUTHOR: JSON.stringify(UIInfo.author),
-  UIMetaNAME: JSON.stringify(UIMetaInfo.name),
-  UIMetaVersion: JSON.stringify(UIMetaInfo.version),
-  GRAPHQL_API_KEY: JSON.stringify(conf['GRAPHQL_API_KEY']),
-  SWVERSION: JSON.stringify(`sw-${new Date().getTime()}`),
-  BASE_HREF: JSON.stringify(''),
-};
+    UINAME: JSON.stringify(UIInfo.name),
+    UIVERSION: UIVERSION,
+    UIAUTHOR: JSON.stringify(UIInfo.author),
+    UIMetaNAME: JSON.stringify(UIMetaInfo.name),
+    UIMetaVersion: JSON.stringify(UIMetaInfo.version),
+    GRAPHQL_API_KEY: JSON.stringify(conf['GRAPHQL_API_KEY']),
+    SWVERSION: JSON.stringify(`sw-${new Date().getTime()}`),
+    BASE_HREF: JSON.stringify(''),
+  };
 
 module.exports = {
     JSVARS: JSVARS,
