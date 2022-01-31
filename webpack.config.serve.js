@@ -13,7 +13,7 @@ const {
     merge,
 } = require('webpack-merge');
 
-const { default: MiniCssExtractPlugin } = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const IP = process.env.IP || conf.HOSTNAME;
@@ -23,12 +23,7 @@ const NODE_ENV = 'development'; //conf.NODE_ENV || process.env.NODE_ENV;
 const COMPRESS = NODE_ENV === 'production' ? true : false;
 
 const plugins = [
-    new webpack.ProvidePlugin({
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        /*$: 'jquery',
-          jQuery: 'jquery',*/
-      }),
+    new webpack.ProvidePlugin(common['PROVIDES']),
     new webpack.DefinePlugin(common['JSVARS']),
     //new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),
@@ -113,7 +108,7 @@ const config = merge(common.webpack, {
                 options: {
                     sourceMap: true,
                   },
-              },],
+              }, ],
           },
         {
             test: /fontawesome([^.]+).(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -122,7 +117,7 @@ const config = merge(common.webpack, {
         {
             test: /\.(gif|png|jpg|jpeg|ttf|otf|eot|svg|webp|woff(2)?)$/,
             type: 'asset/resource',
-          },],
+          }, ],
       },
     plugins: plugins,
 

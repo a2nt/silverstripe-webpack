@@ -16,7 +16,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const { default: MiniCssExtractPlugin } = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //const ImageSpritePlugin = require('@a2nt/image-sprite-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -27,13 +27,8 @@ const COMPRESS = NODE_ENV === 'production' ? true : false;
 const IP = process.env.IP || conf.HOSTNAME;
 const PORT = process.env.PORT || conf.PORT;
 
-let plugins = [
-    new webpack.ProvidePlugin({
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        /*$: 'jquery',
-        jQuery: 'jquery',*/
-      }),
+const plugins = [
+    new webpack.ProvidePlugin(common['PROVIDES']),
     new webpack.DefinePlugin(common['JSVARS']),
     new webpack.LoaderOptionsPlugin({
         minimize: COMPRESS,
@@ -45,24 +40,6 @@ let plugins = [
       //allChunks: true,
     }),
 ];
-
-if (COMPRESS) {
-  plugins.push(require('autoprefixer'));
-
-  /*plugins.push(
-      new ImageSpritePlugin({
-          exclude: /exclude|original|default-|icons|sprite|svg|logo|favicon/,
-          commentOrigin: false,
-          compress: COMPRESS,
-          extensions: ['png'],
-          indent: '',
-          log: true,
-          //outputPath: path.join(__dirname, conf.APPDIR, conf.DIST),
-          outputFilename: 'img/sprite-[hash].png',
-          padding: 0,
-      }),
-  );*/
-}
 
 const indexPath = path.join(__dirname, conf.APPDIR, conf.SRC, 'index.html');
 if (fs.existsSync(indexPath)) {
@@ -149,6 +126,100 @@ common.themes.forEach((theme) => {
     }
   });
 
+const minimizers = [];
+minimizers.push(
+  new TerserPlugin({
+    terserOptions: {
+        module: false,
+        parse: {
+            // we want terser to parse ecma 8 code. However, we don't want it
+            // to apply any minfication steps that turns valid ecma 5 code
+            // into invalid ecma 5 code. This is why the 'compress' and 'output'
+            // sections only apply transformations that are ecma 5 safe
+            // https://github.com/facebook/create-react-app/pull/4234
+            ecma: 8,
+          },
+        compress: {
+            ecma: 6,
+            warnings: false,
+            // Disabled because of an issue with Uglify breaking seemingly valid code:
+            // https://github.com/facebook/create-react-app/issues/2376
+            // Pending further investigation:
+            // https://github.com/mishoo/UglifyJS2/issues/2011
+            comparisons: false,
+          },
+        keep_fnames: true,
+        keep_classnames: true,
+
+        mangle: {
+            safari10: true,
+            keep_fnames: true,
+            keep_classnames: true,
+            reserved: ['$', 'jQuery', 'jquery'],
+          },
+        output: {
+            ecma: 5,
+            comments: false,
+            // Turned on because emoji and regex is not minified properly using default
+            // https://github.com/facebook/create-react-app/issues/2488
+            ascii_only: true,
+          },
+      },
+    // Use multi-process parallel running to improve the build speed
+    // Default number of concurrent runs: os.cpus().length - 1
+    parallel: true,
+  })
+);
+
+if (conf['PROCESS_CSS']) {
+  minimizers.push(
+    new CssMinimizerPlugin({
+      parallel: true,
+      minimizerOptions: [{
+          preset: [
+              'default',
+              {
+                  discardComments: {
+                      removeAll: true,
+                    },
+                  zindex: true,
+                  cssDeclarationSorter: true,
+                  reduceIdents: false,
+                  mergeIdents: true,
+                  mergeRules: true,
+                  mergeLonghand: true,
+                  discardUnused: true,
+                  discardOverridden: true,
+                  discardDuplicates: true,
+                },
+          ],
+        },],
+      minify: [
+          CssMinimizerPlugin.cssnanoMinify,
+          //CssMinimizerPlugin.cleanCssMinify,
+      ],
+    })
+  );
+}
+
+if (COMPRESS) {
+  plugins.push(require('autoprefixer'));
+
+  /*plugins.push(
+      new ImageSpritePlugin({
+          exclude: /exclude|original|default-|icons|sprite|svg|logo|favicon/,
+          commentOrigin: false,
+          compress: COMPRESS,
+          extensions: ['png'],
+          indent: '',
+          log: true,
+          //outputPath: path.join(__dirname, conf.APPDIR, conf.DIST),
+          outputFilename: 'img/sprite-[hash].png',
+          padding: 0,
+      }),
+  );*/
+}
+
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
     .BundleAnalyzerPlugin;
 plugins.push(
@@ -172,75 +243,7 @@ const cfg = merge(common.webpack, {
             minChunks: 2,
           },
         concatenateModules: true, //ModuleConcatenationPlugin
-        minimizer: [
-            new TerserPlugin({
-                terserOptions: {
-                    module: false,
-                    parse: {
-                        // we want terser to parse ecma 8 code. However, we don't want it
-                        // to apply any minfication steps that turns valid ecma 5 code
-                        // into invalid ecma 5 code. This is why the 'compress' and 'output'
-                        // sections only apply transformations that are ecma 5 safe
-                        // https://github.com/facebook/create-react-app/pull/4234
-                        ecma: 8,
-                      },
-                    compress: {
-                        ecma: 6,
-                        warnings: false,
-                        // Disabled because of an issue with Uglify breaking seemingly valid code:
-                        // https://github.com/facebook/create-react-app/issues/2376
-                        // Pending further investigation:
-                        // https://github.com/mishoo/UglifyJS2/issues/2011
-                        comparisons: false,
-                      },
-                    keep_fnames: true,
-                    keep_classnames: true,
-
-                    mangle: {
-                        safari10: true,
-                        keep_fnames: true,
-                        keep_classnames: true,
-                        reserved: ['$', 'jQuery', 'jquery'],
-                      },
-                    output: {
-                        ecma: 5,
-                        comments: false,
-                        // Turned on because emoji and regex is not minified properly using default
-                        // https://github.com/facebook/create-react-app/issues/2488
-                        ascii_only: true,
-                      },
-                  },
-                // Use multi-process parallel running to improve the build speed
-                // Default number of concurrent runs: os.cpus().length - 1
-                parallel: true,
-              }),
-            new CssMinimizerPlugin({
-                parallel: true,
-                minimizerOptions: [{
-                    preset: [
-                        'default',
-                        {
-                            discardComments: {
-                                removeAll: true,
-                              },
-                            zindex: true,
-                            cssDeclarationSorter: true,
-                            reduceIdents: false,
-                            mergeIdents: true,
-                            mergeRules: true,
-                            mergeLonghand: true,
-                            discardUnused: true,
-                            discardOverridden: true,
-                            discardDuplicates: true,
-                          },
-                    ],
-                  },],
-                minify: [
-                    CssMinimizerPlugin.cssnanoMinify,
-                    //CssMinimizerPlugin.cleanCssMinify,
-                ],
-              }),
-        ],
+        minimizer: minimizers,
       },
 
     output: {

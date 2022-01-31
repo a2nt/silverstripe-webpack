@@ -153,30 +153,38 @@ const JSVARS = {
     BASE_HREF: JSON.stringify(''),
   };
 
+const provides = {};
+const externals = {};
+const aliases = {};
+
+if (!conf['JQUERY']) {
+  provides['react'] = 'React';
+  provides['react-dom'] = 'ReactDOM';
+  externals['react'] = 'React';
+  externals['react-dom'] = 'ReactDOM';
+} else {
+  provides['$'] = 'jquery';
+  provides['jQuery'] = 'jquery';
+  externals['jquery'] = 'jQuery';
+
+  aliases['window.jQuery'] = require.resolve('jquery');
+  aliases['$'] = require.resolve('jquery');
+  aliases['jquery'] = require.resolve('jquery');
+  aliases['jQuery'] = require.resolve('jquery');
+}
+
 module.exports = {
+    PROVIDES: provides,
     JSVARS: JSVARS,
     configuration: conf,
     themes: themes,
     webpack: {
         entry: includes,
-        externals: {
-            // comment out jQuery if you don't use it to prevent bootstrap thinking that there's jQuery present
-            //jquery: 'jQuery',
-            react: 'React',
-            'react-dom': 'ReactDOM',
-          },
+        externals: externals,
         resolve: {
             modules: modules,
             extensions: ['.tsx', '.ts', '.js'],
-            alias: {
-              // comment out jQuery if you don't use it to prevent bootstrap thinking that there's jQuery present
-              /*'window.jQuery': require.resolve('jquery'),
-              $: require.resolve('jquery'),
-              jquery: require.resolve('jquery'),
-              jQuery: require.resolve('jquery'),
-              react: require.resolve('react'),
-              'react-dom': require.resolve('react-dom'),*/
-            },
+            alias: aliases,
             fallback: {
                 path: false,
               },
