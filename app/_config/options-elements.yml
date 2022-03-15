@@ -1,12 +1,7 @@
 ---
 Name: webapp-options-elements
 After:
-  - elemental
-  - elemental-list
-  - elementalvirtual
-  - elemental-basics
-  - a2nt-cms-niceties-options-elements
-  - webapp-base-extensions
+  - app-basics
 ---
 Page:
   searchable_elements:
@@ -52,3 +47,20 @@ DNADesign\ElementalList\Model\ElementList:
   styles:
     whiteframe: 'White Frame'
     noframe: 'No Frame'
+
+A2nt\ElementalBasics\Extensions\ElementImageWidget:
+  available_heights:
+    '300': 'Small (300px)'
+    '400': 'Medium (400px)'
+    '600': 'Big (600px)'
+
+  available_widths:
+    '300': 'Small (300px)'
+    '400': 'Medium (400px)'
+    '600': 'Big (600px)'
+
+  available_ratios:
+    '1:1': '1:1'
+    '3:2': '3:2'
+    '2:3': '2:3'
+    '16:9': '16:9'

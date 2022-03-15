@@ -1,6 +1,7 @@
 ---
 Name: webapp-locale-fluent
 After:
+  - '#versionedfiles'
   - webapp-extensions
   - webapp-elemental
   - webapp-locale
@@ -35,9 +36,14 @@ Page:
 DNADesign\Elemental\Models\ElementalArea:
   extensions:
     - DNADesign\Elemental\TopPage\FluentExtension
-    - A2nt\CMSNiceties\Extensions\ElementalArea
+    - A2nt\ElementalBasics\Extensions\ElementalArea
 
 DNADesign\Elemental\Models\BaseElement:
   extensions:
     - DNADesign\Elemental\TopPage\FluentExtension
-    - A2nt\CMSNiceties\Extensions\ElementRows
+    - A2nt\ElementalBasics\Extensions\ElementRows
+
+
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - TractorCow\Fluent\Extension\FluentExtension

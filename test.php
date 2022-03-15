@@ -11,5 +11,5 @@ require_once('app/src/Tests/TestServer.php');
 
 $req = new \SilverStripe\Control\NullHTTPRequest();
 
-$t = new \Site\Tests\TestServer();
+$t = new \A2nt\CMSNiceties\Tests\TestServer();
 $t->run($req);

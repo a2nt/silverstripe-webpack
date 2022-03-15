@@ -46,7 +46,9 @@
         "endroid/qr-code": "^3.9",
         "jonom/focuspoint": "*",
         "symbiote/silverstripe-addressable": "dev-master",
-        "silverstripe/login-forms": "*"
+        "silverstripe/login-forms": "*",
+        "webbuilders-group/silverstripe-image-cropper-field": "dev-master",
+        "webbuilders-group/silverstripe-next-gen-images": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
@@ -64,6 +66,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/a2nt/silverstripe-addressable"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/a2nt/silverstripe-image-cropper-field"
         }
     ],
     "extra": {

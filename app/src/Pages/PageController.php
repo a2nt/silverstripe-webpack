@@ -81,7 +81,7 @@ class PageController extends ContentController
     {
         $config = $this->SiteConfig();
 
-        return Form::create(
+        $form = Form::create(
             $this,
             __FUNCTION__,
             FieldList::create(
@@ -102,6 +102,10 @@ class PageController extends ContentController
             ),
             RequiredFields::create(['q'])
         )->setFormMethod('POST');
+
+        $form->setLegend('Search ' . $config->getField('Title') . ' Website');
+
+        return $form;
     }
 
     public function doSearch($data)

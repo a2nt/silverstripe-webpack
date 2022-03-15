@@ -1,6 +1,12 @@
 ---
 Name: app-api-captcha
+After:
+  - a2nt-cms-niceties-base-config
 ---
+
+A2nt\CMSNiceties\Extensions\SiteMemberLoginForm:
+  enable_captcha: false
+
 SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
   default_spam_protector: UndefinedOffset\NoCaptcha\Forms\NocaptchaProtector
 

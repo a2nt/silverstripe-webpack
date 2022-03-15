@@ -1,0 +1,17 @@
+---
+Name: app-basics
+After:
+  - elemental
+  - elemental-list
+  - elementalvirtual
+  - elemental-basics
+  - a2nt-cms-niceties-options-elements
+  - webapp-base-extensions
+  - webapp-locale-fluent
+---
+
+SilverStripe\CMS\Model\SiteTree:
+  allowed_elements: null
+
+DNADesign\ElementalList\Model\ElementList:
+  allowed_elements: null
