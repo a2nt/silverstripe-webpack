@@ -5,6 +5,8 @@
         <% else_if $Type == 'Email' %>
             <i class="fas fa-envelope-open"></i>
         <% end_if %>
-        $Title
+        <span class="link-label">
+	        $Title
+	    </span>
     </a>
 <% end_if %>

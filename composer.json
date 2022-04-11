@@ -8,7 +8,7 @@
     ],
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=7.4.0",
         "ext-json": "*",
         "silverstripe/recipe-cms": "^4",
         "silverstripe/recipe-plugin": "*",

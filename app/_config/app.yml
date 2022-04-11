@@ -15,3 +15,7 @@ SilverStripe\CMS\Model\SiteTree:
 
 DNADesign\ElementalList\Model\ElementList:
   allowed_elements: null
+
+DNADesign\ElementalUserForms\Model\ElementForm:
+  block_default_userforms_css: true
+  block_default_userforms_js: true
