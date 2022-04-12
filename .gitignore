@@ -6,7 +6,6 @@
 /vendor
 /public/assets
 /public/resources
-/site/client/dist
 /silverstripe-cache
 yarn-error\.log
 package-lock.json

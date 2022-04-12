@@ -7,3 +7,6 @@ After:
 Symbiote\Addressable\Addressable:
   allowed_countries:
     'us': 'United States'
+
+SilverStripe\ORM\FieldType\DBCurrency:
+  currency_symbol: '$'

@@ -13,7 +13,7 @@ import '@a2nt/meta-lightbox-js/src/js/app';
 import 'bootstrap/js/src/collapse';
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/dropdown';
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/carousel';
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/datepicker';
+//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/datepicker';
 //import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/instagram.feed';
 
 /*

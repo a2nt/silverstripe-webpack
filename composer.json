@@ -47,8 +47,7 @@
         "jonom/focuspoint": "*",
         "symbiote/silverstripe-addressable": "dev-master",
         "silverstripe/login-forms": "*",
-        "webbuilders-group/silverstripe-image-cropper-field": "dev-master",
-        "webbuilders-group/silverstripe-next-gen-images": "*"
+        "webbuilders-group/silverstripe-image-cropper-field": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
