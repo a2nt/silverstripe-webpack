@@ -19,5 +19,6 @@ A2nt\CMSNiceties\Templates\WebpackTemplateProvider:
   GRAPHQL_URL: '/graphql'
   GRAPHQL_API_KEY: 'LgPaRkVPYa8IY7x3AjbLC8wx6oPPSlO01yPflFXecvQ'
   PROCESS_CSS: true # Deep CSS minification
+  absolute_path: false
   JQUERY: false # We don't use jQuery, otherwise it's aliassed and being loaded externaly 
   #STATIC_URL: 'http://127.0.0.1'

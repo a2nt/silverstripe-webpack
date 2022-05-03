@@ -7,6 +7,8 @@ $font-family-base: "Roboto", $font-family-sans-serif;
 $body-bg: $white;
 $body-color: $gray-500;
 
+$sidebar-nav-link-hover-color: $body-color;
+
 // screen size - 32px (ex. 1400 - 32 = 1368)
 $grid-breakpoints: (
   xs: 0,

@@ -69,6 +69,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/a2nt/silverstripe-image-cropper-field"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/a2nt/GridFieldBulkEditingTools"
         }
     ],
     "extra": {
