@@ -51,7 +51,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "*",
-        "lekoala/silverstripe-debugbar": "dev-master"
+        "lekoala/silverstripe-debugbar": "dev-master",
+        "sunnysideup/easy-coding-standards": "dev-master"
     },
     "repositories": [
         {
@@ -97,7 +98,12 @@
         ]
     },
     "config": {
-        "process-timeout": 600
+        "process-timeout": 600,
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true,
+            "silverstripe/recipe-plugin": true
+        }
     },
     "prefer-stable": true,
     "minimum-stability": "dev"
