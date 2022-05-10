@@ -25,6 +25,13 @@ use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\View\ArrayData;
 
+/**
+ * Class \PageController
+ *
+ * @property \Page dataRecord
+ * @method \Page data()
+ * @mixin \Page
+ */
 class PageController extends ContentController
 {
     private static $allowed_actions = [

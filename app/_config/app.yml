@@ -19,3 +19,6 @@ DNADesign\ElementalList\Model\ElementList:
 DNADesign\ElementalUserForms\Model\ElementForm:
   block_default_userforms_css: true
   block_default_userforms_js: true
+
+SilverLeague\IDEAnnotator\DataObjectAnnotator:
+  enabled: true

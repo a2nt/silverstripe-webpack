@@ -9,6 +9,19 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\FontAwesome\FontAwesomeField;
 use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 
+/**
+ * Class \Page
+ *
+ * @property boolean $InheritSideBar
+ * @property string $BlockIcon
+ * @property int $SideBarID
+ * @property int $ElementalAreaID
+ * @method \SilverStripe\Widgets\Model\WidgetArea SideBar()
+ * @method \DNADesign\Elemental\Models\ElementalArea ElementalArea()
+ * @mixin \DNADesign\Elemental\Extensions\ElementalPageExtension
+ * @mixin \A2nt\CMSNiceties\Widgets\WidgetPageExtension
+ * @mixin \Sheadawson\Linkable\Extensions\LinkableDataExtension
+ */
 class Page extends SiteTree
 {
     protected $_cached = [];

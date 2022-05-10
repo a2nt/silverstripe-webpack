@@ -12,26 +12,13 @@
 }
 
 #Header {
+    .element {
+        margin-top: 0;
+    }
   .nav-container {
     align-items: center;
     display: flex;
     justify-content: flex-end;
     position: static;
-  }
-
-  .logo {
-    img {
-      width: 6.5vw;
-
-      @media (orientation: portrait) {
-        width: 20vw;
-      }
-    }
-  }
-
-  .tagline {
-    display: inline-block;
-    font-size: 1.2rem;
-    margin-left: 2em;
   }
 }
