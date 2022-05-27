@@ -127,6 +127,7 @@ themes.forEach((theme) => {
   });
 
 const UIInfo = require('./node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/package.json');
+const UINAME = JSON.stringify(UIInfo.name);
 const UIVERSION = JSON.stringify(UIInfo.version);
 const UIMetaInfo = require('./node_modules/@a2nt/meta-lightbox-js/package.json');
 
@@ -143,7 +144,7 @@ console.log('GRAPHQL_API_KEY: ' + conf['GRAPHQL_API_KEY']);
 
 const JSVARS = {
     NODE_ENV: JSON.stringify(NODE_ENV),
-    UINAME: JSON.stringify(UIInfo.name),
+    UINAME: UINAME,
     UIVERSION: UIVERSION,
     UIAUTHOR: JSON.stringify(UIInfo.author),
     UIMetaNAME: JSON.stringify(UIMetaInfo.name),

@@ -20,6 +20,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //const ImageSpritePlugin = require('@a2nt/image-sprite-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackBuildNotifications = require('webpack-build-notifications');
 
 const NODE_ENV = conf.NODE_ENV || process.env.NODE_ENV;
 const COMPRESS = NODE_ENV === 'production' ? true : false;
@@ -38,6 +39,11 @@ const plugins = [
       experimentalUseImportModule: false,
       filename: 'css/[name].css',
       //allChunks: true,
+    }),
+    new WebpackBuildNotifications({
+      title: common['JSVARS']['UINAME'] + ' ' + common['JSVARS']['UIVERSION'],
+      logo: path.join(__dirname, conf.APPDIR, conf.SRC, 'favicon.png'),
+      suppressWarning: true,
     }),
 ];
 
