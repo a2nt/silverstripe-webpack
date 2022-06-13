@@ -1,4 +1,29 @@
+#Header {
+    .element--nav {
+        padding: 0;
+    }
+}
+
 #Navigation {
+    .navbar {
+        padding: 0;
+    }
+
+    .navbar-nav {
+        padding: 0;
+        width: 100%;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+
+    .nav {
+        &-item {
+            flex: 1 1;
+        }
+
+        &-link {
+        }
+    }
 }
 
 #PageBreadcumbs {
