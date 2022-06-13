@@ -22,10 +22,14 @@
         &-link {
             background: none;
             align-items: center;
+            justify-content: center;
+            width: 100%;
+
             &.active {}
 
             &.section {}
 
+            &[aria-expanded="true"],
             &:hover,
             &:focus {}
         }

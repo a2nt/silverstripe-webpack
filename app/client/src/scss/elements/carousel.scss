@@ -1,12 +1,41 @@
-.carousel-caption {
-  font-size: 3rem;
-  padding: 6rem 0;
+.carousel {
+    &-caption {
+        font-size: 3rem;
+        padding: 6rem 0;
+    }
+    &-title {
+        font-size: 4rem;
+    }
 
-  .carousel-title {
-    font-size: 4rem;
-  }
+    &-content {
+        font-style: italic;
+    }
 
-  .carousel-content {
-    font-style: italic;
-  }
+    &__img {
+        min-width: 100%;
+        background-size: cover;
+    }
+}
+
+.a2nt__elementalbasics__elements__sliderelement {
+    padding: 0;
+
+    .element__container {
+        max-width: none;
+        padding: 0;
+    }
+
+    .slide-link__media {
+        opacity: 0;
+    }
+
+     .carousel-item {
+        &:hover,
+        &:focus {
+            .carousel__btn {
+                @extend .btn-primary, :hover;
+                color: $white !important;
+            }
+        }
+    }
 }
