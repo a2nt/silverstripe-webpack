@@ -20,6 +20,14 @@
         }
 
         &-link {
+            background: none;
+            align-items: center;
+            &.active {}
+
+            &.section {}
+
+            &:hover,
+            &:focus {}
         }
     }
 }
