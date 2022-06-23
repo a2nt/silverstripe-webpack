@@ -1,8 +1,8 @@
 # sass-lint config to match the AirBNB style guide
 files:
-  include: 'app/client/src/**/*.scss'
+  include: "app/client/src/**/*.scss"
   ignore:
-    - 'app/client/src/thirdparty/*'
+    - "app/client/src/thirdparty/*"
 options:
   formatter: stylish
   merge-default-rules: false
@@ -23,10 +23,10 @@ rules:
   no-misspelled-properties:
     - 1
     - extra-properties:
-        - '-moz-border-radius-topleft'
-        - '-moz-border-radius-topright'
-        - '-moz-border-radius-bottomleft'
-        - '-moz-border-radius-bottomright'
+        - "-moz-border-radius-topleft"
+        - "-moz-border-radius-topright"
+        - "-moz-border-radius-bottomleft"
+        - "-moz-border-radius-bottomright"
   variable-name-format:
     - 1
     - allow-leading-underscore: true
@@ -47,7 +47,7 @@ rules:
   no-trailing-whitespace: 2
   border-zero:
     - 2
-    - convention: '0'
+    - convention: "0"
   brace-style:
     - 2
     - allow-single-line: true
@@ -56,7 +56,7 @@ rules:
     - filename-extension: false
     - leading-underscore: true
   no-debug: 2
-  no-empty-rulesets: 2
+  no-empty-rulesets: 0
   no-invalid-hex: 2
   no-mergeable-selectors: 2
   # no-qualifying-elements:

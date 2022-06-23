@@ -23,3 +23,7 @@ BetterBrief\GoogleMapField:
 
 Symbiote\Addressable\MapboxGeocodeService:
   mapbox_api_key: ''
+
+SilverStripe\SiteConfig\SiteConfig:
+  map_type: "google-maps"
+
