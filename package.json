@@ -39,7 +39,6 @@
     "@angular/common": "^13.3.10",
     "@angular/core": "^13.3.10",
     "@apollo/client": "^3.6.5",
-    "@jsanahuja/instagramfeed": "github:jsanahuja/instagramfeed",
     "@popperjs/core": "^2.11.5",
     "@turf/clone": "^6.5.0",
     "@turf/clusters-dbscan": "^6.5.0",
