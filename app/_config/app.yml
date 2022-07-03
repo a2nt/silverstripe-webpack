@@ -6,6 +6,7 @@ After:
   - elementalvirtual
   - elemental-basics
   - a2nt-cms-niceties-options-elements
+  - a2nt-cms-niceties-base-config
   - webapp-base-extensions
   - webapp-locale-fluent
 ---
