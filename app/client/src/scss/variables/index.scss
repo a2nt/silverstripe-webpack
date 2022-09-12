@@ -3,6 +3,7 @@
 // First Define Bootstrap and Webkit bootstrap UI variables
 //
 
+@import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/mixings";
 @import "./ui";
 @import "~@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/variables";
 $headings-margin-bottom: $spacer;
