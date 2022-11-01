@@ -47,7 +47,8 @@
         "symbiote/silverstripe-addressable": "dev-master",
         "silverstripe/login-forms": "*",
         "webbuilders-group/silverstripe-image-cropper-field": "dev-master",
-        "dynamic/silverstripe-linkable": "dev-embedUpdate"
+        "dynamic/silverstripe-linkable": "dev-embedUpdate",
+        "axllent/silverstripe-trailing-slash": "^2.2"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
