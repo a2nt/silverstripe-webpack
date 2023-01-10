@@ -146,7 +146,12 @@ class PageController extends ContentController
         );
 
         foreach ($elements as $element) {
-            $page = Page::get()->filter('ElementalAreaID', $element->getField('ParentID'))->first();
+            if (!is_a($element, \DNADesign\Elemental\Models\BaseElement::class)
+                && !$element->hasMethod('getPage')) {
+                continue;
+            }
+
+            $page = $element->getPage();
             if (! $page) {
                 continue;
             }
