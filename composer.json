@@ -41,12 +41,12 @@
         "a2nt/cms-niceties": "dev-main",
 	"a2nt/silverstripe-live-checks": "*",
         "bummzack/sortablefile": "*",
-        "eluceo/ical": "^0.16.0",
         "ezyang/htmlpurifier": "^4.13",
         "endroid/qr-code": "^3.9",
         "jonom/focuspoint": "*",
         "symbiote/silverstripe-addressable": "dev-master",
         "silverstripe/login-forms": "*",
+	"sunnysideup/dataintegritytests": "*",
         "webbuilders-group/silverstripe-image-cropper-field": "dev-master",
         "dynamic/silverstripe-linkable": "dev-embedUpdate",
         "axllent/silverstripe-trailing-slash": "^2.2"
