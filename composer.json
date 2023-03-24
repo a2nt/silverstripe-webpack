@@ -39,7 +39,7 @@
         "a2nt/silverstripe-progressivewebapp": "dev-master",
         "a2nt/silverstripe-elemental-basics": "*",
         "a2nt/cms-niceties": "dev-main",
-	"a2nt/silverstripe-live-checks": "*",
+	      "a2nt/silverstripe-live-checks": "*",
         "bummzack/sortablefile": "*",
         "ezyang/htmlpurifier": "^4.13",
         "endroid/qr-code": "^3.9",
