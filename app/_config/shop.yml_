@@ -1,6 +1,7 @@
 ---
 Name: webapp-shop
 After:
+  - app-basics
   - a2nt-cms-niceties-shop
 ---
 SilverStripe\Core\Injector\Injector:

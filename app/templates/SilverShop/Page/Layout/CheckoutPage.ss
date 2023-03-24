@@ -1,4 +1,4 @@
-<div class="page-content">
+<div class="cart-page cart-page--checkout page-content">
     <div class="checkout element">
         <% if $PaymentErrorMessage %>
         <div class="container">

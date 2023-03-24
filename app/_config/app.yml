@@ -9,6 +9,7 @@ After:
   - a2nt-cms-niceties-base-config
   - webapp-base-extensions
   - webapp-locale-fluent
+  - silvershop-config
 ---
 
 SilverStripe\CMS\Model\SiteTree:
