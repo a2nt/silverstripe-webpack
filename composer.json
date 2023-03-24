@@ -46,7 +46,6 @@
         "jonom/focuspoint": "*",
         "symbiote/silverstripe-addressable": "dev-master",
         "silverstripe/login-forms": "*",
-	"sunnysideup/dataintegritytests": "*",
         "webbuilders-group/silverstripe-image-cropper-field": "dev-master",
         "dynamic/silverstripe-linkable": "dev-embedUpdate",
         "axllent/silverstripe-trailing-slash": "^2.2"
