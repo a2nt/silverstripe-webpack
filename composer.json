@@ -48,7 +48,8 @@
         "silverstripe/login-forms": "*",
         "webbuilders-group/silverstripe-image-cropper-field": "dev-master",
         "dynamic/silverstripe-linkable": "dev-embedUpdate",
-        "axllent/silverstripe-trailing-slash": "^2.2"
+        "axllent/silverstripe-trailing-slash": "^2.2",
+        "sunnysideup/dataintegritytests": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
@@ -80,6 +81,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/a2nt/GridFieldBulkEditingTools"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/a2nt/silverstripe-dataintegritytests"
         }
     ],
     "extra": {
