@@ -15,6 +15,7 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\ErrorPage\ErrorPage;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
@@ -93,7 +94,7 @@ class PageController extends ContentController
             __FUNCTION__,
             FieldList::create(
                 TextField::create('q', 'Search ...')
-                    ->setAttribute('placeholder', 'Search ' . $config->getField('Title') . ' Website')
+                    ->setAttribute('placeholder', 'What are you looking for?')
             ),
             FieldList::create(
                 FormAction::create(
@@ -135,6 +136,7 @@ class PageController extends ContentController
         $pages = SiteTree::get()->filterAny([
             'Title:PartialMatch' => $term,
             'Content:PartialMatch' => $term,
+            'ClassName:not' => ErrorPage::class,
         ])->sort('Created DESC');
 
         $results->merge($pages);
@@ -166,7 +168,12 @@ class PageController extends ContentController
         );
 
         foreach ($elements as $element) {
-            $page = $element->Page();
+            $page = $element->getPage();
+
+            if (!$element->hasMethod('getPage')) {
+                continue;
+            }
+
             if (! $page) {
                 continue;
             }

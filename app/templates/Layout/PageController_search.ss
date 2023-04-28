@@ -10,29 +10,29 @@
     <div class="element element-search-results">
         <div class="element-container {$Top.DefaultContainer}">
             <% if $Results %>
-            <div id="SearchAccordion{$ID}">
+            <div id="SearchAccordion{$ID}" class="accordion accordion-flush">
                 <% loop $Results %>
-                    <div class="card">
-                        <div class="card-header" id="Heading{$ID}{$Up.ID}">
-                            <h3
-                                    class="mb-0 a"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#Collapse{$ID}{$Up.ID}"
-                                    aria-expanded="false"
-                                    aria-controls="Collapse{$ID}{$Up.ID}"
-                            >
-                                $Title
-                                <i class="fas fa-plus accordion-icon pull-right"></i>
-                            </h3>
-                        </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                        	<button
+                        		class="accordion-button collapsed"
+                        		type="button"
+                        		data-bs-toggle="collapse"
+                                data-bs-target="#Collapse{$ID}{$Up.ID}"
+                                aria-expanded="false"
+                                aria-controls="Collapse{$ID}{$Up.ID}"
+							>
+                            	$Title
+                            </button>
+                        </h3>
 
                         <div
                                 id="Collapse{$ID}{$Up.ID}"
-                                class="collapse"
+                                class="accordion-collapse collapse"
                                 aria-labelledby="Heading{$ID}{$Up.ID}"
                                 data-bs-parent="#SearchAccordion{$Up.ID}"
                         >
-                            <div class="card-body">
+                            <div class="accordion-body">
                                 <p>$Summary(100)</p>
                                 <a href="{$Link}">Learn More</a>
                             </div>
@@ -41,7 +41,7 @@
                 <% end_loop %>
             </div>
             <% else %>
-                <h3>Nothing was found.</h3>
+                <h3 class="alert alert-danger not-found">Nothing was found.</h3>
             <% end_if %>
         </div>
     </div>
