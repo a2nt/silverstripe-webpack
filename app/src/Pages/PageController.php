@@ -109,7 +109,7 @@ class PageController extends ContentController
                     )
             ),
             RequiredFields::create(['q'])
-        )->setFormMethod('POST');
+        )->setFormMethod('GET');
 
         $form->setLegend('Search ' . $config->getField('Title') . ' Website');
 
@@ -136,7 +136,8 @@ class PageController extends ContentController
         $pages = SiteTree::get()->filterAny([
             'Title:PartialMatch' => $term,
             'Content:PartialMatch' => $term,
-            'ClassName:not' => ErrorPage::class,
+        ])->exclude([
+            'ClassName' => ErrorPage::class,
         ])->sort('Created DESC');
 
         $results->merge($pages);
