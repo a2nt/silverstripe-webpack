@@ -9,9 +9,12 @@
 
     <div class="element element-search-results">
         <div class="element-container {$Top.DefaultContainer}">
+            <h2 class="search-header">
+                $Title
+            </h2>
             <% if $Results %>
             <div id="SearchAccordion{$ID}" class="accordion accordion-flush">
-                <% loop $Results %>
+                <%-- loop $Results %>
                     <div class="accordion-item">
                         <h3 class="accordion-header">
                         	<button
@@ -38,6 +41,14 @@
                             </div>
                         </div>
                     </div>
+                <% end_loop --%>
+                <% loop $Results %>
+                    <h3 class="accordion-header">
+                        <a href="$Link" class="accordion-button collapsed">
+                            $Title
+                            <small>Go to page &raquo;</small>
+                        </a>
+                    </h3>
                 <% end_loop %>
             </div>
             <% else %>
