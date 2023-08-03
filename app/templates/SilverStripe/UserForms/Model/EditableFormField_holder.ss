@@ -1,8 +1,9 @@
-<div id="$Name" class="form__field field<% if $extraClass %> $extraClass<% end_if %>">
-	<% if $Title %><label class="field__label field__label-left left" for="$ID">$Title</label><% end_if %>
-
+<div id="$Name" class="form-floating form__field field<% if $extraClass %> $extraClass<% end_if %>">
 	<div class="field__content middleColumn">
-		$Field
+		<div class="form-floating">
+			$Field
+			<% if $Title %><label for="$ID">$Title</label><% end_if %>
+		</div>
 	</div>
 
 	<% if $Title && $RightTitle %>

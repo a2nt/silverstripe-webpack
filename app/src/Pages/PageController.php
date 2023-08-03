@@ -29,7 +29,7 @@ use SilverStripe\View\ArrayData;
 /**
  * Class \PageController
  *
- * @property \Page dataRecord
+ * @property \Page $dataRecord
  * @method \Page data()
  * @mixin \Page
  */

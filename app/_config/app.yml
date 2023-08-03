@@ -24,3 +24,8 @@ DNADesign\ElementalUserForms\Model\ElementForm:
 
 SilverLeague\IDEAnnotator\DataObjectAnnotator:
   enabled: true
+
+
+SilverStripe\UserForms\Form\UserForm:
+  no_placeholders: false
+  show_labels: false

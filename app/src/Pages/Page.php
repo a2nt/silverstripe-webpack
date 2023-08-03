@@ -12,7 +12,7 @@ use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 /**
  * Class \Page
  *
- * @property boolean $InheritSideBar
+ * @property bool $InheritSideBar
  * @property string $BlockIcon
  * @property int $SideBarID
  * @property int $ElementalAreaID

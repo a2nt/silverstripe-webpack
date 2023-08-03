@@ -47,7 +47,7 @@
         "symbiote/silverstripe-addressable": "dev-master",
         "silverstripe/login-forms": "*",
         "webbuilders-group/silverstripe-image-cropper-field": "dev-master",
-        "dynamic/silverstripe-linkable": "dev-embedUpdate",
+        "dynamic/silverstripe-linkable": "*",
         "axllent/silverstripe-trailing-slash": "^2.2",
         "sunnysideup/dataintegritytests": "*",
         "derralf/elemental-archive-report": "*"
@@ -62,10 +62,6 @@
         {
           "type": "vcs",
           "url": "https://github.com/a2nt/silverstripe-elemental-archive-report"
-        },
-        {
-          "type": "vcs",
-          "url": "https://github.com/a2nt/silverstripe-linkable"
         },
         {
             "type": "vcs",
