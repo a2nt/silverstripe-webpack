@@ -8,7 +8,7 @@
     ],
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=7.4.0",
+        "php": ">=8",
         "ext-json": "*",
         "silverstripe/recipe-cms": "^4",
         "silverstripe/recipe-plugin": "*",
@@ -54,7 +54,6 @@
     },
     "require-dev": {
         "phpunit/phpunit": "*",
-        "lekoala/silverstripe-debugbar": "dev-master",
         "sunnysideup/easy-coding-standards": "dev-master",
         "silverleague/ideannotator": "dev-master"
     },

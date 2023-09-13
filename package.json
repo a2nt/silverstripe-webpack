@@ -35,10 +35,11 @@
   ],
   "dependencies": {
     "@a2nt/meta-lightbox-js": "^4.2.4",
-    "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react": "^5.0.2",
+    "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react": "^5.0.4",
     "@angular/common": "^16.1.8",
     "@angular/core": "^16.1.8",
     "@apollo/client": "^3.7.17",
+    "@glidejs/glide": "^3.6.0",
     "@popperjs/core": "^2.11.8",
     "@turf/clone": "^6.5.0",
     "@turf/clusters-dbscan": "^6.5.0",

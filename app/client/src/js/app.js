@@ -13,7 +13,8 @@ import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/main'
 import '@a2nt/meta-lightbox-js/src/js/app'
 import 'bootstrap/js/src/collapse'
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/dropdown'
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/carousel'
+//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/carousel'
+import "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/glide";
 // import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/datepicker';
 // import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/instagram.feed';
 
@@ -32,6 +33,9 @@ import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ajax/lazy-images'
  */
 import './layout'
 
+/*
+ * Import fonts and images
+ */
 function importAll (r) {
   return r.keys().map(r)
 }

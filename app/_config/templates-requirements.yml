@@ -13,7 +13,7 @@ A2nt\CMSNiceties\Templates\DeferredRequirements:
   jquery_version: '3.4.1'
 
 SilverStripe\FontAwesome\FontAwesomeField:
-  version: '5.15.4'
+  version: '6.4.2'
 
 SilverStripe\View\Requirements:
   disable_flush_combined: true
