@@ -25,7 +25,8 @@ SilverStripe\CMS\Model\SiteTree:
     - DNADesign\ElementalVirtual\Model\ElementVirtual
     - A2nt\ElementalBasics\Elements\AccordionElement
     - A2nt\ElementalBasics\Elements\CustomSnippetElement
-    - A2nt\ElementalBasics\Elements\InstagramElement
+    #- A2nt\ElementalBasics\Elements\InstagramElement
+    - A2nt\ElementalBasics\Elements\SidebarElement
 
 DNADesign\ElementalList\Model\ElementList:
   inline_editable: false
@@ -43,7 +44,7 @@ DNADesign\ElementalList\Model\ElementList:
     - A2nt\ElementalBasics\Elements\MapElement
     - A2nt\ElementalBasics\Elements\AccordionElement
     - A2nt\ElementalBasics\Elements\CustomSnippetElement
-    - A2nt\ElementalBasics\Elements\InstagramElement
+    #- A2nt\ElementalBasics\Elements\InstagramElement
   styles:
     whiteframe: 'White Frame'
     noframe: 'No Frame'
