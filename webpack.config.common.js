@@ -159,10 +159,10 @@ const externals = {};
 const aliases = {};
 
 if (!conf['JQUERY']) {
-  provides['react'] = 'React';
+  /*provides['react'] = 'React';
   provides['react-dom'] = 'ReactDOM';
   externals['react'] = 'React';
-  externals['react-dom'] = 'ReactDOM';
+  externals['react-dom'] = 'ReactDOM';*/
 } else {
   provides['$'] = 'jquery';
   provides['jQuery'] = 'jquery';

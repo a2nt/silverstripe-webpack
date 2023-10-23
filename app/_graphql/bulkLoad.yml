@@ -1,0 +1,16 @@
+app:
+  # Load everything in our MyApp\Models\ namespace that has the Versioned extension
+  # unless the filename ends with .secret.php
+  load:
+    namespaceLoader:
+      include:
+        - App\Models\*
+    extensionLoader:
+      include:
+        - SilverStripe\Versioned\Versioned
+  apply:
+    fields:
+      '*': true
+    operations:
+      read: true
+      readOne: true

@@ -1,0 +1,30 @@
+modelConfig:
+  Page:
+    plugins:
+      inheritance: true
+    operations:
+      read:
+        plugins:
+          readVersion: false
+          paginateList: false
+      readOne:
+        plugins:
+          getByLink:
+            after: filter
+
+  DNADesign\Elemental\Models\ElementalArea:
+    plugins:
+      inheritance: true
+    operations:
+      read:
+        plugins:
+          readVersion: false
+          paginateList: false
+  DNADesign\Elemental\Models\BaseElement:
+    plugins:
+        inheritance: true
+    operations:
+      read:
+        plugins:
+          readVersion: false
+          paginateList: false

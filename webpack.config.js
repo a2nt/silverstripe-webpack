@@ -56,9 +56,7 @@ if (fs.existsSync(indexPath)) {
           templateParameters: {
               NODE_ENV: NODE_ENV,
               GRAPHQL_URL: conf['GRAPHQL_URL'],
-              STATIC_URL: conf['STATIC_URL'],
-              REACT_SCRIPTS: NODE_ENV === 'production' ?
-                  '<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script><script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>' : '<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script><script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>',
+              STATIC_URL: conf['STATIC_URL']
             },
           xhtml: true,
         }),
@@ -263,21 +261,17 @@ const cfg = merge(common.webpack, {
             test: /\.(js|ts)x?$/,
             //exclude: /node_modules/,
             use: {
-                loader: 'babel-loader', //'@sucrase/webpack-loader',
+                loader: 'babel-loader',//'@sucrase/webpack-loader',
                 options: {
-                    //transforms: ['jsx']
-                    presets: [
-                        '@babel/preset-env',
-                        '@babel/react',
-                        {
-                            plugins: [
-                                '@babel/plugin-proposal-class-properties',
-                            ],
-                          },
-                    ], //Preset used for env setup
-                    plugins: [
-                        '@babel/plugin-transform-typescript',
-                        '@babel/transform-react-jsx',
+                    "presets": ["@babel/preset-env"],
+                    "plugins": [
+                        [
+                            "@babel/plugin-transform-react-jsx",
+                            {
+                                "pragma": "m",
+                                "pragmaFrag": "'['"
+                            }
+                        ]
                     ],
                     cacheDirectory: true,
                     cacheCompression: true,
@@ -296,6 +290,7 @@ const cfg = merge(common.webpack, {
                   loader: 'css-loader',
                   options: {
                       sourceMap: true,
+                      esModule: true,
                     },
                 },
                 {

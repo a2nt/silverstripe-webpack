@@ -1,0 +1,49 @@
+Page:
+  fields:
+    id: true
+    className: true
+    urlSegment: true
+    parentID: true
+    title: true
+    sort: true
+    CSSClass: true
+    MainContent:
+      type: String
+    showInMenus: Boolean
+    showInSearch: Boolean
+    url:
+      type: String
+    link:
+      type: String
+    requestlink:
+      type: String
+    children: "[Page]"
+    elementalArea:
+      type: ElementalArea
+  operations:
+    read: true
+    readOne:
+      plugins:
+        getByLink:
+          after: filter
+
+DNADesign\Elemental\Models\ElementalArea:
+  fields:
+    id: true
+    elements:
+      plugins:
+        paginateList: false
+  operations:
+    read: true
+    readOne: true
+
+DNADesign\Elemental\Models\BaseElement:
+  fields:
+    id: true
+    title: true
+    showTitle: true
+    className: true
+    forTemplate: true
+  operations:
+    readOne: true
+    read: true

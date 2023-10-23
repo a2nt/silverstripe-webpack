@@ -28,4 +28,4 @@ SilverLeague\IDEAnnotator\DataObjectAnnotator:
 
 SilverStripe\UserForms\Form\UserForm:
   no_placeholders: false
-  show_labels: false
+  show_labels: true

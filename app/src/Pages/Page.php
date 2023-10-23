@@ -6,7 +6,9 @@
 
 use DNADesign\Elemental\Models\ElementContent;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Controller;
 use SilverStripe\FontAwesome\FontAwesomeField;
+use SilverStripe\GraphQL\Controller as GraphQLController;
 use TractorCow\Fluent\Extension\FluentSiteTreeExtension;
 
 /**
@@ -93,6 +95,26 @@ class Page extends SiteTree
     public function CSSClass()
     {
         return str_replace(['\\'], '-', $this->getField('ClassName'));
+    }
+
+    // AJAX/GraphQL helper
+    public function MainContent()
+    {
+        $object = $this;
+        return isset($object->GraphQLContent) ? $object->GraphQLContent : null;
+    }
+
+    public function getRequestLink($action = null)
+    {
+        $curr = Controller::curr();
+        if ($curr::class === GraphQLController::class) {
+            $vars = json_decode($curr->getRequest()->getBody(), true)['variables'];
+            if (isset($vars['url'])) {
+                return $vars['url'];
+            }
+        }
+
+        return null;
     }
 
     protected function onBeforeWrite()
