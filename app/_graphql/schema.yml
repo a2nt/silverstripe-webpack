@@ -1,4 +1,0 @@
-queries:
-  readMenu:
-    type: '[PageInterface]'
-    resolver: [ 'App\GraphQL\MenuResolver', 'resolveMenu' ]

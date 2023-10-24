@@ -97,26 +97,6 @@ class Page extends SiteTree
         return str_replace(['\\'], '-', $this->getField('ClassName'));
     }
 
-    // AJAX/GraphQL helper
-    public function MainContent()
-    {
-        $object = $this;
-        return isset($object->GraphQLContent) ? $object->GraphQLContent : null;
-    }
-
-    public function getRequestLink($action = null)
-    {
-        $curr = Controller::curr();
-        if ($curr::class === GraphQLController::class) {
-            $vars = json_decode($curr->getRequest()->getBody(), true)['variables'];
-            if (isset($vars['url'])) {
-                return $vars['url'];
-            }
-        }
-
-        return null;
-    }
-
     protected function onBeforeWrite()
     {
         parent::onBeforeWrite();
