@@ -1,0 +1,12 @@
+---
+Name: app-cache
+After:
+  - app-basics
+---
+
+SilverStripe\Core\Injector\Injector:
+  Psr\SimpleCache\CacheInterface.appCache:
+    factory: SilverStripe\Core\Cache\CacheFactory
+    constructor:
+      namespace: "appCache"
+      defaultLifetime: 3600
