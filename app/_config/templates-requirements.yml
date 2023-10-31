@@ -10,11 +10,11 @@ A2nt\CMSNiceties\Templates\DeferredRequirements:
   deferred: true
   noreact: true
   nojquery: true
-  jquery_version: '3.4.1'
+  jquery_version: '`JQUERY_VER`'
   fontawesome_svg: false
 
 SilverStripe\FontAwesome\FontAwesomeField:
-  version: '6.4.2'
+  version: '`FONTAWESOME_VER`'
 
 SilverStripe\View\Requirements:
   disable_flush_combined: true

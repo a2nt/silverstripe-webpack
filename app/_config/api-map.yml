@@ -19,10 +19,10 @@ A2nt\ElementalBasics\Elements\MapElement:
 
 BetterBrief\GoogleMapField:
   default_options:
-    api_key: ''
+    api_key: '`GOOGLEMAPS_API_KEY`'
 
 Symbiote\Addressable\MapboxGeocodeService:
-  mapbox_api_key: ''
+  mapbox_api_key: '`MAPBOX_API_KEY`'
 
 SilverStripe\SiteConfig\SiteConfig:
   map_type: "google-maps"
