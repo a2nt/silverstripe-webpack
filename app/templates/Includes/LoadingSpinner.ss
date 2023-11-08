@@ -1,4 +1,5 @@
 <style>
+	<%-- Some prestyling to prevent jumpings --%>
 	button{background:none;border:0}
     .container{margin-left:auto;margin-right:auto;padding-left:0.75rem;padding-right:0.75rem}
     @media (min-width: 1368px){.container{max-width:1180px}}
@@ -7,6 +8,8 @@
     .row {display:flex;justify-content:space-between}
     .breadcrumb{list-style:none}
     .breadcrumb-item{display:inline-block}
+    <%-- always show scroll bar --%>
+    html {overflow-y:scroll}
     <%-- Site Specific --%>
 	@keyframes lds-ellipsis1 {
 		0% {

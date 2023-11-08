@@ -7,9 +7,6 @@ After:
 A2nt\CMSNiceties\Extensions\SiteMemberLoginForm:
   enable_captcha: false
 
-SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
-  default_spam_protector: UndefinedOffset\NoCaptcha\Forms\NocaptchaProtector
-
 UndefinedOffset\NoCaptcha\Forms\NocaptchaField:
   site_key: '`NOCAPTCHA_SITE_KEY`' #Your site key (required)
   secret_key: '`NOCAPTCHA_SECRET_KEY`' #Your secret key (required)
@@ -20,3 +17,17 @@ UndefinedOffset\NoCaptcha\Forms\NocaptchaField:
   default_badge: 'bottomright' #Default badge position (bottomright, bottomleft or inline, defaults to bottomright)
   proxy_server: '' #Your proxy server address (optional)
   proxy_auth: '' #Your proxy server authentication information (optional)
+
+SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
+  default_spam_protector: WebbuildersGroup\Turnstile\Forms\TurnstileProtector  #Set the default spam protector
+  #default_spam_protector: UndefinedOffset\NoCaptcha\Forms\NocaptchaProtector
+
+WebbuildersGroup\Turnstile\Forms\TurnstileField:
+  site_key: '`TURNSTILE_SITE_KEY`' #Your site key (required)
+  secret_key: '`TURNSTILE_SECRET_KEY`' #Your secret key (required)
+  verify_ssl: true #Allows you to disable php-curl's SSL peer verification by setting this to false (optional, defaults to true)
+  default_theme: "light" #Default theme color (optional, light, dark or auto, defaults to light)
+  js_onload_callback: null #Onload callback to be called when the JS for Turnstile is loaded
+  proxy_server: "`SS_OUTBOUND_PROXY_SERVER`" #Your proxy server address (optional)
+  proxy_port: "`SS_OUTBOUND_PROXY_PORT`" #Your proxy server address port (optional)
+  proxy_auth: "`SS_OUTBOUND_PROXY_AUTH`" #Your proxy server authentication information (optional)
