@@ -28,6 +28,7 @@ import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/password'
 // import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ajax/links';
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ajax/online'
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ajax/lazy-images'
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ajax/form'
 
 /*
  * Site specific modules
