@@ -1,3 +1,4 @@
+<% cached 'Navigation', $NavID, $List('SilverStripe\CMS\Model\SiteTree').max('LastEdited'), $List('SilverStripe\CMS\Model\SiteTree').count() %>
 <nav id="{$NavID}" class="navbar navbar-expand-lg">
     <button
 		class="navbar-toggler"
@@ -19,3 +20,4 @@
         </div>
     </div>
 </nav>
+<% end_cached %>
