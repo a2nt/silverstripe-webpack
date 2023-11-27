@@ -202,7 +202,7 @@
       }
     }
   ],
-  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@13.3.2_sass@1.69.5_webpack@5.89.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@5.1.7_zone.js@0.14.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/types/map.api.scss": [
+  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@13.3.2_sass@1.69.5_webpack@5.89.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@5.2.1_zone.js@0.14.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/types/map.api.scss": [
     {
       "chunks": {
         "byName": {
@@ -219,17 +219,17 @@
         "byIdentifier": {
           "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/runtime/api.js": 173,
           "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/runtime/sourceMaps.js": 466,
-          "./node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@13.3.2_sass@1.69.5_webpack@5.89.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@5.1.7_zone.js@0.14.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/types/map.api.scss": 234
+          "./node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@13.3.2_sass@1.69.5_webpack@5.89.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@5.2.1_zone.js@0.14.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/types/map.api.scss": 847
         },
         "usedIds": [
           173,
-          234,
-          466
+          466,
+          847
         ]
       }
     }
   ],
-  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@13.3.2_sass@1.69.5_webpack@5.89.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@5.1.7_zone.js@0.14.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/ui/glide.theme.scss": [
+  "mini-css-extract-plugin /mnt/data/srv/dist/repositories/silverstripe-webpack/node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@13.3.2_sass@1.69.5_webpack@5.89.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@5.2.1_zone.js@0.14.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/ui/glide.theme.scss": [
     {
       "chunks": {
         "byName": {
@@ -247,15 +247,15 @@
           "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/runtime/api.js": 173,
           "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/runtime/getUrl.js": 954,
           "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/runtime/sourceMaps.js": 466,
-          "./node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@13.3.2_sass@1.69.5_webpack@5.89.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@5.1.7_zone.js@0.14.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/ui/glide.theme.scss": 332,
+          "./node_modules/.pnpm/css-loader@6.8.1_webpack@5.89.0/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/sass-loader@13.3.2_sass@1.69.5_webpack@5.89.0/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@5.2.1_zone.js@0.14.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/scss/ui/glide.theme.scss": 835,
           "asset/inline|data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" viewBox=\"0 0 320 512\"><%21--%21 Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license %28Commercial License%29 Copyright 2023 Fonticons, Inc. --><path fill=\"white\" d=\"M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z\"/></svg>": 696,
           "asset/inline|data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" viewBox=\"0 0 320 512\"><%21--%21 Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license %28Commercial License%29 Copyright 2023 Fonticons, Inc. --><path fill=\"white\" d=\"M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z\"/></svg>": 935
         },
         "usedIds": [
           173,
-          332,
           466,
           696,
+          835,
           935,
           954
         ]
@@ -355,19 +355,19 @@
   "modules": {
     "byIdentifier": {
       "./app/client/src/img|sync|nonrecursive|/\\.(png%7Cwebp%7Cjpg%7Cjpeg%7Cgif%7Csvg)$/": 2103,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/app.js|23dae97ed5969633a1703ebb34c50c1f": 8820,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/app.js|d0b66a3e298dd1c2cc72711e2be7971b": 6789,
       "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/SilverShop.Page.CheckoutPageController.js": 5433,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/Site.Controllers.MapElementController.js|966a7d29889af6d463806a0217d04f37": 6768,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.8_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/_events.js": 1522,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.8_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/graphql.js": 455,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.8_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/index.js": 3311,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.8_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/page/index.js": 6902,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.8_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/page/resources.js": 6087,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.8_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/page/tpl.js": 5771,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.8_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/queries/page.js": 5436,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.8_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/router.js": 1605,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.8_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/util/getParents.js": 5672,
-      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@5.1.7_zone.js@0.14.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/main/funcs.js": 3088,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./app/client/src/js/types/Site.Controllers.MapElementController.js|12066a17bdb7cb15fd3d32cf75e0ac51": 1623,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.9_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/_events.js": 3812,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.9_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/graphql.js": 3377,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.9_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/index.js": 3281,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.9_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/page/index.js": 5850,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.9_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/page/resources.js": 1021,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.9_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/page/tpl.js": 2182,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.9_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/queries/page.js": 4579,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.9_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/ui/router.js": 2066,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+mithril-ui@1.0.9_@popperjs+core@2.11.8/node_modules/@a2nt/mithril-ui/src/js/util/getParents.js": 1841,
+      "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/@a2nt+ss-bootstrap-ui-webpack-boilerplate-react@5.2.1_zone.js@0.14.2/node_modules/@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/main/funcs.js": 2065,
       "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/fast-deep-equal@3.1.3/node_modules/fast-deep-equal/index.js": 4949,
       "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/mithril@2.2.2/node_modules/mithril/api/mount-redraw.js": 5219,
       "./node_modules/.pnpm/babel-loader@9.1.3_@babel+core@7.23.3_webpack@5.89.0/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[0].use!./node_modules/.pnpm/mithril@2.2.2/node_modules/mithril/api/router.js": 3382,
@@ -412,26 +412,31 @@
     },
     "usedIds": [
       91,
-      455,
       499,
+      1021,
       1090,
       1139,
       1194,
       1357,
       1381,
-      1522,
-      1605,
+      1623,
+      1841,
       1989,
+      2065,
+      2066,
       2103,
+      2182,
       2257,
       2584,
       2597,
       2776,
-      3088,
-      3311,
+      3281,
+      3377,
       3382,
+      3812,
       4023,
       4489,
+      4579,
       4595,
       4949,
       4976,
@@ -441,26 +446,21 @@
       5363,
       5432,
       5433,
-      5436,
-      5672,
-      5771,
+      5850,
       6004,
       6061,
-      6087,
       6112,
       6120,
       6195,
       6344,
       6366,
-      6768,
+      6789,
       6800,
-      6902,
       7215,
       7449,
       7464,
       8436,
       8814,
-      8820,
       8883,
       9164,
       9685,
