@@ -3,6 +3,8 @@
 // vendor/silverstripe/errorpage/src/ErrorPageController.php
 // extends global PageController class
 //namespace App\Pages;
+
+use A2nt\CMSNiceties\Ajax\Ex\AjaxControllerEx;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
@@ -16,6 +18,8 @@ use SilverStripe\View\SSViewer;
  * @method \Page data()
  * @mixin \Page
  * @mixin \A2nt\CMSNiceties\Extensions\PageControllerEx
+ * @mixin \A2nt\CMSNiceties\Ajax\Ex\AjaxLoginFormControllerEx
+ * @mixin \App\Service\Ex\ServiceSignUpControllerEx
  */
 class PageController extends ContentController
 {
@@ -56,36 +60,10 @@ class PageController extends ContentController
 
         // inject AJAX processing
         if (Director::is_ajax()) {
-            return self::processAJAX($tpls);
+            return AjaxControllerEx::processAJAX($tpls);
         }
 
         return SSViewer::create($tpls);
-    }
-
-    protected static function processAJAX($tpls)
-    {
-        foreach ($tpls as $tpl) {
-            if (is_array($tpl)) {
-                continue;
-            }
-
-            $a_tpl = explode('\\', $tpl);
-            $last_name = array_pop($a_tpl);
-            $a_tpl[] = 'Layout';
-            $a_tpl[] = $last_name;
-            $a_tpl = implode('\\', $a_tpl);
-
-            if (SSViewer::hasTemplate($a_tpl)) {
-                $tpl = $a_tpl;
-                break;
-            }
-        }
-        //
-
-        $tpl = is_array($tpl) ? 'Page' : $tpl;
-        $tpl = ($tpl !== 'Page') ? $tpl : 'Layout/Page';
-
-        return SSViewer::create($tpl);
     }
 
     protected function prepareResponse($response)
@@ -97,29 +75,5 @@ class PageController extends ContentController
             $response = $this->getResponse();
             $this->prepareAjaxResponse($response);
         }
-    }
-
-    protected function prepareAjaxResponse($response)
-    {
-        $record = $this->dataRecord;
-
-        $req = $this->getRequest();
-        $url = $req->getURL();
-        $url = $url === 'home' ? '/' : $url;
-
-        $resources = array_merge(
-            $this->config()->get('graphql_resources'),
-            $this->config()->get('ajax_resources')
-        );
-
-        $response->setBody(json_encode([
-            'ID' => $record->ID,
-            'Title' => $record->Title,
-            'Link' => $this->Link(),
-            'CSSClass' => $this->CSSClass(),
-            'Resources' => $resources,
-            'RequestLink' => $url,
-            'MainContent' => $response->getBody(),
-        ]));
     }
 }
