@@ -50,7 +50,8 @@
         "dynamic/silverstripe-linkable": "*",
         "axllent/silverstripe-trailing-slash": "^2.2",
         "sunnysideup/dataintegritytests": "*",
-        "derralf/elemental-archive-report": "*"
+        "derralf/elemental-archive-report": "*",
+        "webbuilders-group/silverstripe-turnstile": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
