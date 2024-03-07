@@ -41,9 +41,7 @@ rules:
   indentation:
     - 2
     - size: 4
-  final-newline:
-    - 2
-    - include: true
+  final-newline: false
   no-trailing-whitespace: 2
   border-zero:
     - 2
