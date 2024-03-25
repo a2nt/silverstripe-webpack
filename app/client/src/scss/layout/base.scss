@@ -10,6 +10,14 @@ body {
 	padding-bottom: 2 * $element-reduced-spacer-y;
 }*/
 
+// disable animation
+main {
+
+    &.loaded,
+    &.loading {
+        animation: none;
+    }
+}
 
 #PageBreadcumbs {
     padding-bottom: 0;
