@@ -85,6 +85,10 @@
         },
         {
           "type": "vcs",
+          "url": "https://github.com/a2nt/silverstripe-turnstile"
+        },
+        {
+          "type": "vcs",
           "url": "https://github.com/a2nt/silverstripe-dataintegritytests"
         }
     ],

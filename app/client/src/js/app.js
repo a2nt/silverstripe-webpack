@@ -19,7 +19,8 @@ import "@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/glide";
 // import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/datepicker';
 // import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/instagram.feed';
 
-import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/captcha'
+//import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/captcha'
+import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/turnstile'
 import '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/ui/password'
 
 /*
