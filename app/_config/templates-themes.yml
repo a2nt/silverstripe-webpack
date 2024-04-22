@@ -4,6 +4,20 @@ After:
   - webapp-options-elements
   - a2nt-cms-niceties-templates-themes
 ---
+
+A2nt\CMSNiceties\Templates\DeferredRequirements:
+  nofontawesome: false
+  version: false
+  static_domain: false
+  deferred: true
+  noreact: true
+  nojquery: true
+  jquery_version: '3.7.1'
+  fontawesome_svg: false
+
+SilverStripe\FontAwesome\FontAwesomeField:
+  version: '6.5.1'
+
 SilverStripe\View\SSViewer:
   source_file_comments: false
   themes:
@@ -25,5 +39,5 @@ Only:
   environment: dev
 ---
 SilverStripe\View\SSViewer:
-  source_file_comments: true
+  source_file_comments: false
 
