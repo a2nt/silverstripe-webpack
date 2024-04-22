@@ -19,7 +19,6 @@ use SilverStripe\FontAwesome\FontAwesomeField;
  * @mixin \DNADesign\Elemental\Extensions\ElementalPageExtension
  * @mixin \A2nt\CMSNiceties\Widgets\WidgetPageExtension
  * @mixin \A2nt\CMSNiceties\GraphQL\ObjectGraphQlEx
- * @mixin \Sheadawson\Linkable\Extensions\LinkableDataExtension
  */
 class Page extends SiteTree
 {
