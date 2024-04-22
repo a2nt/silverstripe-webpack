@@ -40,7 +40,9 @@
     "silverstripe/login-forms": "*",
     "axllent/silverstripe-trailing-slash": "*",
     "webbuilders-group/silverstripe-turnstile": "*",
-    "a2nt/cms-niceties": "dev-main"
+    "a2nt/cms-niceties": "*",
+    "dynamic/flexslider": "4.1.x-dev",
+    "dynamic/silverstripe-elemental-flexslider": "^2.0@dev"
   },
   "require-dev": {
     "phpunit/phpunit": "*",
@@ -71,6 +73,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/a2nt/silverstripe-dataintegritytests"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/silverstripe-flexslider"
     }
   ],
   "extra": {

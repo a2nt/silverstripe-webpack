@@ -19,9 +19,9 @@ SilverStripe\CMS\Model\SiteTree:
     #- Dynamic\Elements\Oembed\Elements\ElementOembed
     #- Dynamic\Elements\Elements\ElementTestimonials
     #- A2nt\ElementalBasics\Elements\TeamMembersElement
-    #- A2nt\ElementalBasics\Elements\SliderElement
+    - A2nt\ElementalBasics\Elements\SliderElement
     #- A2nt\ElementalBasics\Elements\MapElement
-    #- A2nt\ElementalBasics\Elements\AccordionElement
+    - A2nt\ElementalBasics\Elements\AccordionElement
     - DNADesign\ElementalVirtual\Model\ElementVirtual
     - A2nt\ElementalBasics\Elements\AccordionElement
     - A2nt\ElementalBasics\Elements\CustomSnippetElement
