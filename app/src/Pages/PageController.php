@@ -25,6 +25,11 @@ class PageController extends ContentController
     private static $graphql_resources = [];
     private static $ajax_resources = [];
 
+    public function ElementalArea()
+    {
+        return $this->dataRecord->ElementalArea();
+    }
+
     public function getViewer($action)
     {
         // Manually set templates should be dealt with by Controller::getViewer()
