@@ -18,13 +18,17 @@ use SilverStripe\View\SSViewer;
  * @method \Page data()
  * @mixin \Page
  * @mixin \A2nt\CMSNiceties\Extensions\PageControllerEx
- * @mixin \A2nt\CMSNiceties\Ajax\Ex\AjaxLoginFormControllerEx
- * @mixin \App\Service\Ex\ServiceSignUpControllerEx
+ * @mixin \A2nt\CMSNiceties\Ajax\Ex\AjaxControllerEx
  */
 class PageController extends ContentController
 {
     private static $graphql_resources = [];
     private static $ajax_resources = [];
+
+    public function ElementalArea()
+    {
+        return $this->dataRecord->ElementalArea();
+    }
 
     public function getViewer($action)
     {
