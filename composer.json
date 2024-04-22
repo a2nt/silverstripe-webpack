@@ -1,132 +1,130 @@
 {
-    "name": "a2nt/silverstripe-webpack",
-    "type": "silverstripe-recipe",
-    "description": "SilverStripe WebPack boilerplate + Basics of JS/CSS UI",
-    "keywords": [
-        "silverstripe",
-        "webpack"
+  "name": "a2nt/silverstripe-webpack",
+  "type": "silverstripe-recipe",
+  "description": "SilverStripe WebPack boilerplate + Basics of JS/CSS UI",
+  "keywords": [
+    "silverstripe",
+    "webpack"
+  ],
+  "license": "BSD-3-Clause",
+  "require": {
+    "php": ">=8",
+    "ext-json": "*",
+    "silverstripe/recipe-cms": "^4",
+    "silverstripe/recipe-plugin": "*",
+    "wilr/silverstripe-googlesitemaps": "*",
+    "silverstripe/userforms": "*",
+    "undefinedoffset/sortablegridfield": "*",
+    "silverstripe/spamprotection": "*",
+    "jonom/silverstripe-betternavigator": "*",
+    "silverstripe/externallinks": "*",
+    "symbiote/silverstripe-gridfieldextensions": "*",
+    "colymba/gridfield-bulk-editing-tools": "*",
+    "dnadesign/silverstripe-elemental-list": "*",
+    "dnadesign/silverstripe-elemental-virtual": "*",
+    "dnadesign/silverstripe-elemental-userforms": "*",
+    "dynamic/silverstripe-elemental-blocks": "*",
+    "axllent/silverstripe-version-truncator": "*",
+    "gorriecoe/silverstripe-dataobjecthistory": "*",
+    "axllent/silverstripe-bootstrap-forms": "*",
+    "silverstripe/redirectedurls": "*",
+    "undefinedoffset/silverstripe-nocaptcha": "*",
+    "stevie-mayhew/silverstripe-svg": "*",
+    "betterbrief/silverstripe-googlemapfield": "*",
+    "innoweb/silverstripe-sitemap": "*",
+    "silverstripe/multiuser-editing-alert": "*",
+    "silverstripe/environmentcheck": "*",
+    "a2nt/silverstripe-font-awesome-field": "dev-master",
+    "a2nt/silverstripe-mapboxfield": "dev-master",
+    "a2nt/silverstripe-progressivewebapp": "dev-master",
+    "a2nt/silverstripe-elemental-basics": "*",
+    "a2nt/cms-niceties": "dev-main",
+    "a2nt/silverstripe-live-checks": "*",
+    "bummzack/sortablefile": "*",
+    "ezyang/htmlpurifier": "^4.13",
+    "endroid/qr-code": "^3.9",
+    "jonom/focuspoint": "*",
+    "symbiote/silverstripe-addressable": "dev-master",
+    "silverstripe/login-forms": "*",
+    "webbuilders-group/silverstripe-image-cropper-field": "dev-master",
+    "dynamic/silverstripe-linkable": "*",
+    "axllent/silverstripe-trailing-slash": "^2.2",
+    "sunnysideup/dataintegritytests": "*",
+    "derralf/elemental-archive-report": "*",
+    "webbuilders-group/silverstripe-turnstile": "^1.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "sunnysideup/easy-coding-standards": "dev-master",
+    "silverleague/ideannotator": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/silverstripe-elemental-archive-report"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/silverstripe-font-awesome"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/silverstripe-mapboxfield"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/silverstripe-addressable"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/silverstripe-image-cropper-field"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/GridFieldBulkEditingTools"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/silverstripe-dataintegritytests"
+    }
+  ],
+  "extra": {
+    "expose": [
+      "app/client/dist"
     ],
-    "license": "BSD-3-Clause",
-    "require": {
-        "php": ">=8",
-        "ext-json": "*",
-        "silverstripe/recipe-cms": "^4",
-        "silverstripe/recipe-plugin": "*",
-        "wilr/silverstripe-googlesitemaps": "*",
-        "silverstripe/userforms": "*",
-        "undefinedoffset/sortablegridfield": "*",
-        "silverstripe/spamprotection": "*",
-        "jonom/silverstripe-betternavigator": "*",
-        "silverstripe/externallinks": "*",
-        "symbiote/silverstripe-gridfieldextensions": "*",
-        "colymba/gridfield-bulk-editing-tools": "*",
-        "dnadesign/silverstripe-elemental-list": "*",
-        "dnadesign/silverstripe-elemental-virtual": "*",
-        "dnadesign/silverstripe-elemental-userforms": "*",
-        "dynamic/silverstripe-elemental-blocks": "*",
-        "axllent/silverstripe-version-truncator": "*",
-        "gorriecoe/silverstripe-dataobjecthistory": "*",
-        "axllent/silverstripe-bootstrap-forms": "*",
-        "silverstripe/redirectedurls": "*",
-        "undefinedoffset/silverstripe-nocaptcha": "*",
-        "stevie-mayhew/silverstripe-svg": "*",
-        "betterbrief/silverstripe-googlemapfield": "*",
-        "innoweb/silverstripe-sitemap": "*",
-        "silverstripe/multiuser-editing-alert": "*",
-        "silverstripe/environmentcheck": "*",
-        "a2nt/silverstripe-font-awesome-field": "dev-master",
-        "a2nt/silverstripe-mapboxfield": "dev-master",
-        "a2nt/silverstripe-progressivewebapp": "dev-master",
-        "a2nt/silverstripe-elemental-basics": "*",
-        "a2nt/cms-niceties": "dev-main",
-	      "a2nt/silverstripe-live-checks": "*",
-        "bummzack/sortablefile": "*",
-        "ezyang/htmlpurifier": "^4.13",
-        "endroid/qr-code": "^3.9",
-        "jonom/focuspoint": "*",
-        "symbiote/silverstripe-addressable": "dev-master",
-        "silverstripe/login-forms": "*",
-        "webbuilders-group/silverstripe-image-cropper-field": "dev-master",
-        "dynamic/silverstripe-linkable": "*",
-        "axllent/silverstripe-trailing-slash": "^2.2",
-        "sunnysideup/dataintegritytests": "*",
-        "derralf/elemental-archive-report": "*",
-        "webbuilders-group/silverstripe-turnstile": "^1.1"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "*",
-        "sunnysideup/easy-coding-standards": "dev-master",
-        "silverleague/ideannotator": "dev-master"
-    },
-    "repositories": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/a2nt/silverstripe-elemental-archive-report"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/a2nt/silverstripe-font-awesome"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/a2nt/silverstripe-mapboxfield"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/a2nt/silverstripe-addressable"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/a2nt/silverstripe-image-cropper-field"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/a2nt/GridFieldBulkEditingTools"
-        },
-        {
-          "type": "vcs",
-          "url": "https://github.com/a2nt/silverstripe-turnstile"
-        },
-        {
-          "type": "vcs",
-          "url": "https://github.com/a2nt/silverstripe-dataintegritytests"
-        }
+    "project-files-installed": [
+      "app/.htaccess",
+      "app/_config.php",
+      "app/_config/database.yml",
+      "app/_config/mimevalidator.yml",
+      "app/_config/mysite.yml",
+      "app/src/Page.php",
+      "app/src/PageController.php"
     ],
-    "extra": {
-        "expose": [
-            "app/client/dist"
-        ],
-        "project-files-installed": [
-            "app/.htaccess",
-            "app/_config.php",
-            "app/_config/database.yml",
-            "app/_config/mimevalidator.yml",
-            "app/_config/mysite.yml",
-            "app/src/Page.php",
-            "app/src/PageController.php"
-        ],
-        "public-files-installed": [
-            ".htaccess",
-            "index.php",
-            "install-frameworkmissing.html",
-            "install.php",
-            "web.config"
-        ]
+    "public-files-installed": [
+      ".htaccess",
+      "index.php",
+      "install-frameworkmissing.html",
+      "install.php",
+      "web.config"
+    ]
+  },
+  "config": {
+    "process-timeout": 600,
+    "allow-plugins": {
+      "composer/installers": true,
+      "silverstripe/vendor-plugin": true,
+      "silverstripe/recipe-plugin": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/src"
     },
-    "config": {
-        "process-timeout": 600,
-        "allow-plugins": {
-            "composer/installers": true,
-            "silverstripe/vendor-plugin": true,
-            "silverstripe/recipe-plugin": true
-        }
-    },
-    "autoload": {
-        "psr-4": {
-          "App\\": "app/src"
-        },
-        "exclude-from-classmap": ["vendor/dynamic/flexslider/src/Model/SlideImage.php"]
-    },
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+    "exclude-from-classmap": [
+      "vendor/dynamic/flexslider/src/Model/SlideImage.php"
+    ]
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev"
 }
