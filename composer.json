@@ -41,7 +41,7 @@
     "axllent/silverstripe-trailing-slash": "*",
     "webbuilders-group/silverstripe-turnstile": "*",
     "a2nt/cms-niceties": "*",
-    "dynamic/flexslider": "4.1.x-dev",
+    "dynamic/flexslider": "^5",
     "dynamic/silverstripe-elemental-flexslider": "^2.0@dev"
   },
   "require-dev": {
