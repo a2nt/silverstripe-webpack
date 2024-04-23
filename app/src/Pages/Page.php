@@ -22,9 +22,6 @@ use SilverStripe\FontAwesome\FontAwesomeField;
  */
 class Page extends SiteTree
 {
-    private static $mailchimp_list_id = '0c122fd88f';
-    private static $mailchimp_key = 'e2c03357299701a82275d6de9c8f2551-us8';
-
     private static $db = [
         'BlockIcon' => 'Varchar(255)',
     ];

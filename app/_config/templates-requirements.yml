@@ -2,6 +2,7 @@
 Name: webapp-templates-requirements
 After:
   - a2nt-cms-niceties-templates-requirements
+  - a2nt-cms-niceties-templates-themes
 ---
 
 SilverStripe\View\Requirements:

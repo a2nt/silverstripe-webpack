@@ -42,7 +42,8 @@
     "webbuilders-group/silverstripe-turnstile": "*",
     "a2nt/cms-niceties": "*",
     "dynamic/flexslider": "^5",
-    "dynamic/silverstripe-elemental-flexslider": "^2.0@dev"
+    "dynamic/silverstripe-elemental-flexslider": "^2.0@dev",
+    "silverstripe/blog": "^4.2"
   },
   "require-dev": {
     "phpunit/phpunit": "*",
