@@ -35,13 +35,13 @@ DNADesign\ElementalList\Model\ElementList:
     - DNADesign\ElementalList\Model\ElementList
     - DNADesign\Elemental\Models\ElementContent
     - DNADesign\ElementalUserForms\Model\ElementForm
-    - Dynamic\Elements\Image\Elements\ElementImage
-    - Dynamic\Elements\Blog\Elements\ElementBlogPosts
-    - Dynamic\Elements\Oembed\Elements\ElementOembed
-    - Dynamic\Elements\Elements\ElementTestimonials
+    #- Dynamic\Elements\Image\Elements\ElementImage
+    #- Dynamic\Elements\Blog\Elements\ElementBlogPosts
+    #- Dynamic\Elements\Oembed\Elements\ElementOembed
+    #- Dynamic\Elements\Elements\ElementTestimonials
     #- A2nt\ElementalBasics\Elements\TeamMembersElement
     - A2nt\ElementalBasics\Elements\SliderElement
-    - A2nt\ElementalBasics\Elements\MapElement
+    #- A2nt\ElementalBasics\Elements\MapElement
     - A2nt\ElementalBasics\Elements\AccordionElement
     - A2nt\ElementalBasics\Elements\CustomSnippetElement
     #- A2nt\ElementalBasics\Elements\InstagramElement
