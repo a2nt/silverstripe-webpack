@@ -2,6 +2,7 @@
 Name: webapp-templates-themes
 After:
   - webapp-options-elements
+  - a2nt-cms-niceties-templates-requirements
   - a2nt-cms-niceties-templates-themes
 ---
 
