@@ -26,7 +26,6 @@
     "axllent/silverstripe-version-truncator": "*",
     "axllent/silverstripe-bootstrap-forms": "*",
     "silverstripe/redirectedurls": "*",
-    "undefinedoffset/silverstripe-nocaptcha": "*",
     "stevie-mayhew/silverstripe-svg": "*",
     "innoweb/silverstripe-sitemap": "*",
     "silverstripe/multiuser-editing-alert": "*",
