@@ -27,3 +27,12 @@ main {
 .page-header-element {
     display: none !important;
 }
+
+// hide content loading anmation by default
+//.form-container,
+main {
+    &.loaded,
+    &.loading {
+        animation: none;
+    }
+}

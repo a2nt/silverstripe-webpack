@@ -2,7 +2,6 @@
 
 import '../../scss/_cms.scss'
 import "@a2nt/meta-lightbox-js/src/js/app";
-// import '@a2nt/ss-bootstrap-ui-webpack-boilerplate/src/js/_components/_ui.image-position';
 
 (function ($) {
   $.entwine("ss", ($) => {
