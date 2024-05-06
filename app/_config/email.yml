@@ -7,6 +7,10 @@ SilverStripe\Core\Injector\Injector:
   Swift_Transport:
     class: Swift_SendmailTransport
 
+#SilverStripe\Control\Email\Email:
+#  admin_email:
+#    support@example.com: 'Support team'
+
 #SilverStripe\Core\Injector\Injector:
 #  Swift_Transport:
 #    class: Swift_SmtpTransport
