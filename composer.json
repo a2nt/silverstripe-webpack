@@ -47,7 +47,8 @@
   "require-dev": {
     "phpunit/phpunit": "*",
     "sunnysideup/easy-coding-standards": "dev-master",
-    "silverleague/ideannotator": "dev-master"
+    "silverleague/ideannotator": "dev-master",
+    "lekoala/silverstripe-debugbar": "^3.0"
   },
   "repositories": [
     {
