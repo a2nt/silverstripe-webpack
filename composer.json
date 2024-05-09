@@ -78,6 +78,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/a2nt/silverstripe-flexslider"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/a2nt/silverstripe-turnstile"
     }
   ],
   "extra": {
