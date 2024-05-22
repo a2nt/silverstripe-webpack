@@ -42,7 +42,8 @@
     "a2nt/cms-niceties": "*",
     "dynamic/flexslider": "^5",
     "dynamic/silverstripe-elemental-flexslider": "^2.0@dev",
-    "silverstripe/blog": "^4.2"
+    "silverstripe/blog": "^4.2",
+    "dynamic/silverstripe-elemental-blog": "^3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "*",
