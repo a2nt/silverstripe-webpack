@@ -1,23 +1,25 @@
-import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_events'
+/* eslint-disable no-console */
+
+import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_events';
 
 const LayoutUI = ((W) => {
-  const NAME = '_layout'
-  const D = document
+  const NAME = '_layout';
+  const D = document;
 
   const initFonts = () => {
-    console.log(`${NAME}: initFonts`)
+    console.log(`${NAME}: initFonts`);
 
-    const css = D.createElement('link')
-    css.rel = 'stylesheet'
-    css.type = 'text/css'
-    css.media = 'all'
+    const css = D.createElement('link');
+    css.rel = 'stylesheet';
+    css.type = 'text/css';
+    css.media = 'all';
     css.href =
-      'https://fonts.googleapis.com/css?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap'
-    D.getElementsByTagName('head')[0].appendChild(css)
-  }
+      'https://fonts.googleapis.com/css?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap';
+    D.getElementsByTagName('head')[0].appendChild(css);
+  };
 
   const initAnalytics = () => {
-    console.log(`${NAME}: initAnalytics`)
+    console.log(`${NAME}: initAnalytics`);
     /* google analytics */
     /* (function(i, s, o, g, r, a, m) {
           i['GoogleAnalyticsObject'] = r;
@@ -40,11 +42,11 @@ const LayoutUI = ((W) => {
         );
         ga('create', 'UA-********-*', 'auto');
         ga('send', 'pageview'); */
-  }
+  };
 
   W.addEventListener(`${Events.LODEDANDREADY}`, () => {
-    initFonts()
-    initAnalytics()
-  })
-})(window)
-export default LayoutUI
+    initFonts();
+    initAnalytics();
+  });
+})(window);
+export default LayoutUI;

@@ -1,3 +1,1 @@
-'use strict'
-
-import '../../scss/types/dev.scss'
+import '../../scss/types/dev.scss';

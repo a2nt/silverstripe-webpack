@@ -8,7 +8,7 @@
 
 /*!
  * Glide.js v3.6.0
- * (c) 2013-2022 Jędrzej Chałubek (https://github.com/jedrzejchalubek/)
+ * (c) 2013-2023 Jędrzej Chałubek (https://github.com/jedrzejchalubek/)
  * Released under the MIT License.
  */
 
