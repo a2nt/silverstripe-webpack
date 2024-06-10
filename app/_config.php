@@ -12,19 +12,22 @@ $loader->loadFile($env);
     'test@example.com'
 );*/
 
-
 $cfg = TinyMCEConfig::get('cms');
 $cfg->setOption('forced_root_block', 'p');
+
 $cfg->setOption(
     'valid_elements',
-    'strong/b,em/i,a[href|target=_blank],p/div,br,' .
-    'blockquote,' .
-    'img[class|src|alt|title|hspace|vspace|width|height|align|name|usemap|data*],' .
-    'iframe[src|name|width|height|align|frameborder|marginwidth|marginheight|scrolling],' .
-    'object[width|height|data|type],' .
-    'embed[src|type|pluginspage|width|height|autoplay],' .
-    'param[name|value],' .
-    'map[class|name|id],' .
-    'area[shape|coords|href|target|alt],' .
-    'ol[start|type]'
+    'strong[class|style]/b,em[class|style]/i,a[href|target=_blank|style],p[class|style]/div,br,span[class|style],' .
+    'blockquote[class|style],' .
+    'h2[class|style],h3[class|style],h4[class|style],h5[class|style],h6[class|style],'.
+    'address[class|style],pre[class|style],hr,'.
+    'a[href|rel|title|target|class|style],'.
+    'table[class|style],ul[class|style],ol[start|type|class|style],li[class|style],'.
+    'img[class|style|src|alt|title|hspace|vspace|width|height|align|name|usemap|data*],' .
+    'iframe[class|style|src|name|width|height|align|frameborder|marginwidth|marginheight|scrolling],' .
+    'object[class|style|width|height|data|type],' .
+    'embed[class|style|src|type|pluginspage|width|height|autoplay],' .
+    'param[class|style|name|value],' .
+    'map[class|style|name|id],' .
+    'area[class|style|shape|coords|href|target|alt]'
 );
