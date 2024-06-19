@@ -29,7 +29,7 @@ class PageController extends ContentController
     protected function init()
     {
         HTTPCacheControlMiddleware::singleton()
-            ->enableCache()
+            ->enableCache(true)
             // 1 minute
             ->setMaxAge(60);
 
@@ -76,7 +76,7 @@ class PageController extends ContentController
         // inject AJAX processing
         if (Director::is_ajax()) {
             HTTPCacheControlMiddleware::singleton()
-                ->disableCache();
+                ->disableCache(true);
 
             return AjaxControllerEx::processAJAX($tpls);
         }
