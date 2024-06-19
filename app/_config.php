@@ -14,20 +14,24 @@ $loader->loadFile($env);
 
 $cfg = TinyMCEConfig::get('cms');
 $cfg->setOption('forced_root_block', 'p');
+$cfg->setOption('fix_list_elements', true);
+$cfg->setOption('remove_trailing_brs', true);
+$cfg->setOption('invalid_styles', 'font-family font'); //'color font-size width height'
 
 $cfg->setOption(
     'valid_elements',
-    'strong[class|style]/b,em[class|style]/i,a[href|target=_blank|style],p[class|style]/div,br,span[class|style],' .
-    'blockquote[class|style],' .
-    'h2[class|style],h3[class|style],h4[class|style],h5[class|style],h6[class|style],'.
-    'address[class|style],pre[class|style],hr,'.
-    'a[href|rel|title|target|class|style],'.
-    'table[class|style],ul[class|style],ol[start|type|class|style],li[class|style],'.
-    'img[class|style|src|alt|title|hspace|vspace|width|height|align|name|usemap|data*],' .
-    'iframe[class|style|src|name|width|height|align|frameborder|marginwidth|marginheight|scrolling],' .
-    'object[class|style|width|height|data|type],' .
-    'embed[class|style|src|type|pluginspage|width|height|autoplay],' .
-    'param[class|style|name|value],' .
-    'map[class|style|name|id],' .
-    'area[class|style|shape|coords|href|target|alt]'
+    'p/div,strong/b,em/i,'.
+    'strong[class|style|id],em[class|style|id],a[href|target=_blank|style],p[class|style|id],br,span[class|style|id],' .
+    'blockquote[class|style|id],' .
+    'h2[class|style|id],h3[class|style|id],h4[class|style|id],h5[class|style|id],h6[class|style|id],'.
+    'address[class|style|id],pre[class|style|id],hr,'.
+    'a[href|rel|title|target|class|style|id],'.
+    'table[class|style|id],ul[class|style|id],ol[start|type|class|style|id],li[class|style|id],'.
+    'img[class|style|id|src|alt|title|hspace|vspace|width|height|align|name|usemap|data*],' .
+    'iframe[class|style|id|src|name|width|height|align|frameborder|marginwidth|marginheight|scrolling],' .
+    'object[class|style|id|width|height|data|type],' .
+    'embed[class|style|id|src|type|pluginspage|width|height|autoplay],' .
+    'param[class|style|id|name|value],' .
+    'map[class|style|id|name|id],' .
+    'area[class|style|id|shape|coords|href|target|alt]'
 );

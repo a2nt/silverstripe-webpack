@@ -10,3 +10,7 @@ SilverStripe\Core\Injector\Injector:
     constructor:
       namespace: "appCache"
       defaultLifetime: 3600
+
+SilverStripe\Control\Middleware\HTTPCacheControlMiddleware:
+  defaultState: 'enabled'
+  defaultForcingLevel: 0

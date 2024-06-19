@@ -4,6 +4,7 @@
 // extends global PageController class
 //namespace App\Pages;
 
+use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
 use A2nt\CMSNiceties\Ajax\Ex\AjaxControllerEx;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Model\SiteTree;
@@ -24,6 +25,18 @@ class PageController extends ContentController
 {
     private static $graphql_resources = [];
     private static $ajax_resources = [];
+
+    protected function init()
+    {
+        DeferredRequirements::Auto();
+
+        HTTPCacheControlMiddleware::singleton()
+            ->enableCache()
+            // 1 minute
+            ->setMaxAge(60);
+
+        return parent::init();
+    }
 
     public function ElementalArea()
     {
@@ -64,6 +77,9 @@ class PageController extends ContentController
 
         // inject AJAX processing
         if (Director::is_ajax()) {
+            HTTPCacheControlMiddleware::singleton()
+                ->disableCache();
+
             return AjaxControllerEx::processAJAX($tpls);
         }
 
