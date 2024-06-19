@@ -28,8 +28,6 @@ class PageController extends ContentController
 
     protected function init()
     {
-        DeferredRequirements::Auto();
-
         HTTPCacheControlMiddleware::singleton()
             ->enableCache()
             // 1 minute
