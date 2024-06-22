@@ -4,8 +4,10 @@
             "@babel/preset-env",
             {
                 "targets": {
-                    "node": "6.10",
-                    "browsers": "> 0.25%, not dead"
+                    "browsers": [
+                        "last 2 version",
+                        "ie > 11"
+                    ]
                 }
             }
         ],

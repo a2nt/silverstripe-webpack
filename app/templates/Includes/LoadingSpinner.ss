@@ -1,15 +1,23 @@
 <style>
 	<%-- Some prestyling to prevent jumpings --%>
+	.row{display:flex;flex-wrap:wrap}
+    @media (min-width: 576px){.col-sm {flex:1 0 0%}}
 	button{background:none;border:0}
     .container{margin-left:auto;margin-right:auto;padding-left:0.75rem;padding-right:0.75rem}
-    @media (min-width: 1368px){.container{max-width:1180px}}
+    @media (min-width: 1368px){.container{max-width:1200px}}
     .meta-MetaWindow {position:fixed}
     .collapse:not(.show),.offline-message:not(.show){display:none}
     .row {display:flex;justify-content:space-between}
     .breadcrumb{list-style:none}
     .breadcrumb-item{display:inline-block}
+    .d-none{display:none!important}
     <%-- always show scroll bar --%>
     html {overflow-y:scroll}
+    .meta-MetaWindow-overlay{display:none}
+    .a2nt__elementalbasics__elements__sliderelement>.container{max-width:none;padding:0}
+    .glide__slides{display:flex;list-style:none;padding:0}
+    [data-per-view="1"] .glide__img{min-width:100vw}
+    .page-header-element{display:none}
     <%-- Site Specific --%>
 	@keyframes lds-ellipsis1 {
 		0% {
