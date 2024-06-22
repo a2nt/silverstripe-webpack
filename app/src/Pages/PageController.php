@@ -11,6 +11,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\View\SSViewer;
+use A2nt\CMSNiceties\Templates\DeferredRequirements;
 
 /**
  * Class \PageController
@@ -28,12 +29,25 @@ class PageController extends ContentController
 
     protected function init()
     {
+        DeferredRequirements::addPreloadFont([
+            'https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2',
+            'https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXiWtFCc.woff2',
+            'https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2',
+            'https://use.fontawesome.com/releases/v6.5.2/webfonts/fa-solid-900.woff2',
+            'https://use.fontawesome.com/releases/v6.5.2/webfonts/fa-regular-400.woff2',
+            'https://use.fontawesome.com/releases/v6.5.2/webfonts/fa-brands-400.woff2',
+        ]);
+
+        DeferredRequirements::addPreloadCSS(
+            'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap'
+        );
+
         HTTPCacheControlMiddleware::singleton()
             ->enableCache(true)
             // 1 minute
             ->setMaxAge(60);
 
-        return parent::init();
+        parent::init();
     }
 
     public function ElementalArea()
