@@ -11,7 +11,7 @@ window.addEventListener('prefetch-loaded', () => {
     const MainContentContainer = document.getElementById('MainContent')
 
     const MainContent = document.createElement('div')
-    if (!MainContentContainer.dataset['legacy']) {
+    if (!MainContentContainer.dataset.legacy) {
         MainContent.classList.add('page--container')
         MainContentContainer.append(MainContent)
 
@@ -30,5 +30,12 @@ window.addEventListener('prefetch-loaded', () => {
             })
         }
     }
+
+    document.querySelectorAll('a.legacy').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            window.location = e.currentTarget.getAttribute('href')
+        })
+    })
+
     window.initAjaxOnce = true
 })

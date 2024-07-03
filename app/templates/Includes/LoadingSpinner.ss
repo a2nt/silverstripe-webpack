@@ -11,6 +11,7 @@
     .breadcrumb{list-style:none}
     .breadcrumb-item{display:inline-block}
     .d-none{display:none!important}
+    .visually-hidden,.visually-hidden-focusable:not(:focus):not(:focus-within){height:1px!important;margin:-1px!important;overflow:hidden!important;padding:0!important;width:1px!important;clip:rect(0,0,0,0)!important;border:0!important;white-space:nowrap!important}
     <%-- always show scroll bar --%>
     html {overflow-y:scroll}
     .meta-MetaWindow-overlay{display:none}
