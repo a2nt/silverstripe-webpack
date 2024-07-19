@@ -43,7 +43,8 @@
     "dynamic/flexslider": "^5",
     "dynamic/silverstripe-elemental-flexslider": "^2.0@dev",
     "silverstripe/blog": "^4.2",
-    "dynamic/silverstripe-elemental-blog": "^3.0"
+    "dynamic/silverstripe-elemental-blog": "^3.0",
+    "lekoala/silverstripe-cms-actions": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "*",
