@@ -7,15 +7,15 @@ const LayoutUI = ((W) => {
   const D = document;
 
   const initFonts = () => {
-    console.log(`${NAME}: initFonts`);
+    console.log(`${NAME}: initFonts`)
 
-    const css = D.createElement('link');
-    css.rel = 'stylesheet';
-    css.type = 'text/css';
-    css.media = 'all';
+    const css = D.createElement('link')
+    css.rel = 'stylesheet'
+    css.type = 'text/css'
+    css.media = 'all'
     css.href =
-      'https://fonts.googleapis.com/css?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap';
-    D.getElementsByTagName('head')[0].appendChild(css);
+      'https://fonts.googleapis.com/css?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap'
+    D.getElementsByTagName('head')[0].appendChild(css)
   };
 
   const initAnalytics = () => {
@@ -45,8 +45,15 @@ const LayoutUI = ((W) => {
   };
 
   W.addEventListener(`${Events.LODEDANDREADY}`, () => {
-    initFonts();
-    initAnalytics();
-  });
-})(window);
+    initFonts()
+    initAnalytics()
+    const mainLegacy = document.querySelector('#MainContent[data-legacy="true"]')
+    if (mainLegacy) {
+      const spinner = document.getElementById('PageLoading');
+      if (spinner) {
+        spinner.classList.add('d-none');
+      }
+    }
+  })
+})(window)
 export default LayoutUI;

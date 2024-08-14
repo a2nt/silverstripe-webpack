@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+
 import '@a2nt/mithril-ui/src/js/ui'
 import Events from '@a2nt/ss-bootstrap-ui-webpack-boilerplate-react/src/js/_events'
 

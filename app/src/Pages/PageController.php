@@ -6,14 +6,12 @@
 
 use A2nt\CMSNiceties\Ajax\Ex\AjaxControllerEx;
 use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
-use A2nt\CMSNiceties\Ajax\Ex\AjaxControllerEx;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\View\SSViewer;
 use A2nt\CMSNiceties\Templates\DeferredRequirements;
-use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
 
 /**
  * Class \PageController

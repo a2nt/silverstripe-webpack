@@ -26,12 +26,13 @@ $cfg->setOption(
     'h2[class|style|id],h3[class|style|id],h4[class|style|id],h5[class|style|id],h6[class|style|id],'.
     'address[class|style|id],pre[class|style|id],hr,'.
     'a[href|rel|title|target|class|style|id],'.
-    'table[class|style|id],ul[class|style|id],ol[start|type|class|style|id],li[class|style|id],'.
+    'table[class|style|id],tr,td,thead,tbody,th,'.
+    'ul[class|style|id],ol[start|type|class|style|id],li[class|style|id],'.
     'img[class|style|id|src|alt|title|hspace|vspace|width|height|align|name|usemap|data*],' .
     'iframe[class|style|id|src|name|width|height|align|frameborder|marginwidth|marginheight|scrolling],' .
     'object[class|style|id|width|height|data|type],' .
     'embed[class|style|id|src|type|pluginspage|width|height|autoplay],' .
     'param[class|style|id|name|value],' .
     'map[class|style|id|name|id],' .
-    'area[class|style|id|shape|coords|href|target|alt]'
+    'area[class|style|id|shape|coords|href|target|alt]',
 );
